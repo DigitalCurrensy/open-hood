@@ -1,0 +1,11 @@
+import type { Metadata } from "next";
+import { PartsPage } from "@/components/pages/parts-page";
+
+export const metadata: Metadata = {
+  title: "Parts desk",
+  description: "Search RockAuto, AutoZone, and Amazon from the fluids-card SKUs.",
+};
+
+export default function Page() {
+  return <PartsPage />;
+}

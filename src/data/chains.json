@@ -1,0 +1,97 @@
+{
+  "retail": [
+    {
+      "id": "autozone",
+      "name": "AutoZone",
+      "kind": "parts",
+      "locatorUrl": "https://www.autozone.com/locations/?q={query}",
+      "notes": "National DIY parts. Locator is public. We do not scrape aisle stock."
+    },
+    {
+      "id": "oreilly",
+      "name": "O'Reilly Auto Parts",
+      "kind": "parts",
+      "locatorUrl": "https://www.oreillyauto.com/locations?q={query}",
+      "notes": "Parts + loaner tools. Open their locator with the ZIP you typed."
+    },
+    {
+      "id": "advance",
+      "name": "Advance Auto Parts",
+      "kind": "parts",
+      "locatorUrl": "https://stores.advanceautoparts.com/search?q={query}",
+      "notes": "Public store finder. No live inventory in this bay."
+    },
+    {
+      "id": "napa",
+      "name": "NAPA Auto Parts",
+      "kind": "parts",
+      "locatorUrl": "https://www.napaonline.com/en/store-locator?q={query}",
+      "notes": "Independent NAPA owners. Hours and counter stock live on their site."
+    },
+    {
+      "id": "pepboys",
+      "name": "Pep Boys",
+      "kind": "parts",
+      "locatorUrl": "https://www.pepboys.com/stores?q={query}",
+      "notes": "Parts plus service bays. We do not book their lanes."
+    },
+    {
+      "id": "discount-tire",
+      "name": "Discount Tire",
+      "kind": "tires",
+      "locatorUrl": "https://www.discounttire.com/store-locator?q={query}",
+      "notes": "Tire retail. Quote and appointment stay on their site."
+    },
+    {
+      "id": "firestone",
+      "name": "Firestone Complete Auto Care",
+      "kind": "repair",
+      "locatorUrl": "https://www.firestonecompleteautocare.com/store-locator/?q={query}",
+      "notes": "National service chain. Ask for millimeter readings before you authorize rotors."
+    }
+  ],
+  "dealerGroups": [
+    {
+      "id": "autonation",
+      "name": "AutoNation",
+      "kind": "dealer_group",
+      "locatorUrl": "https://www.autonation.com/dealers",
+      "notes": "Public rooftop list. Service hours and recall desks are on each store page."
+    },
+    {
+      "id": "penske",
+      "name": "Penske Automotive",
+      "kind": "dealer_group",
+      "locatorUrl": "https://www.penskeautomotive.com/dealerships.htm",
+      "notes": "Group locator. We do not certify any franchise."
+    },
+    {
+      "id": "lithia",
+      "name": "Lithia / Driveway",
+      "kind": "dealer_group",
+      "locatorUrl": "https://www.lithia.com/dealerships.htm",
+      "notes": "Public dealership directory."
+    },
+    {
+      "id": "sonic",
+      "name": "Sonic Automotive",
+      "kind": "dealer_group",
+      "locatorUrl": "https://www.sonicautomotive.com/dealerships.htm",
+      "notes": "EchoPark + franchise rooftops."
+    },
+    {
+      "id": "group1",
+      "name": "Group 1 Automotive",
+      "kind": "dealer_group",
+      "locatorUrl": "https://www.group1auto.com/dealerships",
+      "notes": "Public rooftop finder."
+    },
+    {
+      "id": "hendrick",
+      "name": "Hendrick Automotive",
+      "kind": "dealer_group",
+      "locatorUrl": "https://www.hendrickauto.com/dealerships.htm",
+      "notes": "Public rooftop finder."
+    }
+  ]
+}

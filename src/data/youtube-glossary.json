@@ -1,0 +1,1923 @@
+[
+  {
+    "id": "oil-change",
+    "title": "Change the engine oil and filter",
+    "plainEnglish": "Oil is the engine’s blood. You drain the old, swap the filter, and pour in the viscosity printed on the cap — not whatever is on sale. A driveway oil change is the first real job most owners should learn.",
+    "difficulty": 2,
+    "timeEstimate": "45–90 minutes",
+    "toolsNeeded": [
+      "Jack and jack stands or ramps",
+      "Socket for the drain plug",
+      "Oil filter wrench",
+      "Drain pan",
+      "Funnel",
+      "Gloves"
+    ],
+    "partsNeeded": [
+      "Correct viscosity oil (cap + owner’s manual)",
+      "Oil filter that matches this engine",
+      "New crush washer if the plug uses one"
+    ],
+    "safetyNotes": [
+      "Never work under a car that is only on a jack. Stands or ramps, then a shake test.",
+      "Hot oil burns. Let the engine sit 10–20 minutes after a short drive.",
+      "Used oil is hazardous waste. Parts stores take it back."
+    ],
+    "steps": [
+      "Read the cap and the manual for viscosity, spec, and capacity in quarts. Write the number down before you buy.",
+      "Warm the engine a few minutes so the oil flows, then shut it off and chock the wheels.",
+      "Lift the car at the factory jack points and set stands. Shake the body. If it rocks, reset.",
+      "Place the drain pan under the oil pan bolt. Crack the plug, then finish by hand so you can catch it.",
+      "Let it drain until it drips. Inspect the plug magnet or threads. Replace the crush washer if it has one.",
+      "Move the pan under the filter. Unscrew the old filter. Wipe the mount. Oil the new gasket. Hand-tighten only.",
+      "Snug the drain plug. Lower the car. Fill through the cap with a funnel, stop 0.5 qt short of capacity, wait, then read the dipstick on level ground.",
+      "Start it, watch for leaks, shut it off, recheck the stick. Reset the oil-life monitor. Write the mileage on the filter or a glove-box note."
+    ],
+    "youtube": {
+      "videoId": "O1hF25Cowv8",
+      "title": "How to Change Your Oil (COMPLETE Guide)",
+      "channel": "ChrisFix",
+      "whyThisVideo": "ChrisFix walks a first-timer through viscosity, the filter, jacking, and the refill — not a 90-second montage."
+    },
+    "relatedSymptomIds": [
+      "oil-light",
+      "tick-on-start",
+      "oil-leak"
+    ],
+    "relatedPartTypes": [
+      "engine-oil",
+      "oil-filter"
+    ],
+    "jobRoles": [
+      "owner",
+      "DIY"
+    ],
+    "jobFamily": "fluids",
+    "diySafe": true,
+    "shopSentence": "Please change the oil and filter using the viscosity and spec on the cap. I want the old filter shown and the mileage reset.",
+    "askAtTheShop": "Ask which viscosity they poured and whether they used the filter SKU for this engine — not a “universal” filter.",
+    "verified": true
+  },
+  {
+    "id": "coolant-check",
+    "title": "Check and top off coolant the safe way",
+    "plainEnglish": "Coolant keeps the engine from cooking and from freezing. The reservoir has a cold fill line. Opening a hot radiator cap is how people get scalded. Color is not a spec — the chemistry on the jug is.",
+    "difficulty": 1,
+    "timeEstimate": "15–25 minutes",
+    "toolsNeeded": [
+      "Paper towels",
+      "Flashlight",
+      "Optional: coolant test strips"
+    ],
+    "partsNeeded": [
+      "The exact coolant chemistry in the manual (not “universal green”)",
+      "Distilled water only if the jug is concentrate"
+    ],
+    "safetyNotes": [
+      "Engine cold. If the upper hose is hard or steaming, walk away.",
+      "Never mix chemistries. Dex-Cool, Asian HOAT, and European OAT are not interchangeable by color.",
+      "Coolant is toxic to pets. Wipe spills."
+    ],
+    "steps": [
+      "Park level. Wait until the engine is fully cold — overnight is safest.",
+      "Find the translucent overflow tank. Read the COLD / MIN / MAX marks. Photograph them.",
+      "If it is between the marks, you are done. If it is below MIN, add the correct premix to the COLD line only.",
+      "If the tank is empty, do not guess. That is a leak or a recent job that was not burped. Do not keep driving if the gauge is climbing.",
+      "Look at the fluid: oily film, rust, or coffee-with-cream means a shop test, not another gallon of whatever is on the shelf.",
+      "Cap it until it clicks. Recheck after the next cold morning."
+    ],
+    "youtube": {
+      "videoId": "mHTM3dvpD1M",
+      "title": "How to Check and Test Your Coolant/Antifreeze",
+      "channel": "ChrisFix",
+      "whyThisVideo": "ChrisFix shows how to test concentration and why a 50/50 mix matters before winter — not just “add green stuff.”"
+    },
+    "relatedSymptomIds": [
+      "overheating",
+      "no-heat",
+      "sweet-smell"
+    ],
+    "relatedPartTypes": [
+      "coolant"
+    ],
+    "jobRoles": [
+      "owner",
+      "DIY"
+    ],
+    "jobFamily": "fluids",
+    "diySafe": true,
+    "shopSentence": "Please check the coolant level cold, tell me which chemistry is in the system, and pressure-test if it is low. Do not sell a flush unless you find rust, oil, or a failed thermostat.",
+    "askAtTheShop": "Ask for the chemistry name (G-11, G-12, Dex-Cool, Honda Type 2, etc.) and a leak-down or pressure-test result — not a $180 “cooling system service” by default.",
+    "verified": true
+  },
+  {
+    "id": "every-fluid-map",
+    "title": "Map every fluid before you authorize a package",
+    "plainEnglish": "Oil, trans, coolant, brake, power steering, and washer are different jobs with different intervals. A shop multi-point that wants all of them at once is a menu, not a diagnosis. Learn what each jug is for so you can say no.",
+    "difficulty": 2,
+    "timeEstimate": "30–40 minutes to watch and walk the bay",
+    "toolsNeeded": [
+      "Owner’s manual",
+      "Flashlight",
+      "Paper towel"
+    ],
+    "partsNeeded": [],
+    "safetyNotes": [
+      "Do not open a hot cooling system.",
+      "Brake fluid eats paint. Wipe immediately.",
+      "Sealed transmissions often have no dipstick — do not pry a fill plug you cannot put back."
+    ],
+    "steps": [
+      "Open the manual to the maintenance schedule. Circle the fluids that are actually due by miles or time.",
+      "Under the hood, find oil cap, coolant tank, brake reservoir, washer tank. Photograph each cap.",
+      "Brake fluid should sit between MIN and MAX. If it is at MIN, pads may be worn — that is a measurement job, not a flush by default.",
+      "Transmission: if there is a dipstick, check it hot and in the gear the manual says. If there is no stick, this is a shop level-check.",
+      "Write one sentence per fluid: due / not due / unknown. That list is what you take to the counter."
+    ],
+    "youtube": {
+      "videoId": "t7JCh7PHoDc",
+      "title": "How to Change EVERY FLUID in your Car or Truck (Oil, Transmission, Coolant, Brake, and More)",
+      "channel": "ChrisFix",
+      "whyThisVideo": "One map of the whole fluid bay so a “full service package” cannot blur oil with a trans flush."
+    },
+    "relatedSymptomIds": [
+      "shop-upsell",
+      "overheating"
+    ],
+    "relatedPartTypes": [
+      "engine-oil",
+      "coolant",
+      "brake-fluid",
+      "transmission-fluid"
+    ],
+    "jobRoles": [
+      "owner",
+      "DIY",
+      "service-writer"
+    ],
+    "jobFamily": "fluids",
+    "diySafe": true,
+    "shopSentence": "I want each fluid listed separately with the spec and whether it is due. I am not authorizing a bundled flush package.",
+    "askAtTheShop": "Ask them to show the maintenance schedule line they are quoting — miles or months — for each fluid.",
+    "verified": true
+  },
+  {
+    "id": "brake-fluid-flush",
+    "title": "Flush and bleed brake fluid",
+    "plainEnglish": "Brake fluid absorbs water. After a few years it boils easier and rusts the expensive parts inside. A flush pushes new DOT 3 or DOT 4 through each corner until the old brown fluid is gone. This is not the same as topping off a low reservoir — low fluid often means worn pads.",
+    "difficulty": 4,
+    "timeEstimate": "1–2 hours",
+    "toolsNeeded": [
+      "Jack stands",
+      "Clear hose and bottle or one-person bleeder",
+      "Flare-nut or box wrench for bleeders",
+      "Turkey baster for the reservoir"
+    ],
+    "partsNeeded": [
+      "1 liter of the DOT rating on the cap (do not mix DOT 5 silicone)",
+      "Shop towels"
+    ],
+    "safetyNotes": [
+      "Never let the master cylinder run dry. Air in the lines is a no-brake-pedal event.",
+      "Brake fluid strips paint. Cover fenders.",
+      "If the pedal stays soft after a bleed, do not drive. Tow it."
+    ],
+    "steps": [
+      "Read the cap: DOT 3 or DOT 4. Buy that. Date-stamp the bottle — old open fluid is already wet.",
+      "Suck the dirty reservoir down without scraping the bottom, then refill with new fluid.",
+      "Bleed farthest from the master first unless the manual says otherwise (often RR, LR, RF, LF).",
+      "Hose on the bleeder, crack it, pump or gravity-feed until the stream is clear and bubble-free, then snug the bleeder.",
+      "Top the reservoir every corner. Never let it hit empty.",
+      "Pump the pedal until it is hard. Hold it. If it sinks, you still have air or a leak.",
+      "Test in a parking lot at walking speed before a road."
+    ],
+    "youtube": {
+      "videoId": "n1NvtUwfRJc",
+      "title": "How to do a Complete Brake Flush and Bleed",
+      "channel": "ChrisFix",
+      "whyThisVideo": "ChrisFix shows both the two-person pump method and a one-person bleed, plus disc and drum corners."
+    },
+    "relatedSymptomIds": [
+      "soft-pedal",
+      "brake-warning-light"
+    ],
+    "relatedPartTypes": [
+      "brake-fluid"
+    ],
+    "jobRoles": [
+      "owner",
+      "DIY",
+      "tech"
+    ],
+    "jobFamily": "fluids",
+    "diySafe": false,
+    "shopSentence": "Please flush the brake fluid with the DOT rating on the cap. I want the old fluid color noted and the pedal confirmed hard before I pick the car up.",
+    "askAtTheShop": "Ask which DOT they used and whether they found moisture or rust in the fluid — a flush is not a pad job.",
+    "verified": true
+  },
+  {
+    "id": "trans-drain-and-fill",
+    "title": "Transmission drain-and-fill (not a machine flush)",
+    "plainEnglish": "A drain-and-fill replaces the fluid that actually falls out of the pan — often 40–50% — plus the filter if the pan comes down. It is the conservative service. A machine flush pushes fluid through cooler lines and can move debris in a neglected box. They are not the same line item.",
+    "difficulty": 4,
+    "timeEstimate": "2–3 hours",
+    "toolsNeeded": [
+      "Jack stands",
+      "Socket set",
+      "Gasket scraper",
+      "Torque wrench",
+      "Funnel that fits the fill hole"
+    ],
+    "partsNeeded": [
+      "Exact ATF spec from the manual (WS, DW-1, Mercon LV, etc.)",
+      "Filter and pan gasket if the pan drops",
+      "New drain plug washer"
+    ],
+    "safetyNotes": [
+      "Confirm you can open the fill first. A seized fill plug after a drain strands the car.",
+      "Hot ATF burns. Wear gloves.",
+      "Overfill causes foaming and blown seals. Level-check the way the manual says — often hot, running, in a specific gear."
+    ],
+    "steps": [
+      "Look up capacity and spec. Buy enough for a drain (often 3–5 qt) plus a little extra.",
+      "Lift and support the car. Crack the fill or dipstick path so you know you can refill.",
+      "Drain the pan or drop it. Photograph the fluid color and the magnet. Black with glitter is a conversation, not a flush.",
+      "Replace the filter if the pan is off. Clean the magnet. New gasket. Torque the pan in a star pattern.",
+      "Refill what came out, then run through the gears and level-check per the book.",
+      "Look for leaks at the pan and cooler lines after a short drive."
+    ],
+    "youtube": {
+      "videoId": "yb_1wbiPz9g",
+      "title": "How to Change Automatic Transmission Fluid and Filter (COMPLETE Guide)",
+      "channel": "ChrisFix",
+      "whyThisVideo": "Shows the pan-drop method so you understand what a drain-and-fill actually replaces — including the filter."
+    },
+    "relatedSymptomIds": [
+      "harsh-shift",
+      "slipping-trans"
+    ],
+    "relatedPartTypes": [
+      "transmission-fluid"
+    ],
+    "jobRoles": [
+      "owner",
+      "DIY",
+      "tech"
+    ],
+    "jobFamily": "fluids",
+    "diySafe": false,
+    "shopSentence": "I want a drain-and-fill with the factory ATF spec, not a machine flush. Show me the old fluid and tell me how many quarts went back in.",
+    "askAtTheShop": "Ask drain-and-fill vs flush, the exact fluid spec, and whether they drop the pan for the filter.",
+    "verified": true
+  },
+  {
+    "id": "trans-flush-vs-change",
+    "title": "Drain-and-fill vs a transmission flush",
+    "plainEnglish": "A change dumps what gravity will give you. A flush exchanges nearly all of it through the cooler lines. On a healthy, regularly serviced trans, a flush can be fine. On a neglected, burnt, or mystery-history box, a flush can be the job that makes it slip. This video is the sentence you need before you initial that line.",
+    "difficulty": 1,
+    "timeEstimate": "12 minutes to watch",
+    "toolsNeeded": [],
+    "partsNeeded": [],
+    "safetyNotes": [
+      "Do not authorize a flush from a code or a shudder alone. Fluid photos first.",
+      "“Lifetime fluid” still oxidizes. Time and heat count."
+    ],
+    "steps": [
+      "Ask for a photo of the fluid on a paper towel: color, smell, metal.",
+      "If it is red or pink and you have service records, a flush or a change can both be valid — pick the one the maker specifies.",
+      "If it is black, burnt, or full of glitter, do not flush. Diagnose. A cheap drain may still be the first look.",
+      "Write the sentence: flush only if the fluid is in good shape and the manual allows it.",
+      "Get the line item named: drain-and-fill, pan drop plus filter, or machine flush. Those are three prices."
+    ],
+    "youtube": {
+      "videoId": "o690DovjDAc",
+      "title": "Can Changing your Transmission Fluid Cause Damage?",
+      "channel": "ChrisFix",
+      "whyThisVideo": "ChrisFix draws the change vs flush difference and when a flush can move debris in a neglected valve body."
+    },
+    "relatedSymptomIds": [
+      "harsh-shift",
+      "slipping-trans",
+      "shop-upsell"
+    ],
+    "relatedPartTypes": [
+      "transmission-fluid"
+    ],
+    "jobRoles": [
+      "owner",
+      "service-writer"
+    ],
+    "jobFamily": "fluids",
+    "diySafe": true,
+    "shopSentence": "Do not machine-flush this transmission unless you have inspected the fluid and the maker calls for it. I want a drain-and-fill or a diagnosis first.",
+    "askAtTheShop": "Ask to see the fluid and which procedure they priced. “Transmission service” is not a procedure.",
+    "verified": true
+  },
+  {
+    "id": "cabin-filter",
+    "title": "Replace the cabin air filter",
+    "plainEnglish": "This is the filter that cleans the air you breathe. It lives behind the glove box on most cars. Shops charge $80–$120 for a 10-minute clip job. If the AC smells like a wet sock or the windshield fogs, look here first.",
+    "difficulty": 1,
+    "timeEstimate": "10–20 minutes",
+    "toolsNeeded": [
+      "Hands",
+      "Optional: screwdriver or Torx for a cover",
+      "Vacuum"
+    ],
+    "partsNeeded": [
+      "Cabin filter that matches year/make/model (or the SKU on the spec sheet)"
+    ],
+    "safetyNotes": [
+      "Do not force the glove box past its stops — the damper arm pops off.",
+      "Wear a dust mask if the old filter is moldy."
+    ],
+    "steps": [
+      "Search “[year make model] cabin filter location” or open the manual. Most drop the glove box.",
+      "Empty the glove box. Squeeze the sides past the stops or unclip the damper.",
+      "Open the plastic door. Photograph the old filter so you know which way the airflow arrow pointed.",
+      "Slide the old one out. Vacuum leaves and grit from the housing.",
+      "Install the new filter with the arrow matching the housing mark (usually toward the blower / down).",
+      "Clip the door and glove box back. Run the fan on high — it should be quieter and stronger."
+    ],
+    "youtube": {
+      "videoId": "brofphmC7GI",
+      "title": "How to PERFECTLY Maintain your First Car",
+      "channel": "ChrisFix",
+      "whyThisVideo": "The first-car video includes a real cabin-filter swap: airflow arrow, moldy old filter, and the glove-box cover. Jump to the cabin-filter chapter."
+    },
+    "relatedSymptomIds": [
+      "musty-ac",
+      "weak-airflow",
+      "foggy-windshield"
+    ],
+    "relatedPartTypes": [
+      "cabin-filter"
+    ],
+    "jobRoles": [
+      "owner",
+      "DIY"
+    ],
+    "jobFamily": "filters",
+    "diySafe": true,
+    "shopSentence": "I will replace the cabin filter myself. If you already have it open, I only want the part at cost — not an hour of labor.",
+    "askAtTheShop": "If they already charged cabin-filter labor, ask to see the old filter. An $80 labor line on a clip job is the classic pad.",
+    "verified": true
+  },
+  {
+    "id": "engine-air-filter",
+    "title": "Replace the engine air filter",
+    "plainEnglish": "The engine air filter sits in a black plastic box in the engine bay. A clogged one makes the car feel tired and can trip a MAF-related code. Pop the clips, photograph the old one, drop the new one in the same orientation. Ten minutes.",
+    "difficulty": 1,
+    "timeEstimate": "10–15 minutes",
+    "toolsNeeded": [
+      "Hands or a Phillips / 10 mm for box screws",
+      "Vacuum"
+    ],
+    "partsNeeded": [
+      "Engine air filter for this air box"
+    ],
+    "safetyNotes": [
+      "Engine off. Do not drop dirt into the open intake.",
+      "Do not oil a paper filter. Leave K&N-style cleaning to that product’s instructions."
+    ],
+    "steps": [
+      "Find the air box — usually a rectangular housing with metal clips or 10 mm screws and a big rubber hose to the engine.",
+      "Unclip or unscrew the lid. Lift it just enough to slide the filter out. Do not yank the MAF sensor connector.",
+      "Photograph which way the rubber seal sat. Vacuum the box. Do not blow compressed air toward the MAF.",
+      "Set the new filter so the seal sits in the groove. Close the lid evenly. All clips on.",
+      "Start the car. No whistle at the lid means the seal seated."
+    ],
+    "youtube": {
+      "videoId": "brofphmC7GI",
+      "title": "How to PERFECTLY Maintain your First Car",
+      "channel": "ChrisFix",
+      "whyThisVideo": "Same first-car bay: he pops the engine air box, shows a filthy element, and reseals the lid. Pair with the cabin-filter chapter."
+    },
+    "relatedSymptomIds": [
+      "low-power",
+      "maf-code"
+    ],
+    "relatedPartTypes": [
+      "engine-air-filter"
+    ],
+    "jobRoles": [
+      "owner",
+      "DIY"
+    ],
+    "jobFamily": "filters",
+    "diySafe": true,
+    "shopSentence": "I can swap the engine air filter. If you quote it, I want the part price only unless the box is broken.",
+    "askAtTheShop": "Ask to see the old filter. A $90 “air induction service” is not a filter.",
+    "verified": true
+  },
+  {
+    "id": "fuel-filter",
+    "title": "Replace an in-line fuel filter (when your car still has one)",
+    "plainEnglish": "Older Fords, Mazdas, and some trucks have a filter on the frame. Many modern cars hid it in the tank — there is no $18 canister to swap. If the manual has no interval, do not let a shop invent one. Fuel is flammable. Depressurize first.",
+    "difficulty": 3,
+    "timeEstimate": "30–60 minutes",
+    "toolsNeeded": [
+      "Quick-disconnect tool or flare-nut wrenches",
+      "Jack stands if it is under the car",
+      "Safety glasses"
+    ],
+    "partsNeeded": [
+      "Correct in-line filter and new clips if they are one-time"
+    ],
+    "safetyNotes": [
+      "Work cold, outside, no sparks. Depressurize: pull the fuel-pump fuse and run the engine until it dies.",
+      "Have a drain pan. Residual fuel will spill.",
+      "If the filter is in the tank, this is a pump-module job — stop."
+    ],
+    "steps": [
+      "Confirm the car has an accessible in-line filter. Many 2005+ cars do not.",
+      "Relieve rail pressure. Disconnect the battery if you will be near metal tools and fuel.",
+      "Photograph hose orientation. Arrow on the new filter points toward the engine.",
+      "Release the quick-connects or flare nuts. Swap the filter. Click the lines fully home.",
+      "Reinstall the fuse. Key on to prime. Check for leaks before you start."
+    ],
+    "youtube": {
+      "videoId": "uQbYs_6jrno",
+      "title": "How To Replace a Ford Fuel Filter (homemade disconnect tool)",
+      "channel": "ChrisFix",
+      "whyThisVideo": "ChrisFix shows Ford-style quick-disconnects — the usual backyard filter — and a pen-cap trick if you do not have the tool."
+    },
+    "relatedSymptomIds": [
+      "stalling",
+      "low-power",
+      "hard-start"
+    ],
+    "relatedPartTypes": [
+      "fuel-filter"
+    ],
+    "jobRoles": [
+      "owner",
+      "DIY",
+      "tech"
+    ],
+    "jobFamily": "filters",
+    "diySafe": false,
+    "shopSentence": "Does this VIN have a serviceable in-line fuel filter? If it is in the tank, I do not want a made-up canister line.",
+    "askAtTheShop": "Ask where the filter lives on this VIN. “Fuel system service” is not a location.",
+    "verified": true
+  },
+  {
+    "id": "brake-pads-rotors",
+    "title": "Replace brake pads and rotors",
+    "plainEnglish": "Pads are the sacrificial blocks. Rotors are the discs they squeeze. When pads hit the wear tab you hear a squeal. When they are gone you hear grinding — that is metal cutting the rotor. A complete job is pads, hardware, greased pins, and rotors measured against the discard thickness stamped on the hat.",
+    "difficulty": 3,
+    "timeEstimate": "2–4 hours per axle",
+    "toolsNeeded": [
+      "Jack stands",
+      "Lug wrench and torque wrench",
+      "Caliper hardware sockets",
+      "C-clamp or piston compressor",
+      "Brake cleaner and brush"
+    ],
+    "partsNeeded": [
+      "Pads and hardware kit",
+      "Rotors if below discard or deeply grooved",
+      "Silicone paste for guide pins (not petroleum grease)",
+      "Blue Loctite if the bracket bolts used it"
+    ],
+    "safetyNotes": [
+      "Never rely on the jack alone.",
+      "Do not press the pedal with a caliper hanging.",
+      "Pump the pedal after assembly until it is hard — before you move the car.",
+      "Brake dust: wet-clean, do not blow."
+    ],
+    "steps": [
+      "Loosen lugs on the ground. Lift and stand the corner. Remove the wheel.",
+      "Unbolt the caliper, hang it from a wire — do not stretch the hose.",
+      "Photograph pad orientation and hardware. Remove the bracket if the rotor is trapped.",
+      "Measure rotor thickness vs the stamped minimum. If it is under, replace. Do not machine a rotor that is already at spec.",
+      "Clean the hub face so the new rotor sits flat. One lug nut holds it while you work.",
+      "Compress the piston slowly with the reservoir cap off. Watch the fluid level so it does not overflow.",
+      "Grease only the contact ears and guide pins with the right grease. Pads in. Bracket torque. Caliper torque.",
+      "Wheels on, star-pattern torque to the door-jamb or manual number. Pump the pedal. Bed the pads per the pad maker."
+    ],
+    "youtube": {
+      "videoId": "6RQ9UabOIPg",
+      "title": "How to Replace Brake Pads and Rotors (COMPLETE Guide)",
+      "channel": "ChrisFix",
+      "whyThisVideo": "The complete pad-and-rotor job: pins, grease, Loctite, torque, and the mandatory pedal-pump at the end."
+    },
+    "relatedSymptomIds": [
+      "brake-squeal",
+      "brake-grind",
+      "vibration-on-brake"
+    ],
+    "relatedPartTypes": [
+      "brake-pads",
+      "rotors"
+    ],
+    "jobRoles": [
+      "owner",
+      "DIY",
+      "tech"
+    ],
+    "jobFamily": "brakes",
+    "diySafe": false,
+    "shopSentence": "Measure inner and outer pad thickness in millimeters on both sides of that axle, and rotor thickness vs the discard spec. I will not authorize rotors without a number.",
+    "askAtTheShop": "Ask for millimeters, not “they’re due.” If rotors are above discard, machining or reuse can be valid.",
+    "verified": true
+  },
+  {
+    "id": "one-person-brake-bleed",
+    "title": "Bleed brakes by yourself with a $5 bottle",
+    "plainEnglish": "A second person pumping the pedal is the classic bleed. If you are alone, a bottle of fluid and a clear hose that stays submerged keeps air from getting sucked back in. Still: never let the reservoir go empty.",
+    "difficulty": 3,
+    "timeEstimate": "30 minutes to build + 45 minutes to bleed",
+    "toolsNeeded": [
+      "Plastic bottle",
+      "Clear tubing",
+      "Zip tie",
+      "Bleeder wrench"
+    ],
+    "partsNeeded": [
+      "Fresh DOT 3 or DOT 4 matching the cap"
+    ],
+    "safetyNotes": [
+      "If the pedal is soft after, do not drive.",
+      "Keep the hose end under fluid so air cannot reverse."
+    ],
+    "steps": [
+      "Drill the bottle cap for a snug hose and a tiny vent hole.",
+      "Fill the bottle so the hose end stays submerged. Clip the other end on the bleeder.",
+      "Crack the bleeder. Pump slowly. Watch bubbles. Keep the master topped up.",
+      "When the stream is clear, close the bleeder before you pull the hose.",
+      "Repeat corners in the book order. Confirm a hard pedal."
+    ],
+    "youtube": {
+      "videoId": "1wwq1Vlk4Wg",
+      "title": "How to Make a One Person Brake Bleeder for Under $5",
+      "channel": "ChrisFix",
+      "whyThisVideo": "Builds the one-person check-valve bottle so a solo owner can finish a flush without a helper."
+    },
+    "relatedSymptomIds": [
+      "soft-pedal"
+    ],
+    "relatedPartTypes": [
+      "brake-fluid"
+    ],
+    "jobRoles": [
+      "owner",
+      "DIY"
+    ],
+    "jobFamily": "brakes",
+    "diySafe": false,
+    "shopSentence": "Please bleed the brakes until the pedal is hard. I do not need a full flush unless the fluid is dark or old.",
+    "askAtTheShop": "Ask whether they are bleeding after a pad job or selling a flush. Those are different.",
+    "verified": true
+  },
+  {
+    "id": "parking-brake",
+    "title": "Check and adjust the parking brake",
+    "plainEnglish": "The parking brake is a cable (or an electric motor) that locks the rear brakes so the car does not roll. If the handle climbs to the sky or the car rolls on a driveway, the cable is slack or the little shoes inside a rear disc hat are worn. Adjustment is model-specific. If you have an electronic EPB, do not yank the cable — you need a scan-tool retract.",
+    "difficulty": 3,
+    "timeEstimate": "30–90 minutes",
+    "toolsNeeded": [
+      "Flashlight",
+      "Wrench for the cable adjuster (often under the console)",
+      "Jack stands if you adjust shoes"
+    ],
+    "partsNeeded": [
+      "Cable or rear shoes only if they are worn through"
+    ],
+    "safetyNotes": [
+      "Chock the front wheels.",
+      "Electronic parking brakes need a service mode. Forcing the caliper wrecks the motor.",
+      "A dragging cable cooks the rear brakes."
+    ],
+    "steps": [
+      "Count the clicks to full engagement. Compare to the manual (often 5–8).",
+      "On a slight grade, set the brake and see if the car holds in neutral. If it rolls, it is not adjusted.",
+      "Look up whether this car is cable, drum-in-hat, or electric. Electric: stop and use the shop sentence.",
+      "Cable: find the adjuster under the console or at the equalizer. Tighten a few turns, then retest. Do not over-tighten — the rears will drag.",
+      "If the cable is already tight and it still will not hold, the rear shoes or the electric actuator need a tech."
+    ],
+    "youtube": {
+      "videoId": "",
+      "title": "How to adjust a parking brake cable",
+      "channel": "YouTube search",
+      "whyThisVideo": "No single well-known video covers cable, drum-in-hat, and electronic EPB. Use the search — then match your handle type."
+    },
+    "relatedSymptomIds": [
+      "car-rolls",
+      "parking-brake-light"
+    ],
+    "relatedPartTypes": [
+      "brake-pads"
+    ],
+    "jobRoles": [
+      "owner",
+      "DIY",
+      "tech"
+    ],
+    "jobFamily": "brakes",
+    "diySafe": false,
+    "shopSentence": "The parking brake does not hold on a grade. Please tell me if this is a cable adjustment, rear shoe service, or an electronic parking-brake retract.",
+    "askAtTheShop": "Ask which system you have and whether they put the EPB in service mode before compressing a rear caliper.",
+    "verified": false
+  },
+  {
+    "id": "soft-pedal-after-pads",
+    "title": "Bleed after a pad job if the pedal is soft",
+    "plainEnglish": "You do not always flush after pads — but if you opened a line, or the pedal is soft, you bleed. Soft pedal after pads is usually a piston that was not seated or air. Do not drive it “to see if it firms up.”",
+    "difficulty": 3,
+    "timeEstimate": "45–90 minutes",
+    "toolsNeeded": [
+      "Helper or one-person bleeder",
+      "Bleeder wrench"
+    ],
+    "partsNeeded": [
+      "DOT fluid matching the cap"
+    ],
+    "safetyNotes": [
+      "Hard pedal in the driveway before the street."
+    ],
+    "steps": [
+      "After pads, pump the pedal with the car still on stands until it firms.",
+      "If it stays soft, bleed the corners you worked, then the rest if needed.",
+      "Keep the reservoir full. Close bleeders tight, not stripped.",
+      "Road-test from a crawl. Then a slightly harder stop in an empty lot."
+    ],
+    "youtube": {
+      "videoId": "n1NvtUwfRJc",
+      "title": "How to do a Complete Brake Flush and Bleed",
+      "channel": "ChrisFix",
+      "whyThisVideo": "Same bleed video — use it after a pad job when the pedal is not honest yet."
+    },
+    "relatedSymptomIds": [
+      "soft-pedal",
+      "brake-squeal"
+    ],
+    "relatedPartTypes": [
+      "brake-fluid",
+      "brake-pads"
+    ],
+    "jobRoles": [
+      "owner",
+      "DIY",
+      "tech"
+    ],
+    "jobFamily": "brakes",
+    "diySafe": false,
+    "shopSentence": "The pedal is soft after the pad job. Please bleed and confirm a hard pedal before I take the car.",
+    "askAtTheShop": "Ask whether a hose was opened. Soft pedal after pads is their problem to finish, not yours to “break in.”",
+    "verified": true
+  },
+  {
+    "id": "tire-pressure",
+    "title": "Set tire pressure from the door-jamb sticker",
+    "plainEnglish": "The number on the tire sidewall is a maximum, not your fill target. Your car’s cold PSI is on the driver’s door sticker. Low tires wear the edges, waste fuel, and light the TPMS horseshoe. Check them cold — before you drive.",
+    "difficulty": 1,
+    "timeEstimate": "10 minutes",
+    "toolsNeeded": [
+      "Tire pressure gauge you trust",
+      "Air compressor or gas-station hose"
+    ],
+    "partsNeeded": [
+      "Valve caps if they are missing"
+    ],
+    "safetyNotes": [
+      "Do not fill to the sidewall max.",
+      "If a tire is more than about 8 PSI low, look for a nail before you just air it up every week."
+    ],
+    "steps": [
+      "Read the door-jamb placard: front PSI, rear PSI, spare PSI. Photograph it.",
+      "Check cold. Unscrew the cap. Press the gauge straight on until the hiss stops.",
+      "Add air in short bursts. Recheck. Let some out with the gauge stem if you overshot.",
+      "Do all four, then the spare if you have a real one. Caps back on.",
+      "If the TPMS light stays on, drive a few minutes above 20 mph, or use the reset in the manual."
+    ],
+    "youtube": {
+      "videoId": "0Q-Eb7aUyt4",
+      "title": "How to Properly Check and Fill Tires on Your Car",
+      "channel": "1A Auto: Repair Tips & Secrets Only Mechanics Know",
+      "whyThisVideo": "1A Auto shows door-sticker vs sidewall max, a cold check, and why TPMS is not a substitute for a gauge."
+    },
+    "relatedSymptomIds": [
+      "tpms-light",
+      "pulling",
+      "cupped-tires"
+    ],
+    "relatedPartTypes": [
+      "tires",
+      "tpms"
+    ],
+    "jobRoles": [
+      "owner",
+      "DIY"
+    ],
+    "jobFamily": "tires",
+    "diySafe": true,
+    "shopSentence": "Please set all four tires and the spare to the door-jamb cold PSI, not the sidewall max. I want the numbers written on the RO.",
+    "askAtTheShop": "Ask them to write the PSI they set. “We aired them up” is not a number.",
+    "verified": true
+  },
+  {
+    "id": "tire-rotate",
+    "title": "Rotate the tires",
+    "plainEnglish": "Front tires wear differently than rears. Rotation moves them so a set lasts longer. Directional tires (arrow on the sidewall) can only swap front-to-back on the same side. After a rotation, reset TPMS if the car needs a relearn, and torque the lugs in a star.",
+    "difficulty": 2,
+    "timeEstimate": "45–75 minutes",
+    "toolsNeeded": [
+      "Jack and four jack stands or a two-post lift",
+      "Lug wrench",
+      "Torque wrench",
+      "Owner’s manual for the pattern"
+    ],
+    "partsNeeded": [],
+    "safetyNotes": [
+      "Never leave a car on a jack to swap four corners. Stands under factory points.",
+      "Torque on the ground, star pattern.",
+      "Do not rotate a space-saver spare into the set."
+    ],
+    "steps": [
+      "Read the manual for the pattern: forward-cross, rearward-cross, or side-to-side for directional.",
+      "Loosen all lugs on the ground. Lift and support so all four wheels can come off, or do one axle at a time if you understand the pattern.",
+      "Move each wheel to its new corner. Directional arrows must still point forward.",
+      "Hand-start lugs. Lower. Torque to the spec (often 80–100 lb-ft) in a star.",
+      "Set PSI per the door sticker — fronts and rears may differ. Recalibrate TPMS if the car asks."
+    ],
+    "youtube": {
+      "videoId": "",
+      "title": "How to rotate tires pattern jack stands",
+      "channel": "YouTube search",
+      "whyThisVideo": "Rotation patterns differ by drive type and directional tread. Use the search plus your manual — we will not invent a one-car ID."
+    },
+    "relatedSymptomIds": [
+      "cupped-tires",
+      "vibration-highway"
+    ],
+    "relatedPartTypes": [
+      "tires",
+      "tpms"
+    ],
+    "jobRoles": [
+      "owner",
+      "DIY"
+    ],
+    "jobFamily": "tires",
+    "diySafe": true,
+    "shopSentence": "Please rotate on the factory pattern, torque the lugs to spec, and set door-jamb PSI. Recalibrate TPMS if this car needs it.",
+    "askAtTheShop": "Ask which pattern they used and the lug torque. A rotation should not require new TPMS sensors unless one already failed.",
+    "verified": false
+  },
+  {
+    "id": "change-spare",
+    "title": "Change a flat and use the spare",
+    "plainEnglish": "A flat on the shoulder is a roadside job, not a personality test. You loosen the lugs on the ground, lift at the factory point, swap the spare, and torque when it is down. The donut is a get-home tire — 50 mph, short distance, then a real tire.",
+    "difficulty": 2,
+    "timeEstimate": "20–40 minutes roadside",
+    "toolsNeeded": [
+      "The jack and lug wrench that came with the car",
+      "Wheel chocks or a rock",
+      "Flashlight",
+      "Owner’s manual for the jack point"
+    ],
+    "partsNeeded": [
+      "Inflated spare (check it tonight, not on the highway)"
+    ],
+    "safetyNotes": [
+      "Hazards on. Far from traffic. People stand in front of the guardrail, not in the lane.",
+      "Never crawl under a car on the scissor jack.",
+      "Do not use the scissor jack on a slope or soft shoulder if you can avoid it."
+    ],
+    "steps": [
+      "Hazards, park, wheel chock opposite the flat. Get everyone out of the car, away from traffic.",
+      "Dig out the spare, jack, and wrench. Find the jack point in the manual — a notch in the pinch weld, not the floor pan.",
+      "Crack the lugs loose while the tire still has weight on it.",
+      "Jack until the tire clears. Remove lugs, swap the spare, hand-thread lugs.",
+      "Lower. Torque in a star as best you can with the factory wrench, then to a shop torque wrench that day.",
+      "The donut is temporary. Repair or replace the flat. Reset TPMS when the real tire is back."
+    ],
+    "youtube": {
+      "videoId": "314HE4aMG-g",
+      "title": "How to Change a Tire (plus jacking it up)",
+      "channel": "ChrisFix",
+      "whyThisVideo": "ChrisFix treats jacking and the wheel swap as one skill: chocks, points, stands vs roadside jack, star pattern."
+    },
+    "relatedSymptomIds": [
+      "flat-tire",
+      "tpms-light"
+    ],
+    "relatedPartTypes": [
+      "tires",
+      "jack"
+    ],
+    "jobRoles": [
+      "owner",
+      "DIY"
+    ],
+    "jobFamily": "tires",
+    "diySafe": true,
+    "shopSentence": "I have a donut on. Please mount and balance a proper tire, torque the lugs, and set door-jamb PSI.",
+    "askAtTheShop": "Ask whether the flat is repairable (nail in the tread center) or needs a new tire. Plugs from the outside are not a shop repair.",
+    "verified": true
+  },
+  {
+    "id": "tpms-reset",
+    "title": "Understand and reset a TPMS light",
+    "plainEnglish": "A solid horseshoe means a tire is low. A flashing horseshoe usually means a dead sensor battery or a failed relearn after a rotation. Air the tires to the door sticker first. Then drive. Only then chase sensors.",
+    "difficulty": 1,
+    "timeEstimate": "15 minutes plus a short drive",
+    "toolsNeeded": [
+      "Tire gauge",
+      "Owner’s manual for the reset button or menu"
+    ],
+    "partsNeeded": [],
+    "safetyNotes": [
+      "A flashing light is not “just reset it” if a tire is actually flat.",
+      "Sensor batteries last about 7–10 years. They die with the sensor, not as a $5 coin cell you pop out."
+    ],
+    "steps": [
+      "Solid light: gauge all four plus spare. Fill to the placard. Caps on.",
+      "Drive 2+ minutes above about 20 mph. Many systems clear themselves.",
+      "If the manual has a TPMS reset or Honda-style calibration, do that after the pressures are right.",
+      "Flashing light after correct PSI: the system is sick. That is a sensor or module, not more air.",
+      "After a rotation, some cars need a relearn tool. That is a $20–$40 shop line, not four new sensors by default."
+    ],
+    "youtube": {
+      "videoId": "VrpC4tZ8bZI",
+      "title": "How to Reset Low Tire Pressure Light (TPMS)",
+      "channel": "ChrisFix",
+      "whyThisVideo": "ChrisFix shows the door sticker, why all four tires were low after a temperature drop, and the drive-to-clear step."
+    },
+    "relatedSymptomIds": [
+      "tpms-light"
+    ],
+    "relatedPartTypes": [
+      "tpms",
+      "tires"
+    ],
+    "jobRoles": [
+      "owner",
+      "DIY",
+      "service-writer"
+    ],
+    "jobFamily": "tires",
+    "diySafe": true,
+    "shopSentence": "The TPMS light is on. I set door-jamb PSI. If it still flashes, please tell me which sensor failed — do not quote four sensors first.",
+    "askAtTheShop": "Ask solid vs flashing, and which corner IDs as bad. Four sensors is a last step.",
+    "verified": true
+  },
+  {
+    "id": "tire-repair-safety",
+    "title": "What a proper tire repair looks like",
+    "plainEnglish": "A string plug from the outside is a get-home hack. A proper repair is from the inside: injury removed, patch-plug through the tread center. Shoulder and sidewall punctures are scrap. This is the film you want if a shop says they “fixed” a tire.",
+    "difficulty": 1,
+    "timeEstimate": "5 minutes to watch",
+    "toolsNeeded": [],
+    "partsNeeded": [],
+    "safetyNotes": [
+      "Do not repair a puncture outside the tread center.",
+      "Do not drive on a tire that was run flat enough to break the sidewall."
+    ],
+    "steps": [
+      "Ask where the injury is. Center tread: maybe repairable. Shoulder or sidewall: replace.",
+      "Ask them to dismount the tire and patch from the inside. A plug-only from outside is not the industry repair.",
+      "If they used sealant or a string plug, treat it as temporary. Get a real repair or a new tire.",
+      "After a proper repair, rebalance and set PSI."
+    ],
+    "youtube": {
+      "videoId": "mdTAalpkSLM",
+      "title": "Tire Safety Starts with Proper Tire Repair",
+      "channel": "TIA - Tire Safety Starts Here",
+      "whyThisVideo": "The Tire Industry Association shows why an inside repair matters and how a bad plug can separate a belt."
+    },
+    "relatedSymptomIds": [
+      "flat-tire"
+    ],
+    "relatedPartTypes": [
+      "tires"
+    ],
+    "jobRoles": [
+      "owner",
+      "tech",
+      "service-writer"
+    ],
+    "jobFamily": "tires",
+    "diySafe": true,
+    "shopSentence": "If this puncture is in the center tread, I want an industry inside repair, not a string plug. If it is in the sidewall, replace the tire.",
+    "askAtTheShop": "Ask them to show the injury on the inside of the tire. No photo, no authorization.",
+    "verified": true
+  },
+  {
+    "id": "jump-start",
+    "title": "Jump-start a dead 12-volt battery",
+    "plainEnglish": "A dead battery is usually lights left on or an old battery — not a dead engine. Cable order matters so you do not spark on the battery. Last clamp goes to bare metal on the dead car, not the dead negative post.",
+    "difficulty": 2,
+    "timeEstimate": "10–15 minutes",
+    "toolsNeeded": [
+      "Jumper cables (thick, long) or a pack-style jump box",
+      "Owner’s manual for jump points on cars with a trunk battery"
+    ],
+    "partsNeeded": [],
+    "safetyNotes": [
+      "Do not jump a cracked or frozen battery.",
+      "Keep cables off belts and fans.",
+      "Hybrids and EVs: use the designated 12V jump posts only. Never touch the orange high-voltage cables."
+    ],
+    "steps": [
+      "Both cars in park, parking brakes, accessories off. Confirm the dead battery is 12V lead-acid or AGM, not a damaged case.",
+      "Red on dead positive. Red on good positive. Black on good negative. Black on unpainted metal on the dead car (strut tower bolt), away from the battery.",
+      "Start the good car. Wait a minute. Start the dead car.",
+      "Remove in reverse: black off ground, black off good negative, reds off.",
+      "Drive 20+ minutes or charge it. If it dies again overnight, test the battery and the alternator — do not keep jumping."
+    ],
+    "youtube": {
+      "videoId": "iI1o2hNy2hE",
+      "title": "How to Properly Jump Start a Car",
+      "channel": "ChrisFix",
+      "whyThisVideo": "ChrisFix is obsessive about the last ground clamp — that is the step most owners get wrong."
+    },
+    "relatedSymptomIds": [
+      "no-start",
+      "click-no-crank"
+    ],
+    "relatedPartTypes": [
+      "battery"
+    ],
+    "jobRoles": [
+      "owner",
+      "DIY"
+    ],
+    "jobFamily": "battery",
+    "diySafe": true,
+    "shopSentence": "It needed a jump. Please load-test the battery and check charging voltage at 2,000 RPM before quoting an alternator.",
+    "askAtTheShop": "Ask for resting volts, cranking volts, and running volts. Those three numbers separate battery from alternator.",
+    "verified": true
+  },
+  {
+    "id": "test-battery",
+    "title": "Test the 12-volt battery with a $20 meter",
+    "plainEnglish": "A healthy rested battery reads about 12.6 volts. While cranking it should not crash below about 10 volts. That $20 multimeter is the difference between buying a battery and buying an alternator you did not need.",
+    "difficulty": 2,
+    "timeEstimate": "15 minutes",
+    "toolsNeeded": [
+      "Digital multimeter set to DC volts"
+    ],
+    "partsNeeded": [],
+    "safetyNotes": [
+      "Do not short the probes across both posts.",
+      "Corroded terminals lie. Clean them first."
+    ],
+    "steps": [
+      "Engine off, lights off, car sat at least 30 minutes if you can.",
+      "Meter on 20V DC. Red on +, black on −. Read: about 12.6 full, about 12.2 hungry, under about 12.0 needs charge and a retest.",
+      "Have a helper crank. Watch the lowest number. A plunge under about 10 V while cranking is a weak battery.",
+      "If it starts, go to the alternator test (running 13.8–14.7 V).",
+      "A parts-store load test is fine — take the printout, do not take their upsell as gospel."
+    ],
+    "youtube": {
+      "videoId": "COJr7OB23Hw",
+      "title": "How to Test a Car Battery with a Multimeter",
+      "channel": "ChrisFix",
+      "whyThisVideo": "Six minutes: resting voltage and a cranking load with a cheap meter."
+    },
+    "relatedSymptomIds": [
+      "no-start",
+      "slow-crank",
+      "battery-light"
+    ],
+    "relatedPartTypes": [
+      "battery"
+    ],
+    "jobRoles": [
+      "owner",
+      "DIY"
+    ],
+    "jobFamily": "battery",
+    "diySafe": true,
+    "shopSentence": "Please print a battery load test and the charging voltage. I do not want an alternator unless the running voltage is out of range.",
+    "askAtTheShop": "Ask for the CCA result and the voltage printout. “It's bad” is not a test.",
+    "verified": true
+  },
+  {
+    "id": "replace-battery",
+    "title": "Replace a 12-volt battery",
+    "plainEnglish": "Negative cable off first, then positive, then the hold-down. The new battery must match group size and CCA, not just “it fits in the tray.” Positive on first, negative last. Many radios will want a code. Recycle the old one — the core is worth money.",
+    "difficulty": 2,
+    "timeEstimate": "20–40 minutes",
+    "toolsNeeded": [
+      "10 mm or 13 mm wrench",
+      "Battery terminal brush",
+      "Memory saver is optional — most cars relearn idle"
+    ],
+    "partsNeeded": [
+      "Correct group size and CCA",
+      "Hold-down hardware if the old one is rusted"
+    ],
+    "safetyNotes": [
+      "Negative first off, last on.",
+      "Do not lay tools across both posts.",
+      "Some cars hide the battery under a seat or in the trunk — use those jump posts, not guesses."
+    ],
+    "steps": [
+      "Confirm group size (often on the old label) and CCA vs the manual.",
+      "Engine off. Negative cable off. Then positive. Then the hold-down clamp.",
+      "Lift straight up. Batteries are heavy. Set it on cardboard, not painted fenders.",
+      "Clean the tray and cable ends. Set the new battery so + and − match the cables.",
+      "Hold-down on. Positive on. Negative on. Start it. Return the old battery for the core."
+    ],
+    "youtube": {
+      "videoId": "YC--MLNIbik",
+      "title": "How to Test and Replace a Bad Car Battery (COMPLETE Ultimate Guide)",
+      "channel": "ChrisFix",
+      "whyThisVideo": "ChrisFix tests first, then replaces — so you do not throw a good battery at a bad alternator."
+    },
+    "relatedSymptomIds": [
+      "no-start",
+      "slow-crank"
+    ],
+    "relatedPartTypes": [
+      "battery"
+    ],
+    "jobRoles": [
+      "owner",
+      "DIY"
+    ],
+    "jobFamily": "battery",
+    "diySafe": true,
+    "shopSentence": "I want a battery that matches the OEM group size and CCA. Keep the core credit on the RO.",
+    "askAtTheShop": "Ask group size, CCA, and warranty months. “Top of the line” is not a spec.",
+    "verified": true
+  },
+  {
+    "id": "test-alternator",
+    "title": "Test the alternator before you buy one",
+    "plainEnglish": "The alternator is the engine-driven charger. Engine running, you should see roughly 13.8–14.7 volts at the battery. If headlights dim and voltage sits at 12.2 while running, the alternator (or a cable) is the suspect — after you proved the battery.",
+    "difficulty": 2,
+    "timeEstimate": "15 minutes",
+    "toolsNeeded": [
+      "Digital multimeter"
+    ],
+    "partsNeeded": [],
+    "safetyNotes": [
+      "Keep hands off belts and fans.",
+      "A failing alternator can spike voltage and cook modules — do not ignore a battery light."
+    ],
+    "steps": [
+      "Confirm the battery is charged enough to start (about 12.4+).",
+      "Start the engine. Meter on the battery: 13.8–14.7 V is the usual healthy window.",
+      "Turn on headlights, blower, rear defrost. Voltage should stay above about 13.2. A collapse toward 12 V is a weak alternator or a bad ground.",
+      "Over 15 V is also bad — a failed regulator. Stop driving if you can.",
+      "Squeal from the pulley is a belt or bearing, not a software update."
+    ],
+    "youtube": {
+      "videoId": "LGB6ZEjGm7Q",
+      "title": "How to Test an Alternator",
+      "channel": "ChrisFix",
+      "whyThisVideo": "ChrisFix puts a load on the charging system and shows the voltage window a $20 meter can prove."
+    },
+    "relatedSymptomIds": [
+      "battery-light",
+      "dim-lights",
+      "no-start"
+    ],
+    "relatedPartTypes": [
+      "alternator",
+      "battery"
+    ],
+    "jobRoles": [
+      "owner",
+      "DIY",
+      "tech"
+    ],
+    "jobFamily": "battery",
+    "diySafe": true,
+    "shopSentence": "Please measure charging voltage at idle and at 2,000 RPM with loads on. I will not authorize an alternator from the battery light alone.",
+    "askAtTheShop": "Ask for the running voltage number. A battery light can be a belt, a ground, or the regulator.",
+    "verified": true
+  },
+  {
+    "id": "read-obd-code",
+    "title": "Read a check-engine code with a cheap scanner",
+    "plainEnglish": "The light is a pointer, not a parts list. A $20–$80 OBD-II dongle plugs under the dash, usually above the driver’s left shin. You read P0xxx, write it down, then translate it — you do not clear it and hope. AutoShield’s /obd desk will read the same code you typed.",
+    "difficulty": 1,
+    "timeEstimate": "10 minutes",
+    "toolsNeeded": [
+      "Any ELM327 / generic OBD-II scanner or a Bluetooth dongle + phone app"
+    ],
+    "partsNeeded": [],
+    "safetyNotes": [
+      "Key on, engine as the tool asks. Do not clear codes before you write them down — freeze-frame data disappears.",
+      "We do not sell a dongle. A $20 tool is enough to read a generic code."
+    ],
+    "steps": [
+      "Find the 16-pin port under the dash, driver’s side. Plug in. Key to RUN.",
+      "Read codes. Write the exact code (P0420, P0301). Photograph the screen.",
+      "Read freeze-frame if the tool has it: RPM, temp, speed when it set.",
+      "Do not clear yet. Look the code up — here at /obd or in a repair article. A code is a test plan.",
+      "Clear only after a repair, then drive to see if it returns."
+    ],
+    "youtube": {
+      "videoId": "xPI36bKVCjk",
+      "title": "BlueDriver OBD2 Diagnostic Scan Tool Review (reads ABS, Airbag, Tranny Codes)",
+      "channel": "ChrisFix",
+      "whyThisVideo": "ChrisFix shows where the port is and what a phone dongle actually reads — including why a $20 tool still beats guessing."
+    },
+    "relatedSymptomIds": [
+      "check-engine",
+      "misfire"
+    ],
+    "relatedPartTypes": [
+      "obd-scanner"
+    ],
+    "jobRoles": [
+      "owner",
+      "DIY",
+      "service-writer"
+    ],
+    "jobFamily": "obd",
+    "diySafe": true,
+    "shopSentence": "I pulled this code on a cheap scanner: [code]. Please diagnose that code — do not quote a catalytic converter or a coil pack from the number alone.",
+    "askAtTheShop": "Ask for the factory code title and the test they will run. P0420 is not automatically a converter.",
+    "verified": true
+  },
+  {
+    "id": "first-car-obd-walk",
+    "title": "Scan the car the way you would a first car",
+    "plainEnglish": "Before you buy pads or ignore a light, plug in and read everything the cheap tool can see. A first-car walkthrough shows the port, the app, and how a check-engine light can be a bulb — or something that needs a real test.",
+    "difficulty": 1,
+    "timeEstimate": "10 minutes in the video chapter",
+    "toolsNeeded": [
+      "Bluetooth OBD-II dongle or a handheld $20 reader"
+    ],
+    "partsNeeded": [],
+    "safetyNotes": [
+      "Write codes down before you clear.",
+      "ABS and airbag lights are not “check engine.” A basic dongle may not read them."
+    ],
+    "steps": [
+      "Plug in under the dash. Pair the app. Run a full scan if the tool offers it.",
+      "Separate engine codes from body codes (lights, camera). They are different jobs.",
+      "Photograph the list. Bring it to /obd and to the shop.",
+      "Do not reset monitors the day before an emissions test unless you know what you are doing."
+    ],
+    "youtube": {
+      "videoId": "brofphmC7GI",
+      "title": "How to PERFECTLY Maintain your First Car",
+      "channel": "ChrisFix",
+      "whyThisVideo": "The OBD chapter is filmed like a first owner: port location, whole-system scan, then he actually chases the codes."
+    },
+    "relatedSymptomIds": [
+      "check-engine"
+    ],
+    "relatedPartTypes": [
+      "obd-scanner"
+    ],
+    "jobRoles": [
+      "owner",
+      "DIY"
+    ],
+    "jobFamily": "obd",
+    "diySafe": true,
+    "shopSentence": "Here is the scan printout. Please price diagnosis for these codes, not a parts cannon.",
+    "askAtTheShop": "Ask which code they will test first and what passing looks like.",
+    "verified": true
+  },
+  {
+    "id": "headlight-bulb",
+    "title": "Replace a headlight bulb",
+    "plainEnglish": "A dark headlight is usually a bulb, not a whole lamp. Access is from the engine bay or a fender liner. Do not touch halogen glass with bare fingers — oil makes a hot spot and the new bulb dies early. Sealed LED assemblies are a different, expensive job.",
+    "difficulty": 2,
+    "timeEstimate": "15–45 minutes",
+    "toolsNeeded": [
+      "Gloves",
+      "Flashlight",
+      "Possible 10 mm for a housing shift"
+    ],
+    "partsNeeded": [
+      "Correct bulb number from the manual (H11, 9005, etc.) — buy a pair"
+    ],
+    "safetyNotes": [
+      "Halogen glass: gloves only.",
+      "HID/xenon systems can hold high voltage. If it is not a simple halogen plug, stop.",
+      "Aim the lights after if you removed the housing."
+    ],
+    "steps": [
+      "Confirm halogen vs HID vs LED in the manual. LED modules are usually not a $12 bulb.",
+      "Open the hood. Find the dust cap behind the lamp. Unplug the connector — rock it, do not yank wires.",
+      "Release the spring clip or twist collar. Pull the old bulb. Compare the new one in the box for damage.",
+      "Install without touching the glass. Seat the tabs. Dust cap on. Connector clicked.",
+      "Lights on. Have a helper confirm both sides. Replace in pairs so the colors match."
+    ],
+    "youtube": {
+      "videoId": "HO3IXM3XkUU",
+      "title": "How to Replace a Headlight Bulb (Tips and Tricks)",
+      "channel": "ChrisFix",
+      "whyThisVideo": "Tips that apply across cars: do not touch the glass, check the box, and this is not a model-specific teardown."
+    },
+    "relatedSymptomIds": [
+      "dark-headlight"
+    ],
+    "relatedPartTypes": [
+      "headlight-bulb"
+    ],
+    "jobRoles": [
+      "owner",
+      "DIY"
+    ],
+    "jobFamily": "lights",
+    "diySafe": true,
+    "shopSentence": "I need the halogen bulb replaced, both sides, part number from the manual. If this is a sealed LED, quote the assembly separately.",
+    "askAtTheShop": "Ask halogen vs LED before you approve $400. A bulb is not a housing.",
+    "verified": true
+  },
+  {
+    "id": "turn-signals",
+    "title": "Fix a blinker that is dark or hyper-flashing",
+    "plainEnglish": "A turn signal that blinks twice as fast usually means that corner’s bulb is out — the flasher is telling on you. Rear access is often through the trunk liner. LED upgrades without a resistor hyper-flash on purpose. Match the bulb number stamped on the old glass.",
+    "difficulty": 2,
+    "timeEstimate": "15–30 minutes",
+    "toolsNeeded": [
+      "Screwdriver or 8–10 mm for the housing",
+      "Gloves"
+    ],
+    "partsNeeded": [
+      "Correct bulb (3157, 7443, 7507, etc.)"
+    ],
+    "safetyNotes": [
+      "Let the lamp cool.",
+      "If the socket is melted, stop — that is a housing or ground, not another bulb."
+    ],
+    "steps": [
+      "Hazard lights on. Walk around. Note which corner is dark or dim.",
+      "Open the trunk or hood. Remove the access cover or the two nuts holding the lamp.",
+      "Twist the socket, pull the bulb, compare the number on the metal base.",
+      "New bulb in, seated, twist lock. Test before you button the liner.",
+      "If it still hyper-flashes with a good bulb, look at the ground and the opposite side. If you installed LEDs, you need the load the car expects."
+    ],
+    "youtube": {
+      "videoId": "",
+      "title": "How to replace turn signal bulb car trunk access",
+      "channel": "YouTube search",
+      "whyThisVideo": "Blinker access is model-specific. Search your year/make/model plus “turn signal bulb” — we will not invent a Civic-only ID as if it were universal."
+    },
+    "relatedSymptomIds": [
+      "hyperflash",
+      "dark-blinker"
+    ],
+    "relatedPartTypes": [
+      "turn-signal",
+      "headlight-bulb"
+    ],
+    "jobRoles": [
+      "owner",
+      "DIY"
+    ],
+    "jobFamily": "lights",
+    "diySafe": true,
+    "shopSentence": "The [left rear] turn signal is out or hyper-flashing. Please replace the bulb and check the socket. I do not want a new lamp unless the socket is melted.",
+    "askAtTheShop": "Ask bulb vs housing. Hyper-flash after an LED upgrade is a load issue, not a failed module by default.",
+    "verified": false
+  },
+  {
+    "id": "wiper-blades",
+    "title": "Replace windshield wiper blades",
+    "plainEnglish": "Streaks in the rain are a $20 part, not a $70 wiper service. Most arms are a J-hook: lift, press the tab, slide off, click the new one on. Measure the old blades — driver and passenger are often different lengths. Do not let the bare arm smack the glass.",
+    "difficulty": 1,
+    "timeEstimate": "5–10 minutes",
+    "toolsNeeded": [
+      "Towel to rest the arm if you need both hands"
+    ],
+    "partsNeeded": [
+      "Blades in the correct lengths (check a parts-store lookup or the old blade stamp)"
+    ],
+    "safetyNotes": [
+      "Hold the arm when the blade comes off. It will spring into the glass.",
+      "Winter: do not rip a blade frozen to the windshield."
+    ],
+    "steps": [
+      "Look up sizes or measure the old rubber. Buy the pair plus the rear if you have one.",
+      "Lift the arm. Press the lock tab. Slide the old blade off the hook.",
+      "Slide the new blade on until it clicks. Tug it. Lower gently onto the glass.",
+      "Repeat the other side. Spray washer fluid and wipe on low. No chatter, no streaks."
+    ],
+    "youtube": {
+      "videoId": "oeezwXQC-mc",
+      "title": "How to Replace Windshield Wipers on Your Car (Easy)",
+      "channel": "ChrisFix",
+      "whyThisVideo": "Two-minute J-hook lesson — the connector on most cars. Learn it in daylight, not in a storm."
+    },
+    "relatedSymptomIds": [
+      "streaky-glass"
+    ],
+    "relatedPartTypes": [
+      "wiper-blades"
+    ],
+    "jobRoles": [
+      "owner",
+      "DIY"
+    ],
+    "jobFamily": "wipers",
+    "diySafe": true,
+    "shopSentence": "I will install the blades. If you already have them on the RO, I want parts only.",
+    "askAtTheShop": "Ask beam vs frame and the two lengths. Labor on wipers is almost always padding.",
+    "verified": true
+  },
+  {
+    "id": "washer-fluid",
+    "title": "Fill washer fluid and stop the streaky smear",
+    "plainEnglish": "The blue jug under the hood is washer fluid, not coolant. In winter you want a mix that will not freeze in the lines. If the pump clicks and nothing hits the glass, the tank is empty, the hose is off, or the nozzle is clogged — not a new pump by default.",
+    "difficulty": 1,
+    "timeEstimate": "5 minutes",
+    "toolsNeeded": [
+      "Funnel"
+    ],
+    "partsNeeded": [
+      "Washer fluid rated for your climate"
+    ],
+    "safetyNotes": [
+      "Do not pour coolant into the washer tank. The caps are different on purpose.",
+      "Do not use household detergent — it eats the pump."
+    ],
+    "steps": [
+      "Find the tank with the windshield icon. Open it.",
+      "Fill with washer fluid. In freeze country, use −20 °F fluid, not leftover summer mix.",
+      "Spray. If it dribbles, poke the nozzle with a pin. If it is silent, check the fuse before a pump.",
+      "Replace blades if the glass still smears after a full tank."
+    ],
+    "youtube": {
+      "videoId": "oeezwXQC-mc",
+      "title": "How to Replace Windshield Wipers on Your Car (Easy)",
+      "channel": "ChrisFix",
+      "whyThisVideo": "Wipers and washers are one visibility job. After you fill the tank, the ChrisFix blade swap is the other half."
+    },
+    "relatedSymptomIds": [
+      "streaky-glass"
+    ],
+    "relatedPartTypes": [
+      "wiper-blades"
+    ],
+    "jobRoles": [
+      "owner",
+      "DIY"
+    ],
+    "jobFamily": "wipers",
+    "diySafe": true,
+    "shopSentence": "Washer spray is weak. Please check fluid, hose, and nozzles before quoting a pump.",
+    "askAtTheShop": "Ask them to show the hose on the tank. A $180 pump is last.",
+    "verified": true
+  },
+  {
+    "id": "spark-plugs",
+    "title": "Replace spark plugs when the job is actually DIY",
+    "plainEnglish": "Plugs ignite the mix. On a four-cylinder with coils on top, this can be a driveway job. On a V6 where the back bank is under the cowl or the intake, it is a shop job. One coil at a time so you do not mix the wires. Hand-thread so you do not cross-thread a $1,200 head.",
+    "difficulty": 3,
+    "timeEstimate": "1–3 hours if they are on top",
+    "toolsNeeded": [
+      "Spark-plug socket and extension",
+      "Torque wrench in inch-pounds if the book uses it",
+      "Gap tool",
+      "Dielectric grease"
+    ],
+    "partsNeeded": [
+      "The exact plug (iridium vs copper) and the gap the manual lists"
+    ],
+    "safetyNotes": [
+      "Engine cold. A hot aluminum head is easy to strip.",
+      "If a plug is in a deep well, blow the dirt out before it falls in.",
+      "Do not use anti-seize unless the plug maker says so — many modern plugs are coated and torque will be wrong."
+    ],
+    "steps": [
+      "Confirm access. If you cannot see the back plugs without removing an intake, pay the shop.",
+      "Pull one coil or wire. Blow the well clean. Unscrew the plug. Compare the color to a chart — oil or coolant on the porcelain is a bigger problem.",
+      "Gap the new plug if the book says to. Hand-thread until it seats, then torque to spec.",
+      "A dab of dielectric grease in the boot. Coil back on. Next cylinder. Never leave two coils off at once if you can avoid it.",
+      "Start it. If it misfires, you swapped a connector or did not seat a coil."
+    ],
+    "youtube": {
+      "videoId": "m_ZsWQ_WXNo",
+      "title": "Spark Plug Replacement DIY (the ULTIMATE Guide)",
+      "channel": "ChrisFix",
+      "whyThisVideo": "ChrisFix covers gap, dielectric grease, anti-seize debate, and how to get a plug out without wrecking the well."
+    },
+    "relatedSymptomIds": [
+      "misfire",
+      "rough-idle",
+      "check-engine"
+    ],
+    "relatedPartTypes": [
+      "spark-plugs",
+      "ignition-coils"
+    ],
+    "jobRoles": [
+      "owner",
+      "DIY",
+      "tech"
+    ],
+    "jobFamily": "ignition",
+    "diySafe": true,
+    "shopSentence": "If the rear bank needs the intake off, I want that labor explained. If the plugs are on top, I may DIY — quote parts only.",
+    "askAtTheShop": "Ask whether all plugs are accessible from above. A “tune-up package” is not a diagnosis for a single-cylinder misfire.",
+    "verified": true
+  },
+  {
+    "id": "ignition-coils",
+    "title": "Swap a coil only after the misfire follows it",
+    "plainEnglish": "A coil is the puck on top of each plug on most modern engines. A P0301 (cylinder 1 misfire) is not a four-pack of coils. Swap the #1 coil with another hole. If the code follows the coil, you found the part. If it stays on hole 1, look at the plug, injector, or compression.",
+    "difficulty": 2,
+    "timeEstimate": "20–40 minutes for an accessible coil",
+    "toolsNeeded": [
+      "10 mm socket",
+      "Scan tool to read which cylinder"
+    ],
+    "partsNeeded": [
+      "One coil of the correct type — not a set unless the swap test says so"
+    ],
+    "safetyNotes": [
+      "Engine off, key out.",
+      "Do not pry on the boot like a crowbar — twist and pull straight up."
+    ],
+    "steps": [
+      "Read the code. P0302 means cylinder 2, not “needs a tune-up.”",
+      "Unplug and unbolt that coil. Swap it with a neighbor. Clear the code. Drive.",
+      "If the misfire moves, replace that coil. If it stays, replace the plug next, then stop guessing.",
+      "Dielectric grease in the new boot. Bolt snug, connector clicked."
+    ],
+    "youtube": {
+      "videoId": "r3YOEDO-oMs",
+      "title": "How to Change Ignition Coil",
+      "channel": "AutoZone",
+      "whyThisVideo": "AutoZone’s how-to shows the connector, the single bolt, and seating the new coil on the plug — the motion you copy after the swap test."
+    },
+    "relatedSymptomIds": [
+      "misfire",
+      "check-engine"
+    ],
+    "relatedPartTypes": [
+      "ignition-coils",
+      "spark-plugs"
+    ],
+    "jobRoles": [
+      "owner",
+      "DIY",
+      "tech"
+    ],
+    "jobFamily": "ignition",
+    "diySafe": true,
+    "shopSentence": "Please do the coil swap test on the misfiring cylinder before quoting a set of coils.",
+    "askAtTheShop": "Ask which cylinder and whether the code followed the coil. A four-pack is not a test.",
+    "verified": true
+  },
+  {
+    "id": "jack-points-safety",
+    "title": "Jack the car on the right points — then use stands",
+    "plainEnglish": "The jack lifts. The stands hold. The pinch weld or the frame pad in the manual is the only place that is supposed to take that load. A jack on the oil pan, the floor stampings, or the plastic skirt will fold the car. Shake the body before you put a single body part under it.",
+    "difficulty": 2,
+    "timeEstimate": "15 minutes to learn, every time you lift",
+    "toolsNeeded": [
+      "Floor jack rated for the vehicle weight",
+      "Jack stands rated the same",
+      "Wheel chocks",
+      "Owner’s manual jack-point diagram"
+    ],
+    "partsNeeded": [
+      "Hockey puck or pinch-weld pad if the manual allows it"
+    ],
+    "safetyNotes": [
+      "Level, solid ground. Asphalt in July can swallow a stand.",
+      "Parking brake on. Chock the end that stays down.",
+      "Never a bumper, never a control arm unless the book says so.",
+      "If it fails the shake test, reset. Pride is cheaper than a hospital."
+    ],
+    "steps": [
+      "Read the jack-point diagram. On unibody cars it is usually a reinforced pinch-weld notch.",
+      "Chock. Loosen lugs if the wheel is coming off.",
+      "Center the jack pad on the point. Lift slowly. Watch the pad — if it walks, lower and reset.",
+      "Set the stand under the adjacent factory support point. Lower the car onto the stand. Jack stays as a backup, not the only support.",
+      "Shake the car hard. If a stand ticks or walks, start over.",
+      "To lower: jack the car off the stand, remove the stand, then lower slowly."
+    ],
+    "youtube": {
+      "videoId": "314HE4aMG-g",
+      "title": "How to Change a Tire (plus jacking it up)",
+      "channel": "ChrisFix",
+      "whyThisVideo": "The tire video is the jacking lesson most owners actually need: points, chocks, and why a scissor jack is a spare-tire tool, not a work stand."
+    },
+    "relatedSymptomIds": [
+      "flat-tire"
+    ],
+    "relatedPartTypes": [
+      "jack"
+    ],
+    "jobRoles": [
+      "owner",
+      "DIY"
+    ],
+    "jobFamily": "jacking",
+    "diySafe": true,
+    "shopSentence": "I need the car on a lift for [job]. I will not authorize work done on a floor jack in the parking lot.",
+    "askAtTheShop": "If you DIY, ask a parts counter to confirm stand rating vs curb weight. Cheap stands fail at the pawl.",
+    "verified": true
+  },
+  {
+    "id": "jack-stands-four-corners",
+    "title": "Put the whole car on four stands",
+    "plainEnglish": "A rotation or a full brake job wants all four wheels off. You lift one end, set two stands, then the other end — never a steep angle that tips a stand. This is the extra video when the spare-tire jack is not enough.",
+    "difficulty": 3,
+    "timeEstimate": "20–30 minutes of setup",
+    "toolsNeeded": [
+      "Floor jack",
+      "Four rated jack stands",
+      "Chocks"
+    ],
+    "partsNeeded": [],
+    "safetyNotes": [
+      "Raise in stages so the car stays level.",
+      "Do not yank on a wheel while the car is only on a jack."
+    ],
+    "steps": [
+      "Chock. Lift the front at the factory point. Set two stands at the front support points. Lower onto them.",
+      "Move to the rear. Repeat. Keep stand heights even.",
+      "Shake. If a stand walks, reset that corner.",
+      "Leave the jack as a third point under a factory pad if you have room."
+    ],
+    "youtube": {
+      "videoId": "qcM4aqh9QwU",
+      "title": "How To SAFELY Lift Your Car On Jack Stands",
+      "channel": "Classic Car Maintenance",
+      "whyThisVideo": "A dedicated stand-and-level walkthrough — verified ID — for when you need four corners, not just a spare."
+    },
+    "relatedSymptomIds": [
+      "flat-tire"
+    ],
+    "relatedPartTypes": [
+      "jack"
+    ],
+    "jobRoles": [
+      "owner",
+      "DIY"
+    ],
+    "jobFamily": "jacking",
+    "diySafe": true,
+    "shopSentence": "If this job needs four wheels off, I want it on a lift, not four cheap stands in the lot.",
+    "askAtTheShop": "Ask whether they use a lift. Parking-lot “mobile tech” on a bottle jack is a no.",
+    "verified": true
+  },
+  {
+    "id": "inspect-used-car",
+    "title": "Walk a used car before you fall in love",
+    "plainEnglish": "A for-sale car is a story. You want panel gaps, tire dates, cold-start exhaust, and the underside — rust, leaks, crumpled frame rails. Film it. If the seller will not let you, that is the answer.",
+    "difficulty": 1,
+    "timeEstimate": "30–45 minutes on site",
+    "toolsNeeded": [
+      "Phone camera",
+      "Flashlight",
+      "OBD-II scanner",
+      "Paper towel for the dipstick",
+      "Magnet optional for body filler"
+    ],
+    "partsNeeded": [],
+    "safetyNotes": [
+      "Do not crawl under a car on the seller’s rickety jack.",
+      "Meet in daylight. Bring a licensed driver if you are not buying yet."
+    ],
+    "steps": [
+      "Paper first: title in the seller’s name, asking price in writing, service records.",
+      "Walk the body in sun: mismatched paint, overspray, inconsistent gaps.",
+      "Tires: brand match, tread even, DOT date code (older than 6 years is a talking point).",
+      "Cold start: watch the tailpipe. Blue or sweet white that does not clear is a walk-away.",
+      "Underside: wet oil, crushed rails, wet strut towers. Interior: wet carpets (flood).",
+      "Scan before they start it if you can. Write every code.",
+      "Then a PPI — a paid independent inspection. This walk is not a PPI."
+    ],
+    "youtube": {
+      "videoId": "vC8LbvYk6es",
+      "title": "How to Inspect a Used Car for Purchase",
+      "channel": "ChrisFix",
+      "whyThisVideo": "ChrisFix’s roadside checklist: sign, body, interior, underside — the order a non-mechanic can film."
+    },
+    "relatedSymptomIds": [
+      "buying-used"
+    ],
+    "relatedPartTypes": [
+      "obd-scanner",
+      "tires"
+    ],
+    "jobRoles": [
+      "owner"
+    ],
+    "jobFamily": "buying-used",
+    "diySafe": true,
+    "shopSentence": "I want a pre-purchase inspection: compression or power balance, leaks, frame, and a scan of all modules. Written notes, not a thumbs-up.",
+    "askAtTheShop": "Ask the inspector to film the lift. If a dealer refuses an independent PPI, walk.",
+    "verified": true
+  },
+  {
+    "id": "ppi-what-to-film",
+    "title": "What to film for a pre-purchase inspection",
+    "plainEnglish": "A PPI is a paid hour on a lift, not a Carfax. You film title, VIN plate, cold start, test drive, and the inspector’s pointer on the lift. A checklist keeps you from skipping paperwork. Regular Car Reviews is for the culture of the price — not the torque spec.",
+    "difficulty": 1,
+    "timeEstimate": "An afternoon plus a $120–$200 inspection",
+    "toolsNeeded": [
+      "Phone on a full battery",
+      "Checklist note"
+    ],
+    "partsNeeded": [],
+    "safetyNotes": [
+      "Do not skip a lift inspection on a 10-year-old car to “save” $150.",
+      "Flood, salvage, and odometer stories live in the title — read it."
+    ],
+    "steps": [
+      "Film the VIN on the dash, the door sticker, and the title. They must match.",
+      "Film a cold start from the tailpipe and the dash (no warning lights hidden by a start).",
+      "Film the test drive: brake pull, shudder, trans flare, wheel bearing drone.",
+      "At the shop, film the lift: rust, leaks, tires, pad thickness if they show it.",
+      "Keep the written report. That paper is your negotiation, not a vibe."
+    ],
+    "youtube": {
+      "videoId": "u4sn0DQoV_U",
+      "title": "Buying a Used Car Checklist: How to Inspect for Red Flags",
+      "channel": "Bumper",
+      "whyThisVideo": "A structured checklist: paperwork, exterior, interior, drivetrain, test drive — the chapters to film."
+    },
+    "relatedSymptomIds": [
+      "buying-used"
+    ],
+    "relatedPartTypes": [
+      "obd-scanner"
+    ],
+    "jobRoles": [
+      "owner",
+      "service-writer"
+    ],
+    "jobFamily": "buying-used",
+    "diySafe": true,
+    "shopSentence": "Please do a PPI with a written report: leaks, frame, codes, and wear items with measurements.",
+    "askAtTheShop": "Ask what they will not certify. A PPI is an opinion with photos, not a warranty.",
+    "verified": true
+  },
+  {
+    "id": "used-price-context",
+    "title": "The advertised price is not the out-the-door price",
+    "plainEnglish": "Dealerships advertise a number that is not what you pay. Fees, add-ons, and “already applied” credits show up in the box. Regular Car Reviews is context for that conversation — not a how-to torque video. Walk if the out-the-door number cannot be written in one line.",
+    "difficulty": 1,
+    "timeEstimate": "20 minutes of context",
+    "toolsNeeded": [
+      "A notebook",
+      "The advertised screenshot"
+    ],
+    "partsNeeded": [],
+    "safetyNotes": [
+      "Do not sign a blank “we will figure fees later.”",
+      "Add-ons (ceramic, nitrogen, VIN etch) are optional until you initial them."
+    ],
+    "steps": [
+      "Screenshot the advertised price and the VIN.",
+      "Ask for out-the-door: tax, title, doc, add-ons. One number.",
+      "Cross out every add-on you did not request.",
+      "If the number moves after you sit down, leave. There is another car."
+    ],
+    "youtube": {
+      "videoId": "qcl4l6cWW9w",
+      "title": "The Car Price You Saw Online Was Never Real (The Roman Report)",
+      "channel": "Regular Car Reviews",
+      "whyThisVideo": "Roman on advertised vs real price — the culture of the desk, so you know what “out the door” is supposed to mean."
+    },
+    "relatedSymptomIds": [
+      "buying-used"
+    ],
+    "relatedPartTypes": [],
+    "jobRoles": [
+      "owner",
+      "service-writer"
+    ],
+    "jobFamily": "buying-used",
+    "diySafe": true,
+    "shopSentence": "Write the out-the-door price including tax, title, and fees. I will not initial protection packages I did not ask for.",
+    "askAtTheShop": "Ask them to print the buyer’s order before you talk monthly payment. Payment is how fees hide.",
+    "verified": true
+  },
+  {
+    "id": "talk-to-mechanic",
+    "title": "What not to say at the service writer’s window",
+    "plainEnglish": "You are not there to perform competence. You are there to describe the symptom, hand over the code, and ask for a test. “Just do whatever it needs” is how a $90 diagnosis becomes a $2,400 menu. Scotty is blunt. Use the sentences, skip the swagger.",
+    "difficulty": 1,
+    "timeEstimate": "8 minutes",
+    "toolsNeeded": [
+      "Written symptom + code + when it happens"
+    ],
+    "partsNeeded": [],
+    "safetyNotes": [
+      "Do not lie about what you already tried.",
+      "Do not authorize work you cannot repeat back in one sentence."
+    ],
+    "steps": [
+      "Write: noise / light / leak, when it happens, and the code if you have one.",
+      "Do not diagnose for them (“it's the catalytic converter”). Describe.",
+      "Ask for the test and the pass/fail. Then the price.",
+      "If the list is long, ask what is unsafe this week vs what can wait.",
+      "Take the old parts or a photo. That is not rude."
+    ],
+    "youtube": {
+      "videoId": "NCt9mDkTZgg",
+      "title": "Never Say This to a Mechanic",
+      "channel": "Scotty Kilmer",
+      "whyThisVideo": "Scotty’s five things you should not say — including why a cheap scan printout changes the conversation."
+    },
+    "relatedSymptomIds": [
+      "shop-upsell"
+    ],
+    "relatedPartTypes": [],
+    "jobRoles": [
+      "owner",
+      "service-writer"
+    ],
+    "jobFamily": "shop-talk",
+    "diySafe": true,
+    "shopSentence": "Here is the symptom and the code. Please diagnose that. I will authorize the test, then the repair after I hear the result.",
+    "askAtTheShop": "Ask them to separate diagnosis hours from repair hours on the RO.",
+    "verified": true
+  },
+  {
+    "id": "reading-an-ro",
+    "title": "Read a repair order before you authorize",
+    "plainEnglish": "An RO is a contract. Every line is a part, a labor hour, or a shop supply. If a line does not have a noun you understand, it is not authorized. Photograph the car and the part they say is bad. Grease-pencil the padded lines — that is what /quote is for.",
+    "difficulty": 1,
+    "timeEstimate": "10 minutes at the counter",
+    "toolsNeeded": [
+      "Phone camera",
+      "A pen"
+    ],
+    "partsNeeded": [],
+    "safetyNotes": [
+      "Do not sign “not to exceed” for a number you cannot pay.",
+      "Shop supplies and hazardous waste are fine as small fees. A $90 fuel-system cleaner is a product, not a fee."
+    ],
+    "steps": [
+      "Read every line out loud. Part number, quantity, labor hours.",
+      "Circle anything named “service,” “package,” or “treatment.” Ask what broke.",
+      "Ask which lines are required for the complaint vs suggested.",
+      "Photograph the estimate. If they change it, you have the first page.",
+      "Authorize by line, not by total. Bring the RO to /quote if the numbers feel padded."
+    ],
+    "youtube": {
+      "videoId": "eBs9BN0k8ZA",
+      "title": "How to Avoid Getting Ripped Off by a Mechanic",
+      "channel": "Scotty Kilmer",
+      "whyThisVideo": "Scotty on marking parts and refusing menu services — the RO literacy a first owner needs."
+    },
+    "relatedSymptomIds": [
+      "shop-upsell"
+    ],
+    "relatedPartTypes": [],
+    "jobRoles": [
+      "owner",
+      "service-writer"
+    ],
+    "jobFamily": "shop-talk",
+    "diySafe": true,
+    "shopSentence": "Please itemize parts and labor. I authorize [these lines] only. I want to see the old part.",
+    "askAtTheShop": "Ask for the complaint in their words at the top of the RO. If it does not match what you said, stop.",
+    "verified": true
+  },
+  {
+    "id": "ev-no-oil",
+    "title": "EV owner: there is no oil change — here is what still wears",
+    "plainEnglish": "A battery-electric car has no engine oil, no spark plugs, and no trans drain in the gasoline sense. You still have a 12-volt battery, tires, brake fluid, cabin filter, and coolant for the battery/inverter loop. Shops that quote an oil change on a Tesla are reading the wrong menu.",
+    "difficulty": 1,
+    "timeEstimate": "10 minutes to learn the list",
+    "toolsNeeded": [
+      "Owner’s maintenance schedule"
+    ],
+    "partsNeeded": [],
+    "safetyNotes": [
+      "Orange cables are high voltage. Do not open those covers.",
+      "Brake fluid and cabin filters are still real."
+    ],
+    "steps": [
+      "Open the maintenance chapter. Circle: cabin filter, brake fluid, coolant (battery loop), tires, 12V battery.",
+      "Cross out engine oil, spark plugs, and exhaust. Those are not your car.",
+      "Regenerative braking means pads can last a long time — they still need a thickness check because they rust from not being used.",
+      "If a shop quotes oil, timing belt, or spark plugs, you are in the wrong stall."
+    ],
+    "youtube": {
+      "videoId": "dC_Qvs_scT0",
+      "title": "Hybrid and EV Regenerative Braking Systems",
+      "channel": "WeberAuto",
+      "whyThisVideo": "Weber State (WeberAuto) explains regen so you understand why EV pads last — and why they still rust if you never use the friction brakes."
+    },
+    "relatedSymptomIds": [
+      "ev-owner"
+    ],
+    "relatedPartTypes": [
+      "cabin-filter",
+      "brake-fluid",
+      "tires",
+      "12v-battery"
+    ],
+    "jobRoles": [
+      "owner",
+      "service-writer"
+    ],
+    "jobFamily": "ev",
+    "diySafe": true,
+    "shopSentence": "This is an EV. I do not need engine oil. Please follow the EV maintenance schedule: 12V, tires, cabin filter, brake fluid, and the battery-loop coolant.",
+    "askAtTheShop": "Ask them to pull the EV service menu, not the gas menu for the same body style.",
+    "verified": true
+  },
+  {
+    "id": "ev-12v-battery",
+    "title": "EV 12-volt battery: the little one that bricks the car",
+    "plainEnglish": "The big pack moves the car. The little 12-volt battery wakes the computers, locks, and contactors. When it dies, a “full” EV will not unlock or charge. You jump the 12V posts in the manual — never the orange cables. Replacement is a normal battery job in a weird location.",
+    "difficulty": 2,
+    "timeEstimate": "20–60 minutes depending on location",
+    "toolsNeeded": [
+      "Manual for 12V jump posts",
+      "Meter"
+    ],
+    "partsNeeded": [
+      "Correct 12V (some EVs are AGM or lithium 12V — match it)"
+    ],
+    "safetyNotes": [
+      "Do not cut orange high-voltage lines.",
+      "Use the labeled 12V jump points. Tesla and others hide them under a hood tab.",
+      "A dead 12V is not a dead traction pack."
+    ],
+    "steps": [
+      "If the car is dark and the app is dead, think 12V first.",
+      "Open the manual to jump-start. Find the 12V posts. Jump like a gas car using those posts.",
+      "Once awake, get the 12V tested. EV 12V batteries often die younger than gas-car batteries.",
+      "Replace with the specified type. Recycle the old one.",
+      "If it dies again in weeks, the DC-DC converter (the thing that charges the 12V from the big pack) needs a tech — not another battery."
+    ],
+    "youtube": {
+      "videoId": "1Ueqx4jSRUQ",
+      "title": "EVs Commonly Kill 12V Batteries! My Rivian Needed 2 New Ones",
+      "channel": "Out of Spec BITS",
+      "whyThisVideo": "Out of Spec explains why EVs still have 12V, how the DC-DC charges it, and why these little batteries die early."
+    },
+    "relatedSymptomIds": [
+      "ev-wont-wake",
+      "no-start"
+    ],
+    "relatedPartTypes": [
+      "12v-battery",
+      "battery"
+    ],
+    "jobRoles": [
+      "owner",
+      "DIY",
+      "tech"
+    ],
+    "jobFamily": "ev",
+    "diySafe": true,
+    "shopSentence": "The EV will not wake. Please test and replace the 12-volt battery at the designated posts. Do not open the high-voltage pack for this symptom.",
+    "askAtTheShop": "Ask 12V test results and whether the DC-DC is charging. Two 12V batteries in six months is a charging problem.",
+    "verified": true
+  },
+  {
+    "id": "ev-tires",
+    "title": "EV tires: weight, torque, and why they wear faster",
+    "plainEnglish": "Electric cars are heavy and make instant torque. Tires work harder. Door-jamb PSI still wins. Some tires are marked for EV load and noise. A cheap low-load tire can wear 20% faster or feel vague. Rotate on schedule. This is the wear item oil used to be.",
+    "difficulty": 1,
+    "timeEstimate": "12 minutes to understand, 10 minutes to set PSI",
+    "toolsNeeded": [
+      "Tire gauge",
+      "Door-jamb sticker"
+    ],
+    "partsNeeded": [
+      "Tires that meet the load index on the sticker"
+    ],
+    "safetyNotes": [
+      "Do not drop load index to save money.",
+      "EV torque plus cheap tires is a wear and grip problem."
+    ],
+    "steps": [
+      "Read the door sticker for size and PSI. EV PSI is often higher than you expect.",
+      "Check dates and tread. Rotate as the maker says — often more often than a light gas car.",
+      "When you replace, match load index and speed rating. Ask for EV-capable touring tires if the shop stocks them.",
+      "After install, set PSI and do the TPMS relearn the car wants."
+    ],
+    "youtube": {
+      "videoId": "8pM9o2Ifcro",
+      "title": "Everything You Need To Know About Electric Car Tires",
+      "channel": "Engineering Explained",
+      "whyThisVideo": "Jason Fenske (Engineering Explained) on weight, torque, noise, and why an EV tire is not “just a tire.”"
+    },
+    "relatedSymptomIds": [
+      "cupped-tires",
+      "tpms-light",
+      "ev-owner"
+    ],
+    "relatedPartTypes": [
+      "tires",
+      "tpms"
+    ],
+    "jobRoles": [
+      "owner",
+      "DIY",
+      "service-writer"
+    ],
+    "jobFamily": "ev",
+    "diySafe": true,
+    "shopSentence": "Please set door-jamb PSI and confirm the load index on these tires matches the placard. I want an EV-capable tire, not the cheapest load-range they have.",
+    "askAtTheShop": "Ask load index and whether the tire is rated for the vehicle weight. Alignment after uneven EV wear is a fair question.",
+    "verified": true
+  }
+]

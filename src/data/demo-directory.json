@@ -1,0 +1,240 @@
+{
+  "locations": [
+    {
+      "keys": ["90210", "beverly hills", "beverly hills, ca", "beverly hills ca"],
+      "lat": 34.0901,
+      "lon": -118.4065,
+      "label": "Beverly Hills, CA 90210",
+      "places": [
+        {
+          "id": "demo-90210-mb",
+          "name": "Mercedes-Benz of Beverly Hills",
+          "type": "dealers",
+          "address": "9250 Wilshire Blvd, Beverly Hills, CA 90212",
+          "phone": "+1 310-659-5900",
+          "website": "https://www.mercedesbenzbeverlyhills.com/",
+          "hours": "Mo-Fr 09:00-19:00; Sa 09:00-18:00",
+          "lat": 34.0674,
+          "lon": -118.3998
+        },
+        {
+          "id": "demo-90210-bmw",
+          "name": "Beverly Hills BMW",
+          "type": "dealers",
+          "address": "5070 W Adams Blvd, Los Angeles, CA 90016",
+          "phone": "+1 888-251-2655",
+          "website": "https://www.bhbmw.com/",
+          "hours": "Mo-Fr 09:00-20:00; Sa 09:00-19:00",
+          "lat": 34.0326,
+          "lon": -118.3521
+        },
+        {
+          "id": "demo-90210-az",
+          "name": "AutoZone",
+          "type": "parts",
+          "address": "8507 W Pico Blvd, Los Angeles, CA 90035",
+          "phone": "+1 310-247-1226",
+          "website": "https://www.autozone.com/",
+          "hours": "Mo-Su 07:30-22:00",
+          "lat": 34.0548,
+          "lon": -118.3774
+        },
+        {
+          "id": "demo-90210-napa",
+          "name": "NAPA Auto Parts",
+          "type": "parts",
+          "address": "1620 S La Cienega Blvd, Los Angeles, CA 90035",
+          "phone": "+1 310-837-5177",
+          "website": "https://www.napaonline.com/",
+          "hours": "Mo-Fr 07:30-18:00; Sa 08:00-17:00",
+          "lat": 34.0462,
+          "lon": -118.3766
+        },
+        {
+          "id": "demo-90210-indy",
+          "name": "German Auto Repair",
+          "type": "repair",
+          "address": "9107 W Olympic Blvd, Beverly Hills, CA 90212",
+          "phone": "+1 310-276-2277",
+          "website": "",
+          "hours": "Mo-Fr 08:00-17:30",
+          "lat": 34.0594,
+          "lon": -118.3896
+        },
+        {
+          "id": "demo-90210-body",
+          "name": "Beverly Hills Autobody",
+          "type": "body",
+          "address": "221 S Robertson Blvd, Beverly Hills, CA 90211",
+          "phone": "+1 310-657-2222",
+          "website": "",
+          "hours": "Mo-Fr 08:00-17:00",
+          "lat": 34.0651,
+          "lon": -118.3836
+        },
+        {
+          "id": "demo-90210-tires",
+          "name": "Discount Tire",
+          "type": "tires",
+          "address": "8750 W Pico Blvd, Los Angeles, CA 90035",
+          "phone": "+1 310-274-4473",
+          "website": "https://www.discounttire.com/",
+          "hours": "Mo-Fr 08:00-18:00; Sa 08:00-17:00",
+          "lat": 34.0539,
+          "lon": -118.3822
+        },
+        {
+          "id": "demo-90210-tow",
+          "name": "Beverly Hills Towing",
+          "type": "towing",
+          "address": "Beverly Hills, CA 90210",
+          "phone": "+1 310-275-3500",
+          "website": "",
+          "hours": "24/7",
+          "lat": 34.0736,
+          "lon": -118.4004
+        },
+        {
+          "id": "demo-90210-smog",
+          "name": "Olympic Smog Test Only",
+          "type": "inspection",
+          "address": "8843 W Olympic Blvd, Beverly Hills, CA 90211",
+          "phone": "+1 310-652-8833",
+          "website": "",
+          "hours": "Mo-Sa 08:00-17:00",
+          "lat": 34.0587,
+          "lon": -118.3841
+        },
+        {
+          "id": "demo-90210-wash",
+          "name": "Handy J Car Wash",
+          "type": "carwash",
+          "address": "9171 Wilshire Blvd, Beverly Hills, CA 90210",
+          "phone": "+1 310-274-8265",
+          "website": "",
+          "hours": "Mo-Su 08:00-18:00",
+          "lat": 34.0671,
+          "lon": -118.3928
+        }
+      ]
+    },
+    {
+      "keys": ["43215", "columbus", "columbus, oh", "columbus oh", "columbus ohio"],
+      "lat": 39.9612,
+      "lon": -82.9988,
+      "label": "Columbus, OH 43215",
+      "places": [
+        {
+          "id": "demo-43215-honda",
+          "name": "Honda Marysville / downtown service",
+          "type": "dealers",
+          "address": "1111 E Broad St, Columbus, OH 43205",
+          "phone": "+1 614-868-5000",
+          "website": "",
+          "hours": "Mo-Fr 07:00-18:00; Sa 08:00-16:00",
+          "lat": 39.9648,
+          "lon": -82.9699
+        },
+        {
+          "id": "demo-43215-byers",
+          "name": "Byers Import",
+          "type": "dealers",
+          "address": "401 N Hamilton Rd, Columbus, OH 43213",
+          "phone": "+1 614-864-5180",
+          "website": "https://www.byersauto.com/",
+          "hours": "Mo-Fr 09:00-20:00; Sa 09:00-18:00",
+          "lat": 39.9721,
+          "lon": -82.8764
+        },
+        {
+          "id": "demo-43215-az",
+          "name": "AutoZone",
+          "type": "parts",
+          "address": "280 E Spring St, Columbus, OH 43215",
+          "phone": "+1 614-224-1234",
+          "website": "https://www.autozone.com/",
+          "hours": "Mo-Su 07:30-22:00",
+          "lat": 39.9655,
+          "lon": -82.9938
+        },
+        {
+          "id": "demo-43215-oreilly",
+          "name": "O'Reilly Auto Parts",
+          "type": "parts",
+          "address": "580 S High St, Columbus, OH 43215",
+          "phone": "+1 614-221-0090",
+          "website": "https://www.oreillyauto.com/",
+          "hours": "Mo-Sa 07:30-21:00; Su 08:00-20:00",
+          "lat": 39.9508,
+          "lon": -82.9986
+        },
+        {
+          "id": "demo-43215-indy",
+          "name": "German Village Auto Service",
+          "type": "repair",
+          "address": "499 S 3rd St, Columbus, OH 43215",
+          "phone": "+1 614-221-5400",
+          "website": "",
+          "hours": "Mo-Fr 08:00-17:30",
+          "lat": 39.9526,
+          "lon": -82.9951
+        },
+        {
+          "id": "demo-43215-body",
+          "name": "Columbus Collision Center",
+          "type": "body",
+          "address": "740 Harmon Ave, Columbus, OH 43223",
+          "phone": "+1 614-228-0900",
+          "website": "",
+          "hours": "Mo-Fr 08:00-17:00",
+          "lat": 39.9418,
+          "lon": -83.0214
+        },
+        {
+          "id": "demo-43215-tires",
+          "name": "Firestone Complete Auto Care",
+          "type": "tires",
+          "address": "383 E Broad St, Columbus, OH 43215",
+          "phone": "+1 614-221-4406",
+          "website": "https://www.firestonecompleteautocare.com/",
+          "hours": "Mo-Fr 07:00-19:00; Sa 07:00-18:00",
+          "lat": 39.9627,
+          "lon": -82.9912
+        },
+        {
+          "id": "demo-43215-tow",
+          "name": "Buckeye Towing",
+          "type": "towing",
+          "address": "Columbus, OH 43215",
+          "phone": "+1 614-444-1015",
+          "website": "",
+          "hours": "24/7",
+          "lat": 39.958,
+          "lon": -82.9995
+        },
+        {
+          "id": "demo-43215-inspect",
+          "name": "E-Check / inspection lane",
+          "type": "inspection",
+          "address": "Downtown Columbus, OH 43215",
+          "phone": "",
+          "website": "https://epa.ohio.gov/divisions-and-offices/air-pollution-control/e-check",
+          "hours": "",
+          "lat": 39.9612,
+          "lon": -82.9988
+        },
+        {
+          "id": "demo-43215-wash",
+          "name": "Tommy's Express Car Wash",
+          "type": "carwash",
+          "address": "365 E Town St, Columbus, OH 43215",
+          "phone": "+1 614-221-9274",
+          "website": "",
+          "hours": "Mo-Su 07:00-21:00",
+          "lat": 39.9601,
+          "lon": -82.9918
+        }
+      ]
+    }
+  ]
+}

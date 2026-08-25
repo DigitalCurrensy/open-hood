@@ -1,0 +1,172 @@
+[
+  {
+    "id": "overpass",
+    "name": "OpenStreetMap Overpass",
+    "purpose": "Near-me rooftops: dealers, parts, repair, tires, fuel, wash, inspection, towing",
+    "auth": "none — identify the app with User-Agent",
+    "cost": "Free public instances. Soft cap ~10k queries / 1 GB per day.",
+    "wired": true,
+    "env": null,
+    "notes": "Primary directory source. Timeout + demo ZIP cache so the page never hangs empty."
+  },
+  {
+    "id": "nominatim",
+    "name": "Nominatim",
+    "purpose": "Geocode ZIP or city to lat/lon",
+    "auth": "none — User-Agent required",
+    "cost": "Free public API. Max 1 req/s. Cache repeats.",
+    "wired": true,
+    "env": null,
+    "notes": "https://nominatim.openstreetmap.org/search"
+  },
+  {
+    "id": "nhtsa-vpic",
+    "name": "NHTSA vPIC",
+    "purpose": "VIN decode — year, make, model, engine",
+    "auth": "none",
+    "cost": "Free",
+    "wired": true,
+    "env": null,
+    "notes": "Already live in @/lib/nhtsa. Directory imports; does not edit that file."
+  },
+  {
+    "id": "nhtsa-safercar",
+    "name": "NHTSA SaferCar (api.nhtsa.gov)",
+    "purpose": "Complaints, recalls, NCAP 5-star ratings",
+    "auth": "none",
+    "cost": "Free",
+    "wired": true,
+    "env": null,
+    "notes": "Complaints + ratings fetch live in src/lib/directory. Recalls stay in @/lib/nhtsa."
+  },
+  {
+    "id": "epa-fueleconomy",
+    "name": "EPA FuelEconomy.gov",
+    "purpose": "Official city / highway / combined MPG",
+    "auth": "none — send Accept: application/json",
+    "cost": "Free",
+    "wired": true,
+    "env": null,
+    "notes": "Menu walk year → make → model → options → /vehicle/{id}"
+  },
+  {
+    "id": "google-places",
+    "name": "Google Places",
+    "purpose": "Denser rooftop coverage than OSM",
+    "auth": "API key",
+    "cost": "Paid after free trial credit. Nearby Search billed per request.",
+    "wired": "stub",
+    "env": "GOOGLE_PLACES_API_KEY",
+    "notes": "Hook merges results when the key is present. No scrape of Maps HTML."
+  },
+  {
+    "id": "yelp-fusion",
+    "name": "Yelp Fusion",
+    "purpose": "Business phone, address, review count",
+    "auth": "Bearer API key",
+    "cost": "Free developer tier, then paid.",
+    "wired": "stub",
+    "env": "YELP_API_KEY",
+    "notes": "Optional merge. We do not invent star ratings."
+  },
+  {
+    "id": "youtube-data",
+    "name": "YouTube Data API",
+    "purpose": "Shop walk-around and how-to video search",
+    "auth": "API key",
+    "cost": "Quota-based. Default 10k units/day.",
+    "wired": false,
+    "env": "YOUTUBE_API_KEY",
+    "notes": "Cataloged. Not called — a video carousel is not this desk."
+  },
+  {
+    "id": "ebay-motors",
+    "name": "eBay Motors / Browse API",
+    "purpose": "Used parts and cars listings",
+    "auth": "OAuth client credentials — a secret is required",
+    "cost": "Free developer app, then call limits.",
+    "wired": false,
+    "env": "EBAY_CLIENT_ID",
+    "notes": "Browse API needs a secret, so we ship outbound search URLs only."
+  },
+  {
+    "id": "marketcheck",
+    "name": "MarketCheck",
+    "purpose": "Dealer inventory, private-party listings, market price",
+    "auth": "API key",
+    "cost": "Free eval (~500 calls) then per-call + monthly.",
+    "wired": false,
+    "env": "MARKETCHECK_API_KEY",
+    "notes": "Paid upgrade hook. No fake 'in stock' tiles without a key."
+  },
+  {
+    "id": "carapi",
+    "name": "CarAPI",
+    "purpose": "Year/make/model/trim/engine catalogs",
+    "auth": "API token",
+    "cost": "Freemium, then paid.",
+    "wired": false,
+    "env": "CARAPI_API_KEY",
+    "notes": "Catalog only. NHTSA vPIC already covers VIN identity."
+  },
+  {
+    "id": "carsxe",
+    "name": "CarsXE",
+    "purpose": "Plate-to-VIN, market, history extras",
+    "auth": "API key",
+    "cost": "Paid per call.",
+    "wired": false,
+    "env": "CARSXE_API_KEY",
+    "notes": "Plate decode is not shipped. VIN path stays NHTSA."
+  },
+  {
+    "id": "autodev",
+    "name": "Auto.dev",
+    "purpose": "Listings search for marketplaces",
+    "auth": "API key",
+    "cost": "Paid.",
+    "wired": false,
+    "env": "AUTODEV_API_KEY",
+    "notes": "Stub. We do not scrape dealer sites."
+  },
+  {
+    "id": "vinaudit",
+    "name": "VinAudit",
+    "purpose": "Title brands, theft, salvage history",
+    "auth": "API key",
+    "cost": "Paid per report.",
+    "wired": false,
+    "env": "VINAUDIT_API_KEY",
+    "notes": "We will not fake a Carfax. Hook only."
+  },
+  {
+    "id": "chrome-data",
+    "name": "Chrome Data (J.D. Power)",
+    "purpose": "OEM build data, style IDs, residual values",
+    "auth": "Licensed contract",
+    "cost": "Enterprise license.",
+    "wired": false,
+    "env": "CHROME_DATA_KEY",
+    "notes": "Not a public API. Cataloged so we do not pretend."
+  },
+  {
+    "id": "tecdoc",
+    "name": "TecDoc / TecAlliance",
+    "purpose": "OEM-linked parts catalog and labor",
+    "auth": "Licensed TecAlliance account",
+    "cost": "Paid catalog license.",
+    "wired": false,
+    "env": "TECALLIANCE_KEY",
+    "notes": "Do not fake TecDoc SKUs. Parts desk is outbound search URLs."
+  },
+  {
+    "id": "motor-identifix",
+    "name": "MOTOR / Identifix (Hearst Aftermarket)",
+    "purpose": "Labor times, diagnostics, TSBs for shops",
+    "auth": "Shop subscription",
+    "cost": "Paid. Not a consumer free API.",
+    "wired": false,
+    "env": "MOTOR_API_KEY",
+    "notes": "Cataloged as Aftermarket / Identifix. Hours stay heuristic until licensed."
+  }
+]

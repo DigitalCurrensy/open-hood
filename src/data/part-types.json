@@ -1,0 +1,22 @@
+[
+  { "id": "oil-filter", "label": "Oil filter", "query": "oil filter" },
+  { "id": "cabin-filter", "label": "Cabin air filter", "query": "cabin air filter" },
+  { "id": "engine-air-filter", "label": "Engine air filter", "query": "engine air filter" },
+  { "id": "brake-pads", "label": "Brake pads", "query": "brake pads" },
+  { "id": "brake-rotors", "label": "Brake rotors", "query": "brake rotors" },
+  { "id": "battery", "label": "12V battery", "query": "car battery" },
+  { "id": "spark-plugs", "label": "Spark plugs", "query": "spark plugs" },
+  { "id": "wiper-blades", "label": "Wiper blades", "query": "wiper blades" },
+  { "id": "serpentine-belt", "label": "Serpentine belt", "query": "serpentine belt" },
+  { "id": "coolant", "label": "Coolant", "query": "engine coolant" },
+  { "id": "brake-fluid", "label": "Brake fluid", "query": "DOT brake fluid" },
+  { "id": "transmission-fluid", "label": "Transmission fluid", "query": "transmission fluid" },
+  { "id": "shocks", "label": "Shocks / struts", "query": "shocks struts" },
+  { "id": "o2-sensor", "label": "Oxygen sensor", "query": "oxygen sensor" },
+  { "id": "alternator", "label": "Alternator", "query": "alternator" },
+  { "id": "starter", "label": "Starter", "query": "starter" },
+  { "id": "headlight", "label": "Headlight", "query": "headlight assembly" },
+  { "id": "thermostat", "label": "Thermostat", "query": "thermostat" },
+  { "id": "wheel-bearing", "label": "Wheel bearing", "query": "wheel bearing" },
+  { "id": "pcv-valve", "label": "PCV valve", "query": "PCV valve" }
+]

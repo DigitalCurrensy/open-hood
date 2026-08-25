@@ -1,0 +1,123 @@
+[
+  {
+    "id": "copart",
+    "name": "Copart",
+    "lane": "salvage",
+    "access": "public_browse_dealer_bid",
+    "whoCanAccess": "Anyone can browse lots. Bidding is usually a licensed dealer, dismantler, or a broker who charges a fee. Some states allow public bidding with extra paperwork.",
+    "publicData": "Year, make, model, photos, damage notes, title type, sale location, and current bid when Copart chooses to show them. We do not scrape lots.",
+    "homeUrl": "https://www.copart.com/",
+    "searchUrl": "https://www.copart.com/lotSearchResults?free=true&query={query}",
+    "notes": "Insurance salvage lane. As-is. Buyer fees are real money."
+  },
+  {
+    "id": "iaa",
+    "name": "IAA (Insurance Auto Auctions)",
+    "lane": "salvage",
+    "access": "public_browse_dealer_bid",
+    "whoCanAccess": "Public search is open. Bidding typically needs a dealer license or an IAA public-buyer / broker path.",
+    "publicData": "Lot photos, damage, odometer remarks, title group, and sale time. Live bid history stays on IAA.",
+    "homeUrl": "https://www.iaai.com/",
+    "searchUrl": "https://www.iaai.com/Search?search={query}",
+    "notes": "Sister salvage lane to Copart. Same rule: we link out, we do not harvest."
+  },
+  {
+    "id": "manheim",
+    "name": "Manheim",
+    "lane": "wholesale",
+    "access": "dealer_only",
+    "whoCanAccess": "Licensed dealers and approved wholesale buyers. Not a consumer checkout.",
+    "publicData": "Marketing pages and some condition reports behind login. No public lot feed we can legally republish.",
+    "homeUrl": "https://www.manheim.com/",
+    "searchUrl": "https://www.manheim.com/",
+    "notes": "Cox wholesale. If you are not a dealer, this door stays shut."
+  },
+  {
+    "id": "adesa",
+    "name": "ADESA",
+    "lane": "wholesale",
+    "access": "dealer_only",
+    "whoCanAccess": "Licensed dealers. Openlane / ADESA digital lanes are not a consumer auction.",
+    "publicData": "Public site explains the product. Inventory is behind dealer credentials.",
+    "homeUrl": "https://www.adesa.com/",
+    "searchUrl": "https://www.adesa.com/",
+    "notes": "Dealer wholesale. We will not fake a consumer bid button."
+  },
+  {
+    "id": "govplanet",
+    "name": "GovPlanet",
+    "lane": "government",
+    "access": "public_consumer",
+    "whoCanAccess": "Public registration. Surplus military and government equipment, including fleet vehicles.",
+    "publicData": "Lot photos, location, inspection notes they publish, and current bid.",
+    "homeUrl": "https://www.govplanet.com/",
+    "searchUrl": "https://www.govplanet.com/en/search?q={query}",
+    "notes": "IronPlanet / Ritchie Bros. government surplus. Inspect before you bid."
+  },
+  {
+    "id": "gsa",
+    "name": "GSA Auctions",
+    "lane": "government",
+    "access": "public_consumer",
+    "whoCanAccess": "U.S. public. Federal surplus vehicles and equipment.",
+    "publicData": "Official lot descriptions, locations, and bid status on gsaauctions.gov.",
+    "homeUrl": "https://gsaauctions.gov/gsaauctions/gsaauctions/",
+    "searchUrl": "https://gsaauctions.gov/gsaauctions/gsaauctions/",
+    "notes": "Use their keyword search for year / make / model. No dealer license."
+  },
+  {
+    "id": "copart-ca",
+    "name": "Copart Canada",
+    "lane": "salvage",
+    "access": "public_browse_dealer_bid",
+    "whoCanAccess": "Browse is public. Bidding follows Canadian provincial rules — often a license or broker.",
+    "publicData": "Same family as Copart US: lots, photos, title remarks.",
+    "homeUrl": "https://www.copart.ca/",
+    "searchUrl": "https://www.copart.ca/lotSearchResults?free=true&query={query}",
+    "notes": "Canadian salvage lane. Link-out only."
+  },
+  {
+    "id": "bat",
+    "name": "Bring a Trailer",
+    "lane": "enthusiast",
+    "access": "public_consumer",
+    "whoCanAccess": "Anyone can watch. Bidding needs a free BaT account. No dealer license.",
+    "publicData": "Full listing write-up, photos, comment thread, reserve status, and sold prices after the gavel.",
+    "homeUrl": "https://bringatrailer.com/",
+    "searchUrl": "https://bringatrailer.com/?s={query}",
+    "notes": "Public consumer auction. This is the opposite of a Copart lane."
+  },
+  {
+    "id": "cars-bids",
+    "name": "Cars & Bids",
+    "lane": "enthusiast",
+    "access": "public_consumer",
+    "whoCanAccess": "Public listings. Bid with a consumer account.",
+    "publicData": "Photos, seller story, bid history, no-reserve vs reserve.",
+    "homeUrl": "https://carsandbids.com/",
+    "searchUrl": "https://carsandbids.com/search?q={query}",
+    "notes": "Modern enthusiast cars. Public, not wholesale."
+  },
+  {
+    "id": "mecum",
+    "name": "Mecum",
+    "lane": "collector",
+    "access": "public_consumer",
+    "whoCanAccess": "Watch the docket for free. Bidding is a bidder number at the event or online — not a dealer license.",
+    "publicData": "Upcoming lots, estimates, and results Mecum publishes.",
+    "homeUrl": "https://www.mecum.com/",
+    "searchUrl": "https://www.mecum.com/lots/?search={query}",
+    "notes": "Live collector auctions. Preview on their site."
+  },
+  {
+    "id": "barrett-jackson",
+    "name": "Barrett-Jackson",
+    "lane": "collector",
+    "access": "public_consumer",
+    "whoCanAccess": "Public docket. Bidding is a registered bidder, not a dealer plate.",
+    "publicData": "Lot lists, photos, and hammer prices they post.",
+    "homeUrl": "https://www.barrett-jackson.com/",
+    "searchUrl": "https://www.barrett-jackson.com/Events/All-Auctions?search={query}",
+    "notes": "No-reserve spectacle auctions. Fees are not a footnote."
+  }
+]
