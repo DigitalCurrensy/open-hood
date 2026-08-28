@@ -91,4 +91,5 @@ export function lookupJobDtc(raw: string): JobDtcLookup {
   };
 }
 
+export { dtcSayThis } from "@/lib/dtc-catalog";
 export { DTC_COUNT, DTC_DICTIONARY, SAMPLE_JOB_DTCS } from "@/lib/jobs/dtc-dictionary";

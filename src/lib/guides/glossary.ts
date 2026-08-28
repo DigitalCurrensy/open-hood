@@ -32,8 +32,8 @@ export function difficultyLabel(level: number): string {
 }
 
 export function guideSearchQuery(guide: Guide): string {
-  const { videoId, title, channel } = guide.youtube;
-  if (!videoId) return `${title} ${channel}`.trim();
+  const { title, channel } = guide.youtube;
+  if (!channel || channel === "YouTube search") return title.trim();
   return `${title} ${channel}`.trim();
 }
 

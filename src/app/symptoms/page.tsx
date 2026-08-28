@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { PageBrief } from "@/components/page-brief";
 import { SymptomsPage } from "@/components/pages/symptoms-page";
 
 export const metadata: Metadata = {
@@ -7,5 +8,10 @@ export const metadata: Metadata = {
 };
 
 export default function Page() {
-  return <SymptomsPage />;
+  return (
+    <div className="space-y-6">
+      <PageBrief href="/symptoms" />
+      <SymptomsPage />
+    </div>
+  );
 }

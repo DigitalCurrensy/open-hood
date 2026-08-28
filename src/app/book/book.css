@@ -1,0 +1,66 @@
+.book-carbon {
+  background:
+    linear-gradient(90deg, #e85d04 0 7px, transparent 7px),
+    var(--bay-2);
+}
+
+.book-perforation {
+  height: 10px;
+  background-image: radial-gradient(circle at 5px 5px, #0c1210 2px, transparent 2.2px);
+  background-size: 10px 10px;
+  background-repeat: repeat-x;
+}
+
+.book-chip {
+  border: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.book-chip:has(:checked) {
+  background: var(--ticket);
+  color: var(--ticket-ink);
+  border-color: transparent;
+}
+
+.book-chip:has(:focus-visible) {
+  outline: 2px solid var(--ticket);
+  outline-offset: 3px;
+}
+
+.book-void {
+  position: relative;
+}
+
+.book-void-stamp {
+  pointer-events: none;
+  position: absolute;
+  right: 0.75rem;
+  top: 0.85rem;
+  rotate: -12deg;
+  border: 3px solid var(--grease);
+  color: var(--grease);
+  font-family: var(--font-display), sans-serif;
+  font-size: 1.15rem;
+  letter-spacing: 0.14em;
+  line-height: 1;
+  padding: 0.35rem 0.5rem;
+  text-transform: uppercase;
+  opacity: 0.88;
+}
+
+.book-rival {
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.book-rival[data-us="true"] {
+  box-shadow: inset 3px 0 0 var(--ticket);
+}
+
+@media print {
+  .book-success {
+    box-shadow: none;
+  }
+
+  .book-void-stamp {
+    opacity: 1;
+  }
+}

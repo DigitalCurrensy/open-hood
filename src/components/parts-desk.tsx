@@ -41,6 +41,8 @@ export function PartsDesk({ vehicle }: { vehicle: IdentifiedVehicle }) {
               <div className="flex flex-col justify-center gap-2">
                 <BuyLink href={links.rockauto} label="Search RockAuto" />
                 <BuyLink href={links.autozone} label="Search AutoZone" />
+                <BuyLink href={links.oreilly} label="Search O’Reilly" />
+                <BuyLink href={links.napa} label="Search NAPA" />
                 <BuyLink href={links.amazon} label="Search Amazon" />
               </div>
             </li>

@@ -49,6 +49,8 @@ export interface DirectorySearchResult {
   places: DirectoryPlace[];
   source: "osm" | "demo" | "mixed";
   timedOut: boolean;
+  /** ISO time this result set was assembled (live fetch or cache hit). */
+  updatedAt: string;
   message: string;
   attribution: string;
   paidHooks: PaidHookStatus[];
@@ -84,10 +86,17 @@ export interface NhtsaRatingRow {
   rollover: string;
 }
 
+export interface NhtsaRecallSummary {
+  count: number;
+  campaigns: string[];
+}
+
 export interface PartSearchLinks {
   query: string;
   rockauto: string;
   autozone: string;
+  oreilly: string;
+  napa: string;
   amazon: string;
   ebayMotors: string;
 }

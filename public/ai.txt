@@ -1,0 +1,5 @@
+# Open Hood
+
+Canonical machine map: /llms.txt
+
+Also at /.well-known/llms.txt

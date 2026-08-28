@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { BayRecoveryNav } from "@/components/bay-recovery-nav";
 
 export default function NotFound() {
   return (
@@ -11,6 +12,7 @@ export default function NotFound() {
       <Link href="/guides" className="font-mono text-sm uppercase tracking-wide text-ticket">
         Back to how-to
       </Link>
+      <BayRecoveryNav />
     </div>
   );
 }

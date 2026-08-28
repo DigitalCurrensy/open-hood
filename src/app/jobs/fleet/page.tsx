@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { FleetDesk } from "@/app/jobs/_components/fleet-desk";
 import { JobsShell } from "@/app/jobs/_components/jobs-shell";
+import { PageBrief } from "@/components/page-brief";
 import { PageHeader } from "@/components/page-header";
 
 export const metadata: Metadata = {
@@ -11,6 +12,7 @@ export const metadata: Metadata = {
 export default function Page() {
   return (
     <JobsShell>
+      <PageBrief href="/jobs/fleet" />
       <PageHeader kicker="11 · Fleet / shop manager" title="Interval vs upsell">
         Stamp the book, not the pitch. Measurements beat a multi-point adjective.
       </PageHeader>

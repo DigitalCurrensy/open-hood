@@ -127,6 +127,11 @@ export function mapsLink(place: { name: string; address: string; lat: number; lo
   return `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(`${place.name} ${q}`)}`;
 }
 
+export function appleMapsLink(place: { name: string; address: string; lat: number; lon: number }): string {
+  const q = place.address || place.name;
+  return `https://maps.apple.com/?ll=${place.lat},${place.lon}&q=${encodeURIComponent(q)}`;
+}
+
 export function osmLink(lat: number, lon: number): string {
   return `https://www.openstreetmap.org/?mlat=${lat}&mlon=${lon}#map=18/${lat}/${lon}`;
 }
@@ -135,4 +140,25 @@ export function telHref(phone: string): string | null {
   const digits = phone.replace(/[^\d+]/g, "");
   if (digits.replace(/\D/g, "").length < 7) return null;
   return `tel:${digits}`;
+}
+
+/** Skip empty OSM tags and relative paths that would 404 on our own host. */
+export function websiteHref(raw: string | undefined): string | null {
+  const value = raw?.trim() ?? "";
+  if (!value) return null;
+  if (/^(javascript|data|vbscript):/i.test(value)) return null;
+  if (value.startsWith("/") || value.startsWith("./") || value.startsWith("../") || value.startsWith("#")) {
+    return null;
+  }
+  const candidate = /^https?:\/\//i.test(value) ? value : value.startsWith("//") ? `https:${value}` : `https://${value}`;
+  try {
+    const parsed = new URL(candidate);
+    if (parsed.protocol !== "http:" && parsed.protocol !== "https:") return null;
+    const host = parsed.hostname.toLowerCase();
+    if (host === "localhost" || host.endsWith(".localhost") || host.endsWith("openhood.ai") || host.endsWith("autoshield.ai")) return null;
+    if (!host.includes(".")) return null;
+    return parsed.href;
+  } catch {
+    return null;
+  }
 }

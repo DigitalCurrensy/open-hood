@@ -18,5 +18,10 @@
   { "id": "headlight", "label": "Headlight", "query": "headlight assembly" },
   { "id": "thermostat", "label": "Thermostat", "query": "thermostat" },
   { "id": "wheel-bearing", "label": "Wheel bearing", "query": "wheel bearing" },
-  { "id": "pcv-valve", "label": "PCV valve", "query": "PCV valve" }
+  { "id": "pcv-valve", "label": "PCV valve", "query": "PCV valve" },
+  { "id": "maf", "label": "MAF sensor", "query": "MAF sensor" },
+  { "id": "ignition-coil", "label": "Ignition coil", "query": "ignition coil" },
+  { "id": "fuel-pump", "label": "Fuel pump", "query": "fuel pump" },
+  { "id": "purge-valve", "label": "EVAP purge valve", "query": "EVAP purge valve" },
+  { "id": "tpms", "label": "TPMS sensor", "query": "TPMS sensor" }
 ]

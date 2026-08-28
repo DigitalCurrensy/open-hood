@@ -1,0 +1,1321 @@
+[
+  {
+    "id": "p0420",
+    "slug": "p0420",
+    "stamp": "P0420",
+    "title": "Catalyst efficiency — diagnose first",
+    "kicker": "Do not throw the converter",
+    "lane": "diagnose",
+    "split": "shop",
+    "codes": ["P0420"],
+    "symptoms": ["check engine", "cel", "catalyst", "converter light", "cat code"],
+    "aliases": ["p0420", "cat efficiency", "catalyst efficiency", "bank 1 cat", "converter code"],
+    "plainEnglish": "The downstream oxygen sensor looks too much like the upstream one. The computer thinks the catalytic converter on bank 1 is not cleaning the exhaust. That can be a dying brick — or an exhaust leak, a lazy upstream sensor, or a misfire that poisoned it.",
+    "doNotThrow": "Do not buy a catalytic converter from P0420 alone. A converter is $800–$2,500. A sensor or a clamp is not. Graph both O2 sensors and leak-check the exhaust before anyone orders a brick.",
+    "minutes": "Shop diagnosis · 0.5–1.5 hr",
+    "diy": {
+      "can": false,
+      "why": "You can read the code and listen for an exhaust tick. Graphing sensors and a smoke / soapy-water leak check is shop work.",
+      "steps": [
+        "Write the exact code. If the scanner shows freeze-frame, photograph RPM, load, mph, and coolant temp.",
+        "Listen for a tick and smell for exhaust in the cabin. A leak in front of the downstream sensor fakes a dead cat.",
+        "Do not authorize a converter from this page. The aisle card for the brick is stamped HOLD."
+      ],
+      "tools": ["Any $20 OBD-II scanner", "Eyes and ears under the car"]
+    },
+    "shop": {
+      "why": "Ask for the graph and the leak check before they price the brick. Diagnosis is a line. The converter is a different line.",
+      "say": [
+        "I have P0420 stored. I want freeze-frame and a leak check before anyone prices a converter.",
+        "Show me upstream vs downstream O2. If they look the same after a leak check, then we talk brick."
+      ]
+    },
+    "aisleQuestions": [
+      {
+        "id": "engine",
+        "ask": "Which engine?",
+        "why": "Bank 1 and the converter change with the engine family. V6 vs I4 is a different box.",
+        "session": "engine"
+      },
+      {
+        "id": "emissions",
+        "ask": "Federal or California (CARB) emissions?",
+        "why": "Converters are emissions-family parts. The wrong one will not pass a smog check."
+      },
+      {
+        "id": "drive",
+        "ask": "2WD or 4WD?",
+        "why": "Usually does not change the cat. Still ask so they do not pull an exhaust for a different chassis.",
+        "session": "drive"
+      }
+    ],
+    "parts": [
+      {
+        "id": "upstream-o2",
+        "label": "Upstream O2 / AFR sensor (Bank 1)",
+        "query": "upstream oxygen sensor bank 1",
+        "aisle": "Sensors",
+        "bin": "SENS-1",
+        "order": 1,
+        "hold": false,
+        "note": "Only if the graph is lazy. Not automatic from the code."
+      },
+      {
+        "id": "downstream-o2",
+        "label": "Downstream O2 sensor (Bank 1)",
+        "query": "downstream oxygen sensor bank 1",
+        "aisle": "Sensors",
+        "bin": "SENS-2",
+        "order": 2,
+        "hold": false,
+        "note": "The monitor sensor. A failed heater or a lazy signal can fake a dead brick."
+      },
+      {
+        "id": "exhaust-gasket",
+        "label": "Exhaust gasket / flex leak",
+        "query": "exhaust manifold gasket",
+        "aisle": "Exhaust",
+        "bin": "EXH-4",
+        "order": 3,
+        "hold": false,
+        "note": "A leak in front of the downstream sensor looks like a dead cat."
+      },
+      {
+        "id": "converter",
+        "label": "Catalytic converter (Bank 1)",
+        "query": "catalytic converter",
+        "aisle": "Exhaust",
+        "bin": "HOLD",
+        "order": 4,
+        "hold": true,
+        "note": "HOLD. Diagnose first. Do not throw this part from P0420 alone."
+      }
+    ],
+    "related": ["p0430", "p0300", "p0171"]
+  },
+  {
+    "id": "p0430",
+    "slug": "p0430",
+    "stamp": "P0430",
+    "title": "Catalyst efficiency Bank 2",
+    "kicker": "Same rule, other bank",
+    "lane": "diagnose",
+    "split": "shop",
+    "codes": ["P0430"],
+    "symptoms": ["check engine", "cel", "bank 2 catalyst"],
+    "aliases": ["p0430", "bank 2 cat", "catalyst bank 2"],
+    "plainEnglish": "Same catalyst-efficiency story on the other bank. Same rule: prove the brick, do not assume it. Do not replace both converters because one bank set a code.",
+    "doNotThrow": "Do not pair-replace converters from P0430. Graph Bank 2 only. A leak or a lazy sensor still wins.",
+    "minutes": "Shop diagnosis · 0.5–1.5 hr",
+    "diy": {
+      "can": false,
+      "why": "Same as P0420. Write the code. Do not buy two bricks.",
+      "steps": [
+        "Confirm it is P0430, not P0420. Bank 2 is the other exhaust path.",
+        "Do not authorize a 'both cats while we are in there' line from one bank."
+      ],
+      "tools": ["Any $20 OBD-II scanner"]
+    },
+    "shop": {
+      "why": "Same graph-and-leak check as P0420, Bank 2 only.",
+      "say": [
+        "This is Bank 2. I want the same O2 graph and leak check — not both converters."
+      ]
+    },
+    "aisleQuestions": [
+      {
+        "id": "engine",
+        "ask": "Which engine?",
+        "why": "Bank 2 only exists on some layouts. An inline-four may not have a Bank 2 cat the way a V6 does.",
+        "session": "engine"
+      },
+      {
+        "id": "emissions",
+        "ask": "Federal or California (CARB)?",
+        "why": "Wrong emissions family fails smog even if it bolts up."
+      }
+    ],
+    "parts": [
+      {
+        "id": "upstream-o2-b2",
+        "label": "Upstream O2 (Bank 2)",
+        "query": "upstream oxygen sensor bank 2",
+        "aisle": "Sensors",
+        "bin": "SENS-3",
+        "order": 1,
+        "hold": false,
+        "note": "Only if the Bank 2 graph is lazy."
+      },
+      {
+        "id": "converter-b2",
+        "label": "Catalytic converter (Bank 2)",
+        "query": "catalytic converter bank 2",
+        "aisle": "Exhaust",
+        "bin": "HOLD",
+        "order": 2,
+        "hold": true,
+        "note": "HOLD. Same diagnose-first rule as P0420."
+      }
+    ],
+    "related": ["p0420"]
+  },
+  {
+    "id": "p0300",
+    "slug": "p0300",
+    "stamp": "P0300",
+    "title": "Random / multiple misfire",
+    "kicker": "Not a coil four-pack",
+    "lane": "diagnose",
+    "split": "shop",
+    "codes": ["P0300"],
+    "symptoms": ["misfire", "rough idle", "shaking", "flashing cel"],
+    "aliases": ["p0300", "random misfire", "multiple misfire"],
+    "plainEnglish": "The computer counted misfires on more than one cylinder. That can be plugs, coils, a vacuum leak, fuel, or a failing coil driver. A flashing light means stop driving — raw fuel is washing the cat.",
+    "doNotThrow": "Do not throw a coil kit from P0300. Name the cylinder that is dead, then the part that failed the test.",
+    "minutes": "Diagnosis first · 0.5–2 hr",
+    "diy": {
+      "can": false,
+      "why": "You can read pending codes (P0301–P0308) and look at plug condition. Swap-test is shop or experienced DIY.",
+      "steps": [
+        "If the light is flashing, stop driving. That is catalyst-poisoning territory.",
+        "Write every code, including pending P0301–P0308. Those name the hole.",
+        "Do not buy four coils because the aisle had a kit."
+      ],
+      "tools": ["Scanner", "Flashlight"]
+    },
+    "shop": {
+      "why": "Ask which cylinder and which test. A coil swap that moves the misfire is a sentence. A kit is a guess.",
+      "say": [
+        "P0300 is a pattern, not a parts list. Which cylinder, and did a coil swap move it?"
+      ]
+    },
+    "aisleQuestions": [
+      {
+        "id": "engine",
+        "ask": "Which engine?",
+        "why": "Coil-on-plug vs a shared coil pack changes the box they pull.",
+        "session": "engine"
+      },
+      {
+        "id": "plugs",
+        "ask": "Iridium, platinum, or copper plugs?",
+        "why": "Gap and heat range are engine-family parts. The wrong plug is a new misfire."
+      }
+    ],
+    "parts": [
+      {
+        "id": "spark-plugs",
+        "label": "Spark plugs (set)",
+        "query": "spark plugs",
+        "aisle": "Ignition",
+        "bin": "IGN-1",
+        "order": 1,
+        "hold": false,
+        "note": "If they are due or look fouled. Not automatic from P0300."
+      },
+      {
+        "id": "coil",
+        "label": "Ignition coil (the dead hole)",
+        "query": "ignition coil",
+        "aisle": "Ignition",
+        "bin": "IGN-2",
+        "order": 2,
+        "hold": false,
+        "note": "One coil if a swap-test moved the misfire. Not a four-pack by default."
+      },
+      {
+        "id": "plug-wires",
+        "label": "Plug wires (if equipped)",
+        "query": "spark plug wires",
+        "aisle": "Ignition",
+        "bin": "IGN-3",
+        "order": 3,
+        "hold": false,
+        "note": "Coil-on-plug cars do not have a wire set. Ask first."
+      }
+    ],
+    "related": ["spark-plugs", "p0420"]
+  },
+  {
+    "id": "p0171",
+    "slug": "p0171",
+    "stamp": "P0171",
+    "title": "System too lean (Bank 1)",
+    "kicker": "Find the unmetered air",
+    "lane": "diagnose",
+    "split": "shop",
+    "codes": ["P0171"],
+    "symptoms": ["lean", "hiss", "rough idle", "low power"],
+    "aliases": ["p0171", "system too lean", "lean code"],
+    "plainEnglish": "The computer is adding fuel because the exhaust looks lean. Unmetered air (vacuum leak, cracked hose, dirty MAF) beats a new oxygen sensor most days.",
+    "doNotThrow": "Do not throw a MAF or an O2 from P0171. Find the hiss or the fuel trim number first.",
+    "minutes": "Smoke / trim diagnosis · 0.5–1.5 hr",
+    "diy": {
+      "can": false,
+      "why": "You can listen for a vacuum hiss and check the air-box lid. A smoke machine is shop gear.",
+      "steps": [
+        "Confirm the air-box lid is latched and the intake tube is not cracked.",
+        "Listen for a hiss at idle. Do not spray starter fluid around a hot exhaust."
+      ],
+      "tools": ["Ears", "Flashlight"]
+    },
+    "shop": {
+      "why": "Ask for short-term and long-term fuel trim at idle and 2500 rpm. A leak shows at idle. A fuel problem shows under load.",
+      "say": [
+        "I have P0171. I want fuel trims at idle and 2500, and a leak location — not a MAF by default."
+      ]
+    },
+    "aisleQuestions": [
+      {
+        "id": "engine",
+        "ask": "Which engine?",
+        "why": "Intake boots and PCV valves are engine-family parts.",
+        "session": "engine"
+      }
+    ],
+    "parts": [
+      {
+        "id": "intake-boot",
+        "label": "Intake tube / boot",
+        "query": "air intake hose",
+        "aisle": "Air",
+        "bin": "AIR-2",
+        "order": 1,
+        "hold": false,
+        "note": "A cracked boot after the MAF is classic unmetered air."
+      },
+      {
+        "id": "pcv",
+        "label": "PCV valve / hose",
+        "query": "PCV valve",
+        "aisle": "Emissions",
+        "bin": "EMIS-1",
+        "order": 2,
+        "hold": false,
+        "note": "A stuck-open PCV leans the idle."
+      },
+      {
+        "id": "maf",
+        "label": "MAF sensor",
+        "query": "mass air flow sensor",
+        "aisle": "Sensors",
+        "bin": "HOLD",
+        "order": 3,
+        "hold": true,
+        "note": "HOLD until trims and a leak check say the meter is lying."
+      }
+    ],
+    "related": ["engine-air-filter", "p0420"]
+  },
+  {
+    "id": "p0455",
+    "slug": "p0455",
+    "stamp": "P0455",
+    "title": "EVAP large leak",
+    "kicker": "Click the cap first",
+    "lane": "diagnose",
+    "split": "diy",
+    "codes": ["P0455"],
+    "symptoms": ["gas cap", "evap", "fuel smell", "check engine after fill"],
+    "aliases": ["p0455", "evap large leak", "gas cap code", "p0440", "p0442"],
+    "plainEnglish": "The vapor-recovery system failed a large-leak test. A loose or cracked gas cap still causes this. A canister is the last box, not the first.",
+    "doNotThrow": "Do not authorize a charcoal canister from the code alone. Click the cap. Then a smoke test with a leak location.",
+    "minutes": "Cap check tonight · smoke test if it returns",
+    "diy": {
+      "can": true,
+      "why": "The cap is a driveway part. If the light returns after three drive cycles, the shop smoke-tests.",
+      "steps": [
+        "Click the cap until it rattles. Look at the seal — cracked rubber is a $15 part.",
+        "Clear the code if your scanner can, or let it go out after a few honest trips.",
+        "If it comes back, you want a smoke-test photo, not a canister quote."
+      ],
+      "tools": ["Hands", "Optional scanner"]
+    },
+    "shop": {
+      "why": "Smoke test with a location in inches from a named part. 'Needs a canister' without a leak is a stall.",
+      "say": [
+        "I already clicked the cap. If it returns I want a smoke-test location, not a canister by default."
+      ]
+    },
+    "aisleQuestions": [
+      {
+        "id": "cap",
+        "ask": "Tethered cap or a screw cap?",
+        "why": "Some cars use a capless neck. The 'cap' is a different box."
+      }
+    ],
+    "parts": [
+      {
+        "id": "gas-cap",
+        "label": "Gas cap",
+        "query": "gas cap",
+        "aisle": "Fuel",
+        "bin": "FUEL-1",
+        "order": 1,
+        "hold": false,
+        "note": "First part. Click it. Replace it if the seal is cracked."
+      },
+      {
+        "id": "purge",
+        "label": "Purge / vent valve",
+        "query": "evap purge valve",
+        "aisle": "Emissions",
+        "bin": "EMIS-2",
+        "order": 2,
+        "hold": false,
+        "note": "After a smoke test names it."
+      },
+      {
+        "id": "canister",
+        "label": "EVAP charcoal canister",
+        "query": "evap charcoal canister",
+        "aisle": "Emissions",
+        "bin": "HOLD",
+        "order": 3,
+        "hold": true,
+        "note": "HOLD. Last, not first."
+      }
+    ],
+    "related": ["p0128"]
+  },
+  {
+    "id": "p0128",
+    "slug": "p0128",
+    "stamp": "P0128",
+    "title": "Coolant temp below thermostat",
+    "kicker": "Stuck-open thermostat",
+    "lane": "replace",
+    "split": "either",
+    "codes": ["P0128"],
+    "symptoms": ["slow heat", "cold engine", "thermostat", "overcooling"],
+    "aliases": ["p0128", "thermostat code", "coolant thermostat"],
+    "plainEnglish": "The engine is not reaching the temperature the thermostat is supposed to open at. A stuck-open thermostat is the usual part. A low coolant level or a lying temp sensor is the other story.",
+    "doNotThrow": "Do not throw a water pump from P0128. Check the first-running temp and the coolant level.",
+    "minutes": "Thermostat job · 1–3 hr",
+    "diy": {
+      "can": true,
+      "why": "On many fours this is a driveway job if you can catch the drained coolant. Housing-integrated stats are messier.",
+      "steps": [
+        "Check the overflow is between the marks when cold.",
+        "If you replace the stat, match the temperature rating stamped on the old one.",
+        "Bleed the system the way the manual says — trapped air is a new overheat."
+      ],
+      "tools": ["Drain pan", "Socket set", "The factory coolant type"]
+    },
+    "shop": {
+      "why": "Ask for the opening temperature on the box and the coolant spec. A 'flush package' is a different line.",
+      "say": [
+        "P0128. I want the thermostat and the factory coolant — not a cooling-system upsell."
+      ]
+    },
+    "aisleQuestions": [
+      {
+        "id": "engine",
+        "ask": "Which engine?",
+        "why": "Housing vs in-hose thermostat. The box changes.",
+        "session": "engine"
+      },
+      {
+        "id": "coolant",
+        "ask": "Which coolant color / spec?",
+        "why": "Mixing chemistries gels. The bay ticket should name the spec, not the color."
+      }
+    ],
+    "parts": [
+      {
+        "id": "thermostat",
+        "label": "Thermostat (or housing)",
+        "query": "thermostat",
+        "aisle": "Cooling",
+        "bin": "COOL-1",
+        "order": 1,
+        "hold": false,
+        "note": "Match the opening temperature. Some cars sell the housing as a unit."
+      },
+      {
+        "id": "coolant",
+        "label": "Engine coolant",
+        "query": "engine coolant",
+        "aisle": "Cooling",
+        "bin": "COOL-2",
+        "order": 2,
+        "hold": false,
+        "note": "The spec on the ticket, not 'whatever is green.'"
+      },
+      {
+        "id": "gasket",
+        "label": "Thermostat gasket / O-ring",
+        "query": "thermostat gasket",
+        "aisle": "Cooling",
+        "bin": "COOL-3",
+        "order": 3,
+        "hold": false,
+        "note": "Often in the box. Ask before they add a second SKU."
+      }
+    ],
+    "related": ["overheating"]
+  },
+  {
+    "id": "cabin-filter",
+    "slug": "cabin-filter",
+    "stamp": "Cabin",
+    "title": "Cabin air filter",
+    "kicker": "Glove-box clip job",
+    "lane": "replace",
+    "split": "diy",
+    "codes": [],
+    "symptoms": [
+      "musty ac",
+      "ac smell",
+      "weak vents",
+      "weak airflow",
+      "foggy windshield",
+      "pollen",
+      "cabin filter",
+      "cabin air filter",
+      "hvac filter",
+      "allergy"
+    ],
+    "aliases": [
+      "cabin",
+      "cabin filter",
+      "cabin air filter",
+      "pollen filter",
+      "hvac filter",
+      "ac filter",
+      "glove box filter"
+    ],
+    "plainEnglish": "This is the filter that cleans the air you breathe. It lives behind the glove box on most cars. Shops charge $80–$120 for a 10-minute clip job. If the AC smells like a wet sock or the windshield fogs, look here first.",
+    "doNotThrow": "Do not pay an hour of labor for a clip job you can do in the driveway. If they already opened it, you want the old filter in a bag and the part at cost.",
+    "minutes": "10–20 minutes",
+    "diy": {
+      "can": true,
+      "why": "Most drop the glove box. Photograph the airflow arrow before you pull the old one.",
+      "steps": [
+        "Search this car plus cabin filter location, or open the manual. Most drop the glove box.",
+        "Empty the glove box. Squeeze the sides past the stops or unclip the damper.",
+        "Open the plastic door. Photograph the old filter so you know which way the arrow pointed.",
+        "Slide the old one out. Vacuum leaves and grit from the housing.",
+        "Install the new filter with the arrow matching the housing mark. Clip the door and glove box back."
+      ],
+      "tools": ["Hands", "Optional screwdriver or Torx", "Vacuum"]
+    },
+    "shop": {
+      "why": "If they already charged cabin-filter labor, ask to see the old filter. An $80 labor line on a clip job is the classic pad.",
+      "say": [
+        "I will replace the cabin filter myself. If you already have it open, I only want the part at cost — not an hour of labor.",
+        "Text me a photo of the old cabin filter in your hand. Then give me the parts-plus-labor number."
+      ]
+    },
+    "aisleQuestions": [
+      {
+        "id": "charcoal",
+        "ask": "Standard or charcoal / odor?",
+        "why": "Two boxes on the same hook. Charcoal is the odor one. Same size, different price."
+      },
+      {
+        "id": "engine",
+        "ask": "Which engine / trim?",
+        "why": "A few cars have two cabin sizes across the same year. The counter will still ask.",
+        "session": "engine"
+      }
+    ],
+    "parts": [
+      {
+        "id": "cabin-air-filter",
+        "label": "Cabin air filter",
+        "query": "cabin air filter",
+        "aisle": "Filters",
+        "bin": "CAB-1",
+        "order": 1,
+        "hold": false,
+        "note": "One part. Match year, make, model. Arrow toward the blower."
+      }
+    ],
+    "related": ["engine-air-filter", "oil-change"]
+  },
+  {
+    "id": "engine-air-filter",
+    "slug": "engine-air-filter",
+    "stamp": "Air",
+    "title": "Engine air filter",
+    "kicker": "Clips on the air box",
+    "lane": "replace",
+    "split": "diy",
+    "codes": [],
+    "symptoms": ["tired engine", "dirty air filter", "air box", "maf"],
+    "aliases": ["engine air filter", "air filter", "engine filter", "air box filter"],
+    "plainEnglish": "The engine air filter sits in a black plastic box in the engine bay. A clogged one makes the car feel tired. Pop the clips, photograph the old one, drop the new one in the same orientation.",
+    "doNotThrow": "Do not let them sell a MAF cleaning as a required add-on to an air-filter swap.",
+    "minutes": "10–15 minutes",
+    "diy": {
+      "can": true,
+      "why": "Clips or a few screws. Seat the lid or you invent a lean code.",
+      "steps": [
+        "Pop the air-box clips. Photograph the old filter so the new one faces the same way.",
+        "Wipe grit out of the box. Do not blow dirt into the MAF.",
+        "Seat the lid until every clip is home."
+      ],
+      "tools": ["Hands", "Optional screwdriver"]
+    },
+    "shop": {
+      "why": "This is a counter part, not a labor hour.",
+      "say": ["I am buying the engine air filter. I will install it."]
+    },
+    "aisleQuestions": [
+      {
+        "id": "engine",
+        "ask": "Which engine?",
+        "why": "Two engines in the same year often use two boxes.",
+        "session": "engine"
+      }
+    ],
+    "parts": [
+      {
+        "id": "engine-air",
+        "label": "Engine air filter",
+        "query": "engine air filter",
+        "aisle": "Filters",
+        "bin": "AIR-1",
+        "order": 1,
+        "hold": false,
+        "note": "One panel or one round element. Confirm the shape against the old one."
+      }
+    ],
+    "related": ["cabin-filter", "p0171"]
+  },
+  {
+    "id": "oil-change",
+    "slug": "oil-change",
+    "stamp": "Oil",
+    "title": "Oil and filter",
+    "kicker": "Viscosity first",
+    "lane": "replace",
+    "split": "either",
+    "codes": [],
+    "symptoms": ["oil change", "lof", "oil light", "overdue oil"],
+    "aliases": ["oil", "oil change", "oil filter", "lof", "lube"],
+    "plainEnglish": "Drain the sump, spin a new filter, fill the viscosity on the door sticker. The counter will ask for the spec, not 'regular oil.'",
+    "doNotThrow": "Do not accept 'whatever we have' if the door sticker names a dexos / dexos1 / 0W-20. A flush additive is a different line.",
+    "minutes": "30–45 minutes",
+    "diy": {
+      "can": true,
+      "why": "If you can get it on stands and torque the drain plug, this is a driveway job. Hot oil burns. Catch the filter gasket.",
+      "steps": [
+        "Read the viscosity and capacity on the garage ticket or the door sticker.",
+        "Drain warm, not scalding. Replace the crush washer if the car uses one.",
+        "Spin the new filter hand-tight plus the spec. Fill, idle, recheck the stick."
+      ],
+      "tools": ["Jack and stands or ramps", "Drain pan", "Filter wrench", "Torque wrench"]
+    },
+    "shop": {
+      "why": "LOF is fine. Shop supplies and a flush package are the pad. Ask for the viscosity in writing.",
+      "say": [
+        "Door-sticker viscosity and the filter. No flush unless you can name what failed."
+      ]
+    },
+    "aisleQuestions": [
+      {
+        "id": "engine",
+        "ask": "Which engine?",
+        "why": "Capacity and filter thread change with the engine.",
+        "session": "engine"
+      },
+      {
+        "id": "visc",
+        "ask": "What viscosity and spec?",
+        "why": "0W-20 vs 5W-30 is not a vibe. It is the door sticker."
+      }
+    ],
+    "parts": [
+      {
+        "id": "oil-filter",
+        "label": "Oil filter",
+        "query": "oil filter",
+        "aisle": "Filters",
+        "bin": "OIL-1",
+        "order": 1,
+        "hold": false,
+        "note": "Cartridge vs spin-on. Confirm the housing."
+      },
+      {
+        "id": "engine-oil",
+        "label": "Engine oil",
+        "query": "engine oil",
+        "aisle": "Oil",
+        "bin": "OIL-2",
+        "order": 2,
+        "hold": false,
+        "note": "Buy the viscosity and the spec, then the quart count."
+      },
+      {
+        "id": "drain-washer",
+        "label": "Drain-plug washer",
+        "query": "oil drain plug washer",
+        "aisle": "Oil",
+        "bin": "OIL-3",
+        "order": 3,
+        "hold": false,
+        "note": "If the plug uses a crush washer, replace it."
+      }
+    ],
+    "related": ["cabin-filter", "engine-air-filter"]
+  },
+  {
+    "id": "brake-pads",
+    "slug": "brake-pads",
+    "stamp": "Pads",
+    "title": "Brake pads",
+    "kicker": "Millimeters, not adjectives",
+    "lane": "replace",
+    "split": "either",
+    "codes": [],
+    "symptoms": ["squeal", "squeak brakes", "brake noise", "grinding", "soft pedal"],
+    "aliases": ["brake pads", "pads", "brakes", "squeal", "brake squeal"],
+    "plainEnglish": "Indicator squeal is a thin pad. Metal-on-metal is a rotor. Ask for millimeters remaining, not 'they're due.' Front and rear are different boxes.",
+    "doNotThrow": "Do not buy rotors because the pad squealed. Measure the pad and the rotor. Hardware kits stop the rattle that gets blamed on pads.",
+    "minutes": "1–2 hr per axle",
+    "diy": {
+      "can": true,
+      "why": "If you can torque lug nuts to the door sticker and seat the caliper pins, this is weekend work. A seized slider is a different job.",
+      "steps": [
+        "Measure pad thickness. Under about 3 mm is a conversation. Metal-on-metal is today.",
+        "Front or rear? They are different SKUs.",
+        "Torque wheels to the door sticker in a star. Bed the pads the way the box says."
+      ],
+      "tools": ["Jack and stands", "C-clamp or caliper tool", "Torque wrench"]
+    },
+    "shop": {
+      "why": "Ask for pad mm and rotor thickness vs minimum. 'While we are in there' on unused rears needs a number.",
+      "say": [
+        "How many millimeters on the inner pad? What is the rotor vs the discard spec?"
+      ]
+    },
+    "aisleQuestions": [
+      {
+        "id": "axle",
+        "ask": "Front or rear?",
+        "why": "Two different boxes. Do not let them pull both until you said both."
+      },
+      {
+        "id": "drive",
+        "ask": "2WD or 4WD?",
+        "why": "Some trucks use different front pads or a different caliper on 4WD.",
+        "session": "drive"
+      },
+      {
+        "id": "engine",
+        "ask": "Which engine / trim?",
+        "why": "Performance packages change the pad shape.",
+        "session": "engine"
+      }
+    ],
+    "parts": [
+      {
+        "id": "pads",
+        "label": "Brake pads (one axle)",
+        "query": "brake pads",
+        "aisle": "Brakes",
+        "bin": "BRK-1",
+        "order": 1,
+        "hold": false,
+        "note": "Name the axle. Ceramic vs semi-met is a noise and dust choice."
+      },
+      {
+        "id": "hardware",
+        "label": "Pad hardware kit",
+        "query": "brake pad hardware kit",
+        "aisle": "Brakes",
+        "bin": "BRK-2",
+        "order": 2,
+        "hold": false,
+        "note": "Clips and abutment hardware. Cheap insurance against a squeal comeback."
+      },
+      {
+        "id": "rotors",
+        "label": "Brake rotors",
+        "query": "brake rotors",
+        "aisle": "Brakes",
+        "bin": "HOLD",
+        "order": 3,
+        "hold": true,
+        "note": "HOLD unless they are below discard, grooved, or pulsating. Squeal alone is not a rotor."
+      }
+    ],
+    "related": ["battery"]
+  },
+  {
+    "id": "battery",
+    "slug": "battery",
+    "stamp": "12V",
+    "title": "12-volt battery",
+    "kicker": "Group size, not 'a car battery'",
+    "lane": "replace",
+    "split": "either",
+    "codes": [],
+    "symptoms": ["no crank", "slow crank", "click click", "dead battery", "battery light"],
+    "aliases": ["battery", "12v", "car battery", "dead battery"],
+    "plainEnglish": "A weak 12-volt battery is a click or a slow crank. The counter will ask for the group size and whether it is top-post or side-post. An EV still has this battery.",
+    "doNotThrow": "Do not throw an alternator from a slow crank until someone measured cranking voltage and charging voltage.",
+    "minutes": "20–40 minutes",
+    "diy": {
+      "can": true,
+      "why": "If you can get the hold-down off and you register the new battery when the car requires it, this is a driveway job. Memory savers are optional.",
+      "steps": [
+        "Match group size, terminal layout, and CCA — not just 'the silver one.'",
+        "Negative off first, negative on last.",
+        "Some cars need a registration or a window-auto reset. Ask before you leave the aisle."
+      ],
+      "tools": ["10 mm or 13 mm", "Battery brush", "Hold-down socket"]
+    },
+    "shop": {
+      "why": "Ask for the load-test number and charging voltage. A battery they just sold should still show the printout.",
+      "say": [
+        "What was cranking voltage, and what is the alternator at idle and 2000 rpm?"
+      ]
+    },
+    "aisleQuestions": [
+      {
+        "id": "group",
+        "ask": "What group size?",
+        "why": "H6 vs 35 vs 51R is the box. Year/make/model gets you close; the tray decides."
+      },
+      {
+        "id": "engine",
+        "ask": "Which engine?",
+        "why": "Start-stop and bigger engines want a different AGM.",
+        "session": "engine"
+      }
+    ],
+    "parts": [
+      {
+        "id": "battery",
+        "label": "12V battery",
+        "query": "car battery",
+        "aisle": "Battery",
+        "bin": "BAT-1",
+        "order": 1,
+        "hold": false,
+        "note": "Group size and terminal layout. AGM if the car came with AGM."
+      },
+      {
+        "id": "terminals",
+        "label": "Battery terminals / ends",
+        "query": "battery terminal",
+        "aisle": "Battery",
+        "bin": "BAT-2",
+        "order": 2,
+        "hold": false,
+        "note": "If the old ends are green and crumbling."
+      }
+    ],
+    "related": ["starter", "alternator", "no-start"]
+  },
+  {
+    "id": "wiper-blades",
+    "slug": "wiper-blades",
+    "stamp": "Wipers",
+    "title": "Wiper blades",
+    "kicker": "Length per side",
+    "lane": "replace",
+    "split": "diy",
+    "codes": [],
+    "symptoms": ["streaky wipers", "chatter", "wiper squeak", "rain"],
+    "aliases": ["wipers", "wiper blades", "blades"],
+    "plainEnglish": "Driver and passenger are often two lengths. Beam vs hook is the other question. This is a parking-lot job.",
+    "doNotThrow": "Do not pay labor to click two blades on.",
+    "minutes": "5–10 minutes",
+    "diy": {
+      "can": true,
+      "why": "Lift the arm. Read the clip. Do not let the arm slam the glass.",
+      "steps": [
+        "Buy the pair that matches this car. Driver is usually longer.",
+        "Lift the arm, release the old clip, click the new one until it locks.",
+        "Rest the arm. Spray washer fluid and watch one sweep."
+      ],
+      "tools": ["Hands"]
+    },
+    "shop": {
+      "why": "Counter part. If they install, it should be minutes, not a line on the RO.",
+      "say": ["I am buying the blades. I will click them on."]
+    },
+    "aisleQuestions": [
+      {
+        "id": "size",
+        "ask": "Driver and passenger lengths?",
+        "why": "Two SKUs on many cars. A hatch may have a third."
+      }
+    ],
+    "parts": [
+      {
+        "id": "blades",
+        "label": "Wiper blades (pair)",
+        "query": "wiper blades",
+        "aisle": "Wipers",
+        "bin": "WIP-1",
+        "order": 1,
+        "hold": false,
+        "note": "Confirm hook vs pinch vs bayonet before you leave the aisle."
+      }
+    ],
+    "related": ["cabin-filter"]
+  },
+  {
+    "id": "spark-plugs",
+    "slug": "spark-plugs",
+    "stamp": "Plugs",
+    "title": "Spark plugs",
+    "kicker": "Gap and reach",
+    "lane": "replace",
+    "split": "either",
+    "codes": ["P0301", "P0302", "P0303", "P0304"],
+    "symptoms": ["misfire under load", "plug interval", "rough cruise"],
+    "aliases": ["spark plugs", "plugs", "tune up"],
+    "plainEnglish": "Plugs are an interval part on a lot of engines and a diagnosis part on a misfire. Gap, reach, and heat range have to match. Coil-on-plug means the coil comes off first.",
+    "doNotThrow": "Do not throw coils because the plugs were due. Do not use a 'universal' plug that needs a different gap.",
+    "minutes": "1–3 hr",
+    "diy": {
+      "can": true,
+      "why": "If you can reach them and you torque to spec, yes. Cross-threaded plugs in aluminum heads are an expensive afternoon.",
+      "steps": [
+        "Blow dirt out of the wells before the old plugs come out.",
+        "Gap only if the box says to. Many iridium plugs are pre-gapped.",
+        "Torque. Anti-seize only if the manufacturer says so."
+      ],
+      "tools": ["Plug socket", "Torque wrench", "Dielectric grease for boots"]
+    },
+    "shop": {
+      "why": "Ask for the heat range and whether they gapped. A 'tune-up kit' that adds wires you do not have is a pad.",
+      "say": ["Factory plug. Torque to spec. I do not want a coil kit unless a cylinder failed a swap-test."]
+    },
+    "aisleQuestions": [
+      {
+        "id": "engine",
+        "ask": "Which engine?",
+        "why": "Reach and heat range change with the engine family.",
+        "session": "engine"
+      }
+    ],
+    "parts": [
+      {
+        "id": "plugs",
+        "label": "Spark plugs (set)",
+        "query": "spark plugs",
+        "aisle": "Ignition",
+        "bin": "IGN-1",
+        "order": 1,
+        "hold": false,
+        "note": "Buy the count for this engine. Confirm iridium vs platinum."
+      },
+      {
+        "id": "boots",
+        "label": "Coil boots / grease",
+        "query": "ignition coil boot",
+        "aisle": "Ignition",
+        "bin": "IGN-4",
+        "order": 2,
+        "hold": false,
+        "note": "If the boots tore coming off."
+      }
+    ],
+    "related": ["p0300"]
+  },
+  {
+    "id": "shocks-struts",
+    "slug": "shocks-struts",
+    "stamp": "Shocks",
+    "title": "Shocks / struts",
+    "kicker": "2WD vs 4WD matters here",
+    "lane": "replace",
+    "split": "shop",
+    "codes": [],
+    "symptoms": ["bounce", "nose dive", "clunk over bumps", "uneven tire wear"],
+    "aliases": ["shocks", "struts", "shocks struts", "dampers"],
+    "plainEnglish": "A dead shock bounces more than once after a driveway. Struts are a spring-and-damper unit on many cars. The counter will ask 2WD or 4WD before they walk the aisle.",
+    "doNotThrow": "Do not buy four corners because one leaked. Measure the leak and the bounce. Springs are a different part if the car sits low.",
+    "minutes": "Shop · 1–3 hr per corner",
+    "diy": {
+      "can": false,
+      "why": "A loaded strut compressor can kill you. Complete assemblies are safer for weekend work, still need a torque sequence and an alignment.",
+      "steps": [
+        "Push a corner. More than one bounce is a clue, not a diagnosis.",
+        "Look for wet dampers. Dust is not oil.",
+        "Budget an alignment after struts."
+      ],
+      "tools": ["None for the check. A shop for the spring."]
+    },
+    "shop": {
+      "why": "Ask complete assembly vs bare damper. Ask 2WD or 4WD on the RO. Alignment is a separate line.",
+      "say": [
+        "This is [2WD or 4WD]. I want the application in writing and an alignment after, not 'we will see.'"
+      ]
+    },
+    "aisleQuestions": [
+      {
+        "id": "drive",
+        "ask": "2WD or 4WD?",
+        "why": "Different mounting, different box. This is the question that stops a wrong strut from leaving the aisle.",
+        "session": "drive"
+      },
+      {
+        "id": "end",
+        "ask": "Front or rear?",
+        "why": "Four different SKUs on a lot of trucks."
+      },
+      {
+        "id": "engine",
+        "ask": "Which engine / payload package?",
+        "why": "HD and police packages change the spring rate.",
+        "session": "engine"
+      }
+    ],
+    "parts": [
+      {
+        "id": "strut",
+        "label": "Strut or shock (name the corner)",
+        "query": "strut",
+        "aisle": "Ride",
+        "bin": "RIDE-1",
+        "order": 1,
+        "hold": false,
+        "note": "Complete assembly vs bare. 2WD/4WD first."
+      },
+      {
+        "id": "mount",
+        "label": "Strut mount / bearing",
+        "query": "strut mount",
+        "aisle": "Ride",
+        "bin": "RIDE-2",
+        "order": 2,
+        "hold": false,
+        "note": "If they are not in the complete assembly."
+      }
+    ],
+    "related": ["cv-axle", "brake-pads"]
+  },
+  {
+    "id": "cv-axle",
+    "slug": "cv-axle",
+    "stamp": "Axle",
+    "title": "CV axle",
+    "kicker": "Click on the outside",
+    "lane": "replace",
+    "split": "shop",
+    "codes": [],
+    "symptoms": ["clicking turn", "clack on acceleration", "grease on wheel", "torn boot"],
+    "aliases": ["cv axle", "axle", "cv joint", "half shaft"],
+    "plainEnglish": "A torn boot throws grease. A worn outer joint clicks on a full-lock turn. Inner joints clunk on takeoff. 2WD vs 4WD changes the shaft they pull.",
+    "doNotThrow": "Do not buy two axles because one boot ripped. The quiet side can wait if the boot is intact.",
+    "minutes": "Shop · 1–2 hr",
+    "diy": {
+      "can": false,
+      "why": "Hub nut torque and a stubborn spline are how weekend jobs become tow trucks. Experienced DIY with a torque spec can do it.",
+      "steps": [
+        "Confirm which corner clicks. Full-lock left vs right names the outer joint.",
+        "Look for grease on the inside of the wheel. That is a boot, not always a dead joint yet."
+      ],
+      "tools": ["None for the look. A torque spec if you turn wrenches."]
+    },
+    "shop": {
+      "why": "Ask left or right, inner or outer, 2WD or 4WD. A 'pair' is a sales sentence.",
+      "say": [
+        "One axle. Tell me left or right and 2WD or 4WD. I do not want the pair unless the other boot is open."
+      ]
+    },
+    "aisleQuestions": [
+      {
+        "id": "drive",
+        "ask": "2WD or 4WD?",
+        "why": "Different shafts. This is the parts-person question.",
+        "session": "drive"
+      },
+      {
+        "id": "side",
+        "ask": "Left or right?",
+        "why": "They are not always the same length."
+      },
+      {
+        "id": "engine",
+        "ask": "Which engine / transmission?",
+        "why": "Automatic vs manual and engine torque change the joint.",
+        "session": "engine"
+      }
+    ],
+    "parts": [
+      {
+        "id": "axle",
+        "label": "CV axle (one side)",
+        "query": "cv axle",
+        "aisle": "Driveline",
+        "bin": "DRV-1",
+        "order": 1,
+        "hold": false,
+        "note": "Name the side and 2WD/4WD before they walk away."
+      },
+      {
+        "id": "nut",
+        "label": "Axle / hub nut",
+        "query": "axle nut",
+        "aisle": "Driveline",
+        "bin": "DRV-2",
+        "order": 2,
+        "hold": false,
+        "note": "Many are one-time torque nuts."
+      }
+    ],
+    "related": ["shocks-struts"]
+  },
+  {
+    "id": "starter",
+    "slug": "starter",
+    "stamp": "Start",
+    "title": "Starter",
+    "kicker": "Click vs silence",
+    "lane": "replace",
+    "split": "shop",
+    "codes": [],
+    "symptoms": ["click no start", "no crank", "starter buzz"],
+    "aliases": ["starter", "starter motor"],
+    "plainEnglish": "A single loud click with a good battery is often the starter solenoid. Silence can still be a security, a neutral switch, or a fusible link. The counter will ask the engine — some starters hide under the intake.",
+    "doNotThrow": "Do not throw a starter from a dead battery. Measure voltage at the starter while someone cranks.",
+    "minutes": "Shop · 1–3 hr",
+    "diy": {
+      "can": false,
+      "why": "Access is ugly on a lot of transverse engines. Voltage at the terminal is the DIY check.",
+      "steps": [
+        "Load-test the 12V first.",
+        "If the lights stay bright and you get one click, the starter is on the list — after voltage at the post."
+      ],
+      "tools": ["Multimeter"]
+    },
+    "shop": {
+      "why": "Ask for voltage at the starter during the crank. A rebuilt vs new is a warranty conversation.",
+      "say": ["Battery tested good. What was voltage at the starter while cranking?"]
+    },
+    "aisleQuestions": [
+      {
+        "id": "engine",
+        "ask": "Which engine?",
+        "why": "Mount and tooth count change. Some need the intake off.",
+        "session": "engine"
+      },
+      {
+        "id": "drive",
+        "ask": "2WD or 4WD?",
+        "why": "Rarely changes the starter. Still ask on trucks so they do not pull a 4WD skid-plate kit you do not need.",
+        "session": "drive"
+      }
+    ],
+    "parts": [
+      {
+        "id": "starter",
+        "label": "Starter",
+        "query": "starter",
+        "aisle": "Electrical",
+        "bin": "EL-1",
+        "order": 1,
+        "hold": false,
+        "note": "After the battery and voltage-at-the-post check."
+      }
+    ],
+    "related": ["battery", "alternator", "no-start"]
+  },
+  {
+    "id": "alternator",
+    "slug": "alternator",
+    "stamp": "Alt",
+    "title": "Alternator",
+    "kicker": "Charging voltage first",
+    "lane": "replace",
+    "split": "shop",
+    "codes": [],
+    "symptoms": ["battery light", "dim lights", "dying while driving"],
+    "aliases": ["alternator", "alternator charging"],
+    "plainEnglish": "A charging system should sit around 13.5–14.7 V with the engine running. A battery light is a pointer, not a parts list. A slipping belt can fake a dead alternator.",
+    "doNotThrow": "Do not throw an alternator from a battery light until someone measured charging voltage and looked at the belt.",
+    "minutes": "Shop · 1–3 hr",
+    "diy": {
+      "can": false,
+      "why": "Voltage is the driveway test. The swap is often a belt-and-bracket puzzle.",
+      "steps": [
+        "Measure across the battery at idle and at 2000 rpm with loads on.",
+        "Look at the belt. Glazing and a screaming pulley are not an alternator."
+      ],
+      "tools": ["Multimeter"]
+    },
+    "shop": {
+      "why": "Ask for the voltage number and whether the pulley is a decoupler. Those are a different SKU.",
+      "say": ["What was charging voltage at idle and 2000 rpm? Is the pulley a decoupler?"]
+    },
+    "aisleQuestions": [
+      {
+        "id": "engine",
+        "ask": "Which engine?",
+        "why": "Amperage and pulley change with the engine.",
+        "session": "engine"
+      }
+    ],
+    "parts": [
+      {
+        "id": "alternator",
+        "label": "Alternator",
+        "query": "alternator",
+        "aisle": "Electrical",
+        "bin": "EL-2",
+        "order": 1,
+        "hold": false,
+        "note": "After a voltage number. Confirm amperage and pulley."
+      },
+      {
+        "id": "belt",
+        "label": "Serpentine belt",
+        "query": "serpentine belt",
+        "aisle": "Belts",
+        "bin": "BLT-1",
+        "order": 2,
+        "hold": false,
+        "note": "If it is glazed or they have the tensioner off anyway."
+      }
+    ],
+    "related": ["battery", "starter"]
+  },
+  {
+    "id": "no-start",
+    "slug": "no-start",
+    "stamp": "Crank",
+    "title": "No-start sort",
+    "kicker": "Click, crank, or silence",
+    "lane": "diagnose",
+    "split": "shop",
+    "codes": [],
+    "symptoms": ["won't start", "will not start", "no start", "cranks no fire", "click click"],
+    "aliases": ["no start", "wont start", "won't start", "crank no start"],
+    "plainEnglish": "Silence, a click, a crank-no-fire, and a start-and-die are four different aisles. Start at the 12-volt battery. Do not buy a starter, a pump, and a computer on the same ticket.",
+    "doNotThrow": "Do not throw a parts cannon. Name the symptom: click, crank, or silence. Then one test.",
+    "minutes": "Sort first · 0.3–2 hr",
+    "diy": {
+      "can": false,
+      "why": "You can jump-pack a weak 12V and smell for fuel. After that, stop guessing.",
+      "steps": [
+        "Interior lights bright? If they die when you turn the key, charge or replace the 12V first.",
+        "One click: battery or starter circuit. Silence: security, neutral switch, or power.",
+        "Cranks but will not fire: fuel, spark, or immobilizer — not a starter."
+      ],
+      "tools": ["Jump pack", "Scanner if it will talk"]
+    },
+    "shop": {
+      "why": "Ask them to name the symptom and the first test. A no-start 'diagnosis' that starts with three parts is a stall.",
+      "say": [
+        "It [clicks / cranks / stays silent]. Test the 12V first. I do not want a starter and a pump on the same guess."
+      ]
+    },
+    "aisleQuestions": [
+      {
+        "id": "engine",
+        "ask": "Which engine?",
+        "why": "They will still ask before they pull a starter or a pump.",
+        "session": "engine"
+      },
+      {
+        "id": "drive",
+        "ask": "2WD or 4WD?",
+        "why": "Access and skid plates change on trucks.",
+        "session": "drive"
+      }
+    ],
+    "parts": [
+      {
+        "id": "battery",
+        "label": "12V battery",
+        "query": "car battery",
+        "aisle": "Battery",
+        "bin": "BAT-1",
+        "order": 1,
+        "hold": false,
+        "note": "First part if cranking voltage is down. Not automatic."
+      },
+      {
+        "id": "starter",
+        "label": "Starter",
+        "query": "starter",
+        "aisle": "Electrical",
+        "bin": "HOLD",
+        "order": 2,
+        "hold": true,
+        "note": "HOLD until voltage at the post during a click or a silence."
+      }
+    ],
+    "related": ["battery", "starter", "alternator"]
+  },
+  {
+    "id": "overheating",
+    "slug": "overheating",
+    "stamp": "Heat",
+    "title": "Overheating",
+    "kicker": "Stop before the head",
+    "lane": "diagnose",
+    "split": "shop",
+    "codes": [],
+    "symptoms": ["overheat", "temp gauge high", "coolant smell", "heater died"],
+    "aliases": ["overheating", "overheat", "running hot"],
+    "plainEnglish": "A climbing temp gauge is a stop-now problem. Low coolant, a stuck-closed thermostat, a dead fan, or a leaking radiator are the usual list. A head gasket is the expensive end — not the first box.",
+    "doNotThrow": "Do not throw a water pump or a head gasket from a hot gauge. Find the level, the fan, and whether it overheats at idle or on the highway.",
+    "minutes": "Stop driving · then diagnose",
+    "diy": {
+      "can": false,
+      "why": "You can check a cold level and whether the fans run. A hot cap will scald you.",
+      "steps": [
+        "If it is hot, stop. Cabin heat on high can buy a mile to a shoulder. Do not open a hot cap.",
+        "When cold, the overflow should sit between the marks. Empty and hot is a leak or a head."
+      ],
+      "tools": ["Eyes on a cold tank"]
+    },
+    "shop": {
+      "why": "Ask idle vs highway, fan command, and whether combustion gas is in the coolant. A 'head gasket package' without those is a stall.",
+      "say": [
+        "It overheats at [idle / highway]. Check fans and level before anyone prices a head."
+      ]
+    },
+    "aisleQuestions": [
+      {
+        "id": "engine",
+        "ask": "Which engine?",
+        "why": "Radiators, stats, and fans are engine-family parts.",
+        "session": "engine"
+      }
+    ],
+    "parts": [
+      {
+        "id": "thermostat",
+        "label": "Thermostat",
+        "query": "thermostat",
+        "aisle": "Cooling",
+        "bin": "COOL-1",
+        "order": 1,
+        "hold": false,
+        "note": "Stuck closed overheats. Stuck open is P0128."
+      },
+      {
+        "id": "radiator",
+        "label": "Radiator",
+        "query": "radiator",
+        "aisle": "Cooling",
+        "bin": "COOL-4",
+        "order": 2,
+        "hold": false,
+        "note": "If it is wet or the tanks are swollen. Pressure-test first."
+      },
+      {
+        "id": "water-pump",
+        "label": "Water pump",
+        "query": "water pump",
+        "aisle": "Cooling",
+        "bin": "HOLD",
+        "order": 3,
+        "hold": true,
+        "note": "HOLD until a weep or a timing-job access makes it the part."
+      }
+    ],
+    "related": ["p0128"]
+  }
+]

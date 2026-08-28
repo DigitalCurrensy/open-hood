@@ -63,7 +63,7 @@ export function GuideDetail({ guide, related }: { guide: Guide; related: Guide[]
           ) : null}
 
           <div className="rounded-sm border border-white/10 bg-bay-2/80 p-5">
-            <p className="font-mono text-[11px] uppercase tracking-[0.28em] text-cone">Steps · dummy-friendly</p>
+            <p className="font-mono text-[11px] uppercase tracking-[0.28em] text-cone">Steps · beginner-friendly</p>
             <ol className="mt-3 list-decimal space-y-2.5 pl-5 text-sm leading-6 text-fluorescent">
               {guide.steps.map((step) => (
                 <li key={step}>{step}</li>

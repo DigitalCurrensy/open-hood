@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { AuctionsDesk } from "@/app/auctions/auctions-desk";
+import { PageBrief } from "@/components/page-brief";
 import { PageHeader } from "@/components/page-header";
 
 export const metadata: Metadata = {
@@ -20,6 +21,7 @@ export default async function Page({
   const params = await searchParams;
   return (
     <div className="space-y-6">
+      <PageBrief href="/auctions" />
       <PageHeader kicker="Lanes · not a live board" title="Auctions">
         BaT and Cars & Bids are public consumer auctions. Copart and IAA show lots; bidding is usually a dealer or
         broker. Manheim and ADESA stay wholesale. We link out. We do not scrape.

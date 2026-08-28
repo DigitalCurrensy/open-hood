@@ -83,7 +83,7 @@ export function AuctionDesk() {
         </form>
       </div>
       <CheckDesk
-        storageKey="autoshield.jobs.auction"
+        storageKey="openhood.jobs.auction"
         items={AUCTION_GOTCHAS}
         readyLabel="You know the clock and the paper"
         blockedLabel="Don't bid until the gotchas are ticked"

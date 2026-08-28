@@ -1,0 +1,37 @@
+.contact-carbon {
+  background:
+    linear-gradient(90deg, #e85d04 0 7px, transparent 7px),
+    var(--bay-2);
+}
+
+.contact-perforation {
+  height: 10px;
+  background-image: radial-gradient(circle at 5px 5px, #0c1210 2px, transparent 2.2px);
+  background-size: 10px 10px;
+  background-repeat: repeat-x;
+}
+
+.contact-miles {
+  font-variant-numeric: tabular-nums;
+}
+
+.contact-chip {
+  border: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.contact-chip:has(:checked) {
+  background: var(--ticket);
+  color: var(--ticket-ink);
+  border-color: transparent;
+}
+
+.contact-chip:has(:focus-visible) {
+  outline: 2px solid var(--ticket);
+  outline-offset: 3px;
+}
+
+@media print {
+  .contact-success {
+    box-shadow: none;
+  }
+}

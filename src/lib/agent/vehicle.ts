@@ -1,34 +1,18 @@
 import type { AgentVehicleContext } from "@/lib/agent/types";
+import { emptyVehicleSpecs } from "@/lib/nhtsa";
 import type { VehicleSpecs } from "@/lib/types";
 
 export function specsFromContext(vehicle?: AgentVehicleContext): VehicleSpecs {
   const vin = vehicle?.vin?.trim() ?? "";
-  return {
+  return emptyVehicleSpecs({
     vin,
     year: vehicle?.year?.trim() ?? "",
     make: vehicle?.make?.trim() ?? "",
     model: vehicle?.model?.trim() ?? "",
-    trim: "",
-    series: "",
-    bodyClass: "",
-    driveType: "",
-    transmission: "",
-    engineDisplacement: "",
-    engineModel: "",
-    cylinders: "",
-    engineConfig: "",
-    fuelType: "",
-    manufacturer: "",
-    plant: "",
-    doors: "",
-    gvwr: "",
-    errorText: "",
-    plate: "",
-    plateState: "",
     mileage: vehicle?.mileage?.trim() ?? "",
     concern: vehicle?.concern?.trim() ?? "",
     identifiedBy: vin ? "vin" : "ymm",
-  };
+  });
 }
 
 export function vehicleLabel(vehicle?: AgentVehicleContext): string {

@@ -1,4 +1,7 @@
+import fluidsFile from "@/data/fluids-catalog.json";
+import skuFile from "@/data/sku-crossref.json";
 import type { FluidSpecSheet, VehicleSpecs } from "@/lib/types";
+import { specsFromYearMakeModel } from "@/lib/nhtsa";
 
 interface CatalogEntry {
   make: string;
@@ -19,6 +22,77 @@ interface CatalogEntry {
   sparkPlugGap: string;
   notes: string[];
 }
+
+export interface FluidsCatalogRow extends CatalogEntry {
+  model: string;
+}
+
+export type SkuKind = "oil" | "air" | "cabin";
+
+export interface SkuCrossrefRow {
+  kind: SkuKind;
+  oem: string;
+  oemBrand: string;
+  fram: string;
+  wix: string;
+  purolator: string;
+  notes: string;
+}
+
+export type FluidsLane = "json" | "code" | "heuristic";
+
+export type IntervalId = "oil" | "cabin" | "coolant" | "brake";
+
+export interface TypicalIntervalCard {
+  id: IntervalId;
+  stamp: string;
+  title: string;
+  typical: string;
+  quoteSlug: string;
+  playbookSlug: string;
+  caveat: string;
+  miles?: number;
+  cyclesAtShort: number | null;
+  cyclesAtLong: number | null;
+  ageYears: number | null;
+  reading: string;
+}
+
+export interface FluidsLookup {
+  specs: VehicleSpecs;
+  fluids: FluidSpecSheet;
+  row: FluidsCatalogRow | null;
+  lane: FluidsLane;
+  crossref: SkuCrossrefRow[];
+  intervals: TypicalIntervalCard[];
+}
+
+interface FluidsCatalogFile {
+  source: string;
+  disclaimer: string;
+  rows: FluidsCatalogRow[];
+}
+
+interface SkuCrossrefFile {
+  disclaimer: string;
+  rows: SkuCrossrefRow[];
+}
+
+const JSON_FILE = fluidsFile as FluidsCatalogFile;
+const SKU_FILE = skuFile as SkuCrossrefFile;
+
+const JSON_CATALOG: FluidsCatalogRow[] = JSON_FILE.rows.map((entry) => ({
+  ...entry,
+  make: entry.make.toUpperCase(),
+  modelIncludes: entry.modelIncludes.map((token) => token.toUpperCase()),
+}));
+
+const SKU_CROSSREF: SkuCrossrefRow[] = SKU_FILE.rows.filter((row) => row.oem && row.kind);
+
+export const FLUIDS_JSON_COUNT = JSON_CATALOG.length;
+export const SKU_CROSSREF_COUNT = SKU_CROSSREF.length;
+export const FLUIDS_DISCLAIMER = JSON_FILE.disclaimer;
+export const SKU_CROSSREF_DISCLAIMER = SKU_FILE.disclaimer;
 
 const CATALOG: CatalogEntry[] = [
   {
@@ -536,22 +610,86 @@ const CATALOG: CatalogEntry[] = [
   },
 ];
 
+export const FLUIDS_CODE_COUNT = CATALOG.length;
+
 function yearOf(specs: VehicleSpecs): number {
   const parsed = Number.parseInt(specs.year, 10);
   return Number.isFinite(parsed) ? parsed : 0;
 }
 
-function matchCatalog(specs: VehicleSpecs): CatalogEntry | undefined {
-  const year = yearOf(specs);
-  const make = specs.make.toUpperCase();
-  const model = specs.model.toUpperCase();
-  return CATALOG.find(
-    (entry) =>
-      entry.make === make &&
-      year >= entry.yearFrom &&
-      year <= entry.yearTo &&
-      entry.modelIncludes.some((token) => model.includes(token)),
+function entryHits(entry: CatalogEntry, year: number, make: string, model: string): boolean {
+  return (
+    entry.make.toUpperCase() === make &&
+    year >= entry.yearFrom &&
+    year <= entry.yearTo &&
+    entry.modelIncludes.some((token) => model.includes(token.toUpperCase()))
   );
+}
+
+function bestEntry<T extends CatalogEntry>(entries: T[], year: number, make: string, model: string): T | undefined {
+  const hits = entries.filter((entry) => entryHits(entry, year, make, model));
+  if (!hits.length) return undefined;
+  hits.sort((a, b) => {
+    const span = a.yearTo - a.yearFrom - (b.yearTo - b.yearFrom);
+    if (span !== 0) return span;
+    const tokenA = Math.max(...a.modelIncludes.map((token) => token.length));
+    const tokenB = Math.max(...b.modelIncludes.map((token) => token.length));
+    return tokenB - tokenA;
+  });
+  return hits[0];
+}
+
+function matchJson(specs: VehicleSpecs): FluidsCatalogRow | undefined {
+  return bestEntry(JSON_CATALOG, yearOf(specs), specs.make.toUpperCase(), specs.model.toUpperCase());
+}
+
+function matchCatalog(specs: VehicleSpecs): CatalogEntry | undefined {
+  return bestEntry(CATALOG, yearOf(specs), specs.make.toUpperCase(), specs.model.toUpperCase());
+}
+
+function asRow(entry: CatalogEntry): FluidsCatalogRow {
+  return {
+    ...entry,
+    model: "model" in entry && typeof (entry as FluidsCatalogRow).model === "string" ? (entry as FluidsCatalogRow).model : entry.modelIncludes[0] ?? "",
+  };
+}
+
+function compactSku(value: string): string {
+  return value.toUpperCase().replace(/[^A-Z0-9]+/g, "");
+}
+
+export function crossrefForSkus(...skus: Array<string | undefined>): SkuCrossrefRow[] {
+  const hay = compactSku(skus.filter(Boolean).join(" "));
+  if (!hay) return [];
+  return SKU_CROSSREF.filter((row) => hay.includes(compactSku(row.oem)));
+}
+
+const CATALOG_LANE_NOTE =
+  "Catalog match — factory-typical pamphlet, not a licensed Motor / Mitchell / OEM TIS subscription. Door jamb still owns PSI.";
+
+const HEURISTIC_LANE_NOTES = [
+  "BOOK LANE IS HEURISTIC — not Motor, not TIS, door jamb wins. This year/make/model missed the JSON book.",
+  "DOOR JAMB WINS. Not Motor. Not OEM TIS. Do not buy oil from this card. Confirm the under-hood cap and the owner's manual before you pour.",
+  "Exact capacity, ATF, and plug gap live on the cap and the emissions label. Tire PSI is a guess until you read the door-jamb sticker — sidewall max is not the spec.",
+];
+
+function sheetFromEntry(entry: CatalogEntry): FluidSpecSheet {
+  return {
+    oilViscosity: entry.oilViscosity,
+    oilSpec: entry.oilSpec,
+    oilCapacityQt: entry.oilCapacityQt,
+    coolant: entry.coolant,
+    transmissionFluid: entry.transmissionFluid,
+    brakeFluid: entry.brakeFluid,
+    tirePsiFront: entry.tirePsiFront,
+    tirePsiRear: entry.tirePsiRear,
+    oilFilterSku: entry.oilFilterSku,
+    airFilterSku: entry.airFilterSku,
+    cabinFilterSku: entry.cabinFilterSku,
+    sparkPlugGap: entry.sparkPlugGap,
+    source: "catalog",
+    caveats: [CATALOG_LANE_NOTE, ...entry.notes],
+  };
 }
 
 function heuristicSheet(specs: VehicleSpecs): FluidSpecSheet {
@@ -577,7 +715,10 @@ function heuristicSheet(specs: VehicleSpecs): FluidSpecSheet {
       cabinFilterSku: "OEM cabin filter",
       sparkPlugGap: "—",
       source: "heuristic",
-      caveats: ["No engine oil, plugs, or oil filter exist on this powertrain."],
+      caveats: [
+        "BOOK LANE IS HEURISTIC — not Motor, not OEM TIS. EV path only because fuel/make looked electric.",
+        "No engine oil, plugs, or oil filter exist on this powertrain. A shop quoting an oil change is looking at the wrong car.",
+      ],
     };
   }
 
@@ -591,7 +732,9 @@ function heuristicSheet(specs: VehicleSpecs): FluidSpecSheet {
 
   return {
     oilViscosity: `${oilViscosity} Synthetic`,
-    oilSpec: isDiesel ? "API CK-4 diesel" : "API SP / ILSAC GF-6",
+    oilSpec: isDiesel
+      ? "HEURISTIC · API CK-4 diesel — factory-typical only, not Motor, not OEM TIS"
+      : "HEURISTIC · API SP / ILSAC GF-6 — factory-typical only, not Motor, not OEM TIS",
     oilCapacityQt,
     coolant: "OEM-specified 50/50 — color is not a spec",
     transmissionFluid: specs.transmission || "OEM-only ATF / CVT fluid",
@@ -603,30 +746,244 @@ function heuristicSheet(specs: VehicleSpecs): FluidSpecSheet {
     cabinFilterSku: `Ask for OEM ${specs.make || "factory"} cabin filter`,
     sparkPlugGap: "Confirm on the under-hood emissions label",
     source: "heuristic",
-    caveats: [
-      "Exact viscosity and capacity live on the under-hood label and owner's manual — this is a factory-typical starting point, not a substitute for the door-jamb sticker.",
-    ],
+    caveats: HEURISTIC_LANE_NOTES,
   };
 }
 
-export function buildFluidSpecSheet(specs: VehicleSpecs): FluidSpecSheet {
-  const hit = matchCatalog(specs);
-  if (!hit) return heuristicSheet(specs);
+function lookupFromSpecs(specs: VehicleSpecs): FluidsLookup {
+  const intervals = typicalIntervalCards(specs);
+  const jsonHit = matchJson(specs);
+  if (jsonHit) {
+    const fluids = sheetFromEntry(jsonHit);
+    return {
+      specs,
+      fluids,
+      row: jsonHit,
+      lane: "json",
+      crossref: crossrefForSkus(fluids.oilFilterSku, fluids.airFilterSku, fluids.cabinFilterSku),
+      intervals,
+    };
+  }
 
+  const codeHit = matchCatalog(specs);
+  if (codeHit) {
+    const fluids = sheetFromEntry(codeHit);
+    return {
+      specs,
+      fluids,
+      row: asRow(codeHit),
+      lane: "code",
+      crossref: crossrefForSkus(fluids.oilFilterSku, fluids.airFilterSku, fluids.cabinFilterSku),
+      intervals,
+    };
+  }
+
+  const fluids = heuristicSheet(specs);
+  return { specs, fluids, row: null, lane: "heuristic", crossref: [], intervals };
+}
+
+export function buildFluidSpecSheet(specs: VehicleSpecs): FluidSpecSheet {
+  return lookupFromSpecs(specs).fluids;
+}
+
+export function lookupFluids(year: string, make: string, model: string): FluidsLookup {
+  return lookupFromSpecs(specsFromYearMakeModel({ year, make, model }));
+}
+
+function haystack(row: FluidsCatalogRow): string {
+  return [
+    row.yearFrom,
+    row.yearTo,
+    row.make,
+    row.model,
+    ...row.modelIncludes,
+    row.oilViscosity,
+    row.oilCapacityQt,
+    row.oilFilterSku,
+    row.airFilterSku,
+    row.cabinFilterSku,
+    row.coolant,
+    row.transmissionFluid,
+    row.brakeFluid,
+  ]
+    .join(" ")
+    .toLowerCase();
+}
+
+export function allFluidsCatalogRows(): FluidsCatalogRow[] {
+  const seen = new Set<string>();
+  const out: FluidsCatalogRow[] = [];
+  for (const row of [...JSON_CATALOG, ...CATALOG.map(asRow)]) {
+    const key = `${row.make}|${row.model}|${row.yearFrom}|${row.yearTo}`;
+    if (seen.has(key)) continue;
+    seen.add(key);
+    out.push(row);
+  }
+  return out;
+}
+
+export function searchFluidsCatalog(query: {
+  q?: string;
+  year?: string;
+  make?: string;
+  model?: string;
+}): FluidsCatalogRow[] {
+  const q = (query.q ?? "").toLowerCase().replace(/[^a-z0-9]+/g, " ").trim();
+  const year = Number.parseInt(query.year ?? "", 10);
+  const make = (query.make ?? "").trim().toUpperCase();
+  const model = (query.model ?? "").trim().toUpperCase();
+  const parts = q ? q.split(/\s+/).filter(Boolean) : [];
+
+  return allFluidsCatalogRows().filter((row) => {
+    if (Number.isFinite(year) && (year < row.yearFrom || year > row.yearTo)) return false;
+    if (make && row.make !== make) return false;
+    if (model && !row.modelIncludes.some((token) => model.includes(token) || token.includes(model))) return false;
+    if (!parts.length) return true;
+    const hay = haystack(row);
+    return parts.every((part) => hay.includes(part));
+  });
+}
+
+export function searchSkuCrossref(query: string): SkuCrossrefRow[] {
+  const q = query.toLowerCase().replace(/[^a-z0-9]+/g, " ").trim();
+  if (!q) return SKU_CROSSREF;
+  const parts = q.split(/\s+/);
+  return SKU_CROSSREF.filter((row) => {
+    const hay = `${row.kind} ${row.oem} ${row.oemBrand} ${row.fram} ${row.wix} ${row.purolator} ${row.notes}`.toLowerCase();
+    return parts.every((part) => hay.includes(part));
+  });
+}
+
+export function fluidsLaneLabel(lane: FluidsLane): string {
+  if (lane === "heuristic") {
+    return "BOOK LANE IS HEURISTIC — not Motor, not TIS, door jamb wins.";
+  }
+  return lane === "json"
+    ? "Catalog match (JSON book) — factory-typical, still confirm the cap. Door jamb owns PSI."
+    : "Catalog match (code book) — factory-typical, still confirm the cap. Door jamb owns PSI.";
+}
+
+function parseMiles(value: string | undefined): number | null {
+  const digits = (value ?? "").replace(/[^\d]/g, "");
+  if (!digits) return null;
+  const miles = Number.parseInt(digits, 10);
+  return Number.isFinite(miles) && miles > 0 && miles <= 2_000_000 ? miles : null;
+}
+
+function cycles(miles: number | null, interval: number): number | null {
+  if (miles == null) return null;
+  return Math.max(0, Math.floor(miles / interval));
+}
+
+export function typicalIntervalCards(specs?: Pick<VehicleSpecs, "mileage" | "year" | "fuelType" | "make">): TypicalIntervalCard[] {
+  const miles = parseMiles(specs?.mileage);
+  const year = Number.parseInt(specs?.year ?? "", 10);
+  const asOf = new Date().getFullYear();
+  const ageYears = Number.isFinite(year) && year >= 1980 && year <= asOf + 1 ? Math.max(0, asOf - year) : null;
+  const fuel = (specs?.fuelType ?? "").toLowerCase();
+  const ev = fuel.includes("electric") || (specs?.make ?? "").toUpperCase() === "TESLA";
+
+  const oil: TypicalIntervalCard = ev
+    ? {
+        id: "oil",
+        stamp: "N/A",
+        title: "Engine oil",
+        typical: "Battery EV — no oil interval. A shop quoting 5k/10k on this VIN has the wrong car.",
+        quoteSlug: "cabin",
+        playbookSlug: "ev-12v",
+        caveat: "Not Motor. Not OEM TIS. There is no engine oil on this powertrain.",
+        miles: miles ?? undefined,
+        cyclesAtShort: null,
+        cyclesAtLong: null,
+        ageYears,
+        reading: "Skip the oil card. Cabin / 12V / brake fluid still age.",
+      }
+    : {
+        id: "oil",
+        stamp: "5k / 10k",
+        title: "Engine oil",
+        typical: "5,000 mi severe (short trips / tow / dust) · 10,000 mi normal — or the oil-life monitor, whichever the book says first.",
+        quoteSlug: "oil",
+        playbookSlug: "interval-card",
+        caveat: "Factory-typical US pamphlet, not OEM TIS. The cap still owns viscosity.",
+        miles: miles ?? undefined,
+        cyclesAtShort: cycles(miles, 5_000),
+        cyclesAtLong: cycles(miles, 10_000),
+        ageYears,
+        reading:
+          miles != null
+            ? `${miles.toLocaleString("en-US")} mi ÷ 10k ≈ ${cycles(miles, 10_000)} oil cards on the long interval · ÷ 5k ≈ ${cycles(miles, 5_000)} if they lived in the severe column.`
+            : "Add mileage on identify to stamp how many typical oil cards that odometer has seen.",
+      };
+
+  const cabin: TypicalIntervalCard = {
+    id: "cabin",
+    stamp: "15k",
+    title: "Cabin filter",
+    typical: "Often 15,000 mi or when dirty — glove-box job on most Hondas and Toyotas. Look at it.",
+    quoteSlug: "cabin",
+    playbookSlug: "cabin-upsell",
+    caveat: "Factory-typical, not TIS. A $220 line is usually a $15 part.",
+    miles: miles ?? undefined,
+    cyclesAtShort: cycles(miles, 15_000),
+    cyclesAtLong: cycles(miles, 15_000),
+    ageYears,
+    reading:
+      miles != null
+        ? `${miles.toLocaleString("en-US")} mi ÷ 15k ≈ ${cycles(miles, 15_000)} cabin cards if someone actually replaced it.`
+        : "15k is a look-at-it interval, not a shop special.",
+  };
+
+  const coolant: TypicalIntervalCard = {
+    id: "coolant",
+    stamp: "5 yr / 100k",
+    title: "Coolant",
+    typical: ev
+      ? "Battery / inverter loop — OEM chemistry only. Not a 5-year dump of universal green."
+      : "First service often 5 years or 100,000 mi on many late US books. Chemistry still wins over color.",
+    quoteSlug: "coolant",
+    playbookSlug: "coolant-spec",
+    caveat: "Factory-typical first interval, not OEM TIS. Dex-Cool is not Honda Type 2.",
+    miles: miles ?? undefined,
+    cyclesAtShort: cycles(miles, 100_000),
+    cyclesAtLong: cycles(miles, 100_000),
+    ageYears,
+    reading:
+      miles != null || ageYears != null
+        ? [
+            miles != null ? `${miles.toLocaleString("en-US")} mi ÷ 100k ≈ ${cycles(miles, 100_000)} typical first services.` : "",
+            ageYears != null ? `${ageYears} years on the nameplate ÷ 5 ≈ ${Math.floor(ageYears / 5)} five-year cards.` : "",
+          ]
+            .filter(Boolean)
+            .join(" ")
+        : "5 yr / 100k is the common first ticket — confirm the jug, not the poster.",
+  };
+
+  const brake: TypicalIntervalCard = {
+    id: "brake",
+    stamp: "3 yr",
+    title: "Brake fluid",
+    typical: "Hygroscopic. Many US books say about 3 years. A test strip or boiling point beats a menu flush.",
+    quoteSlug: "brake-fluid",
+    playbookSlug: "interval-card",
+    caveat: "Factory-typical years, not TIS hours. DOT 3 vs DOT 4 is on the cap.",
+    miles: miles ?? undefined,
+    cyclesAtShort: ageYears != null ? Math.floor(ageYears / 3) : null,
+    cyclesAtLong: ageYears != null ? Math.floor(ageYears / 3) : null,
+    ageYears,
+    reading:
+      ageYears != null
+        ? `${ageYears} years on the nameplate ÷ 3 ≈ ${Math.floor(ageYears / 3)} typical brake-fluid cards. Still ask for a number.`
+        : "About 3 years. A strip reading is a number. “Due” is not.",
+  };
+
+  return [oil, cabin, coolant, brake];
+}
+
+export function fluidsCatalogCounts() {
   return {
-    oilViscosity: hit.oilViscosity,
-    oilSpec: hit.oilSpec,
-    oilCapacityQt: hit.oilCapacityQt,
-    coolant: hit.coolant,
-    transmissionFluid: hit.transmissionFluid,
-    brakeFluid: hit.brakeFluid,
-    tirePsiFront: hit.tirePsiFront,
-    tirePsiRear: hit.tirePsiRear,
-    oilFilterSku: hit.oilFilterSku,
-    airFilterSku: hit.airFilterSku,
-    cabinFilterSku: hit.cabinFilterSku,
-    sparkPlugGap: hit.sparkPlugGap,
-    source: "catalog",
-    caveats: hit.notes,
+    fluidsCatalog: FLUIDS_JSON_COUNT,
+    codeCatalog: FLUIDS_CODE_COUNT,
+    skuCrossref: SKU_CROSSREF_COUNT,
   };
 }

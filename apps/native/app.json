@@ -1,0 +1,58 @@
+{
+  "expo": {
+    "name": "Open Hood",
+    "slug": "openhood-bay",
+    "scheme": "openhood",
+    "version": "0.1.0",
+    "orientation": "portrait",
+    "userInterfaceStyle": "dark",
+    "icon": "./assets/icon.png",
+    "splash": {
+      "image": "./assets/splash-icon.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#0c1210"
+    },
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "app.openhood.bay",
+      "infoPlist": {
+        "NSBluetoothAlwaysUsageDescription": "Open Hood reads stored OBD codes from a parked BLE ELM327. Park first. We do not pair while you drive.",
+        "NSBluetoothPeripheralUsageDescription": "Open Hood reads stored OBD codes from a parked BLE ELM327. Park first. We do not pair while you drive.",
+        "NSAppTransportSecurity": {
+          "NSAllowsLocalNetworking": true
+        }
+      }
+    },
+    "android": {
+      "package": "app.openhood.bay",
+      "usesCleartextTraffic": true,
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/adaptive-icon.png",
+        "backgroundColor": "#0c1210"
+      },
+      "permissions": [
+        "android.permission.BLUETOOTH",
+        "android.permission.BLUETOOTH_ADMIN",
+        "android.permission.BLUETOOTH_CONNECT",
+        "android.permission.BLUETOOTH_SCAN"
+      ]
+    },
+    "plugins": [
+      "expo-dev-client",
+      [
+        "react-native-ble-plx",
+        {
+          "isBackgroundEnabled": false,
+          "modes": ["central"],
+          "bluetoothAlwaysPermission": "Open Hood reads stored OBD codes from a parked BLE ELM327. Park first. We do not pair while you drive."
+        }
+      ]
+    ],
+    "extra": {
+      "storeListing": false,
+      "eas": {
+        "projectId": "replace-after-eas-init"
+      }
+    }
+  }
+}

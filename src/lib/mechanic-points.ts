@@ -55,5 +55,5 @@ export function scriptAsText(vehicle: IdentifiedVehicle, points: MechanicTalking
   const { specs } = vehicle;
   const title = [specs.year, specs.make, specs.model, specs.vin].filter(Boolean).join(" · ");
   const lines = points.map((point, index) => `${index + 1}. ${point.sayThis}`);
-  return [`AutoShield counter script`, title, "", ...lines].join("\n");
+  return [`Open Hood counter script`, title, "", ...lines].join("\n");
 }

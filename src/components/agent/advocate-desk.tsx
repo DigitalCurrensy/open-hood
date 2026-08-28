@@ -1,12 +1,19 @@
 "use client";
 
 import { AdvocateBrief, UserScrap } from "@/components/agent/advocate-message";
+import { AgentReadingToggle } from "@/components/agent/reading-toggle";
+import { extrasFromAgent } from "@/components/report/assemble-client";
+import { PrintFindingsButton } from "@/components/report/print-findings-button";
 import { PageHeader } from "@/components/page-header";
-import { compressAgentImage, revokePreview, type CompressedAgentImage } from "@/lib/agent/image";
+import { useReadingLevel } from "@/components/reading-level";
+import { MediaCapture, type CompressedImage } from "@/components/media-capture";
+import { revokePreview, type CompressedAgentImage } from "@/lib/agent/image";
+import { compressImageFile } from "@/lib/image";
 import { QUICK_PROMPTS } from "@/lib/agent/tools";
 import { clearThread, loadMileage, loadThread, newMessageId, saveMileage, saveThread, type AgentUiMessage } from "@/lib/agent/thread";
 import { AGENT_DISCLAIMER, type AgentImageKind, type AgentReply, type AgentWireMessage } from "@/lib/agent/types";
 import { useIdentifiedVehicle } from "@/lib/vehicle-session";
+import Link from "next/link";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 
 const IMAGE_KINDS: Array<{ id: AgentImageKind; label: string }> = [
@@ -17,6 +24,7 @@ const IMAGE_KINDS: Array<{ id: AgentImageKind; label: string }> = [
 
 export function AdvocateDesk() {
   const [vehicle] = useIdentifiedVehicle();
+  const [readingLevel] = useReadingLevel();
   const [messages, setMessages] = useState<AgentUiMessage[]>([]);
   const [hydrated, setHydrated] = useState(false);
   const [draft, setDraft] = useState("");
@@ -52,21 +60,35 @@ export function AdvocateDesk() {
     scroller.current?.scrollTo({ top: scroller.current.scrollHeight, behavior: "smooth" });
   }, [messages, busy]);
 
+  const attachCompressed = useCallback(
+    (compressed: CompressedImage) => {
+      setError("");
+      const next: CompressedAgentImage = {
+        base64: compressed.base64,
+        mimeType: compressed.mimeType,
+        previewUrl: compressed.dataUrl,
+        kind: imageKind,
+        bytes: compressed.bytes,
+      };
+      setImage((prev) => {
+        revokePreview(prev?.previewUrl);
+        return next;
+      });
+    },
+    [imageKind],
+  );
+
   const attachFile = useCallback(
     async (file: File | undefined) => {
       if (!file) return;
       setError("");
       try {
-        const next = await compressAgentImage(file, imageKind);
-        setImage((prev) => {
-          revokePreview(prev?.previewUrl);
-          return next;
-        });
+        attachCompressed(await compressImageFile(file));
       } catch (err) {
         setError(err instanceof Error ? err.message : "Could not attach that photo.");
       }
     },
-    [imageKind],
+    [attachCompressed],
   );
 
   const send = useCallback(
@@ -130,7 +152,7 @@ export function AdvocateDesk() {
             "Content-Type": "application/json",
             Accept: "text/event-stream, application/json",
           },
-          body: JSON.stringify({ messages: wire, vehicle: vehicleContext }),
+          body: JSON.stringify({ messages: wire, vehicle: vehicleContext, readingLevel }),
           signal: controller.signal,
         });
 
@@ -170,18 +192,26 @@ export function AdvocateDesk() {
         setStreamingId(null);
       }
     },
-    [busy, image, messages, mileage, vehicle],
+    [busy, image, messages, mileage, readingLevel, vehicle],
   );
 
   return (
     <div className="flex min-h-[calc(100vh-12rem)] flex-col gap-5">
       <PageHeader kicker="Window 02 · advocate" title="Say it at the window">
-        A master mechanic in your corner — not the shop&apos;s. Ask about a quote, a noise, or a scanner code before you
-        authorize.
+        A master mechanic in your corner — not the shop&apos;s. Ask about a quote, a noise, or a scanner code. The bay
+        runs tools, then writes what to say at the counter.
       </PageHeader>
 
       <div className="flex flex-wrap items-center gap-3">
         <VehicleChip chip={chip} mileage={mileage} onMileage={setMileage} />
+        <AgentReadingToggle />
+        <PrintFindingsButton extras={extrasFromAgent({ vehicle, mileage, messages })} />
+        <Link
+          href="/agent/api"
+          className="font-mono text-[11px] uppercase tracking-[0.16em] text-aluminum hover:text-ticket"
+        >
+          API
+        </Link>
         <p className="font-mono text-[10px] uppercase tracking-[0.22em] text-aluminum">
           Standing orders · measurements beat adjectives
         </p>
@@ -292,31 +322,32 @@ export function AdvocateDesk() {
                 ))}
               </div>
             </fieldset>
-            <label className="inline-flex cursor-pointer items-center gap-2 font-mono text-[11px] uppercase tracking-[0.16em] text-aluminum hover:text-fluorescent">
-              <input
-                type="file"
-                accept="image/*"
-                className="sr-only"
-                onChange={(event) => {
-                  void attachFile(event.target.files?.[0]);
-                  event.target.value = "";
-                }}
-              />
-              {image ? "Replace photo" : "Attach photo"}
-            </label>
+            <MediaCapture
+              compact
+              label={image ? "Replace photo" : "Attach photo"}
+              hint="Choose, camera, or paste. JPEG under 1 MB."
+              alt="Attached bay photo"
+              busy={busy}
+              image={
+                image
+                  ? {
+                      dataUrl: image.previewUrl,
+                      base64: image.base64,
+                      mimeType: image.mimeType,
+                      bytes: image.bytes,
+                    }
+                  : null
+              }
+              onReady={attachCompressed}
+              onClear={() => {
+                revokePreview(image?.previewUrl);
+                setImage(null);
+              }}
+              onError={setError}
+            />
             {image ? (
               <p className="font-mono text-[10px] uppercase tracking-[0.16em] text-aluminum">
                 {image.kind} · {Math.round(image.bytes / 1024)} kb compressed
-                <button
-                  type="button"
-                  className="ml-2 text-cone hover:text-ticket"
-                  onClick={() => {
-                    revokePreview(image.previewUrl);
-                    setImage(null);
-                  }}
-                >
-                  Remove
-                </button>
               </p>
             ) : null}
           </div>
@@ -382,7 +413,7 @@ function EmptyWindow() {
       <p className="font-mono text-[11px] uppercase tracking-[0.32em] text-cone">Service writer&apos;s window</p>
       <h2 className="mt-2 font-display text-3xl uppercase text-fluorescent">I&apos;m in your corner</h2>
       <p className="mt-3 text-sm leading-6 text-aluminum">
-        Stamp a prompt below or type what they quoted. I write the sentences for the counter. I do not invent torque
+        Stamp a ticket below or type what they quoted. I write the sentences for the counter. I do not invent torque
         specs, and I will not tell you a job is legally required.
       </p>
     </div>

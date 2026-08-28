@@ -1,5 +1,29 @@
-import { classifyOsmTags } from "@/lib/directory/filters";
-import type { DirectoryPlace, PlaceType } from "@/lib/directory/types";
+import { isDemoZip } from "@/lib/directory/demo";
+import { classifyOsmTags, haversineMiles } from "@/lib/directory/filters";
+import { demoGeocode, geocodePlace } from "@/lib/directory/nominatim";
+import type { DirectoryPlace, GeocodeHit, PlaceType } from "@/lib/directory/types";
+
+export const OSM_ONLY_MESSAGE = "OSM only";
+
+export interface LivePlacesResult {
+  connected: boolean;
+  results: DirectoryPlace[];
+  google: boolean;
+  yelp: boolean;
+  query: string;
+  message: string;
+  geocode: GeocodeHit | null;
+}
+
+export function placesKeyStatus(): { google: boolean; yelp: boolean; connected: boolean } {
+  const google = Boolean(process.env.GOOGLE_PLACES_API_KEY?.trim());
+  const yelp = Boolean(process.env.YELP_API_KEY?.trim());
+  return { google, yelp, connected: google || yelp };
+}
+
+function placeKey(place: DirectoryPlace): string {
+  return `${place.name.toLowerCase()}|${place.lat.toFixed(3)}|${place.lon.toFixed(3)}`;
+}
 
 function googleType(type: string): PlaceType | null {
   switch (type) {
@@ -152,16 +176,87 @@ export async function fetchYelpPlaces(lat: number, lon: number, radiusM: number)
   }
 }
 
+/** OSM (or first network) wins. Dedupe is name + ~111m grid (3 decimal degrees). */
 export function mergePlaces(primary: DirectoryPlace[], extra: DirectoryPlace[]): DirectoryPlace[] {
-  const seen = new Set(
-    primary.map((place) => `${place.name.toLowerCase()}|${place.lat.toFixed(3)}|${place.lon.toFixed(3)}`),
-  );
+  const seen = new Set(primary.map(placeKey));
   const merged = [...primary];
   for (const place of extra) {
-    const key = `${place.name.toLowerCase()}|${place.lat.toFixed(3)}|${place.lon.toFixed(3)}`;
+    const key = placeKey(place);
     if (seen.has(key)) continue;
     seen.add(key);
     merged.push(place);
   }
   return merged;
+}
+
+function disconnected(query: string): LivePlacesResult {
+  return {
+    connected: false,
+    results: [],
+    google: false,
+    yelp: false,
+    query,
+    message: OSM_ONLY_MESSAGE,
+    geocode: null,
+  };
+}
+
+export async function queryLivePlaces(input: {
+  query?: string;
+  lat?: number;
+  lon?: number;
+  radiusM?: number;
+}): Promise<LivePlacesResult> {
+  const keys = placesKeyStatus();
+  const query = input.query?.trim() ?? "";
+  const radiusM = input.radiusM ?? 12_000;
+  if (!keys.connected) return disconnected(query);
+
+  let geocode: GeocodeHit | null = null;
+  if (input.lat != null && input.lon != null && Number.isFinite(input.lat) && Number.isFinite(input.lon)) {
+    geocode = {
+      label: query || `${input.lat.toFixed(4)}, ${input.lon.toFixed(4)}`,
+      lat: input.lat,
+      lon: input.lon,
+      query: query || `${input.lat.toFixed(4)}, ${input.lon.toFixed(4)}`,
+    };
+  } else if (query) {
+    geocode = (await geocodePlace(query)) ?? (isDemoZip(query) ? demoGeocode(query) : null);
+  }
+
+  if (!geocode) {
+    return {
+      connected: true,
+      results: [],
+      google: keys.google,
+      yelp: keys.yelp,
+      query,
+      message: query ? `Could not place “${query}”. OSM still runs.` : "Pass zip.",
+      geocode: null,
+    };
+  }
+
+  const [googleRows, yelpRows] = await Promise.all([
+    keys.google ? fetchGooglePlaces(geocode.lat, geocode.lon, radiusM) : Promise.resolve([]),
+    keys.yelp ? fetchYelpPlaces(geocode.lat, geocode.lon, radiusM) : Promise.resolve([]),
+  ]);
+  const merged = mergePlaces(googleRows, yelpRows)
+    .map((place) => ({
+      ...place,
+      miles: Math.round(haversineMiles(geocode, place) * 10) / 10,
+    }))
+    .sort((a, b) => (a.miles ?? 99) - (b.miles ?? 99));
+
+  const networks = [keys.google ? "Google Places" : "", keys.yelp ? "Yelp" : ""].filter(Boolean);
+  return {
+    connected: true,
+    results: merged.slice(0, 40),
+    google: keys.google,
+    yelp: keys.yelp,
+    query,
+    message: merged.length
+      ? `Live shop graph from ${networks.join(" + ")}. OSM stays on the Overpass sweep.`
+      : "Keys are set. Those APIs returned no rooftops in this radius.",
+    geocode,
+  };
 }

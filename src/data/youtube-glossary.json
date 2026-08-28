@@ -1095,7 +1095,7 @@
   {
     "id": "read-obd-code",
     "title": "Read a check-engine code with a cheap scanner",
-    "plainEnglish": "The light is a pointer, not a parts list. A $20–$80 OBD-II dongle plugs under the dash, usually above the driver’s left shin. You read P0xxx, write it down, then translate it — you do not clear it and hope. AutoShield’s /obd desk will read the same code you typed.",
+    "plainEnglish": "The light is a pointer, not a parts list. A $20–$80 OBD-II dongle plugs under the dash, usually above the driver’s left shin. You read P0xxx, write it down, then translate it — you do not clear it and hope. Open Hood’s /obd desk will read the same code you typed.",
     "difficulty": 1,
     "timeEstimate": "10 minutes",
     "toolsNeeded": [
@@ -1342,10 +1342,10 @@
       "Replace blades if the glass still smears after a full tank."
     ],
     "youtube": {
-      "videoId": "oeezwXQC-mc",
-      "title": "How to Replace Windshield Wipers on Your Car (Easy)",
-      "channel": "ChrisFix",
-      "whyThisVideo": "Wipers and washers are one visibility job. After you fill the tank, the ChrisFix blade swap is the other half."
+      "videoId": "",
+      "title": "How to fill windshield washer fluid reservoir",
+      "channel": "YouTube search",
+      "whyThisVideo": "Filling the blue jug is model-specific (cap location, winter mix). We will not reuse the wiper-blade clip as if it were a fill video."
     },
     "relatedSymptomIds": [
       "streaky-glass"
@@ -1361,7 +1361,7 @@
     "diySafe": true,
     "shopSentence": "Washer spray is weak. Please check fluid, hose, and nozzles before quoting a pump.",
     "askAtTheShop": "Ask them to show the hose on the tank. A $180 pump is last.",
-    "verified": true
+    "verified": false
   },
   {
     "id": "spark-plugs",

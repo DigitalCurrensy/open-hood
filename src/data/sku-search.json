@@ -1,0 +1,47 @@
+{
+  "disclaimer": "Search hrefs only. Not shelf count. Not TecDoc. Not a cart.",
+  "retailers": [
+    {
+      "id": "rockauto",
+      "name": "RockAuto",
+      "href": "https://www.rockauto.com/en/partsearch/?partnum={q}"
+    },
+    {
+      "id": "autozone",
+      "name": "AutoZone",
+      "href": "https://www.autozone.com/searchresult?searchText={q}"
+    },
+    {
+      "id": "oreilly",
+      "name": "O’Reilly",
+      "href": "https://www.oreillyauto.com/search?q={q}"
+    },
+    {
+      "id": "napa",
+      "name": "NAPA",
+      "href": "https://www.napaonline.com/en/search?text={q}"
+    }
+  ],
+  "extraQueries": [
+    { "id": "pads-ceramic", "label": "Ceramic brake pads", "q": "ceramic brake pads" },
+    { "id": "rotors", "label": "Brake rotors", "q": "brake rotors" },
+    { "id": "o2-upstream", "label": "Upstream O2 sensor", "q": "upstream oxygen sensor" },
+    { "id": "thermostat", "label": "Thermostat", "q": "engine thermostat" },
+    { "id": "pcv", "label": "PCV valve", "q": "PCV valve" },
+    { "id": "maf", "label": "MAF sensor", "q": "MAF sensor" },
+    { "id": "knock", "label": "Knock sensor", "q": "knock sensor" },
+    { "id": "coil", "label": "Ignition coil", "q": "ignition coil" },
+    { "id": "fuel-pump", "label": "Fuel pump", "q": "fuel pump" },
+    { "id": "purge", "label": "EVAP purge valve", "q": "EVAP purge valve" },
+    { "id": "tpms", "label": "TPMS sensor", "q": "TPMS sensor" },
+    { "id": "cv-axle", "label": "CV axle", "q": "CV axle" },
+    { "id": "radiator-hose", "label": "Radiator hose", "q": "radiator hose" },
+    { "id": "wheel-bearing", "label": "Wheel bearing", "q": "wheel bearing hub" },
+    { "id": "cabin-filter", "label": "Cabin air filter", "q": "cabin air filter" },
+    { "id": "oil-filter", "label": "Oil filter", "q": "oil filter" },
+    { "id": "serpentine", "label": "Serpentine belt", "q": "serpentine belt" },
+    { "id": "battery", "label": "12V battery", "q": "car battery" },
+    { "id": "wiper", "label": "Wiper blades", "q": "wiper blades" },
+    { "id": "coolant", "label": "Coolant", "q": "engine coolant" }
+  ]
+}

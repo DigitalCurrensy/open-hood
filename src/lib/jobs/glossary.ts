@@ -318,6 +318,11 @@ export const RO_TERMS: RoTerm[] = [
   },
 ];
 
+export function getRoTerm(slug: string): RoTerm | undefined {
+  const key = slug.trim().toLowerCase();
+  return RO_TERMS.find((term) => term.slug === key);
+}
+
 export function searchRoTerms(query: string): RoTerm[] {
   const q = query.trim().toLowerCase();
   if (!q) return RO_TERMS;

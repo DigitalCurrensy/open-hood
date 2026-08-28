@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { BuildsDesk } from "@/components/builds-desk";
+import { PageBrief } from "@/components/page-brief";
 import { PageHeader } from "@/components/page-header";
 
 export const metadata: Metadata = {
@@ -10,6 +11,7 @@ export const metadata: Metadata = {
 export default function Page() {
   return (
     <div className="space-y-6">
+      <PageBrief href="/builds" />
       <PageHeader kicker="Enthusiast binder" title="Build log">
         When one VIN is a lie — kit car, engine swap, or a chassis that no longer matches the door sticker.
       </PageHeader>

@@ -173,6 +173,16 @@ export function GuidesIndex() {
             </button>
           </p>
         ) : null}
+
+        <p className="mt-4 flex flex-wrap items-center gap-2 text-sm text-aluminum">
+          <span className="font-mono text-[10px] uppercase tracking-[0.22em]">Try</span>
+          <EmptyLink href="/guides/oil-change">oil-change</EmptyLink>
+          <EmptyLink href="/guides/cabin-filter">cabin-filter</EmptyLink>
+          <EmptyLink href="/guides?part=cabin-filter">?part=cabin-filter</EmptyLink>
+          <EmptyLink href="/guides?q=tpms">tpms</EmptyLink>
+          <EmptyLink href="/obd/P0420">P0420</EmptyLink>
+          <EmptyLink href="/directory/90210">90210</EmptyLink>
+        </p>
       </form>
 
       <p className="font-mono text-[11px] uppercase tracking-[0.22em] text-aluminum">
@@ -234,7 +244,8 @@ function EmptySearch({ q, part }: { q: string; part?: string }) {
         {part ? ` and part ${part}` : ""}. Try a part slug, drop a filter, or start from a family.
       </p>
       <ul className="mt-5 flex flex-wrap justify-center gap-2">
-        <EmptyLink href="/guides?q=oil">oil</EmptyLink>
+        <EmptyLink href="/guides/oil-change">oil-change</EmptyLink>
+        <EmptyLink href="/guides/cabin-filter">cabin-filter</EmptyLink>
         <EmptyLink href="/guides?part=cabin-filter">?part=cabin-filter</EmptyLink>
         <EmptyLink href="/guides?q=tpms">tpms</EmptyLink>
         <EmptyLink href="/guides">clear the board</EmptyLink>
@@ -266,6 +277,7 @@ function Chip({
   return (
     <button
       type="button"
+      aria-pressed={active}
       onClick={onClick}
       className={`rounded-sm px-2.5 py-1 font-mono text-[11px] uppercase tracking-[0.14em] ${
         active ? "bg-ticket text-ticket-ink" : "border border-white/10 text-aluminum hover:text-fluorescent"

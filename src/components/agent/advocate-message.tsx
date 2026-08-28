@@ -40,7 +40,9 @@ export function AdvocateBrief({
           <div className="flex flex-wrap items-baseline justify-between gap-2">
             <p className="font-mono text-[10px] uppercase tracking-[0.28em] text-cone">Advocate</p>
             <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-aluminum">
-              {streaming ? "Writing…" : reply?.engine === "gpt-4o" ? "gpt-4o" : "Bay rule book"}
+              {streaming
+                ? "Writing…"
+                : `${reply?.engine === "gpt-4o" ? "Advocate" : "Price book"} · ${reply?.readingLevel === "expert" ? "Expert" : "Beginner"}`}
             </p>
           </div>
           <div className="mt-2 space-y-3 text-sm leading-6 text-fluorescent">
@@ -49,7 +51,7 @@ export function AdvocateBrief({
             ))}
           </div>
           {reply?.scripts.length && !streaming ? <ScriptTicket scripts={reply.scripts} /> : null}
-          {reply && !streaming ? <ToolTickets tools={reply.tools} /> : null}
+          {reply && !streaming ? <ToolTickets tools={reply.tools ?? []} invocations={reply.invocations ?? []} /> : null}
           {reply && !streaming ? (
             <p className="mt-3 font-mono text-[10px] uppercase leading-5 tracking-[0.14em] text-aluminum">{reply.verify}</p>
           ) : null}

@@ -1,12 +1,21 @@
 "use client";
 
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import { ADVISOR_LINES } from "@/lib/jobs/desks";
 import { GlossaryDesk } from "@/app/jobs/_components/glossary-desk";
+import { SayTicket } from "@/app/jobs/_components/say-ticket";
 
 export function AdvisorDesk() {
   const [id, setId] = useState(ADVISOR_LINES[0].id);
   const line = ADVISOR_LINES.find((row) => row.id === id) ?? ADVISOR_LINES[0];
+  const script = useMemo(
+    () => [
+      `You wrote: "${line.writerSays}"`,
+      `The owner hears: ${line.ownerHears}`,
+      `Say this instead: ${line.better}`,
+    ],
+    [line],
+  );
 
   return (
     <div className="space-y-6">
@@ -32,6 +41,12 @@ export function AdvisorDesk() {
           <p className="mt-1 font-display text-2xl uppercase leading-none text-fluorescent">{line.better}</p>
         </article>
       </section>
+      <SayTicket
+        kicker="Counter script · not a booking"
+        title="Hand them this"
+        lines={script}
+        footnote="This desk rewrites the line. We do not book the bay or take a cut."
+      />
       <GlossaryDesk kicker="Decode the line you just wrote" />
     </div>
   );

@@ -1,17 +1,22 @@
-import { AGENT_VERIFY, type AgentImageKind, type AgentReply, type AgentVehicleContext, type AgentWireMessage } from "@/lib/agent/types";
+import {
+  detectFlush,
+  detectSymptom,
+  flushProxyLine,
+  hasQuoteShape,
+  uniqueCodes,
+} from "@/lib/agent/detect";
+import { AGENT_VERIFY, type AgentImageKind, type AgentReadingLevel, type AgentReply, type AgentVehicleContext, type AgentWireMessage } from "@/lib/agent/types";
 import { pickTools } from "@/lib/agent/tools";
 import { formatVehicleBrief, specsFromContext, thisVehicle, vehiclePhrase } from "@/lib/agent/vehicle";
 import { lookupDtc } from "@/lib/dtc";
 import { analyzeQuoteText } from "@/lib/quote";
 import { diagnoseSymptoms } from "@/lib/symptoms";
-import type { SymptomNoise, SymptomWhen } from "@/lib/types";
-
-const DTC_RE = /\b([PCBU][0-3][0-9A-Fa-f]{3})\b/gi;
 
 export function runAdvocateRules(input: {
   messages: AgentWireMessage[];
   vehicle?: AgentVehicleContext;
   hasVision: boolean;
+  readingLevel?: AgentReadingLevel;
 }): AgentReply {
   const last = [...input.messages].reverse().find((message) => message.role === "user");
   const prior = [...input.messages]
@@ -45,47 +50,56 @@ export function runAdvocateRules(input: {
   );
 
   const photoNote = photoLine(imageKind, input.hasVision, Boolean(text));
+  const readingLevel = input.readingLevel ?? "beginner";
 
   if (codes.length) {
-    return withMeta(dtcBrief(codes, car, input.vehicle), vision, photoNote);
+    return withMeta(dtcBrief(codes, car, input.vehicle, readingLevel), vision, photoNote, readingLevel);
   }
 
   if (flush || (looksLikeQuote && /flush|cleaner|service|filter|labor|rotor|pad/i.test(text))) {
-    return withMeta(quoteOrFlushBrief(text, flush, car, specs, input.vehicle), vision, photoNote);
+    return withMeta(quoteOrFlushBrief(text, flush, car, specs, input.vehicle), vision, photoNote, readingLevel);
   }
 
   if (imageKind === "quote" && !text) {
-    return withMeta(quotePhotoOnly(car, input.hasVision), vision, photoNote);
+    return withMeta(quotePhotoOnly(car, input.hasVision), vision, photoNote, readingLevel);
   }
 
   if (symptom) {
-    return withMeta(symptomBrief(symptom, car, specs), vision, photoNote);
+    return withMeta(symptomBrief(symptom, car, specs), vision, photoNote, readingLevel);
   }
 
   if (imageKind === "leak") {
-    return withMeta(leakBrief(car), vision, photoNote);
+    return withMeta(leakBrief(car), vision, photoNote, readingLevel);
   }
 
   if (imageKind === "light") {
-    return withMeta(lightBrief(car), vision, photoNote);
+    return withMeta(lightBrief(car, readingLevel), vision, photoNote, readingLevel);
   }
 
   if (dealer) {
-    return withMeta(dealerBrief(car, input.vehicle), vision, photoNote);
+    return withMeta(dealerBrief(car, input.vehicle), vision, photoNote, readingLevel);
   }
 
   if (wantsScript) {
-    return withMeta(genericScript(car), vision, photoNote);
+    return withMeta(genericScript(car), vision, photoNote, readingLevel);
   }
 
-  return withMeta(generalBrief(text, car, input.vehicle), vision, photoNote);
+  return withMeta(generalBrief(text, car, input.vehicle, readingLevel), vision, photoNote, readingLevel);
 }
 
-function withMeta(reply: Omit<AgentReply, "engine" | "vision" | "verify">, vision: AgentReply["vision"], photoNote: string): AgentReply {
+function withMeta(
+  reply: Omit<AgentReply, "engine" | "vision" | "verify" | "readingLevel" | "facts" | "invocations">,
+  vision: AgentReply["vision"],
+  photoNote: string,
+  readingLevel: AgentReadingLevel,
+): AgentReply {
   const text = photoNote ? `${photoNote}\n\n${reply.text}` : reply.text;
   return {
     ...reply,
     text,
+    facts: [],
+    invocations: [],
+    readingLevel,
     engine: "rules",
     vision,
     verify: AGENT_VERIFY,
@@ -102,59 +116,12 @@ function photoLine(kind: AgentImageKind | undefined, hasVision: boolean, hasText
   return `I cannot see that ${label} photo in this bay. Describe it in a sentence (color, where it is, any printed prices or codes) and I will work from your eyes.`;
 }
 
-function uniqueCodes(text: string): string[] {
-  const found = [...text.matchAll(DTC_RE)].map((match) => match[1].toUpperCase());
-  return [...new Set(found)];
-}
-
-function detectFlush(text: string): "transmission" | "fuel" | "coolant" | "brake" | "power-steering" | "unknown" | null {
-  if (!/flush|fuel[- ]system clean|injector clean|power[- ]steer/i.test(text)) return null;
-  if (/trans/i.test(text)) return "transmission";
-  if (/fuel|injector/i.test(text)) return "fuel";
-  if (/coolant|radiator/i.test(text)) return "coolant";
-  if (/brake fluid|brake flush/i.test(text)) return "brake";
-  if (/power steer/i.test(text)) return "power-steering";
-  if (/\bflush\b/i.test(text)) return "unknown";
-  return null;
-}
-
-function hasQuoteShape(text: string): boolean {
-  if (/\$\s*\d/.test(text)) return true;
-  if (/\b(quoted|estimate|repair order|\bRO\b|line item|they want)\b/i.test(text)) return true;
-  return text.split(/\r?\n/).filter((line) => line.trim().length > 3).length >= 3 && /\d/.test(text);
-}
-
-function detectSymptom(
-  text: string,
-  imageKind?: AgentImageKind,
-): { noise: SymptomNoise; when: SymptomWhen; extras: { warningLight: boolean; leak: boolean; pull: boolean } } | null {
-  const leak = imageKind === "leak" || /\bleak|puddle|drip|steam|hiss\b/i.test(text);
-  const light = imageKind === "light" || /\bcheck engine|CEL\b|warning light|dash light|MIL\b/i.test(text);
-  const pull = /\bpull[s]?\b|drifts|wanders/i.test(text);
-
-  let noise: SymptomNoise | null = null;
-  if (/\bsqueal|squeak|screech\b/i.test(text)) noise = "squeal";
-  else if (/\bgrind/i.test(text)) noise = "grinding";
-  else if (/\bclick/i.test(text)) noise = "clicking";
-  else if (/\bthump|clunk\b/i.test(text)) noise = "thumping";
-  else if (/\brumble|drone|hum\b/i.test(text)) noise = "rumble";
-  else if (/\bhiss|whoosh\b/i.test(text) || leak) noise = "hiss";
-  else if (light || pull) noise = "none";
-
-  if (!noise) return null;
-
-  let when: SymptomWhen = "always";
-  if (/\bbrak/i.test(text)) when = "braking";
-  else if (/\bturn|corner/i.test(text)) when = "turning";
-  else if (/\baccel|throttle|gas pedal/i.test(text)) when = "accelerating";
-  else if (/\bidle|parked|stopped\b/i.test(text)) when = "idling";
-  else if (/\bhighway|freeway|speed\b/i.test(text)) when = "highway";
-  else if (/\bcold start|morning|startup|start[- ]up\b/i.test(text)) when = "cold-start";
-
-  return { noise, when, extras: { warningLight: light, leak, pull } };
-}
-
-function dtcBrief(codes: string[], car: string, vehicle?: AgentVehicleContext): Omit<AgentReply, "engine" | "vision" | "verify"> {
+function dtcBrief(
+  codes: string[],
+  car: string,
+  vehicle?: AgentVehicleContext,
+  readingLevel: AgentReadingLevel = "beginner",
+): Omit<AgentReply, "engine" | "vision" | "verify" | "readingLevel" | "facts" | "invocations"> {
   const blocks = codes.slice(0, 3).map((code) => {
     const hit = lookupDtc(code);
     if (!hit.valid) {
@@ -188,10 +155,12 @@ function dtcBrief(codes: string[], car: string, vehicle?: AgentVehicleContext): 
     text: [
       `A code is a pointer, not a repair order. On ${car}, ${primary} does not mean "buy the expensive part first."`,
       blocks.join("\n\n"),
-      "If the light is flashing, that is a misfire-while-driving warning — ease it to a shop, do not floor it. A steady amber light is usually 'soon,' not 'leave it on the shoulder,' unless the car is overheating, leaking, or will not stay running.",
+      readingLevel === "expert"
+        ? "Flashing MIL is a misfire-in-progress. Steady amber is stored/pending. Ask for freeze-frame (RPM, load, STFT/LTFT, ECT) and OEM vs aftermarket part numbers before a converter, coil pack, or module."
+        : "If the light is flashing, that is a misfire-while-driving warning — ease it to a shop, do not floor it. A steady amber light is usually 'soon,' not 'leave it on the shoulder,' unless the car is overheating, leaking, or will not stay running.",
     ].join("\n\n"),
     scripts: scripts.slice(0, 4),
-    tools: pickTools("/obd", "/symptoms", "/quote"),
+    tools: pickTools("/obd", "/symptoms", "/quote", "/expert"),
   };
 }
 
@@ -201,7 +170,7 @@ function quoteOrFlushBrief(
   car: string,
   specs: ReturnType<typeof specsFromContext>,
   vehicle?: AgentVehicleContext,
-): Omit<AgentReply, "engine" | "vision" | "verify"> {
+): Omit<AgentReply, "engine" | "vision" | "verify" | "readingLevel" | "facts" | "invocations"> {
   const proxy = flush ? `${text}\n${flushProxyLine(flush)}` : text;
   const analysis = analyzeQuoteText(proxy || "Cabin air filter $85", specs);
   const mapped = analysis.flaggedItems.filter((item) => item.item !== "Unparsed estimate");
@@ -236,21 +205,6 @@ function quoteOrFlushBrief(
   };
 }
 
-function flushProxyLine(flush: NonNullable<ReturnType<typeof detectFlush>>): string {
-  switch (flush) {
-    case "fuel":
-      return "Fuel system flush $199";
-    case "coolant":
-      return "Coolant flush $189";
-    case "brake":
-      return "Brake fluid flush $149";
-    case "power-steering":
-      return "Power steering flush $149";
-    default:
-      return "Transmission flush $249";
-  }
-}
-
 function flushTalking(
   flush: ReturnType<typeof detectFlush>,
   car: string,
@@ -272,7 +226,7 @@ function flushTalking(
   return `A pressurized transmission flush is not the same as a drain-and-fill. Many factories specify drain-and-fill — or a sealed unit — on ${car}${miles}. The page in the maintenance schedule decides, not the service writer's pad. I will not invent that page.`;
 }
 
-function quotePhotoOnly(car: string, hasVision: boolean): Omit<AgentReply, "engine" | "vision" | "verify"> {
+function quotePhotoOnly(car: string, hasVision: boolean): Omit<AgentReply, "engine" | "vision" | "verify" | "readingLevel" | "facts" | "invocations"> {
   const lead = hasVision
     ? `You attached a repair-order photo for ${car}. I will only mark lines I can actually read.`
     : `You attached a repair-order photo for ${car}. Paste the lines you can read: part name and price, one per line.`;
@@ -295,7 +249,7 @@ function symptomBrief(
   symptom: NonNullable<ReturnType<typeof detectSymptom>>,
   car: string,
   specs: ReturnType<typeof specsFromContext>,
-): Omit<AgentReply, "engine" | "vision" | "verify"> {
+): Omit<AgentReply, "engine" | "vision" | "verify" | "readingLevel" | "facts" | "invocations"> {
   const findings = diagnoseSymptoms(symptom.noise, symptom.when, symptom.extras, specs);
   const body = findings
     .map((finding) => {
@@ -321,7 +275,7 @@ function symptomBrief(
   };
 }
 
-function leakBrief(car: string): Omit<AgentReply, "engine" | "vision" | "verify"> {
+function leakBrief(car: string): Omit<AgentReply, "engine" | "vision" | "verify" | "readingLevel" | "facts" | "invocations"> {
   return {
     text: [
       `Color and location beat a guess on ${car}. Green, orange, or pink is often coolant. Red can be transmission or power steering. Brown-black is oil. Clear and oily near the condenser can be A/C dye. Water under the A/C drip is usually just condensate.`,
@@ -336,11 +290,13 @@ function leakBrief(car: string): Omit<AgentReply, "engine" | "vision" | "verify"
   };
 }
 
-function lightBrief(car: string): Omit<AgentReply, "engine" | "vision" | "verify"> {
+function lightBrief(car: string, readingLevel: AgentReadingLevel = "beginner"): Omit<AgentReply, "engine" | "vision" | "verify" | "readingLevel" | "facts" | "invocations"> {
   return {
     text: [
       `A light on ${car} is a color and a behavior, not a part. Amber check-engine is usually stored codes. Flashing check-engine is a misfire in progress. Red oil or temp is 'shut it down and check the gauge / dipstick' — I am not diagnosing a spun bearing from a photo.`,
-      "Any $20 OBD-II scanner will print a five-character code. Type that code here or on the OBD desk. Do not authorize a catalytic converter, a coil pack, or a 'tune-up' from the icon alone.",
+      readingLevel === "expert"
+        ? "Read the five-character code and the freeze-frame. Do not authorize a catalytic converter, coil pack, or module from the icon."
+        : "Any $20 OBD-II scanner will print a five-character code. Type that code here or on the OBD desk. Do not authorize a catalytic converter, a coil pack, or a tune-up from the icon alone.",
     ].join("\n\n"),
     scripts: [
       "Please read the codes and print the freeze-frame before you quote a part.",
@@ -350,7 +306,7 @@ function lightBrief(car: string): Omit<AgentReply, "engine" | "vision" | "verify
   };
 }
 
-function dealerBrief(car: string, vehicle?: AgentVehicleContext): Omit<AgentReply, "engine" | "vision" | "verify"> {
+function dealerBrief(car: string, vehicle?: AgentVehicleContext): Omit<AgentReply, "engine" | "vision" | "verify" | "readingLevel" | "facts" | "invocations"> {
   const vinLine = vehicle?.vin
     ? `This VIN (${vehicle.vin}) is what the dealer uses for campaigns. Ask them to run it — not a year/model guess.`
     : "Stamp the VIN on the bay first so a dealer can run campaigns against the actual car.";
@@ -366,11 +322,11 @@ function dealerBrief(car: string, vehicle?: AgentVehicleContext): Omit<AgentRepl
       "If I have this done at an independent, which warranty item do I lose? Please show me that in writing.",
       "Do you need factory software for this VIN, or a quality scan tool? I am deciding on capability, not a logo.",
     ],
-    tools: pickTools("/directory", "/guides", "/quote"),
+    tools: pickTools("/directory", "/guides", "/quote", "/recalls"),
   };
 }
 
-function genericScript(car: string): Omit<AgentReply, "engine" | "vision" | "verify"> {
+function genericScript(car: string): Omit<AgentReply, "engine" | "vision" | "verify" | "readingLevel" | "facts" | "invocations"> {
   return {
     text: [
       `You can walk to the window with three sentences and a closed wallet. On ${car}, you are buying a test and a number, not a feeling.`,
@@ -385,7 +341,12 @@ function genericScript(car: string): Omit<AgentReply, "engine" | "vision" | "ver
   };
 }
 
-function generalBrief(text: string, car: string, vehicle?: AgentVehicleContext): Omit<AgentReply, "engine" | "vision" | "verify"> {
+function generalBrief(
+  text: string,
+  car: string,
+  vehicle?: AgentVehicleContext,
+  readingLevel: AgentReadingLevel = "beginner",
+): Omit<AgentReply, "engine" | "vision" | "verify" | "readingLevel" | "facts" | "invocations"> {
   const hook = text
     ? `I heard you. On ${car}, I will not invent a part from a short note.`
     : `I am in your corner on ${car} — not the shop's.`;
@@ -393,7 +354,9 @@ function generalBrief(text: string, car: string, vehicle?: AgentVehicleContext):
     text: [
       hook,
       formatVehicleBrief(vehicle),
-      "Tell me one of these and I can write the window script: the line items they quoted (part + price), the sound and when it happens, or the five-character code on any $20 scanner.",
+      readingLevel === "expert"
+        ? "Give me the RO lines (part + price), the DTC + freeze-frame, or the noise and operating condition. I will call the matching bay tool."
+        : "Tell me one of these and I can write the window script: the line items they quoted (part + price), the sound and when it happens, or the five-character code on any $20 scanner.",
       "Until then, authorize diagnosis with a written conclusion — not a bundled menu.",
     ].join("\n\n"),
     scripts: [

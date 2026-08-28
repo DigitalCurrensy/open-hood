@@ -1,5 +1,5 @@
-import { classifyOsmTags } from "@/lib/directory/filters";
-import { DIRECTORY_USER_AGENT, osmHeaders } from "@/lib/directory/http";
+import { classifyOsmTags, websiteHref } from "@/lib/directory/filters";
+import { DIRECTORY_REVALIDATE, DIRECTORY_USER_AGENT, osmHeaders } from "@/lib/directory/http";
 import type { DirectoryPlace } from "@/lib/directory/types";
 
 interface OverpassElement {
@@ -62,7 +62,7 @@ function placeFromElement(element: OverpassElement): DirectoryPlace | null {
     type,
     address: formatAddress(tags),
     phone: tags.phone || tags["contact:phone"] || "",
-    website: tags.website || tags["contact:website"] || "",
+    website: websiteHref(tags.website || tags["contact:website"] || "") ?? "",
     hours: tags.opening_hours || "",
     lat: lat as number,
     lon: lon as number,
@@ -79,7 +79,8 @@ async function postOverpass(endpoint: string, query: string): Promise<DirectoryP
     },
     body: `data=${encodeURIComponent(query)}`,
     signal: AbortSignal.timeout(10_000),
-    cache: "no-store",
+    cache: "force-cache",
+    next: { revalidate: DIRECTORY_REVALIDATE },
   });
   if (!response.ok) {
     throw new Error(`Overpass ${response.status}`);

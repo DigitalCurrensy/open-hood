@@ -41,24 +41,27 @@ async function chatJson(messages: unknown[]): Promise<Record<string, unknown>> {
 
   if (!response.ok) {
     const detail = await response.text();
-    throw new Error(`OpenAI error ${response.status}: ${detail.slice(0, 280)}`);
+    throw new Error(`Photo reading failed (${response.status}): ${detail.slice(0, 280)}`);
   }
 
   const payload = (await response.json()) as {
     choices?: Array<{ message?: { content?: string } }>;
   };
   const content = payload.choices?.[0]?.message?.content;
-  if (!content) throw new Error("OpenAI returned an empty message");
+  if (!content) throw new Error("Photo reading returned nothing we could use.");
   return JSON.parse(content) as Record<string, unknown>;
 }
 
-export async function extractVinFromImage(imageBase64: string, mimeType: string): Promise<string> {
+export async function extractVinPlateFromImage(
+  imageBase64: string,
+  mimeType: string,
+): Promise<{ vin: string; plate: string; notes: string }> {
   const dataUrl = `data:${mimeType};base64,${imageBase64}`;
   const json = await chatJson([
     {
       role: "system",
       content:
-        "Read a US license plate or a VIN (dashboard plate, door jamb sticker, or barcode area). Return JSON {\"vin\": string, \"plate\": string|null, \"notes\": string}. VIN must be 17 characters if visible. Use empty string if unreadable.",
+        "Read a US license plate or a VIN (dashboard plate, door jamb sticker, or barcode area). Return JSON {\"vin\": string, \"plate\": string|null, \"notes\": string}. VIN must be 17 characters if visible. Use empty string if unreadable. Do not invent a VIN.",
     },
     {
       role: "user",
@@ -72,10 +75,50 @@ export async function extractVinFromImage(imageBase64: string, mimeType: string)
   const vin = String(json.vin ?? "")
     .replace(/[^A-Za-z0-9]/g, "")
     .toUpperCase();
-  if (vin.length !== 17) {
-    throw new Error(String(json.notes || "Could not read a 17-character VIN from that photo."));
+  const plate = String(json.plate ?? "")
+    .replace(/[^A-Za-z0-9]/g, "")
+    .toUpperCase();
+  return {
+    vin: vin.length === 17 ? vin : "",
+    plate,
+    notes: String(json.notes ?? ""),
+  };
+}
+
+export async function extractVinFromImage(imageBase64: string, mimeType: string): Promise<string> {
+  const read = await extractVinPlateFromImage(imageBase64, mimeType);
+  if (read.vin.length !== 17) {
+    throw new Error(read.notes || "Could not read a 17-character VIN from that photo.");
   }
-  return vin;
+  return read.vin;
+}
+
+export async function extractQuoteTextFromImage(
+  imageBase64: string,
+  mimeType: string,
+): Promise<{ text: string; notes: string }> {
+  const dataUrl = `data:${mimeType};base64,${imageBase64}`;
+  const json = await chatJson([
+    {
+      role: "system",
+      content:
+        "Read a US auto-repair estimate or RO photo. Return JSON {\"text\": string, \"notes\": string}. text is the line items exactly as printed — part names, labor, prices. One line per item. Never invent a price you cannot see. If handwriting is unreadable, say so in notes and leave that line out.",
+    },
+    {
+      role: "user",
+      content: [
+        { type: "text", text: "Transcribe the estimate lines." },
+        { type: "image_url", image_url: { url: dataUrl } },
+      ],
+    },
+  ]);
+
+  const text = String(json.text ?? "")
+    .split("\n")
+    .map((line) => line.trim())
+    .filter((line) => line.length > 2)
+    .join("\n");
+  return { text, notes: String(json.notes ?? "") };
 }
 
 export async function analyzeQuoteWithVision(input: {

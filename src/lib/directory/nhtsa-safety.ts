@@ -1,4 +1,4 @@
-import type { NhtsaComplaintSummary, NhtsaRatingRow } from "@/lib/directory/types";
+import type { NhtsaComplaintSummary, NhtsaRatingRow, NhtsaRecallSummary } from "@/lib/directory/types";
 
 interface ComplaintRow {
   crash?: boolean;
@@ -114,4 +114,31 @@ export async function fetchSafetyRatings(
   );
 
   return details.filter((row): row is NhtsaRatingRow => Boolean(row));
+}
+
+export async function fetchRecallSummary(
+  year: string,
+  make: string,
+  model: string,
+): Promise<NhtsaRecallSummary> {
+  const empty: NhtsaRecallSummary = { count: 0, campaigns: [] };
+  if (!year || !make || !model) return empty;
+
+  const params = new URLSearchParams({ make, model, modelYear: year });
+  const response = await fetch(`https://api.nhtsa.gov/recalls/recallsByVehicle?${params.toString()}`, {
+    signal: AbortSignal.timeout(12_000),
+    next: { revalidate: 3600 },
+  });
+  if (!response.ok) return empty;
+
+  const payload = (await response.json()) as {
+    Count?: number;
+    count?: number;
+    results?: { NHTSACampaignNumber?: string }[];
+  };
+  const rows = payload.results ?? [];
+  return {
+    count: payload.Count ?? payload.count ?? rows.length,
+    campaigns: rows.map((row) => row.NHTSACampaignNumber ?? "").filter(Boolean).slice(0, 5),
+  };
 }

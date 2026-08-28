@@ -1,0 +1,119 @@
+.finder-stripe {
+  background:
+    linear-gradient(90deg, #e85d04 0 7px, transparent 7px),
+    var(--bay-2);
+}
+
+.finder-rail {
+  position: relative;
+  padding-top: 1.25rem;
+}
+
+.finder-rail::before {
+  content: "";
+  position: absolute;
+  top: 0.35rem;
+  right: 0.75rem;
+  left: 0.75rem;
+  height: 7px;
+  border-radius: 999px;
+  background: linear-gradient(180deg, #6b736c 0%, #2a3330 55%, #1a211e 100%);
+  box-shadow: 0 2px 0 rgba(0, 0, 0, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.18);
+}
+
+.finder-bin {
+  position: relative;
+  background:
+    repeating-linear-gradient(
+      0deg,
+      transparent 0 23px,
+      rgba(35, 24, 10, 0.06) 23px 24px
+    ),
+    linear-gradient(180deg, #f3ead4 0%, #e6d7b4 100%);
+  color: #23180a;
+  box-shadow:
+    0 16px 28px rgba(0, 0, 0, 0.35),
+    2px 3px 0 #b9a57a,
+    inset 0 1px 0 rgba(255, 255, 255, 0.55);
+}
+
+.finder-bin::after {
+  content: "";
+  position: absolute;
+  top: -0.55rem;
+  left: 50%;
+  width: 14px;
+  height: 14px;
+  border: 2px solid #23180a;
+  border-radius: 999px;
+  background: radial-gradient(circle at 50% 50%, #0c1210 0 4px, #d7c49a 5px);
+  transform: translateX(-50%);
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.35);
+}
+
+.finder-bin-hold {
+  box-shadow:
+    0 16px 28px rgba(0, 0, 0, 0.35),
+    2px 3px 0 #8a2a22,
+    inset 0 0 0 2px #b42318,
+    inset 0 1px 0 rgba(255, 255, 255, 0.45);
+}
+
+.finder-hold-stamp {
+  position: absolute;
+  top: 2.4rem;
+  right: 0.7rem;
+  rotate: -12deg;
+  border: 3px solid #b42318;
+  padding: 0.15rem 0.45rem;
+  font-family: var(--font-display), sans-serif;
+  font-size: 1.15rem;
+  letter-spacing: 0.08em;
+  line-height: 1;
+  color: #b42318;
+  text-transform: uppercase;
+  opacity: 0.88;
+  pointer-events: none;
+}
+
+.finder-chip:has(:checked),
+.finder-chip[aria-pressed="true"] {
+  background: var(--ticket);
+  color: var(--ticket-ink);
+  border-color: transparent;
+}
+
+.finder-retailer {
+  display: inline-flex;
+  align-items: center;
+  border: 1px dashed #23180a;
+  padding: 0.2rem 0.5rem;
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #23180a;
+  text-decoration: none;
+}
+
+.finder-retailer:hover {
+  background: #23180a;
+  color: #f3d36b;
+}
+
+.finder-retailer[data-hold="true"] {
+  opacity: 0.55;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .finder-hold-stamp {
+    rotate: 0deg;
+  }
+}
+
+@media print {
+  .finder-bin,
+  .finder-stripe {
+    box-shadow: none;
+  }
+}

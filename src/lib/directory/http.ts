@@ -1,11 +1,15 @@
-export const DIRECTORY_USER_AGENT =
-  "AutoShieldAI/0.1 (automotive-directory; https://github.com/adrianswish/autoshield-ai)";
+import { BRAND } from "@/lib/brand";
+
+export const DIRECTORY_USER_AGENT = `OpenHood/0.1 (automotive-directory; ${BRAND.githubRepo})`;
+
+/** OSM Overpass + Nominatim: one hour. Timeout still falls back to ZIP samples. */
+export const DIRECTORY_REVALIDATE = 3600;
 
 export function osmHeaders(extra?: HeadersInit): HeadersInit {
   return {
     Accept: "application/json",
     "User-Agent": DIRECTORY_USER_AGENT,
-    Referer: "https://autoshield.ai/directory",
+    Referer: BRAND.githubRepo,
     ...extra,
   };
 }
@@ -19,7 +23,9 @@ export async function fetchJson<T>(
     ...rest,
     headers: { ...osmHeaders(rest.headers), ...(rest.headers ?? {}) },
     signal: AbortSignal.timeout(timeoutMs),
-    next: revalidate === undefined ? undefined : { revalidate },
+    ...(revalidate === undefined
+      ? {}
+      : { cache: "force-cache" as const, next: { revalidate } }),
   });
   if (!response.ok) {
     throw new Error(`${new URL(url).host} returned ${response.status}`);

@@ -1,5 +1,7 @@
 "use client";
 
+import { BayRecoveryNav } from "@/components/bay-recovery-nav";
+
 export default function Error({
   error,
   reset,
@@ -19,6 +21,7 @@ export default function Error({
       >
         Retry
       </button>
+      <BayRecoveryNav />
     </div>
   );
 }

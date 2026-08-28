@@ -1,0 +1,1054 @@
+[
+  {
+    "id": "pre-shop",
+    "slug": "pre-shop",
+    "stamp": "Pre-shop",
+    "title": "Pre-shop visit",
+    "kicker": "Beginner script + genius measurements",
+    "plainEnglish": "Walk in with one sentence, one code if the light is on, and a list of numbers you will ask for. “They’re due” is not a reading.",
+    "minutes": 15,
+    "audience": "owner",
+    "scenario": "You have a noise, a light, or a quote sitting on the kitchen table. You are about to stand at the writer’s window. This card is what you finish before you leave the driveway.",
+    "dummySteps": [
+      {
+        "id": "vin",
+        "title": "Write the VIN",
+        "do": "17 characters from the windshield or the driver’s door sticker. Photo both if they disagree. Put it in your notes app.",
+        "say": "This is the VIN on the car I drove in. Please put it on the RO header."
+      },
+      {
+        "id": "sentence",
+        "title": "One sentence for the writer",
+        "do": "When it happens, speed, weather, how long, what you already tried. “Check brakes” is how you buy a full MPI you did not ask for.",
+        "say": "Squeal in the last two seconds of a stop, city speeds, dry pavement, two weeks. No pull. Pedal still firm."
+      },
+      {
+        "id": "code",
+        "title": "If the light is on, write the code first",
+        "do": "Any $20 scanner. Translate it on /obd or /jobs/obd before you authorize a part. Pending and permanent matter — not just the light.",
+        "say": "I already have the code. I want the freeze-frame and a test, not a parts catalog."
+      },
+      {
+        "id": "measure",
+        "title": "Decide which millimeters you will ask for",
+        "do": "Pads, rotor discard, tread 32nds, cold PSI, battery volts. Pick the ones that match the concern. Write them on this card.",
+        "say": "Please write the measured number next to the line. I will not authorize on the word due."
+      },
+      {
+        "id": "otd",
+        "title": "Ask for out-the-door before they start",
+        "do": "Labor + parts + shop supplies + tax. A range is fine. Silence is not a price. Diagnosis can be a separate authorization.",
+        "say": "What is the not-to-exceed if you only diagnose? Call me before any extra line."
+      },
+      {
+        "id": "old-part",
+        "title": "Old parts ride home or get a photo",
+        "do": "Cores and hazardous waste get a photo. Everything else can go in the trunk. If they say they tossed it, that is a problem.",
+        "say": "I want the old part in a bag or a photo of the core tag."
+      }
+    ],
+    "geniusNotes": [
+      {
+        "id": "pad-mm",
+        "label": "Pad lining",
+        "unit": "mm",
+        "meaning": "New friction material is often 10–12 mm. Many shops start the replace talk at 3–4 mm. Wear indicators usually squeal around 2–3 mm remaining. Metal-on-metal means the lining is gone — that is a different ticket than a squeal."
+      },
+      {
+        "id": "rotor-min",
+        "label": "Rotor discard",
+        "unit": "mm",
+        "meaning": "The hat is stamped MIN TH or a discard thickness. A tech with a mic writes the measured face vs that stamp. “They have grooves” is not a thickness. Pedal pulse is often thickness variation (DTV), measured, not felt with a fingernail."
+      },
+      {
+        "id": "tread",
+        "label": "Tread depth",
+        "unit": "32nds",
+        "meaning": "New all-seasons are often 10/32–11/32. Wet stopping falls off hard around 4/32. Wear bars are 2/32 — legal in many states, not a rain tire. Date code on the sidewall is week/year; age matters even with tread left."
+      },
+      {
+        "id": "psi",
+        "label": "Cold PSI",
+        "unit": "PSI",
+        "meaning": "Door sticker, not the sidewall max. Check cold. TPMS often wakes around 25% under placard. “I filled them” without the number is how you buy an alignment you did not need."
+      },
+      {
+        "id": "freeze",
+        "label": "Freeze-frame",
+        "unit": "DTC snapshot",
+        "meaning": "The PCM stores RPM, load, mph, coolant temp, and fuel trims when the code set. A P0420 at 210 °F and 65 mph is a different story than the same code at 90 °F in the driveway. Ask them to print it."
+      }
+    ],
+    "script": [
+      "Here is the VIN and one sentence for the concern. Please put both on the RO.",
+      "I want measured numbers — millimeters, 32nds, PSI, or the freeze-frame — before I authorize a part.",
+      "Diagnosis can be its own line. Call or text the new total before any extra work."
+    ],
+    "dont": [
+      "Do not say “do whatever it needs.” That is a blank check.",
+      "Do not authorize from a voicemail that only says “they’re due.”",
+      "Do not skip the code because the writer already “knows what it is.”"
+    ],
+    "links": [
+      { "href": "/agent", "stamp": "Talk", "label": "Advocate", "why": "Ask the bay to turn the sentence into questions before you drive over." },
+      { "href": "/jobs/owner", "stamp": "Owner", "label": "Owner desk", "why": "The same confidence checklist, tick-by-tick." },
+      { "href": "/mechanic-mode", "stamp": "Script", "label": "Counter script", "why": "Printable three-line copy if this car is already identified." },
+      { "href": "/quote", "stamp": "Quote", "label": "Quote defense", "why": "Paste the RO when they hand you paper." },
+      { "href": "/guides/talk-to-mechanic", "stamp": "How-to", "label": "Talk to the shop", "why": "Beginner-friendly walk-through of the window." },
+      { "href": "/directory", "stamp": "Map", "label": "Directory", "why": "Rooftops near you. We do not book the stall." }
+    ],
+    "relatedGuides": ["talk-to-mechanic", "reading-an-ro"],
+    "relatedJobs": ["/jobs/owner", "/jobs/advisor"],
+    "relatedTsb": ["takata-accord-2003"]
+  },
+  {
+    "id": "used-ppi",
+    "slug": "used-ppi",
+    "stamp": "PPI",
+    "title": "Used-car 30-minute PPI",
+    "kicker": "A walk-around before money moves",
+    "plainEnglish": "Thirty minutes will not replace a lift inspection. It will catch the lies you can still walk away from: mismatched tires, a cluster full of lamps, a wet bay, and a VIN that does not match the ad.",
+    "minutes": 30,
+    "audience": "buyer",
+    "scenario": "Private party, dealer lot, or a “as-is” Facebook car. You have a half hour of daylight and a phone. You are not a licensed inspector. You are building a folder so a shop — or you — can say no.",
+    "dummySteps": [
+      {
+        "id": "walk",
+        "title": "Four corners, both sides, the roof",
+        "do": "Stand back. Gaps, height, overspray, tape lines, a rocker that does not match. Photo front and rear three-quarter in the same light.",
+        "say": "I am photographing the car as it sits. I am not accusing you of a wreck. I am keeping a file."
+      },
+      {
+        "id": "identity",
+        "title": "VIN, door sticker, plate, odometer",
+        "do": "Windshield VIN vs door sticker vs the ad. All 17 characters readable. Cluster miles with the key on. If two VINs disagree, you are done.",
+        "say": "The ad VIN and this windshield have to be the same 17."
+      },
+      {
+        "id": "tires",
+        "title": "All four tires + date codes",
+        "do": "Tread close-up and the DOT week/year on each sidewall. Mismatched brands or a 2018 tire next to a 2024 tire is a story. Spare too.",
+        "say": "I want the date codes in the folder even if the tread looks fine."
+      },
+      {
+        "id": "lamps",
+        "title": "Cluster lamps: key on, then running",
+        "do": "Key on, engine off — watch the bulb check. Then running. CEL, ABS, SRS, TPMS, 4WD. A “I just cleared it” is a walk-away unless they scan it in front of you.",
+        "say": "Please turn the key and leave it so I can see the lamps. Then start it."
+      },
+      {
+        "id": "scan",
+        "title": "Scan screen, not a thumbs-up",
+        "do": "Photo the tool’s code list: stored, pending, permanent. A green light on a cheap reader is not a PPI. Translate anything you see on /obd.",
+        "say": "I need a photo of the code list, including pending. I do not accept ‘it passed.’"
+      },
+      {
+        "id": "wet-bay",
+        "title": "Engine bay wet vs dry + a short drive",
+        "do": "Whole bay, then the wet spot. Battery age if the sticker is there. Drive it: cold start, a hard stop, a 40 mph sweep for a shake. If they will not let you drive it, that is data.",
+        "say": "I need a drive, not a start-in-the-spot. If the lift is free later, I will pay a shop for the underside."
+      }
+    ],
+    "geniusNotes": [
+      {
+        "id": "dot",
+        "label": "DOT date code",
+        "unit": "week/year",
+        "meaning": "The last four digits on the sidewall are week and year (2319 = 23rd week of 2019). A tire can have 8/32 and still be a six-year-old carcass. Many shops start the replace talk at six years regardless of tread."
+      },
+      {
+        "id": "srs",
+        "label": "SRS lamp",
+        "unit": "on/off",
+        "meaning": "An airbag lamp after the bulb check is not a fuse. On a 2000s Honda, run the VIN for Takata before you fall in love with the paint. Unused passenger inflators sit for decades and then fail on a hit."
+      },
+      {
+        "id": "permanent-dtc",
+        "label": "Permanent codes",
+        "unit": "DTC",
+        "meaning": "A permanent DTC survives a clear until the monitor runs clean. That is why “I reset it this morning” still shows on a real scan. Pending codes are the early warning. Photo the screen."
+      },
+      {
+        "id": "gaps",
+        "label": "Panel gaps",
+        "unit": "mm / eyeball",
+        "meaning": "You do not need a paint meter for a first pass. A headlight that does not match, a trunk that sits high, overspray in a door jamb — those are accident tells. A shop PPI with a lift still wins if the number is large."
+      }
+    ],
+    "script": [
+      "VIN on the glass, VIN on the sticker, VIN in the ad — same 17 or I am leaving.",
+      "I want a photo of the scan list and the cluster with the key on. A thumbs-up is not a scan.",
+      "This walk-around is not a certified inspection. If the price still works, I will pay an independent shop for a lift PPI."
+    ],
+    "dont": [
+      "Do not wire a deposit before you have the VIN in a photo.",
+      "Do not accept “Carfax is clean” as a substitute for looking under the car.",
+      "Do not treat this 30-minute card as a lemon-law opinion or an appraisal."
+    ],
+    "links": [
+      { "href": "/jobs/ppi", "stamp": "PPI", "label": "PPI photo list", "why": "The guided shot list this walk-around maps to." },
+      { "href": "/jobs/inspector", "stamp": "Inspect", "label": "Inspector desk", "why": "If this is becoming a file, use the longer shot list." },
+      { "href": "/guides/inspect-used-car", "stamp": "How-to", "label": "Inspect a used car", "why": "Beginner steps with a real video." },
+      { "href": "/guides/ppi-what-to-film", "stamp": "Film", "label": "What to film", "why": "Phone folder before you leave the lot." },
+      { "href": "/recalls", "stamp": "Recalls", "label": "NHTSA recalls", "why": "Run the VIN. Takata is not a rumor." },
+      { "href": "/expert/tsb", "stamp": "Patterns", "label": "Failure patterns", "why": "Common problems by symptom — SaferCar, not a stolen TSB." },
+      { "href": "/obd", "stamp": "OBD", "label": "Translate a code", "why": "If the scan shows anything, type it here." },
+      { "href": "/directory", "stamp": "Map", "label": "Find a lift", "why": "Independent rooftops. We do not certify shops." }
+    ],
+    "relatedGuides": ["inspect-used-car", "ppi-what-to-film", "used-price-context"],
+    "relatedJobs": ["/jobs/ppi", "/jobs/inspector", "/jobs/sales"],
+    "relatedTsb": ["takata-accord-2003", "toyota-2az-consumption", "nissan-cvt-judder"]
+  },
+  {
+    "id": "check-engine",
+    "slug": "check-engine",
+    "stamp": "CEL",
+    "title": "Check-engine night",
+    "kicker": "Code → don’t throw parts",
+    "plainEnglish": "The lamp is a pointer, not a parts catalog. Read the code, read the freeze-frame, then authorize a test. A catalytic converter is an expensive way to ignore an exhaust leak.",
+    "minutes": 20,
+    "audience": "owner",
+    "scenario": "The orange engine icon is on. It is after hours. You have a $20 scanner or you can get one in the morning. You do not need a Bluetooth dongle we invented. You need the code and a sentence for tomorrow.",
+    "dummySteps": [
+      {
+        "id": "drive-safe",
+        "title": "Decide if it is a tow night",
+        "do": "Flashing CEL, loss of power, overheat, or a noise that was not there yesterday — park it. A solid lamp with a normal drive is usually a morning scan, not a panic tow. When in doubt, tow.",
+        "say": "If it is flashing I am not driving it to you. Tell me if I should flatbed."
+      },
+      {
+        "id": "scan",
+        "title": "Type the code from any cheap scanner",
+        "do": "P, B, C, or U plus four characters. Write stored, pending, and permanent. Translate on /obd. Do not buy the first Amazon part that matches the code title.",
+        "say": "I have P0420 stored. I want the freeze-frame and a leak check before anyone prices a converter."
+      },
+      {
+        "id": "freeze",
+        "title": "Ask for freeze-frame, not a guess",
+        "do": "RPM, mph, load, coolant temp, short- and long-term fuel trims. Those five numbers tell highway vs idle, warm vs cold, lean vs rich.",
+        "say": "Please print or photo the freeze-frame. I will not authorize a cat from the code title."
+      },
+      {
+        "id": "monitors",
+        "title": "Do not clear it to “see if it comes back”",
+        "do": "Clearing wipes readiness. Some states will fail inspection for incomplete monitors. Permanent codes stay until the monitor runs clean anyway.",
+        "say": "Please do not clear codes until I have a photo of the list and we agree on the test."
+      },
+      {
+        "id": "test",
+        "title": "Authorize a test, then a part",
+        "do": "Smoke test, fuel-trim snapshot, O2 waveform, compression — whatever matches the family. Diagnosis is a line. The part is a second yes.",
+        "say": "I will pay the agreed diagnosis. Call me with the measurement before you order the part."
+      }
+    ],
+    "geniusNotes": [
+      {
+        "id": "p0420",
+        "label": "P0420 / P0430",
+        "unit": "catalyst efficiency",
+        "meaning": "The rear O2 looks too much like the front. That can be a dying cat — or an exhaust leak before the sensor, a lazy O2, or a misfire that dumped fuel. Do not throw a converter until they have ruled out leaks and upstream faults."
+      },
+      {
+        "id": "trims",
+        "label": "Fuel trims",
+        "unit": "%",
+        "meaning": "Short-term (STFT) plus long-term (LTFT). Rough rule: combined positive over about +15% at idle is a lean story (vacuum leak, MAF, fuel). Negative is rich (fuel pressure, leaking injector, O2). Context is load and RPM. One number in the driveway is not a sentence."
+      },
+      {
+        "id": "ect",
+        "label": "Coolant temp in frame",
+        "unit": "°F",
+        "meaning": "A code set at 90 °F is an open-loop / warmup condition. The same code at 195–220 °F is a hot running fault. If they will not tell you the ECT in the freeze-frame, they have not looked."
+      },
+      {
+        "id": "misfire",
+        "label": "P0300–P0308",
+        "unit": "cylinder",
+        "meaning": "P0300 is random. P0303 is cylinder 3. Swap a coil to another hole before you buy a set. A coil, a plug, an injector, and a compression problem can set the same digit. The digit is the address, not the part."
+      }
+    ],
+    "script": [
+      "The lamp is on. I have the code written down. I want freeze-frame and a test, not a parts list from the title.",
+      "Please do not clear the codes until I have a photo of stored, pending, and permanent.",
+      "Diagnosis is one authorization. The part is a second call with a number."
+    ],
+    "dont": [
+      "Do not throw an O2 sensor, a cat, and a MAF on the same visit “to be sure.”",
+      "Do not buy a Bluetooth dongle because a site told you that you need their puck.",
+      "Do not ignore a flashing lamp — that is catalyst-killing misfire territory."
+    ],
+    "links": [
+      { "href": "/obd", "stamp": "OBD", "label": "Bay OBD", "why": "Type the code. VIN-aware copy if the car is identified." },
+      { "href": "/jobs/obd", "stamp": "Codes", "label": "Jobs translator", "why": "Larger dictionary and the do-not-throw-parts line." },
+      { "href": "/guides/read-obd-code", "stamp": "How-to", "label": "Read a $20 code", "why": "How to plug in the cheap tool." },
+      { "href": "/symptoms", "stamp": "Sound", "label": "Symptom wizard", "why": "If it is a noise plus a lamp, describe the sound." },
+      { "href": "/agent", "stamp": "Talk", "label": "Advocate", "why": "Walk the code before the morning call." },
+      { "href": "/quote", "stamp": "Quote", "label": "Quote defense", "why": "When the estimate lands, mark the padded lines." }
+    ],
+    "relatedGuides": ["read-obd-code", "first-car-obd-walk"],
+    "relatedJobs": ["/jobs/obd", "/jobs/tech"],
+    "relatedTsb": ["p0420-cat-efficiency", "honda-vtc-rattle", "ford-coil-on-plug"]
+  },
+  {
+    "id": "brake-noise",
+    "slug": "brake-noise",
+    "stamp": "Brakes",
+    "title": "Brake squeal vs grind",
+    "kicker": "A squeal is not a grind. A grind is not a flush.",
+    "plainEnglish": "Wear-indicator squeal is a thin, high chirp at the end of a stop. Grind is grit or metal. Pulsation is a rotor thickness story. Do not buy pads, rotors, and a fluid flush because someone said “while we’re in there.”",
+    "minutes": 15,
+    "audience": "owner",
+    "scenario": "The car makes a noise when you slow down. The writer has already written “brakes due.” You need to know which noise you have and which millimeter decides the ticket.",
+    "dummySteps": [
+      {
+        "id": "name-it",
+        "title": "Name the noise in one sentence",
+        "do": "Squeal, grind, groan, or click. Last two seconds of a stop vs the whole pedal. Wet vs dry. Morning only vs every stop. Speed. Front vs you-cannot-tell.",
+        "say": "High squeal in the last second of a city stop, dry pavement, two weeks. Pedal is firm. No pull."
+      },
+      {
+        "id": "pedal",
+        "title": "Pedal, pull, and warning lamps",
+        "do": "Firm, soft, or to the floor. Pull left/right. ABS or brake lamp. A soft pedal is a hydraulic problem — that is not a pad quote.",
+        "say": "Pedal is still high and firm. No ABS lamp. I want pad and rotor millimeters, not a package."
+      },
+      {
+        "id": "mm",
+        "title": "Ask for four numbers",
+        "do": "Inner and outer pad mm on the axle they want to do, and rotor measured vs discard on that axle. If they only quote “fronts,” ask which side was thinner.",
+        "say": "What is the thinnest pad in millimeters? What is the rotor measured, and what is the discard stamp?"
+      },
+      {
+        "id": "machine",
+        "title": "On-car cut vs new rotors",
+        "do": "A cut rotor must still sit above discard after the cut. If they cannot say the leftover thickness, they are guessing. Pedal pulse often wants new or a measured cut, not “we’ll see.”",
+        "say": "If you machine them, what thickness is left vs the stamp? If you cannot say, price new rotors as a separate yes."
+      },
+      {
+        "id": "fluid",
+        "title": "Brake fluid is a years conversation",
+        "do": "Fluid absorbs water. Many books say 2–3 years. A copper-strip or a boiling-point tester is a measurement. “It’s dark” is a color. A flush is not required to change pads.",
+        "say": "I will consider fluid if you have a boiling point or a service-interval date. I will not bundle it as shop supplies."
+      }
+    ],
+    "geniusNotes": [
+      {
+        "id": "indicator",
+        "label": "Wear indicator squeal",
+        "unit": "mm",
+        "meaning": "A steel tab starts to kiss the rotor around 2–3 mm of lining. It is supposed to annoy you. That is not metal-on-metal. It is also not proof the other axle is due."
+      },
+      {
+        "id": "grind",
+        "label": "Grind / growl",
+        "unit": "lining gone",
+        "meaning": "Gritty, scraping, worse as you press — lining is gone or a stone is trapped. Rotors are often scored. Ask for photos and remaining steel. Do not drive it to “see if it gets quieter.”"
+      },
+      {
+        "id": "dtv",
+        "label": "Pedal pulse",
+        "unit": "mm variation",
+        "meaning": "A steering-wheel or pedal pulse under braking is often rotor thickness variation, not “warped.” A mic around the face finds it. An alignment does not fix DTV."
+      },
+      {
+        "id": "ev-rust",
+        "label": "EV / regen rust",
+        "unit": "mm + rust",
+        "meaning": "Regen means the friction brakes nap. Pads can look thick and still glaze or rust to the rotor. Thickness can be honest and the noise still be rust. Ask for a photo of the rotor face, not only the mm."
+      }
+    ],
+    "script": [
+      "The noise is [squeal / grind] at [when]. Pedal is [firm / soft]. No guesswork from the word due.",
+      "Write the thinnest pad mm and the rotor measured vs discard. I authorize that axle, not a four-wheel package by default.",
+      "Fluid and “while we’re in there” are separate yeses with their own numbers."
+    ],
+    "dont": [
+      "Do not authorize rear pads because the fronts squealed.",
+      "Do not skip the grind — that can become a rotor and a weekend without a car.",
+      "Do not accept “lifetime pads” as a reason to skip the measurement."
+    ],
+    "links": [
+      { "href": "/guides/brake-pads-rotors", "stamp": "How-to", "label": "Pads and rotors", "why": "See the job so you can ask about the dust and the torque." },
+      { "href": "/guides?part=brake-pads", "stamp": "Pads", "label": "Brake how-tos", "why": "The brake family in the glossary." },
+      { "href": "/quote", "stamp": "Quote", "label": "Mark the RO", "why": "When the estimate bundles pads + rotors + flush." },
+      { "href": "/jobs/tech", "stamp": "Tech", "label": "Millimeter pad", "why": "The tech-facing card that refuses adjectives." },
+      { "href": "/symptoms", "stamp": "Sound", "label": "Symptom wizard", "why": "If you cannot name the noise yet." },
+      { "href": "/directory", "stamp": "Map", "label": "Directory", "why": "A shop with a lift. We do not take a cut." }
+    ],
+    "relatedGuides": ["brake-pads-rotors", "brake-fluid-flush", "soft-pedal-after-pads"],
+    "relatedJobs": ["/jobs/tech", "/jobs/owner"],
+    "relatedTsb": ["brake-indicator-squeal"]
+  },
+  {
+    "id": "shop-choice",
+    "slug": "shop-choice",
+    "stamp": "Who",
+    "title": "Dealer vs indie vs chain",
+    "kicker": "Who to call for what. We book nobody.",
+    "plainEnglish": "Dealers own the campaign and the factory scan. Independents often own the diagnosis hour. Chains own convenience and a menu. Match the job to the roof. Open Hood does not certify anyone and does not take a booking fee.",
+    "minutes": 10,
+    "audience": "shop",
+    "scenario": "You need work and three signs are yelling. You want a rule of thumb, not a sponsored list. Then you still ask for millimeters.",
+    "dummySteps": [
+      {
+        "id": "recall",
+        "title": "Recalls and campaigns go to the dealer",
+        "do": "Run the VIN on /recalls and SaferCar. Takata, software, and campaign parts are dealer jobs. An indie can confirm the lamp. They cannot close most NHTSA campaigns.",
+        "say": "I have the campaign number from NHTSA. I am here for the recall, not a menu MPI."
+      },
+      {
+        "id": "warranty",
+        "title": "Warranty and buyback paper loves dealer ROs",
+        "do": "If you are documenting a repeating defect, dealer invoices with “customer states” and days down are the file. An indie can still diagnose. Keep both headers.",
+        "say": "Please write my words on the RO. I need the dates and miles for a file, not a vibe."
+      },
+      {
+        "id": "diag",
+        "title": "Intermittents and “no codes” often want an indie who diagnoses",
+        "do": "Ask how they bill diagnosis, whether you pay if you decline the repair, and whether they have a scope — not a parts cannon. Chains can be fine. Ask the same questions.",
+        "say": "What is the diagnosis hour and the not-to-exceed? If you cannot duplicate it, what do I leave with?"
+      },
+      {
+        "id": "menu",
+        "title": "Chains are a menu. Treat them like a menu.",
+        "do": "LOF, wipers, a cabin filter you can see, a tire they will torque to the door sticker. Decline the flush package until you have a reason and a number.",
+        "say": "I am here for the oil and a look at the cabin filter. I will not pre-authorize a trans flush."
+      },
+      {
+        "id": "body",
+        "title": "Body and structure is a different roof",
+        "do": "A mechanical shop is not a frame machine. After a hit, the claim folder and a body shop talk to the adjuster. See the claim playbook.",
+        "say": "I need a body estimate, not a brake MPI, unless the hit bent something you can measure."
+      }
+    ],
+    "geniusNotes": [
+      {
+        "id": "oem-scan",
+        "label": "Factory scan vs $20 reader",
+        "unit": "OEM vs generic",
+        "meaning": "A cheap tool reads generic P-codes. Module-level codes, calibrations, and campaign software live on dealer (or equivalent OEM) tools. That is why a “no codes” indie scan can still miss an SRS campaign."
+      },
+      {
+        "id": "posted-labor",
+        "label": "Posted rate vs book time",
+        "unit": "$ / hour",
+        "meaning": "Ask the door rate and whether the line is clock time or a book hours. We do not invent TecDoc times. If they cannot tell you which one they used, you cannot audit the line."
+      },
+      {
+        "id": "supplies",
+        "label": "Shop supplies",
+        "unit": "% or $",
+        "meaning": "A capped percent or a printed flat is normal. An untitled 12% on top of a $2,000 job is a conversation. Ask it before they start, not at pickup."
+      }
+    ],
+    "script": [
+      "If this is a recall, I am at the dealer with the NHTSA campaign in my pocket.",
+      "If this is a diagnosis, I want the hour, the not-to-exceed, and the measurement that decides the part.",
+      "If this is a chain menu, I am buying the lines I pointed at — not the package on the mat."
+    ],
+    "dont": [
+      "Do not pick a shop because a marketplace took a cut to “certify” them. We do not run that list.",
+      "Do not assume indie means cheap or dealer means honest. Ask for the number.",
+      "Do not let a chain MPI become a trans flush because you were in the lobby."
+    ],
+    "links": [
+      { "href": "/directory", "stamp": "Map", "label": "Directory", "why": "OSM rooftops: dealer, repair, tires, body. No booking fee." },
+      { "href": "/shops", "stamp": "Shops", "label": "Find shops", "why": "Maps stub plus questions before you book." },
+      { "href": "/jobs/shop", "stamp": "Shop", "label": "Fair quoting", "why": "What a straight indie should already do." },
+      { "href": "/recalls", "stamp": "Recalls", "label": "Campaigns", "why": "NHTSA first. Then the dealer." },
+      { "href": "/guides/talk-to-mechanic", "stamp": "How-to", "label": "The window", "why": "How to talk once you picked a roof." },
+      { "href": "/agent", "stamp": "Talk", "label": "Advocate", "why": "If you cannot decide, ask the bay." }
+    ],
+    "relatedGuides": ["talk-to-mechanic", "reading-an-ro"],
+    "relatedJobs": ["/jobs/shop", "/jobs/advisor"],
+    "relatedTsb": ["takata-accord-2003"]
+  },
+  {
+    "id": "ev-owner",
+    "slug": "ev-owner",
+    "stamp": "EV",
+    "title": "EV 12V / tires / brakes",
+    "kicker": "There is no oil change",
+    "plainEnglish": "The traction pack can be healthy and the car still bricks because the 12-volt battery died. Tires take the weight and the torque. Friction brakes nap under regen and then rust. Decline the ICE menu.",
+    "minutes": 15,
+    "audience": "ev",
+    "scenario": "You bought an EV and the first service writer handed you an oil-change coupon. Or the car will not wake up and everyone is staring at the big battery. This card is the 12V, the door-sticker PSI, and the brake fluid that still ages.",
+    "dummySteps": [
+      {
+        "id": "no-oil",
+        "title": "There is no oil change",
+        "do": "No plugs, no “trans flush” on a single-speed reduction gear unless the book names a fluid interval. Cabin filter, wipers, and tire rotate still exist.",
+        "say": "This is an EV. I am not authorizing an ICE menu. Show me the line that is actually in the book."
+      },
+      {
+        "id": "twelve",
+        "title": "Treat the 12V as a wear item",
+        "do": "Age, rested volts, and a load test. Many EVs hide a conventional 12V (or a small lithium) that closes contactors. A “high-voltage is fine” speech does not replace that test.",
+        "say": "Please load-test the 12-volt. I want the voltage and the test result, not ‘the pack is good.’"
+      },
+      {
+        "id": "tires",
+        "title": "PSI and rotate on the interval",
+        "do": "Door sticker, cold. Weight plus instant torque eats inner edges. EV-rated rubber if that is what it left the factory with — not a random cheaper tire that cannot carry the load.",
+        "say": "What is the door-sticker PSI, and are these load-rated for this car? I want the 32nds and the date codes."
+      },
+      {
+        "id": "brakes",
+        "title": "Look at rust, not only pad mm",
+        "do": "Pads can be thick and still glazed. Rotor faces rust from sitting. Brake fluid is still years, not miles. A squeal on an EV is often rust, not 2 mm lining.",
+        "say": "Photo the rotor face and write the pad mm. Fluid only if you have an interval or a boiling point."
+      },
+      {
+        "id": "loops",
+        "title": "Coolant loops are not “no service”",
+        "do": "Battery and inverter loops use a specific coolant. A general shop may not stock it. Do not let them pour green “universal” into a battery loop.",
+        "say": "What coolant spec is on the book for this loop? If you do not have it, I will wait."
+      }
+    ],
+    "geniusNotes": [
+      {
+        "id": "12v-volt",
+        "label": "12V rested",
+        "unit": "V",
+        "meaning": "A conventional flooded 12V at rest is about 12.6 V when full and about 12.2 V at half. EVs can look “fine” at 12.3 V on a meter and still fail when contactors pull. The load test matters more than a pretty resting number."
+      },
+      {
+        "id": "hv-vs-12",
+        "label": "Pack vs 12V",
+        "unit": "two batteries",
+        "meaning": "The traction pack is high voltage. The 12V (or DC-DC) runs computers and contactors. A dead 12V looks like a dead EV. Do not authorize a pack diagnosis until someone has tested the small battery and the DC-DC output."
+      },
+      {
+        "id": "ev-psi",
+        "label": "Door-sticker PSI",
+        "unit": "PSI",
+        "meaning": "Often higher than the ICE car you used to own. The sidewall max is not the target. Inner-edge wear on an EV is usually pressure, rotation, or alignment — not “EV tires are a scam.”"
+      }
+    ],
+    "script": [
+      "There is no oil change. Show me the book line you want me to buy.",
+      "Load-test the 12-volt and write the number. The pack can be healthy and the car still dead.",
+      "Tires at door-sticker PSI. Brakes: pad mm plus a photo of rust. Coolant only to the spec on this loop."
+    ],
+    "dont": [
+      "Do not crawl under an EV or unplug orange cables. That is not a driveway job.",
+      "Do not jump from the 12V posts unless the owner’s manual says how. Some packs hate a wrong jump.",
+      "Do not accept a transmission-flush upsell on a single-speed reduction gear."
+    ],
+    "links": [
+      { "href": "/jobs/ev", "stamp": "EV", "label": "EV owner desk", "why": "The same 12V / tire / brake card, tick-by-tick." },
+      { "href": "/guides/ev-no-oil", "stamp": "How-to", "label": "No oil", "why": "What actually still needs service." },
+      { "href": "/guides/ev-12v-battery", "stamp": "12V", "label": "EV 12V", "why": "The silent brick." },
+      { "href": "/guides/ev-tires", "stamp": "Tires", "label": "EV tires", "why": "Weight, torque, PSI." },
+      { "href": "/directory", "stamp": "Map", "label": "Directory", "why": "Find a shop. Ask if they touch EVs before you drive over." },
+      { "href": "/agent", "stamp": "Talk", "label": "Advocate", "why": "If the writer is still holding an oil coupon." }
+    ],
+    "relatedGuides": ["ev-no-oil", "ev-12v-battery", "ev-tires"],
+    "relatedJobs": ["/jobs/ev"],
+    "relatedTsb": ["ev-12v-silent"]
+  },
+  {
+    "id": "auction-fees",
+    "slug": "auction-fees",
+    "stamp": "Lane",
+    "title": "Auction lane fees",
+    "kicker": "Hammer is not landed cost",
+    "plainEnglish": "The number on the screen is the bid. Buyer fee, internet fee, gate, transport, tax, and title sit on top. Public lanes and dealer lanes are different promises. We do not scrape live lots.",
+    "minutes": 15,
+    "audience": "buyer",
+    "scenario": "You are watching Copart, IAA, Manheim, a government sale, or a Saturday public auction. The car is cheap until the fee stack. This card is the math and the “as-is” words before you raise a paddle.",
+    "dummySteps": [
+      {
+        "id": "lane-type",
+        "title": "Name the lane",
+        "do": "Public vs dealer-only vs government. Arbitration rules change with the gate. If you cannot buy a dealer lane, stop shopping that screenshot.",
+        "say": "Is this a public lane with any arbitration, or is it as-is when the hammer falls?"
+      },
+      {
+        "id": "announce",
+        "title": "Read the announcement before the bid",
+        "do": "Engine note, “doesn’t start,” flood, salvage, title absent, run-and-drive. If they announced it, you bought it. A condition report is a starting point, not a PPI.",
+        "say": "What was announced? I am pricing that risk, not the photo."
+      },
+      {
+        "id": "stack",
+        "title": "Write the fee stack on paper",
+        "do": "Hammer + buyer’s premium / buyer fee + internet / proxy + gate + transport + tax + title days. If any line is “depends,” you do not have a number.",
+        "say": "What is my out-the-gate number at this hammer, including your buyer fee and my transport quote?"
+      },
+      {
+        "id": "arb",
+        "title": "Arbitration is hours, not weeks",
+        "do": "Dealer lanes often have a clock. Public lanes often have none. If you cannot inspect inside the window, you are buying the CR and the photo.",
+        "say": "How many hours do I have to arb, and what defects are excluded because they were announced?"
+      },
+      {
+        "id": "after",
+        "title": "Budget a PPI after, not instead",
+        "do": "If the landed number still works, pay an independent shop with a lift. Auction CR grades miss frames. See the PPI playbook.",
+        "say": "I will not skip a lift inspection because a CR said “green.”"
+      }
+    ],
+    "geniusNotes": [
+      {
+        "id": "buyer-fee",
+        "label": "Buyer fee",
+        "unit": "$ or %",
+        "meaning": "A sliding fee on the hammer is normal. It is not tax. Online / proxy bids often add a second fee. Ask for the published schedule. We will not invent Copart’s current table — they change it."
+      },
+      {
+        "id": "gate",
+        "label": "Gate + storage",
+        "unit": "$ / day",
+        "meaning": "Free days are short. A delayed pickup turns a cheap hammer into a storage bill. Transport that “comes next week” is a storage decision."
+      },
+      {
+        "id": "title",
+        "label": "Title risk",
+        "unit": "days",
+        "meaning": "Salvage, flood, and “title absent” are paperwork risk. You can win the car and wait weeks. Price the days and the brand of title, not just the bid."
+      }
+    ],
+    "script": [
+      "Hammer is one line. Read me buyer fee, internet fee, gate, and my transport before I bid.",
+      "If it was announced, I am buying it. Do not sell me arbitration I do not have.",
+      "Landed cost has to survive a lift PPI. If it does not, I am not bidding."
+    ],
+    "dont": [
+      "Do not treat a screenshot of a live lot as something Open Hood scraped. We link out. We do not invent inventory.",
+      "Do not bid from a phone photo of the odometer without a VIN you typed yourself.",
+      "Do not assume public-lane “inspection” is a lift PPI."
+    ],
+    "links": [
+      { "href": "/auctions", "stamp": "Auctions", "label": "Auction desk", "why": "Public vs dealer lanes. Link-out search, no live lots." },
+      { "href": "/jobs/auction", "stamp": "Lane", "label": "Fee gotchas", "why": "The jobs card for landed cost." },
+      { "href": "/expert/used-ppi", "stamp": "PPI", "label": "30-minute PPI", "why": "After it lands, before you spend more." },
+      { "href": "/jobs/ppi", "stamp": "Shots", "label": "PPI photos", "why": "The folder if you can walk it." },
+      { "href": "/directory", "stamp": "Map", "label": "Transport + shop", "why": "A rooftop near the gate. We do not haul cars." },
+      { "href": "/agent", "stamp": "Talk", "label": "Advocate", "why": "Run the fee stack out loud." }
+    ],
+    "relatedGuides": ["inspect-used-car", "used-price-context"],
+    "relatedJobs": ["/jobs/auction", "/jobs/ppi"],
+    "relatedTsb": ["takata-accord-2003"]
+  },
+  {
+    "id": "after-quote",
+    "slug": "after-quote",
+    "stamp": "Quote",
+    "title": "After a quote: cabin filter / flush / “while you’re in there”",
+    "kicker": "Every extra line is a new yes",
+    "plainEnglish": "The MPI found a cabin filter, a “flush,” and three other things they can reach. Some are real. Some are the lobby. Ask for the old part, the book interval, and a number that is not bundled into shop supplies.",
+    "minutes": 12,
+    "audience": "owner",
+    "scenario": "You authorized an oil change or a brake job. The phone rings. They are “already in there.” This card is how you sort a $30 filter from a $400 fluid story.",
+    "dummySteps": [
+      {
+        "id": "photo",
+        "title": "Ask for a photo of the old part",
+        "do": "Cabin filter, air filter, wipers, pads. A gray rectangle in a dirty box is not a story — a used filter in the tech’s hand is. If they cannot photo it, wait.",
+        "say": "Text me a photo of the old cabin filter in your hand. Then give me the parts-plus-labor number."
+      },
+      {
+        "id": "cabin",
+        "title": "Cabin filter is often a real yes",
+        "do": "If it is packed or wet, replace it. You can often do this in a glove box. Price the part separately. Decline “we have to remove the glove box, it’s $180 labor” until they explain that car.",
+        "say": "If labor is more than a glove-box clip job, tell me why on this model before I say yes."
+      },
+      {
+        "id": "flush",
+        "title": "Name the fluid and the machine",
+        "do": "Coolant, brake, trans, power steering. “Flush” vs drain-and-fill are different jobs. A trans flush on a high-mile unit that has never been serviced can be a bad idea. Ask the book interval and the method.",
+        "say": "Is this a drain-and-fill or a machine flush? What interval is in the book, and what is the fluid spec?"
+      },
+      {
+        "id": "while",
+        "title": "“While you’re in there” needs a new total",
+        "do": "New work, new authorization, new out-the-door. Silence on a voicemail is not a yes. A 10% “since we’re here” is still a number you can refuse.",
+        "say": "Text the new out-the-door. I do not authorize extras from a voicemail."
+      },
+      {
+        "id": "mark",
+        "title": "Paste the RO into quote defense",
+        "do": "When the paper exists, mark padded lines. Shop supplies, nitrogen, engine cleaner, and a cabin filter at restaurant prices are the usual grease-pencil targets.",
+        "say": "I will read the ticket line by line. I am paying what I authorized."
+      }
+    ],
+    "geniusNotes": [
+      {
+        "id": "cabin-labor",
+        "label": "Cabin filter labor",
+        "unit": "minutes",
+        "meaning": "Many cars are a glove-box squeeze. Some (big SUVs, some German boxes) really do need a tear-down. Ask which one you have. A $20 filter and $160 labor is a model-specific story or a menu."
+      },
+      {
+        "id": "trans-flush",
+        "label": "Trans service",
+        "unit": "method",
+        "meaning": "Drain-and-fill replaces part of the sump. A cooler-line machine exchanges more. Neither is “lifetime fluid.” A neglected slushbox that suddenly gets a chemical flush can fail after. Ask for the book and the condition of the pan magnet, not a poster."
+      },
+      {
+        "id": "coolant-color",
+        "label": "Coolant",
+        "unit": "spec, not color",
+        "meaning": "Color is a marketing dye. Spec is chemistry (OAT, HOAT, P-OAT). Mixing “universal green” into a late-model loop is how you buy a water pump. Ask for the spec on the cap or the book."
+      }
+    ],
+    "script": [
+      "Photo the old part. Then the parts-plus-labor number for that line only.",
+      "Name the fluid spec and the method. I will not buy a poster called flush.",
+      "Any new work needs a new out-the-door. I do not authorize by silence."
+    ],
+    "dont": [
+      "Do not approve a trans flush because the oil change is already on the rack.",
+      "Do not pay “engine carbon service” without a symptom and a test.",
+      "Do not let shop supplies hide a cabin filter."
+    ],
+    "links": [
+      { "href": "/quote", "stamp": "Quote", "label": "Quote defense", "why": "Grease-pencil the padded lines." },
+      { "href": "/guides/cabin-filter", "stamp": "How-to", "label": "Cabin filter", "why": "Often a driveway job. Watch it before you pay lobby labor." },
+      { "href": "/guides/trans-flush-vs-change", "stamp": "Trans", "label": "Flush vs change", "why": "The honest difference." },
+      { "href": "/guides/reading-an-ro", "stamp": "RO", "label": "Read the ticket", "why": "Line by line." },
+      { "href": "/jobs/ro-terms", "stamp": "Terms", "label": "RO slang", "why": "LOF, MPI, R&R, NTF, supplies." },
+      { "href": "/jobs/fleet", "stamp": "Fleet", "label": "Interval vs upsell", "why": "Approve the page, not the pitch." }
+    ],
+    "relatedGuides": ["cabin-filter", "trans-flush-vs-change", "trans-drain-and-fill", "reading-an-ro"],
+    "relatedJobs": ["/jobs/advisor", "/jobs/fleet", "/jobs/ro-terms"],
+    "relatedTsb": ["p0420-cat-efficiency"]
+  },
+  {
+    "id": "seasonal",
+    "slug": "seasonal",
+    "stamp": "Season",
+    "title": "Winter / summer seasonal",
+    "kicker": "PSI, battery, coolant, and the first freeze",
+    "plainEnglish": "Seasons do not require a $400 “winterization package.” They do require cold PSI, a battery that can crank, coolant that matches the spec, and rubber that can see the road.",
+    "minutes": 20,
+    "audience": "owner",
+    "scenario": "The first frost is tomorrow, or the heat index is 104. A chain has a seasonal menu. This card is the measurements that actually change with weather.",
+    "dummySteps": [
+      {
+        "id": "psi-season",
+        "title": "Set PSI cold to the door sticker",
+        "do": "Tires lose roughly 1 PSI per 10 °F drop. Summer heat climbs the other way. Set them cold. Do not use the sidewall max. Recheck after the first cold snap.",
+        "say": "I set them to the door sticker this morning. If you add air, write the number you left."
+      },
+      {
+        "id": "battery",
+        "title": "Load-test before the first freeze",
+        "do": "Cold is when a weak battery quits. Age plus a load test. Jump packs are a backup, not a diagnosis. Clean the terminals so you are not buying an alternator.",
+        "say": "I want a load test result and the battery age. I will not buy an alternator from a slow crank alone."
+      },
+      {
+        "id": "coolant",
+        "title": "Coolant: spec and freeze point",
+        "do": "A refractometer or test strip is a freeze-point number. Color is not. Capacity and spec live on /garage once the car is identified.",
+        "say": "What freeze point did you measure, and what spec are you pouring? Not ‘universal green.’"
+      },
+      {
+        "id": "rubber",
+        "title": "Wipers, washer, and tread for the season",
+        "do": "Wipers are a driveway yes. Washer fluid that actually has freeze protection in winter. Tread: 4/32 is a wet-weather conversation. Snow tires are a climate choice, not a shop upsell if you already have a dedicated set.",
+        "say": "Blades and fluid I can see. Tires I want 32nds and date codes, not ‘you need a whole set’ from the lobby."
+      },
+      {
+        "id": "ac-heat",
+        "title": "A/C and heat are performance, not a flush poster",
+        "do": "Vent temperature and a leak test beat “it needs a recharge” every spring. Heat that smells sweet is a coolant story. Do not buy dye and a can from the parking lot as a plan.",
+        "say": "What vent temp did you measure, and did you find a leak? I will not authorize a recharge with no number."
+      }
+    ],
+    "geniusNotes": [
+      {
+        "id": "psi-temp",
+        "label": "PSI vs temperature",
+        "unit": "PSI / 10 °F",
+        "meaning": "Rule of thumb: about 1 PSI per 10 °F. A 35 °F overnight drop from a 75 °F set can look like a leak to a TPMS lamp. Check cold before you buy a sensor."
+      },
+      {
+        "id": "cca",
+        "label": "Battery in the cold",
+        "unit": "CCA / V",
+        "meaning": "Cranking amps fall as the battery cools and as the oil thickens. A battery that starts the car in July can fail at 15 °F. The test is a load or conductance test, not “it has power.”"
+      },
+      {
+        "id": "freeze-point",
+        "label": "Coolant freeze point",
+        "unit": "°F",
+        "meaning": "A 50/50 mix is often around −34 °F. Weak mix freezes in the block. Over-concentrated mix cools worse in summer. Measure it. Do not guess from the overflow bottle color."
+      }
+    ],
+    "script": [
+      "Door-sticker PSI, set cold. Write the number you left.",
+      "Load-test the battery and measure coolant freeze point. I will not buy a seasonal package.",
+      "Wipers and washer I can see. Tires are 32nds and date codes."
+    ],
+    "dont": [
+      "Do not buy nitrogen as a winter product. Air is already mostly nitrogen.",
+      "Do not ignore a sweet smell in the cabin heat — that can be coolant in the heater core.",
+      "Do not “top off” A/C from a parts-store can as a summer plan."
+    ],
+    "links": [
+      { "href": "/garage", "stamp": "Garage", "label": "Spec sheet", "why": "Oil, coolant, PSI, filter SKUs once the car is identified." },
+      { "href": "/guides/tire-pressure", "stamp": "PSI", "label": "Tire pressure", "why": "How to read the door sticker." },
+      { "href": "/guides/test-battery", "stamp": "Battery", "label": "Test a battery", "why": "Before the freeze." },
+      { "href": "/guides/coolant-check", "stamp": "Coolant", "label": "Check coolant", "why": "Cap, level, and why color lies." },
+      { "href": "/guides/wiper-blades", "stamp": "Wipers", "label": "Wiper blades", "why": "Driveway yes." },
+      { "href": "/directory", "stamp": "Map", "label": "Tires / shops", "why": "A roof for the jobs you will not do in the street." }
+    ],
+    "relatedGuides": ["tire-pressure", "test-battery", "coolant-check", "wiper-blades", "washer-fluid"],
+    "relatedJobs": ["/jobs/owner", "/jobs/diy"],
+    "relatedTsb": ["ev-12v-silent"]
+  },
+  {
+    "id": "road-trip",
+    "slug": "road-trip",
+    "stamp": "Trip",
+    "title": "Road-trip go/no-go",
+    "kicker": "A yes/no card the night before",
+    "plainEnglish": "You do not need a $1,200 “trip inspection.” You need tires that can take a load, a cooling system that holds, lights you can see, and a lamp plan. A no is cheaper at home than in a town with one wrecker.",
+    "minutes": 25,
+    "audience": "owner",
+    "scenario": "Dawn departure. Kids, dogs, or a hitch. This is the 25-minute walk-around that decides go, delay, or tow-it-tomorrow.",
+    "dummySteps": [
+      {
+        "id": "tires-trip",
+        "title": "Tires, spare, and PSI for the load",
+        "do": "32nds, date codes, a cut in the sidewall is a no. Spare inflated. Door-sticker PSI, plus the load line if you are towing — that number is on the door or the hitch plate, not a forum.",
+        "say": "If any tire is at 3/32 or has a sidewall wound, I am not leaving. Write the PSI you set."
+      },
+      {
+        "id": "coolant-oil",
+        "title": "Levels cold, and a look under the car",
+        "do": "Oil on the stick, coolant in the bottle (cold), obvious drips on the cardboard you parked on. A milky oil cap is a no. Overheating last week is a no until someone pressure-tests.",
+        "say": "It ran hot last month. I need a pressure test before a 400-mile day, not a top-off."
+      },
+      {
+        "id": "lamps-wipers",
+        "title": "Lights, wipers, and the windshield",
+        "do": "High beams, brake lamps, blinkers. A crack in the driver’s sweep is a ticket in some states and a night-drive no. Blades that chatter will fail in the first truck spray.",
+        "say": "I need the brake lamps confirmed from behind. I will not guess."
+      },
+      {
+        "id": "cel",
+        "title": "Lamps on the cluster",
+        "do": "CEL, ABS, SRS, TPMS, temp. A solid CEL with a known small code can be a go if you already have a plan. A new lamp the night before is a scan, not optimism.",
+        "say": "The lamp came on tonight. I am scanning before I leave. Translate it before you tell me it’s fine."
+      },
+      {
+        "id": "kit",
+        "title": "Kit: water, cables, inflator, paperwork",
+        "do": "Jumper cables or a pack the manual allows, a 12V inflator, water, the insurance card, and the VIN photo. EV: know the 12V jump method in the book before you need it.",
+        "say": "I am not buying a $200 trip kit from the counter. I am packing the four things that actually get used."
+      }
+    ],
+    "geniusNotes": [
+      {
+        "id": "3-32",
+        "label": "Trip tread",
+        "unit": "32nds",
+        "meaning": "4/32 is the wet-weather conversation. 2/32 is wear-bar legal in many states and a rain no on a highway. A sidewall bulge or cord is an immediate no regardless of tread."
+      },
+      {
+        "id": "temp-gauge",
+        "label": "Temp after 15 minutes",
+        "unit": "°F / gauge",
+        "meaning": "A healthy stat opens and the gauge settles. A climb toward hot on a short drive is a no-go. We do not invent your thermostat spec. We do say: do not start a mountain grade with a gauge that already wandered."
+      },
+      {
+        "id": "load-psi",
+        "label": "Loaded PSI",
+        "unit": "PSI",
+        "meaning": "The door sticker is for the vehicle as labeled. Towing or a packed van may have a second higher number on the certification label. Ask for that label, not a Facebook “add 6 pounds.”"
+      }
+    ],
+    "script": [
+      "Tires: 32nds, date codes, spare, door-sticker PSI for this load. A sidewall wound is a no.",
+      "If it ran hot or the CEL is new, I scan and I delay. I will not “see how it does” at 75 mph.",
+      "Lights and wipers I can prove in the driveway. The kit is cables, air, water, and the VIN."
+    ],
+    "dont": [
+      "Do not leave with a donut as the plan for a 600-mile interstate.",
+      "Do not ignore a new vibration that showed up when you loaded the car.",
+      "Do not treat this card as a certified inspection."
+    ],
+    "links": [
+      { "href": "/guides/tire-pressure", "stamp": "PSI", "label": "Set PSI", "why": "Door sticker, cold." },
+      { "href": "/guides/change-spare", "stamp": "Spare", "label": "Change a spare", "why": "If you have never done it, do it in the driveway once." },
+      { "href": "/guides/coolant-check", "stamp": "Coolant", "label": "Coolant", "why": "Cold check before a grade." },
+      { "href": "/obd", "stamp": "OBD", "label": "New lamp?", "why": "Type the code tonight." },
+      { "href": "/garage", "stamp": "Garage", "label": "Fluids / PSI", "why": "The spec card for this VIN." },
+      { "href": "/directory", "stamp": "Map", "label": "Along the route", "why": "Rooftops if you already know you need a shop at dawn." }
+    ],
+    "relatedGuides": ["tire-pressure", "change-spare", "coolant-check", "jump-start"],
+    "relatedJobs": ["/jobs/owner", "/jobs/diy"],
+    "relatedTsb": ["p0420-cat-efficiency"]
+  },
+  {
+    "id": "lemon-buyback",
+    "slug": "lemon-buyback",
+    "stamp": "Lemon",
+    "title": "Lemon-ish / buyback",
+    "kicker": "Questions to ask — not legal advice",
+    "plainEnglish": "State lemon laws and federal warranty rules are not a form we can file. What we can do is the file: same defect, dates, miles, days down, and the words on the RO. Ask these questions before you sign a “goodwill” that closes the story.",
+    "minutes": 20,
+    "audience": "owner",
+    "scenario": "The same fault is back. The dealer says they cannot duplicate it. Someone mentioned a buyback, a goodwill payment, or “that’s just how they are.” You need a folder, not a Facebook verdict.",
+    "dummySteps": [
+      {
+        "id": "same-defect",
+        "title": "Write the defect in the same words every visit",
+        "do": "One sentence. Same nouns. “Intermittent no-start when hot, 20 minutes, 3 times this month.” Do not let the writer rename it to “customer concern — NTF” without your sentence on the header.",
+        "say": "Please print my words under customer states. I will not accept a new name for the same fault."
+      },
+      {
+        "id": "count",
+        "title": "Count attempts and days out of service",
+        "do": "How many repair visits for this defect? How many days did they keep the car? Calendar days and miles on each RO header. Photo every header.",
+        "say": "How many times have you had this VIN for this defect, and how many days was it down? I want that in writing."
+      },
+      {
+        "id": "notice",
+        "title": "Ask who you notify, in this state",
+        "do": "Manufacturer, state program, arbitrator — it depends on where you titled the car. We will not recite your statute. Ask the dealer’s customer-assistance number and your state AG / DMV lemon page. Write the dates you called.",
+        "say": "Who is the manufacturer contact for a possible repurchase, and what file number do I get on this call?"
+      },
+      {
+        "id": "offer",
+        "title": "If they offer money, name the trade",
+        "do": "Buyback, replacement, cash-and-keep, extended coverage. What are you releasing? Can you still sue? We are not your lawyer. Ask it out loud and take the paper home overnight.",
+        "say": "Is this a repurchase, a replacement, or cash-and-keep? What rights am I signing away? I am taking the paper home."
+      },
+      {
+        "id": "scan-keep",
+        "title": "Scan before they “clear it for goodwill”",
+        "do": "Photo stored / pending / permanent. A cleared module is a hole in the file. Keep parts they replaced, or photos of the old ones.",
+        "say": "Do not clear the modules until I have a photo of the code list. I want the old part or a photo."
+      }
+    ],
+    "geniusNotes": [
+      {
+        "id": "not-legal",
+        "label": "Not legal advice",
+        "unit": "disclaimer",
+        "meaning": "Lemon statutes vary by state: new vs used, years, miles, substantial impairment, repair attempts, days out of service. Magnuson-Moss is federal warranty law and is also not a form we file. This playbook is a question list. A consumer attorney or your state program is the next desk."
+      },
+      {
+        "id": "ntf",
+        "label": "NTF / CND",
+        "unit": "RO slang",
+        "meaning": "No trouble found / cannot duplicate. It is a real outcome and a file-killer if it is the only line. Your sentence plus a scan plus a test-drive note still belong on that RO. See /jobs/ro-terms."
+      },
+      {
+        "id": "days-down",
+        "label": "Days out of service",
+        "unit": "days",
+        "meaning": "Many statutes care about cumulative days, not your inconvenience vibe. Pickup delays, parts waits, and “we’re waiting on engineering” still count if the car is in their possession — ask how they log it."
+      }
+    ],
+    "script": [
+      "Same defect, same words, every RO. Print customer states as I said it.",
+      "How many attempts and how many days down on this VIN for this fault? I want the list.",
+      "If you offer a repurchase or cash, I am taking the release home. This is not me agreeing tonight."
+    ],
+    "dont": [
+      "Do not take legal advice from Open Hood, a service writer, or a forum thread.",
+      "Do not sign a release in the lobby the night they finally offer money.",
+      "Do not let them keep the only copy of the RO."
+    ],
+    "links": [
+      { "href": "/jobs/inspector", "stamp": "Inspect", "label": "Inspector file", "why": "Shot list for a repeating defect. Not a filing." },
+      { "href": "/jobs/claims", "stamp": "Claims", "label": "Photo discipline", "why": "Same wide / medium / close habit." },
+      { "href": "/jobs/ro-terms", "stamp": "Terms", "label": "NTF and slang", "why": "What the ticket is actually saying." },
+      { "href": "/recalls", "stamp": "Recalls", "label": "Campaigns", "why": "A recall is a different path than a lemon claim." },
+      { "href": "/quote", "stamp": "Quote", "label": "Keep the paper", "why": "Mark and save every estimate." },
+      { "href": "/agent", "stamp": "Talk", "label": "Advocate", "why": "Turn the file into questions. Not a lawyer." }
+    ],
+    "relatedGuides": ["reading-an-ro", "talk-to-mechanic"],
+    "relatedJobs": ["/jobs/inspector", "/jobs/ro-terms", "/jobs/sales"],
+    "relatedTsb": ["takata-accord-2003", "chrysler-tipm"]
+  },
+  {
+    "id": "claim-photos",
+    "slug": "claim-photos",
+    "stamp": "Claim",
+    "title": "Insurance claim photos after a hit",
+    "kicker": "The folder that actually supports a claim",
+    "plainEnglish": "Adjusters pay from photos they can read. Wide for context, medium for the panel, close with a coin for depth. VIN, cluster, and the damage you are not claiming. Then get off the live lane.",
+    "minutes": 20,
+    "audience": "claim",
+    "scenario": "You were hit, or you hit something. Everyone is fine enough to hold a phone. This is the 20-minute folder before the wrecker and before the other driver leaves.",
+    "dummySteps": [
+      {
+        "id": "safe",
+        "title": "Safety first, then the phone",
+        "do": "Hazards, triangles if you have them, people out of the travel lane. Photos are not worth a second hit. If you cannot stand off the road, wait for the officer and shoot from the shoulder only.",
+        "say": "I am moving to the shoulder. I will photograph from a safe place."
+      },
+      {
+        "id": "context",
+        "title": "Four corners, four sides, the scene",
+        "do": "Include the ground, a bit of the lane, lights, and the other vehicle’s plate if you can do it without standing in traffic. Wide first. Nobody believes a cropped bumper.",
+        "say": "I am shooting the whole car and the scene, not just my scratch."
+      },
+      {
+        "id": "identity",
+        "title": "VIN, door sticker, cluster, plate",
+        "do": "The car on the claim is this car. Cluster with ignition on — miles and airbag lamps. Photo the other driver’s insurance card if they will hold it. Do not argue. Document.",
+        "say": "I need a photo of your card and the plate. I will send you mine."
+      },
+      {
+        "id": "depth",
+        "title": "Damage: wide, medium, close with scale",
+        "do": "Whole end or side. One panel. Then a coin or tape in the crease, camera perpendicular. Adjacent undamaged panel in the same light — that is the blend argument later.",
+        "say": "I am shooting depth with a coin in the frame. I will not crop the gap."
+      },
+      {
+        "id": "honest",
+        "title": "Prior damage you are not claiming",
+        "do": "Photo it and say so in the filename. Honesty now vs a denial later. Undercarriage only if the car is safe to see — not under a live lane.",
+        "say": "This scrape on the other corner is old. I am photographing it so it is not on this loss."
+      }
+    ],
+    "geniusNotes": [
+      {
+        "id": "airbag",
+        "label": "SRS after a hit",
+        "unit": "lamp / bag",
+        "meaning": "A deployed bag or a lamp after the crash is a restraint claim, not a “just a bumper.” Photo the interior wide, then the bag. Do not sit in a car with a live unused Takata recall if you have another ride — run the VIN later on SaferCar."
+      },
+      {
+        "id": "total",
+        "label": "Repair vs total",
+        "unit": "$ vs ACV",
+        "meaning": "Insurers compare repair cost plus salvage math to actual cash value. You cannot win that argument with adjectives. You can give them a complete photo set and a VIN so they are not guessing the options."
+      },
+      {
+        "id": "filename",
+        "label": "Filenames",
+        "unit": "YYYY-MM-DD",
+        "meaning": "YYYY-MM-DD-corner-wide. Phone cameras lie about order in a cloud dump. A consistent name is the file. The jobs claims desk keeps a checklist."
+      }
+    ],
+    "script": [
+      "People first. Then the scene wide. Then this VIN and the other plate.",
+      "Wide, medium, close with a coin. Prior damage labeled. I am not cropping the gap.",
+      "I will file the photos and the VIN. I am not estimating the car from the shoulder."
+    ],
+    "dont": [
+      "Do not stand in a live lane for a hero shot.",
+      "Do not admit fault on the recording as a strategy. Document. Your carrier can talk.",
+      "Do not let the car leave without the VIN and cluster photos if you can still reach them safely."
+    ],
+    "links": [
+      { "href": "/jobs/claims", "stamp": "Claims", "label": "Claims shot list", "why": "The 12-shot folder this playbook follows." },
+      { "href": "/jobs/inspector", "stamp": "Inspect", "label": "File habits", "why": "Same naming discipline for a longer case." },
+      { "href": "/recalls", "stamp": "Recalls", "label": "VIN / Takata", "why": "After you are safe — unused inflators are a SaferCar lookup." },
+      { "href": "/directory", "stamp": "Map", "label": "Body / tow", "why": "Rooftops. We do not dispatch wreckers." },
+      { "href": "/quote", "stamp": "Quote", "label": "Body estimate later", "why": "When a shop estimate arrives, mark it." },
+      { "href": "/agent", "stamp": "Talk", "label": "Advocate", "why": "After the adrenaline, turn the folder into questions." }
+    ],
+    "relatedGuides": ["talk-to-mechanic"],
+    "relatedJobs": ["/jobs/claims", "/jobs/inspector"],
+    "relatedTsb": ["takata-accord-2003", "takata-family"]
+  }
+]

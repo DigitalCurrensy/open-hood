@@ -1,0 +1,20 @@
+.log-line {
+  background:
+    linear-gradient(90deg, #e85d04 0 7px, transparent 7px),
+    var(--bay-2);
+}
+
+.log-stub {
+  background:
+    repeating-linear-gradient(
+      0deg,
+      transparent 0 21px,
+      rgba(180, 35, 24, 0.1) 21px 22px
+    ),
+    linear-gradient(180deg, #f7dc7a 0%, #f0cc55 100%);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.4);
+}
+
+.log-miles {
+  font-variant-numeric: tabular-nums;
+}

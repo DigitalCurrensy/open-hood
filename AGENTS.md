@@ -10,7 +10,7 @@ This block is written and re-added by `next dev` — verify at `node_modules/nex
 
 ## Contributor notes
 
-- Brand and routes: `docs/BRAND.md`, `src/lib/nav.ts`, `README.md`.
+- Brand and routes: `docs/BRAND.md`, `docs/WHITEPAPER.md`, `src/lib/brand.ts`, `src/lib/nav.ts`, `README.md`. Product name is **Open Hood**.
 - Keep the night-bay identity. Do not generic-SaaS the UI.
 - Native `fetch` only. No axios.
 - Do not add fake inventory, escrow, or TecDoc. Put those on `ROADMAP.md`.

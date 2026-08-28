@@ -3,7 +3,7 @@
 import { useCallback, useSyncExternalStore } from "react";
 import type { BuildComponent, BuildLogItem, BuildProject } from "@/lib/types";
 
-const KEY = "autoshield.builds";
+const KEY = "openhood.builds";
 const listeners = new Set<() => void>();
 let cached: string | null | undefined;
 

@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-label="Open Hood">
+  <rect width="512" height="512" fill="#0c1210"/>
+  <rect width="46" height="512" fill="#e85d04"/>
+  <rect x="86" y="148" width="360" height="216" rx="18" fill="#f3d36b"/>
+  <circle cx="118" cy="198" r="11" fill="#0c1210"/>
+  <circle cx="118" cy="314" r="11" fill="#0c1210"/>
+  <path d="M168 186h48c22 0 36 16 36 42s-14 42-36 42h-16v48h-32V186zm32 56h12c6 0 10-6 10-14s-4-14-10-14h-12v28z" fill="#23180a"/>
+  <path d="M292 186h32v48h28v32h-28v80h-32V186z" fill="#23180a"/>
+  <rect x="86" y="248" width="360" height="14" fill="#b42318"/>
+</svg>

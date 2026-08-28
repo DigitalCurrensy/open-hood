@@ -1,13 +1,26 @@
 "use client";
 
+import Link from "next/link";
 import { useMemo, useState } from "react";
 import { RO_TERMS, searchRoTerms } from "@/lib/jobs/glossary";
 import type { RoTerm } from "@/lib/jobs/types";
 
 const GROUPS: RoTerm["group"][] = ["service", "brakes", "steering", "trans", "ticket", "diag", "hvac", "tires"];
 
-export function GlossaryDesk({ kicker = "Type LOF, MPI, NTF…" }: { kicker?: string }) {
-  const [query, setQuery] = useState("");
+const EXAMPLE_TERMS = [
+  { slug: "cabin-filter", label: "cabin-filter" },
+  { slug: "lof", label: "LOF" },
+  { slug: "flush", label: "flush" },
+] as const;
+
+export function GlossaryDesk({
+  kicker = "Type LOF, MPI, NTF…",
+  initialQuery = "",
+}: {
+  kicker?: string;
+  initialQuery?: string;
+}) {
+  const [query, setQuery] = useState(initialQuery);
   const [group, setGroup] = useState<RoTerm["group"] | "all">("all");
 
   const rows = useMemo(() => {
@@ -37,12 +50,27 @@ export function GlossaryDesk({ kicker = "Type LOF, MPI, NTF…" }: { kicker?: st
             </Chip>
           ))}
         </div>
+        <p className="mt-3 text-sm text-aluminum">
+          Try{" "}
+          {EXAMPLE_TERMS.map((term, index) => (
+            <span key={term.slug}>
+              {index > 0 ? (index === EXAMPLE_TERMS.length - 1 ? ", or " : ", ") : null}
+              <Link href={`/jobs/ro-terms/${term.slug}`} className="text-ticket hover:text-fluorescent">
+                {term.label}
+              </Link>
+            </span>
+          ))}
+        </p>
       </div>
       <ul className="grid gap-3 md:grid-cols-2">
         {rows.map((term) => (
           <li key={term.slug} className="rounded-sm border border-white/10 bg-bay-2/80 p-4">
             <p className="font-mono text-[10px] uppercase tracking-[0.22em] text-ticket">{term.group}</p>
-            <h3 className="font-display text-2xl uppercase tracking-wide text-fluorescent">{term.term}</h3>
+            <h3 className="font-display text-2xl uppercase tracking-wide text-fluorescent">
+              <Link href={`/jobs/ro-terms/${term.slug}`} className="hover:text-ticket">
+                {term.term}
+              </Link>
+            </h3>
             <p className="mt-1 text-sm leading-6 text-aluminum">{term.means}</p>
             <p className="mt-2 text-sm leading-6 text-fluorescent">
               <span className="font-mono text-[11px] uppercase tracking-[0.14em] text-ticket">Say · </span>

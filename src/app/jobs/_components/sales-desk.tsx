@@ -23,7 +23,7 @@ export function SalesDesk() {
         </p>
       </article>
       <CheckDesk
-        storageKey="autoshield.jobs.sales"
+        storageKey="openhood.jobs.sales"
         items={SALES_DISCLOSURES}
         readyLabel="Disclosures walked — they can still decline every product"
         blockedLabel="Don't send them to F&I until the add-ons have names"

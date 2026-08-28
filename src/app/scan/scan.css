@@ -1,0 +1,51 @@
+.scan-safety {
+  height: 10px;
+  background: repeating-linear-gradient(
+    -45deg,
+    #e85d04 0 9px,
+    #23180a 9px 18px
+  );
+}
+
+.scan-lcd {
+  background:
+    radial-gradient(90% 70% at 50% 0%, rgba(215, 239, 224, 0.07), transparent 58%),
+    linear-gradient(180deg, #101a16 0%, #070d0b 100%);
+  box-shadow:
+    inset 0 0 0 1px rgba(215, 239, 224, 0.1),
+    inset 0 18px 36px rgba(0, 0, 0, 0.45),
+    0 14px 32px rgba(0, 0, 0, 0.4);
+}
+
+.scan-digit {
+  font-variant-numeric: tabular-nums;
+  text-shadow: 0 0 14px rgba(215, 239, 224, 0.28);
+}
+
+.scan-cell {
+  border-top: 1px solid rgba(215, 239, 224, 0.08);
+}
+
+.scan-live-dot {
+  width: 0.45rem;
+  height: 0.45rem;
+  border-radius: 999px;
+  background: #e85d04;
+  box-shadow: 0 0 8px rgba(232, 93, 4, 0.7);
+}
+
+.scan-live-dot[data-on="demo"] {
+  background: #f3d36b;
+  box-shadow: 0 0 8px rgba(243, 211, 107, 0.55);
+}
+
+.scan-live-dot[data-on="live"] {
+  background: #2f6b4f;
+  box-shadow: 0 0 8px rgba(47, 107, 79, 0.7);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .scan-live-dot {
+    box-shadow: none;
+  }
+}

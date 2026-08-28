@@ -1,0 +1,16 @@
+/* TEAM */
+Site: Open Hood
+Contact: /contact
+From: night service bay — consumer defense
+Not: RepairPal, Carfax, a scan tool, a marketplace, a warranty, or a Saturday meetup
+
+/* THANKS */
+NHTSA vPIC + SaferCar
+EPA FuelEconomy.gov
+OpenStreetMap Nominatim + Overpass
+
+/* SITE */
+Language: en-US
+Standards: semantic HTML, JSON-LD, llms.txt
+Last update: 2026-08-27
+Canonical map: /llms.txt

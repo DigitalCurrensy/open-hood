@@ -26,7 +26,7 @@ export function EvDesk() {
         </article>
       </div>
       <CheckDesk
-        storageKey="autoshield.jobs.ev"
+        storageKey="openhood.jobs.ev"
         items={EV_CHECKS}
         readyLabel="You know what this car still needs"
         blockedLabel="Tick what still ages. The pack is not the 12V."

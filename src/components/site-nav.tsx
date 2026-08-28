@@ -1,15 +1,19 @@
 "use client";
 
-import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
-import { useState } from "react";
-import { NAV_ITEMS } from "@/lib/nav";
+import { BayLink } from "@/components/bay-link";
+import { BayPath } from "@/components/bay-path";
+import { ReadingLevel } from "@/components/reading-level";
+import { BOARD_NAV, isCurrentHref } from "@/config/nav/consumer";
+import { BRAND } from "@/lib/brand";
+import { PWA_UNLOCK_HREF } from "@/lib/pwa";
+import { DEMO_VIN, DEMO_VIN_LABEL } from "@/lib/seo";
 import { useIdentifiedVehicle } from "@/lib/vehicle-session";
 
 export function SiteNav() {
   const pathname = usePathname();
   const [vehicle] = useIdentifiedVehicle();
-  const [open, setOpen] = useState(false);
   const chip = vehicle
     ? [vehicle.specs.year, vehicle.specs.make, vehicle.specs.model].filter(Boolean).join(" ")
     : null;
@@ -20,52 +24,82 @@ export function SiteNav() {
         <div className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
           <div>
             <p className="font-mono text-[11px] uppercase tracking-[0.42em] text-cone">
-              Service bay 01 · consumer defense
+              {BRAND.kicker}
             </p>
-            <Link href="/" className="font-display text-4xl uppercase leading-none tracking-wide text-fluorescent sm:text-5xl">
-              AutoShield
-            </Link>
+            <BayLink href="/" className="inline-flex items-center gap-3 text-fluorescent">
+              <Image
+                src="/icons/icon-192.png"
+                alt=""
+                width={48}
+                height={48}
+                priority
+                className="size-12 rounded-sm border border-white/10"
+              />
+              <span className="font-display text-4xl uppercase leading-none tracking-wide sm:text-5xl">{BRAND.short}</span>
+            </BayLink>
+            <div className="mt-3">
+              <ReadingLevel />
+            </div>
           </div>
           <div className="flex flex-wrap items-center gap-3">
             <p className="max-w-sm text-sm leading-6 text-aluminum">
-              Factory specs in plain English. Don&apos;t authorize until you can say this at the counter.
+              {BRAND.tagline} Factory specs in plain English. Don&apos;t authorize until you can say this at the
+              counter.
             </p>
-            <Link
+            <BayLink
               href="/"
-              className="rounded-sm border border-white/15 px-3 py-2 font-mono text-[11px] uppercase tracking-[0.16em] text-aluminum hover:border-ticket/50 hover:text-fluorescent"
+              className="bay-stamp inline-flex min-h-11 items-center rounded-sm border border-white/15 px-3 py-2 font-mono text-[11px] uppercase tracking-[0.16em] text-aluminum hover:border-ticket/50 hover:text-fluorescent"
             >
               {chip ? chip : "No car in the bay"}
-            </Link>
-            <button
-              type="button"
-              className="rounded-sm border border-white/15 px-3 py-2 font-mono text-[11px] uppercase tracking-[0.16em] text-fluorescent md:hidden"
-              aria-expanded={open}
-              aria-controls="bay-board"
-              onClick={() => setOpen((value) => !value)}
+            </BayLink>
+            {chip ? null : (
+              <BayLink
+                href={`/?vin=${DEMO_VIN}`}
+                title={DEMO_VIN}
+                className="bay-stamp inline-flex min-h-11 items-center rounded-sm bg-ticket px-3 py-2 font-mono text-[11px] uppercase tracking-[0.16em] text-ticket-ink"
+              >
+                Demo · {DEMO_VIN_LABEL}
+              </BayLink>
+            )}
+            <a
+              href={PWA_UNLOCK_HREF}
+              className="bay-stamp inline-flex min-h-11 items-center rounded-sm border border-white/15 px-3 py-2 font-mono text-[11px] uppercase tracking-[0.16em] text-aluminum hover:border-ticket/50 hover:text-fluorescent"
             >
-              {open ? "Close board" : "Bay menu"}
-            </button>
+              Unlock leftover worker
+            </a>
           </div>
         </div>
 
-        <nav id="bay-board" aria-label="Service bays" className={`${open ? "block" : "hidden"} md:block`}>
+        <div className="flex flex-wrap items-center gap-1.5">
+          <nav aria-label="Main bays">
+            <BayPath pathname={pathname} />
+          </nav>
+          <a
+            href="#bay-board"
+            className="bay-stamp inline-flex min-h-11 items-center rounded-sm border border-white/15 px-3 py-1.5 font-mono text-[11px] uppercase tracking-[0.16em] text-fluorescent hover:border-ticket/50"
+          >
+            More bays
+          </a>
+        </div>
+
+        <nav id="bay-board" aria-label="Full bay board">
           <ul className="flex flex-wrap gap-1.5">
-            {NAV_ITEMS.map((item) => {
-              const current = item.href === "/" ? pathname === "/" : pathname.startsWith(item.href);
+            {BOARD_NAV.map((item) => {
+              const current = isCurrentHref(pathname, item.href);
               return (
                 <li key={item.href}>
-                  <Link
+                  <BayLink
                     href={item.href}
                     aria-current={current ? "page" : undefined}
-                    onClick={() => setOpen(false)}
-                    className={`inline-block rounded-sm px-2.5 py-1.5 font-mono text-[11px] uppercase tracking-[0.18em] ${
+                    title={item.blurb}
+                    className={`bay-stamp inline-flex min-h-11 items-center rounded-sm px-2.5 py-1.5 font-mono text-[11px] uppercase tracking-[0.18em] ${
                       current
                         ? "bg-ticket text-ticket-ink"
                         : "border border-white/10 text-aluminum hover:border-ticket/50 hover:text-fluorescent"
                     }`}
                   >
                     {item.stamp}
-                  </Link>
+                  </BayLink>
                 </li>
               );
             })}

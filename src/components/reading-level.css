@@ -1,0 +1,60 @@
+/* Default altitude is Beginner until the header toggle writes html[data-reading]. */
+
+/* 44px tap floor, plus a punched-ticket bar so the pressed altitude is not color alone. */
+.reading-stamp {
+  min-height: 2.75rem;
+}
+
+.reading-stamp[aria-pressed="true"] {
+  box-shadow: inset 0 -3px 0 var(--ticket-ink);
+}
+
+[data-label-shop] {
+  display: none;
+}
+
+html[data-reading="shop-talk"] [data-label-dummy],
+html[data-reading="expert"] [data-label-dummy] {
+  display: none;
+}
+
+html[data-reading="shop-talk"] [data-label-shop],
+html[data-reading="expert"] [data-label-shop] {
+  display: inline;
+}
+
+/* Swap altitude copy only. Never hide a desk, section, or the other sibling. */
+[data-altitude="genius"] {
+  display: none;
+}
+
+html[data-reading="shop-talk"] [data-altitude="dummy"],
+html[data-reading="expert"] [data-altitude="dummy"] {
+  display: none;
+}
+
+html[data-reading="shop-talk"] [data-altitude="genius"],
+html[data-reading="expert"] [data-altitude="genius"] {
+  display: unset;
+}
+
+html[data-reading="shop-talk"] .page-brief-altitudes,
+html[data-reading="expert"] .page-brief-altitudes {
+  flex-direction: column-reverse;
+}
+
+html[data-reading="shop-talk"] [data-walk="dummy"],
+html[data-reading="expert"] [data-walk="dummy"] {
+  opacity: 0.72;
+}
+
+html[data-reading="dummy"] [data-walk="genius"],
+html[data-reading="beginner"] [data-walk="genius"],
+html:not([data-reading]) [data-walk="genius"] {
+  opacity: 0.72;
+}
+
+html[data-reading="shop-talk"] [data-walk="genius"],
+html[data-reading="expert"] [data-walk="genius"] {
+  opacity: 1;
+}

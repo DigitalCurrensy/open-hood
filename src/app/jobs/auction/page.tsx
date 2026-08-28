@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { AuctionDesk } from "@/app/jobs/_components/auction-desk";
 import { JobsShell } from "@/app/jobs/_components/jobs-shell";
+import { PageBrief } from "@/components/page-brief";
 import { PageHeader } from "@/components/page-header";
 
 export const metadata: Metadata = {
@@ -11,6 +12,7 @@ export const metadata: Metadata = {
 export default function Page() {
   return (
     <JobsShell>
+      <PageBrief href="/jobs/auction" />
       <PageHeader kicker="10 · Auction / wholesale" title="Lane + landed cost">
         Public vs dealer is paperwork and a clock. Hammer is not the gate.
       </PageHeader>

@@ -5,49 +5,49 @@
       "name": "AutoZone",
       "kind": "parts",
       "locatorUrl": "https://www.autozone.com/locations/?q={query}",
-      "notes": "National DIY parts. Locator is public. We do not scrape aisle stock."
+      "notes": "Official Yext locator. ZIP goes in q=."
     },
     {
       "id": "oreilly",
       "name": "O'Reilly Auto Parts",
       "kind": "parts",
-      "locatorUrl": "https://www.oreillyauto.com/locations?q={query}",
-      "notes": "Parts + loaner tools. Open their locator with the ZIP you typed."
+      "locatorUrl": "https://locations.oreillyauto.com/?q={query}",
+      "notes": "Official locations.oreillyauto.com locator. Type the ZIP on their page if the pin does not land."
     },
     {
       "id": "advance",
       "name": "Advance Auto Parts",
       "kind": "parts",
-      "locatorUrl": "https://stores.advanceautoparts.com/search?q={query}",
-      "notes": "Public store finder. No live inventory in this bay."
+      "locatorUrl": "https://stores.advanceautoparts.com/index.html?q={query}",
+      "notes": "Official store finder. q= ZIP is preserved."
     },
     {
       "id": "napa",
       "name": "NAPA Auto Parts",
       "kind": "parts",
       "locatorUrl": "https://www.napaonline.com/en/store-locator?q={query}",
-      "notes": "Independent NAPA owners. Hours and counter stock live on their site."
+      "notes": "Official NAPA store locator. Not a stock count."
     },
     {
       "id": "pepboys",
       "name": "Pep Boys",
       "kind": "parts",
       "locatorUrl": "https://www.pepboys.com/stores?q={query}",
-      "notes": "Parts plus service bays. We do not book their lanes."
+      "notes": "Official stores page. Extra q= does not 404."
     },
     {
       "id": "discount-tire",
       "name": "Discount Tire",
       "kind": "tires",
       "locatorUrl": "https://www.discounttire.com/store-locator?q={query}",
-      "notes": "Tire retail. Quote and appointment stay on their site."
+      "notes": "Official locator. q= ZIP stays on the page."
     },
     {
       "id": "firestone",
       "name": "Firestone Complete Auto Care",
       "kind": "repair",
-      "locatorUrl": "https://www.firestonecompleteautocare.com/store-locator/?q={query}",
-      "notes": "National service chain. Ask for millimeter readings before you authorize rotors."
+      "locatorUrl": "https://www.firestonecompleteautocare.com/locate/display-map/?q={query}",
+      "notes": "Official map locator. store-locator/?q= redirects here."
     }
   ],
   "dealerGroups": [
@@ -55,43 +55,43 @@
       "id": "autonation",
       "name": "AutoNation",
       "kind": "dealer_group",
-      "locatorUrl": "https://www.autonation.com/dealers",
-      "notes": "Public rooftop list. Service hours and recall desks are on each store page."
+      "locatorUrl": "https://www.autonation.com/dealers/results",
+      "notes": "/dealers 404s. /dealers/results is the live find-a-store desk."
     },
     {
       "id": "penske",
       "name": "Penske Automotive",
       "kind": "dealer_group",
-      "locatorUrl": "https://www.penskeautomotive.com/dealerships.htm",
-      "notes": "Group locator. We do not certify any franchise."
+      "locatorUrl": "https://www.penskeautomotive.com/locations/",
+      "notes": "dealerships.htm 404s. /locations/ is the official rooftop list."
     },
     {
       "id": "lithia",
       "name": "Lithia / Driveway",
       "kind": "dealer_group",
-      "locatorUrl": "https://www.lithia.com/dealerships.htm",
-      "notes": "Public dealership directory."
+      "locatorUrl": "https://www.lithia.com/locations/store-locations.htm",
+      "notes": "dealerships.htm 404s. store-locations.htm is the public list."
     },
     {
       "id": "sonic",
       "name": "Sonic Automotive",
       "kind": "dealer_group",
-      "locatorUrl": "https://www.sonicautomotive.com/dealerships.htm",
-      "notes": "EchoPark + franchise rooftops."
+      "locatorUrl": "https://www.sonicautomotive.com/all-locations.htm",
+      "notes": "dealerships.htm 404s. all-locations.htm is the official roster."
     },
     {
       "id": "group1",
       "name": "Group 1 Automotive",
       "kind": "dealer_group",
-      "locatorUrl": "https://www.group1auto.com/dealerships",
-      "notes": "Public rooftop finder."
+      "locatorUrl": "https://www.group1auto.com/dealer-locations/",
+      "notes": "/dealerships 404s. /dealer-locations/ is the live directory."
     },
     {
       "id": "hendrick",
       "name": "Hendrick Automotive",
       "kind": "dealer_group",
-      "locatorUrl": "https://www.hendrickauto.com/dealerships.htm",
-      "notes": "Public rooftop finder."
+      "locatorUrl": "https://www.hendrickcars.com/dealership/directions.htm",
+      "notes": "hendrickauto.com/dealerships.htm 404s. hendrickcars.com directions is the official finder."
     }
   ]
 }

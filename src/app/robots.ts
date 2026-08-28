@@ -1,15 +1,25 @@
 import type { MetadataRoute } from "next";
+import { CRAWLER_ALLOWLIST, ROBOTS_API_ALLOW, ROBOTS_DISALLOW } from "@/lib/seo";
+import { siteUrl } from "@/lib/site-url";
 
-function siteUrl(): string {
-  const fromVercel = process.env.VERCEL_PROJECT_PRODUCTION_URL;
-  if (fromVercel) return `https://${fromVercel}`;
-  if (process.env.NEXT_PUBLIC_SITE_URL) return process.env.NEXT_PUBLIC_SITE_URL.replace(/\/$/, "");
-  return "http://localhost:3000";
-}
+const SHARED = {
+  allow: ["/", ...ROBOTS_API_ALLOW],
+  disallow: [...ROBOTS_DISALLOW],
+};
 
 export default function robots(): MetadataRoute.Robots {
   return {
-    rules: { userAgent: "*", allow: "/" },
+    rules: [
+      {
+        userAgent: "*",
+        ...SHARED,
+      },
+      {
+        userAgent: [...CRAWLER_ALLOWLIST],
+        ...SHARED,
+      },
+    ],
     sitemap: `${siteUrl()}/sitemap.xml`,
+    host: siteUrl(),
   };
 }

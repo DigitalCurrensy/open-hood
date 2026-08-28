@@ -3,6 +3,7 @@
 import { useMemo, useState } from "react";
 import { SHOP_NORMS } from "@/lib/jobs/checklists";
 import { CheckDesk } from "@/app/jobs/_components/check-desk";
+import { SayTicket } from "@/app/jobs/_components/say-ticket";
 
 function money(value: number): string {
   return value.toLocaleString("en-US", { style: "currency", currency: "USD" });
@@ -53,8 +54,18 @@ export function ShopDesk() {
           <p className="mt-4 text-sm leading-6">Call before extras. Measurements on the ticket. Old parts in the trunk.</p>
         </aside>
       </div>
+      <SayTicket
+        kicker="What the owner should hear"
+        title="Read this out loud"
+        lines={[
+          `Diagnosis is ${money(numbers.diagN)}. Labor ${hours || "0"} h × ${money(Number(rate) || 0)} = ${money(numbers.labor)}. Parts ${money(numbers.partsN)}. Supplies ${suppliesPct || "0"}% = ${money(numbers.supplies)}.`,
+          `Authorize up to ${money(numbers.preTax)} pre-tax. Call before extras. This ceiling is ours — not a Motor hour.`,
+          "Measurements on the ticket. Old parts in the trunk. We are not booking you a competing shop.",
+        ]}
+        footnote="Fair quoting is a script the owner can repeat. It is not a marketplace listing."
+      />
       <CheckDesk
-        storageKey="autoshield.jobs.shop"
+        storageKey="openhood.jobs.shop"
         items={SHOP_NORMS}
         readyLabel="Fair shop — the ticket can be read out loud"
         blockedLabel="Norms still open. Don't hand them a surprise total."

@@ -1,9 +1,10 @@
 "use client";
 
 import Link from "next/link";
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { ACCESS_COPY, auctionSearchLinks } from "@/lib/auctions/catalog";
 import type { AuctionAccess } from "@/lib/auctions/types";
+import { AUCTION_EXAMPLES, EXTERNAL_REL } from "@/lib/directory/vehicle-links";
 import { useIdentifiedVehicle } from "@/lib/vehicle-session";
 
 const ORDER: AuctionAccess[] = ["public_consumer", "public_browse_dealer_bid", "dealer_only"];
@@ -28,6 +29,13 @@ export function AuctionsDesk({
     () => auctionSearchLinks({ year: y, make: mk, model: md, q: free }),
     [y, mk, md, free],
   );
+
+  useEffect(() => {
+    if (year) setY(year);
+    if (make) setMk(make);
+    if (model) setMd(model);
+    if (q) setFree(q);
+  }, [year, make, model, q]);
   return (
     <div className="space-y-6">
       <section className="grid gap-4 md:grid-cols-3">
@@ -84,6 +92,17 @@ export function AuctionsDesk({
             />
           </label>
         </div>
+        <p className="mt-4 text-sm text-aluminum">
+          Try{" "}
+          {AUCTION_EXAMPLES.map((example, index) => (
+            <span key={example.href}>
+              {index > 0 ? " or " : null}
+              <Link href={example.href} className="text-ticket hover:text-fluorescent">
+                {example.label}
+              </Link>
+            </span>
+          ))}
+        </p>
       </form>
 
       {ORDER.map((access) => {
@@ -120,7 +139,8 @@ export function AuctionsDesk({
                   </p>
                   <a
                     href={link.href}
-                    rel="noreferrer"
+                    target="_blank"
+                    rel={EXTERNAL_REL}
                     className={
                       ticket
                         ? "mt-4 inline-block font-mono text-xs font-semibold uppercase tracking-[0.16em] underline"

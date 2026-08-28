@@ -6,5 +6,5 @@ export default async function Page({
   searchParams: Promise<{ code?: string }>;
 }) {
   const { code } = await searchParams;
-  redirect(code ? `/jobs/obd?code=${encodeURIComponent(code)}` : "/jobs/obd");
+  redirect(code ? `/jobs/obd/${encodeURIComponent(code)}` : "/jobs/obd");
 }

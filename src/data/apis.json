@@ -7,7 +7,7 @@
     "cost": "Free public instances. Soft cap ~10k queries / 1 GB per day.",
     "wired": true,
     "env": null,
-    "notes": "Primary directory source. Timeout + demo ZIP cache so the page never hangs empty."
+    "notes": "Primary directory source. Hourly cache. Timeout falls back to 90210 / 43215 samples only when those ZIPs were asked."
   },
   {
     "id": "nominatim",
@@ -47,7 +47,17 @@
     "cost": "Free",
     "wired": true,
     "env": null,
-    "notes": "Menu walk year → make → model → options → /vehicle/{id}"
+    "notes": "Menu walk year → make → model → options → /vehicle/{id}. Directory also links fueleconomy.gov/feg/bymodel/{year}_{Make}_{Model}.shtml."
+  },
+  {
+    "id": "iihs-ratings",
+    "name": "IIHS ratings",
+    "purpose": "Crash-test ratings by year / make / model — link-out only",
+    "auth": "none",
+    "cost": "Free public pages",
+    "wired": true,
+    "env": null,
+    "notes": "https://www.iihs.org/ratings/vehicle/{make}/{model}/{year} — verified for Honda Civic."
   },
   {
     "id": "google-places",
@@ -57,7 +67,7 @@
     "cost": "Paid after free trial credit. Nearby Search billed per request.",
     "wired": "stub",
     "env": "GOOGLE_PLACES_API_KEY",
-    "notes": "Hook merges results when the key is present. No scrape of Maps HTML."
+    "notes": "Live Nearby Search when the key is on (configured:true, probed:skip). Off → connected:false, results:[]. No scrape of Maps HTML."
   },
   {
     "id": "yelp-fusion",
@@ -67,7 +77,7 @@
     "cost": "Free developer tier, then paid.",
     "wired": "stub",
     "env": "YELP_API_KEY",
-    "notes": "Optional merge. We do not invent star ratings."
+    "notes": "Live Fusion merge when the key is on (configured:true, probed:skip). Off → empty, no invented stars."
   },
   {
     "id": "youtube-data",
@@ -75,9 +85,9 @@
     "purpose": "Shop walk-around and how-to video search",
     "auth": "API key",
     "cost": "Quota-based. Default 10k units/day.",
-    "wired": false,
+    "wired": "stub",
     "env": "YOUTUBE_API_KEY",
-    "notes": "Cataloged. Not called — a video carousel is not this desk."
+    "notes": "search.list when the key is on (configured:true, probed:skip). Off → videos:[], search URL still works. No scrape."
   },
   {
     "id": "ebay-motors",
@@ -95,9 +105,9 @@
     "purpose": "Dealer inventory, private-party listings, market price",
     "auth": "API key",
     "cost": "Free eval (~500 calls) then per-call + monthly.",
-    "wired": false,
+    "wired": "stub",
     "env": "MARKETCHECK_API_KEY",
-    "notes": "Paid upgrade hook. No fake 'in stock' tiles without a key."
+    "notes": "Plate decoder live when the key is on (configured:true, probed:skip). Listings not called. No fake in-stock tiles."
   },
   {
     "id": "carapi",
@@ -115,9 +125,9 @@
     "purpose": "Plate-to-VIN, market, history extras",
     "auth": "API key",
     "cost": "Paid per call.",
-    "wired": false,
+    "wired": "stub",
     "env": "CARSXE_API_KEY",
-    "notes": "Plate decode is not shipped. VIN path stays NHTSA."
+    "notes": "Plate decoder live when the key is on (configured:true, probed:skip). Dark without the key. VIN path stays NHTSA."
   },
   {
     "id": "autodev",
@@ -135,9 +145,9 @@
     "purpose": "Title brands, theft, salvage history",
     "auth": "API key",
     "cost": "Paid per report.",
-    "wired": false,
+    "wired": true,
     "env": "VINAUDIT_API_KEY",
-    "notes": "We will not fake a Carfax. Hook only."
+    "notes": "Weekend key. configured:true when present. Title snapshot on /history names VinAudit. Never a dummy Carfax."
   },
   {
     "id": "chrome-data",

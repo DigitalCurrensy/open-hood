@@ -2,13 +2,15 @@
 
 import Link from "next/link";
 import { useMemo, useState } from "react";
-import { lookupDtc, SAMPLE_DTCS } from "@/lib/dtc";
+import { ElmBay } from "@/components/elm-bay";
+import { dtcSayThis, lookupDtc, SAMPLE_DTCS } from "@/lib/dtc";
+import { quoteFromDtcHref } from "@/lib/obd";
 import { useIdentifiedVehicle } from "@/lib/vehicle-session";
 
-export function ObdDesk() {
+export function ObdDesk({ initialCode = "" }: { initialCode?: string }) {
   const [vehicle] = useIdentifiedVehicle();
-  const [raw, setRaw] = useState("");
-  const [submitted, setSubmitted] = useState("");
+  const [raw, setRaw] = useState(initialCode.toUpperCase());
+  const [submitted, setSubmitted] = useState(initialCode.toUpperCase());
 
   const result = useMemo(
     () => (submitted ? lookupDtc(submitted, vehicle?.recalls ?? []) : null),
@@ -16,69 +18,93 @@ export function ObdDesk() {
   );
 
   function run(code: string) {
-    setRaw(code);
-    setSubmitted(code);
+    const next = code.toUpperCase();
+    setRaw(next);
+    setSubmitted(next);
   }
 
   return (
     <div className="grid gap-4 md:grid-cols-[0.9fr_1.1fr]">
-      <form
-        className="rounded-sm border border-white/10 bg-bay-2/80 p-5"
-        onSubmit={(event) => {
-          event.preventDefault();
-          run(raw);
-        }}
-      >
-        <h2 className="font-display text-2xl uppercase tracking-wide">Type the code</h2>
-        <p className="mt-1 text-sm leading-6 text-aluminum">
-          Any $20 OBD-II scanner will print a code like P0420. We do not invent a Bluetooth dongle. Type what the tool
-          showed — we translate it.
-        </p>
-        <label className="mt-4 block">
-          <span className="font-mono text-[11px] uppercase tracking-[0.2em] text-aluminum">DTC from the scanner</span>
-          <input
-            value={raw}
-            onChange={(event) => setRaw(event.target.value.toUpperCase())}
-            spellCheck={false}
-            autoCapitalize="characters"
-            autoComplete="off"
-            placeholder="P0420"
-            maxLength={8}
-            className="mt-2 w-full rounded-sm border border-white/15 bg-bay px-3 py-2 font-mono text-lg uppercase tracking-[0.2em] text-fluorescent placeholder:text-aluminum/40"
-          />
-        </label>
-        <button
-          type="submit"
-          className="mt-4 rounded-sm bg-ticket px-4 py-2 font-mono text-xs font-semibold uppercase tracking-[0.16em] text-ticket-ink"
+      <div className="space-y-4">
+        <ElmBay onCodes={(codes) => run(codes[0] ?? "")} />
+
+        <form
+          className="desk-tap rounded-sm border border-white/10 bg-bay-2/80 p-5"
+          onSubmit={(event) => {
+            event.preventDefault();
+            run(raw);
+          }}
         >
-          Translate this code
-        </button>
-        <div className="mt-4 flex flex-wrap gap-2">
-          <span className="self-center font-mono text-[10px] uppercase tracking-[0.22em] text-aluminum">
-            Common codes
-          </span>
-          {SAMPLE_DTCS.map((code) => (
+          <h2 className="font-display text-2xl uppercase tracking-wide">Type the code</h2>
+          <p className="mt-1 text-sm leading-6 text-aluminum">
+            iOS Safari has no Web Bluetooth — type the code from any $20 scanner, or use TestFlight native.
+            Android Chrome can pull Mode 03 above. Same dictionary either way — we do not invent the diagnosis.
+          </p>
+          <label className="mt-4 block">
+            <span className="font-mono text-[11px] uppercase tracking-[0.2em] text-aluminum">DTC from the scanner</span>
+            <input
+              value={raw}
+              onChange={(event) => setRaw(event.target.value.toUpperCase())}
+              spellCheck={false}
+              autoCapitalize="characters"
+              autoComplete="off"
+              placeholder="P0420"
+              maxLength={8}
+              className="mt-2 w-full rounded-sm border border-white/15 bg-bay px-3 py-2 font-mono text-lg uppercase tracking-[0.2em] text-fluorescent placeholder:text-aluminum/40"
+            />
+          </label>
+          <div className="mt-4 flex flex-wrap gap-2">
             <button
-              key={code}
-              type="button"
-              onClick={() => run(code)}
-              className="rounded-sm border border-white/10 px-2 py-1 font-mono text-[11px] text-aluminum hover:border-ticket/50 hover:text-fluorescent"
+              type="submit"
+              className="min-h-11 rounded-sm bg-ticket px-4 py-2 font-mono text-xs font-semibold uppercase tracking-[0.16em] text-ticket-ink"
             >
-              {code}
+              Translate this code
             </button>
-          ))}
-        </div>
-        {vehicle ? (
-          <p className="mt-4 font-mono text-[11px] uppercase tracking-[0.16em] text-aluminum">
-            Cross-checking recalls on {vehicle.specs.year} {vehicle.specs.make} {vehicle.specs.model}
-          </p>
-        ) : (
-          <p className="mt-4 text-sm text-aluminum">
-            Identify a VIN on the <Link href="/" className="text-ticket">bay</Link> to overlay open campaigns on this
-            code.
-          </p>
-        )}
-      </form>
+            {submitted ? (
+              <Link
+                href={quoteFromDtcHref(submitted)}
+                className="inline-flex min-h-11 items-center rounded-sm border border-ticket/50 px-4 py-2 font-mono text-xs uppercase tracking-[0.16em] text-ticket"
+              >
+                Type to quote
+              </Link>
+            ) : (
+              <Link
+                href="/quote"
+                className="inline-flex min-h-11 items-center rounded-sm border border-white/15 px-4 py-2 font-mono text-xs uppercase tracking-[0.16em] text-fluorescent"
+              >
+                Quote defense
+              </Link>
+            )}
+          </div>
+          <div className="mt-4 flex flex-wrap gap-2">
+            <span className="self-center font-mono text-[10px] uppercase tracking-[0.22em] text-aluminum">
+              Common codes
+            </span>
+            {SAMPLE_DTCS.map((code) => (
+              <Link
+                key={code}
+                href={`/obd/${code}`}
+                className="rounded-sm border border-white/10 px-2 py-1 font-mono text-[11px] text-aluminum hover:border-ticket/50 hover:text-fluorescent"
+              >
+                {code}
+              </Link>
+            ))}
+          </div>
+          {vehicle ? (
+            <p className="mt-4 font-mono text-[11px] uppercase tracking-[0.16em] text-aluminum">
+              Cross-checking recalls on {vehicle.specs.year} {vehicle.specs.make} {vehicle.specs.model}
+            </p>
+          ) : (
+            <p className="mt-4 text-sm text-aluminum">
+              Identify a VIN on the{" "}
+              <Link href="/" className="text-ticket">
+                bay
+              </Link>{" "}
+              to overlay open campaigns on this code.
+            </p>
+          )}
+        </form>
+      </div>
 
       <div>
         {!result ? (
@@ -115,6 +141,10 @@ export function ObdDesk() {
                   {result.entry.typicalCause}
                 </p>
                 <p className="border-l-2 border-ticket pl-3 text-sm leading-6">{result.entry.askTheShop}</p>
+                <blockquote className="ticket-paper rounded-sm p-4 text-ticket-ink">
+                  <p className="font-mono text-[10px] uppercase tracking-[0.28em]">Say this</p>
+                  <p className="mt-2 text-sm leading-6">{dtcSayThis(result.code, result.entry.askTheShop)}</p>
+                </blockquote>
                 <p className="font-mono text-[11px] uppercase tracking-wide text-aluminum">
                   {result.entry.diySafe
                     ? "Safe to look at in the driveway (cap, boot, connector)"
@@ -147,6 +177,17 @@ export function ObdDesk() {
                 </ul>
               </div>
             ) : null}
+            <div className="border-t border-white/10 pt-3">
+              <Link
+                href={quoteFromDtcHref(result.code)}
+                className="inline-flex min-h-11 items-center rounded-sm bg-ticket px-4 py-2 font-mono text-xs font-semibold uppercase tracking-[0.16em] text-ticket-ink"
+              >
+                Take {result.code} to quote defense
+              </Link>
+              <p className="mt-2 text-sm leading-6 text-aluminum">
+                Paste the RO. Circle the line they hung on this pointer. The code is not a parts list.
+              </p>
+            </div>
           </article>
         )}
       </div>

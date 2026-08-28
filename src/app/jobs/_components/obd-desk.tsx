@@ -1,8 +1,11 @@
 "use client";
 
+import Link from "next/link";
 import { useMemo, useState } from "react";
-import { SAMPLE_JOB_DTCS, lookupJobDtc } from "@/lib/jobs/dtc";
+import { ElmBay } from "@/components/elm-bay";
+import { SAMPLE_JOB_DTCS, dtcSayThis, lookupJobDtc } from "@/lib/jobs/dtc";
 import { DTC_COUNT } from "@/lib/jobs/dtc-dictionary";
+import { quoteFromDtcHref } from "@/lib/obd";
 
 export function JobsObdDesk({ initialCode = "" }: { initialCode?: string }) {
   const [raw, setRaw] = useState(initialCode.toUpperCase());
@@ -18,51 +21,71 @@ export function JobsObdDesk({ initialCode = "" }: { initialCode?: string }) {
 
   return (
     <div className="grid gap-4 md:grid-cols-[0.9fr_1.1fr]">
-      <form
-        className="rounded-sm border border-white/10 bg-bay-2/80 p-5"
-        onSubmit={(event) => {
-          event.preventDefault();
-          run(raw);
-        }}
-      >
-        <h2 className="font-display text-2xl uppercase tracking-wide">Type the scanner code</h2>
-        <p className="mt-1 text-sm leading-6 text-aluminum">
-          P, B, C, or U plus four characters. No dongle. {DTC_COUNT} common codes in this book. The light is a pointer,
-          not a parts catalog.
-        </p>
-        <label className="mt-4 block">
-          <span className="font-mono text-[11px] uppercase tracking-[0.2em] text-aluminum">DTC</span>
-          <input
-            value={raw}
-            onChange={(event) => setRaw(event.target.value.toUpperCase())}
-            spellCheck={false}
-            autoCapitalize="characters"
-            autoComplete="off"
-            placeholder="P0420"
-            maxLength={8}
-            className="mt-2 w-full rounded-sm border border-white/15 bg-bay px-3 py-2 font-mono text-lg uppercase tracking-[0.2em] text-fluorescent placeholder:text-aluminum/40"
-          />
-        </label>
-        <button
-          type="submit"
-          className="mt-4 rounded-sm bg-ticket px-4 py-2 font-mono text-xs font-semibold uppercase tracking-[0.16em] text-ticket-ink"
+      <div className="space-y-4">
+        <ElmBay onCodes={(codes) => run(codes[0] ?? "")} />
+
+        <form
+          className="desk-tap rounded-sm border border-white/10 bg-bay-2/80 p-5"
+          onSubmit={(event) => {
+            event.preventDefault();
+            run(raw);
+          }}
         >
-          Translate this code
-        </button>
-        <div className="mt-4 flex flex-wrap gap-2">
-          <span className="self-center font-mono text-[10px] uppercase tracking-[0.22em] text-aluminum">Try</span>
-          {SAMPLE_JOB_DTCS.map((code) => (
+          <h2 className="font-display text-2xl uppercase tracking-wide">Type the scanner code</h2>
+          <p className="mt-1 text-sm leading-6 text-aluminum">
+            P, B, C, or U plus four characters. {DTC_COUNT} common codes in this book. Android Chrome can pull
+            Mode 03 above. iOS Safari has no Web Bluetooth — type the code or use TestFlight native.
+          </p>
+          <label className="mt-4 block">
+            <span className="font-mono text-[11px] uppercase tracking-[0.2em] text-aluminum">DTC</span>
+            <input
+              value={raw}
+              onChange={(event) => setRaw(event.target.value.toUpperCase())}
+              spellCheck={false}
+              autoCapitalize="characters"
+              autoComplete="off"
+              placeholder="P0420"
+              maxLength={8}
+              className="mt-2 w-full rounded-sm border border-white/15 bg-bay px-3 py-2 font-mono text-lg uppercase tracking-[0.2em] text-fluorescent placeholder:text-aluminum/40"
+            />
+          </label>
+          <div className="mt-4 flex flex-wrap gap-2">
             <button
-              key={code}
-              type="button"
-              onClick={() => run(code)}
-              className="rounded-sm border border-white/10 px-2 py-1 font-mono text-[11px] text-aluminum hover:border-ticket/50 hover:text-fluorescent"
+              type="submit"
+              className="min-h-11 rounded-sm bg-ticket px-4 py-2 font-mono text-xs font-semibold uppercase tracking-[0.16em] text-ticket-ink"
             >
-              {code}
+              Translate this code
             </button>
-          ))}
-        </div>
-      </form>
+            {submitted ? (
+              <Link
+                href={quoteFromDtcHref(submitted)}
+                className="inline-flex min-h-11 items-center rounded-sm border border-ticket/50 px-4 py-2 font-mono text-xs uppercase tracking-[0.16em] text-ticket"
+              >
+                Type to quote
+              </Link>
+            ) : (
+              <Link
+                href="/quote"
+                className="inline-flex min-h-11 items-center rounded-sm border border-white/15 px-4 py-2 font-mono text-xs uppercase tracking-[0.16em] text-fluorescent"
+              >
+                Quote defense
+              </Link>
+            )}
+          </div>
+          <div className="mt-4 flex flex-wrap gap-2">
+            <span className="self-center font-mono text-[10px] uppercase tracking-[0.22em] text-aluminum">Try</span>
+            {SAMPLE_JOB_DTCS.map((code) => (
+              <Link
+                key={code}
+                href={`/jobs/obd/${code}`}
+                className="rounded-sm border border-white/10 px-2 py-1 font-mono text-[11px] text-aluminum hover:border-ticket/50 hover:text-fluorescent"
+              >
+                {code}
+              </Link>
+            ))}
+          </div>
+        </form>
+      </div>
 
       <div>
         {!result ? (
@@ -115,6 +138,12 @@ export function JobsObdDesk({ initialCode = "" }: { initialCode?: string }) {
                   <span className="font-mono text-[11px] uppercase tracking-[0.16em] text-ticket">First look · </span>
                   {result.entry.firstLook}
                 </p>
+                <blockquote className="ticket-paper rounded-sm p-4 text-ticket-ink">
+                  <p className="font-mono text-[10px] uppercase tracking-[0.28em]">Say this</p>
+                  <p className="mt-2 text-sm leading-6">
+                    {dtcSayThis(result.code, result.entry.doNotThrowParts)}
+                  </p>
+                </blockquote>
               </>
             ) : null}
             {result.generic ? (
@@ -128,6 +157,17 @@ export function JobsObdDesk({ initialCode = "" }: { initialCode?: string }) {
                 ) : null}
               </div>
             ) : null}
+            <div className="border-t border-white/10 pt-3">
+              <Link
+                href={quoteFromDtcHref(result.code)}
+                className="inline-flex min-h-11 items-center rounded-sm bg-ticket px-4 py-2 font-mono text-xs font-semibold uppercase tracking-[0.16em] text-ticket-ink"
+              >
+                Take {result.code} to quote defense
+              </Link>
+              <p className="mt-2 text-sm leading-6 text-aluminum">
+                The light is a pointer. Paste the RO and circle the line they hung on this code.
+              </p>
+            </div>
           </article>
         )}
       </div>

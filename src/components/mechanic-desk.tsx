@@ -39,7 +39,7 @@ export function MechanicDesk({ vehicle }: { vehicle: IdentifiedVehicle }) {
           ))}
         </ol>
         <p className="mt-6 text-xs leading-5 opacity-70">
-          AutoShield is a translator, not a shop. Measurements beat adjectives. Call before extras.
+          Open Hood is a translator, not a shop. Measurements beat adjectives. Call before extras.
         </p>
       </article>
 
@@ -86,6 +86,27 @@ export function MechanicDesk({ vehicle }: { vehicle: IdentifiedVehicle }) {
             If they say the rotors are done, the only fair sentence is a millimeter reading next to the discard spec.
             &quot;They&apos;re rusty&quot; on the hat is not a thickness measurement.
           </p>
+        </div>
+        <div className="rounded-sm border border-white/10 bg-bay-2/80 p-5 text-sm leading-6 text-aluminum">
+          <p className="font-mono text-[11px] uppercase tracking-[0.2em] text-cone">Scanner</p>
+          <p className="mt-2">
+            Chrome on Android can pair a BLE ELM327 on the OBD desk. iPhone has no Web Bluetooth — type the code from
+            any $20 tool. Live RPM lives on the scan bay.
+          </p>
+          <div className="mt-3 flex flex-wrap gap-2">
+            <Link
+              href="/obd"
+              className="inline-flex min-h-11 items-center rounded-sm bg-ticket px-4 py-2 font-mono text-xs font-semibold uppercase tracking-[0.16em] text-ticket-ink"
+            >
+              Read codes · /obd
+            </Link>
+            <Link
+              href="/scan"
+              className="inline-flex min-h-11 items-center rounded-sm border border-white/15 px-4 py-2 font-mono text-xs uppercase tracking-[0.16em] text-fluorescent"
+            >
+              Live PIDs · /scan
+            </Link>
+          </div>
         </div>
       </aside>
     </div>

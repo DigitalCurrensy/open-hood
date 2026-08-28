@@ -1,6 +1,8 @@
-import { runAdvocateRules } from "@/lib/agent/fallback";
-import { completeAdvocateOpenAI, hasOpenAI, streamAdvocateOpenAI } from "@/lib/agent/openai";
+import { AGENT_FUNCTION_LIST } from "@/lib/agent/tools";
+import { streamOrAnswerAgent } from "@/lib/agent/run";
 import type { AgentImageKind, AgentRequestBody, AgentStatus, AgentWireMessage } from "@/lib/agent/types";
+import { normalizeReadingLevel } from "@/lib/agent/types";
+import { hasOpenAI } from "@/lib/openai";
 import { NextResponse } from "next/server";
 
 export const dynamic = "force-dynamic";
@@ -13,6 +15,8 @@ export async function GET() {
   const status: AgentStatus = {
     engine: vision ? "gpt-4o" : "rules",
     vision,
+    tools: AGENT_FUNCTION_LIST,
+    readingLevels: ["beginner", "expert"],
   };
   return NextResponse.json(status);
 }
@@ -54,27 +58,19 @@ export async function POST(request: Request) {
       ? { concern: last.content.slice(0, 160) }
       : undefined;
 
-  const briefing = runAdvocateRules({
-    messages,
-    vehicle,
-    hasVision: hasOpenAI() && Boolean(last.image),
-  });
-
   const accept = request.headers.get("accept") ?? "";
   const wantJson = body.stream === false || (accept.includes("application/json") && !accept.includes("text/event-stream"));
 
-  if (!hasOpenAI()) {
-    return NextResponse.json(briefing);
-  }
+  const result = await streamOrAnswerAgent({
+    messages,
+    vehicle,
+    readingLevel: normalizeReadingLevel(body.readingLevel),
+    stream: body.stream,
+    wantJson,
+  });
 
-  try {
-    if (wantJson) {
-      return NextResponse.json(await completeAdvocateOpenAI({ messages, vehicle, briefing }));
-    }
-    return await streamAdvocateOpenAI({ messages, vehicle, briefing });
-  } catch {
-    return NextResponse.json(briefing);
-  }
+  if (result instanceof Response) return result;
+  return NextResponse.json(result);
 }
 
 function trimField(value?: string): string | undefined {

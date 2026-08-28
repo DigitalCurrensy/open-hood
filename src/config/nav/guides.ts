@@ -5,7 +5,7 @@ export const GUIDES_NAV: NavItem = {
   href: "/guides",
   stamp: "How-to",
   label: "How-to glossary",
-  blurb: "Cars for dummies, next generation — real jobs mapped to real videos.",
+  blurb: "How-to bay, next generation — real jobs mapped to real videos.",
   needsVehicle: false,
 };
 

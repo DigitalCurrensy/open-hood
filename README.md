@@ -1,14 +1,18 @@
-# AutoShield AI
+# Open Hood
+
+Know the car. Then the window.
 
 Factory specs in plain English. Don’t authorize a repair until you can say the script at the counter.
 
-AutoShield is a consumer-defense bay, not a shop marketplace. Identify the car (VIN, photo, or year/make/model). We translate NHTSA data and the repair order into sentences a service writer has to answer.
+Open Hood is an owner’s car book, not a shop marketplace and not a Saturday meetup. Identify the car (VIN, photo, or year/make/model). We translate NHTSA data and the repair order into sentences a service writer has to answer.
+
+Lockup and voice: [docs/BRAND.md](docs/BRAND.md). Product paper: [docs/WHITEPAPER.md](docs/WHITEPAPER.md).
 
 ## What’s live
 
 | Desk | What it does |
 | --- | --- |
-| **Bay** `/` | VIN, plate/VIN photo (local Tesseract + JPEG compress), or year/make/model |
+| **Bay** `/` | VIN, plate/VIN photo (read on your phone), or year/make/model |
 | **Spec sheet** `/garage` | Fluids / PSI / filter SKUs (catalog + heuristic) |
 | **Quote defense** `/quote` | Paste or photo-mark an RO; grease-pencil padded lines |
 | **Symptoms** `/symptoms` | Noise + moment → causes and shop questions |
@@ -27,7 +31,7 @@ Demo VINs on the bay: `1HGCM82633A004352` (2003 Honda Accord), F-150, Tesla Mode
 
 RepairPal, Openbay, YourMechanic, and dealer apps exist to **route you into a shop**. Carfax stores history. FIXD / Torque sell a **dongle**. RockAuto sells parts. ShopAdvisor is for the shop.
 
-AutoShield is the person standing next to you at the window:
+Open Hood is the person standing next to you at the window:
 
 1. **Advocate, not marketplace** — no booking fee, no certified-shop network.
 2. **Translator** — factory specs, recalls, and DTCs in sentences you can say out loud.
@@ -54,7 +58,9 @@ npm run build
 
 ### Environment
 
-Copy `.env.example` to `.env.local`. `OPENAI_API_KEY` is optional.
+Copy `.env.example` to `.env.local`. `OPENAI_API_KEY` is optional. `NEXT_PUBLIC_GA_ID` is optional — unset means no analytics.
+
+Crawlers: `/llms.txt`, `/robots.txt`, `/sitemap.xml`. How to cite this bay is in `/llms.txt` and `/how-it-works`.
 
 Without a key: VIN decode, year/make/model identify, local photo OCR (Tesseract.js on the device), fluids, recalls, local quote markup, symptoms, OBD, parts, and the counter script still work. Photos are compressed to JPEG on the client so the upload does not die on a 12 MB phone shot.
 
@@ -67,7 +73,7 @@ A license plate is a note, not a DMV lookup. We do not pretend to own a commerci
 - `POST /api/vin` — NHTSA vPIC + recalls + fluids card
 - `POST /api/identify` — VIN **or** year/make/model (+ plate, miles, concern)
 - `GET /api/catalog` — NHTSA makes / models for a year
-- `POST /api/quote` — local price book; OpenAI vision if configured
+- `POST /api/quote` — local price book; optional photo reading if a connection is set
 - `POST /api/symptoms` — rule map
 - `POST /api/ocr` — optional cloud VIN assist (returns honestly if no key)
 - Session: identified vehicle + last quote in `sessionStorage`
@@ -85,4 +91,4 @@ Production needs no secrets for the core bay. Set `OPENAI_API_KEY` in the host i
 
 ## Coming later (not shipped as broken buttons)
 
-Escrow for a repair, TecDoc / OEM labor times, and live dealer inventory are Phase 2. See [ROADMAP.md](ROADMAP.md). Voice and palette: [docs/BRAND.md](docs/BRAND.md).
+Escrow for a repair, TecDoc / OEM labor times, and live dealer inventory are Phase 2. See [ROADMAP.md](ROADMAP.md). Voice and palette: [docs/BRAND.md](docs/BRAND.md). Brutal score vs RepairPal / Carfax / YourMechanic / AutoZone / CR / dealer apps / Car Scanner: [docs/RATING.md](docs/RATING.md).

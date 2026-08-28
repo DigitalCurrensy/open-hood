@@ -7,10 +7,19 @@ import apis from "@/data/apis.json";
 import { PlaceCard } from "@/app/directory/place-card";
 import { VehicleDataStrip } from "@/app/directory/vehicle-data";
 import { FILTER_CHIPS } from "@/lib/directory/filters";
-import { chainLocators, DISCLAIMER } from "@/lib/directory/chains";
+import { DIRECTORY_EXAMPLES, directorySearchHref } from "@/lib/directory/href";
+import { chainLocators, DISCLAIMER, EMPTY_LOCATION_HINT, OSM_HONESTY } from "@/lib/directory/chains";
+import { emptyZipMessage } from "@/lib/directory/empty-zip";
+import { EXTERNAL_REL } from "@/lib/directory/vehicle-links";
 import type { DirectorySearchResult, PlaceType } from "@/lib/directory/types";
 
 type FilterId = PlaceType | "all";
+
+function formatUpdated(iso: string): string {
+  const date = new Date(iso);
+  if (Number.isNaN(date.getTime())) return iso;
+  return date.toLocaleString("en-US", { month: "short", day: "numeric", hour: "numeric", minute: "2-digit" });
+}
 
 export function DirectoryDesk({
   initialQuery,
@@ -30,6 +39,7 @@ export function DirectoryDesk({
   const [type, setType] = useState<FilterId>(initialType);
   const [result, setResult] = useState<DirectorySearchResult | null>(null);
   const [busy, setBusy] = useState(false);
+  const [locating, setLocating] = useState(false);
   const [error, setError] = useState("");
   const locators = useMemo(() => chainLocators(query || "near me"), [query]);
   const visible = useMemo(() => {
@@ -39,22 +49,26 @@ export function DirectoryDesk({
   }, [result, type]);
 
   useEffect(() => {
-    if (initialQuery.trim()) void runSearch();
-    // First paint only — user edits drive later searches.
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+    setQuery(initialQuery);
+    setType(initialType);
+  }, [initialQuery, initialType]);
 
-  async function runSearch() {
-    const q = query.trim();
-    if (!q) {
-      setError("Enter a ZIP or a city.");
+  useEffect(() => {
+    if (initialQuery.trim()) void runSearch(initialQuery);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [initialQuery]);
+
+  async function runSearch(nextQuery?: string) {
+    const q = (nextQuery ?? query).trim();
+    const zipFault = emptyZipMessage(q);
+    if (zipFault) {
+      setError(zipFault);
       setResult(null);
       return;
     }
     setBusy(true);
     setError("");
-    const params = new URLSearchParams({ q, type });
-    router.replace(`/directory?${params.toString()}`, { scroll: false });
+    router.replace(directorySearchHref(q, type), { scroll: false });
     try {
       const response = await fetch(`/api/directory/search?${new URLSearchParams({ q, type: "all" }).toString()}`);
       const body = (await response.json()) as DirectorySearchResult & { error?: string };
@@ -65,11 +79,52 @@ export function DirectoryDesk({
       }
       setResult(body);
     } catch {
-      setError("The directory desk lost the line. Try 90210 — we keep a cached sample for that ZIP.");
+      setError(
+        "The directory desk lost the line. Type the ZIP again. Cached samples stay on 90210 and 43215 — only if you open those desks.",
+      );
       setResult(null);
     } finally {
       setBusy(false);
     }
+  }
+
+  function useMyLocation() {
+    if (typeof navigator === "undefined" || !navigator.geolocation) {
+      setError("This browser has no location. Type a ZIP.");
+      return;
+    }
+    setLocating(true);
+    setError("");
+    navigator.geolocation.getCurrentPosition(
+      (position) => {
+        const params = new URLSearchParams({
+          lat: String(position.coords.latitude),
+          lon: String(position.coords.longitude),
+        });
+        void fetch(`/api/directory/geocode?${params.toString()}`)
+          .then((response) => response.json())
+          .then((body: { query?: string; label?: string; error?: string }) => {
+            const next = (body.query || body.label || "").trim();
+            if (!next) {
+              setError("Location came back without a ZIP. Type one.");
+              return;
+            }
+            setQuery(next);
+            return runSearch(next);
+          })
+          .catch(() => {
+            setError("Reverse geocode missed. Type a ZIP.");
+          })
+          .finally(() => {
+            setLocating(false);
+          });
+      },
+      () => {
+        setLocating(false);
+        setError("Location permission stayed off. Type a ZIP.");
+      },
+      { enableHighAccuracy: false, timeout: 8000, maximumAge: 300_000 },
+    );
   }
 
   return (
@@ -84,8 +139,8 @@ export function DirectoryDesk({
         <p className="font-mono text-[11px] uppercase tracking-[0.28em] text-cone">Near me · OSM Overpass</p>
         <h2 className="mt-1 font-display text-3xl uppercase text-fluorescent">ZIP or city</h2>
         <p className="mt-2 max-w-2xl text-sm leading-6 text-aluminum">
-          Everyday owners and industry counters use the same map. We geocode with Nominatim, then pull OSM shops around
-          that pin. We do not scrape Copart, Carfax, or dealer sites.
+          {OSM_HONESTY} We geocode with Nominatim, then pull OSM shops around that pin. A miss stays a miss — we do
+          not hand you another city. We do not scrape Copart, Carfax, or dealer sites.
         </p>
         <label className="mt-4 block">
           <span className="font-mono text-[11px] uppercase tracking-[0.2em] text-aluminum">Where</span>
@@ -93,33 +148,28 @@ export function DirectoryDesk({
             value={query}
             onChange={(event) => setQuery(event.target.value)}
             autoComplete="postal-code"
-            placeholder="90210 or Columbus, OH"
-            className="mt-2 w-full rounded-sm border border-white/15 bg-bay px-3 py-2 font-mono text-sm text-fluorescent placeholder:text-aluminum/40"
+            placeholder="Five-digit ZIP or a city — not another town"
+            className="mt-2 min-h-11 w-full rounded-sm border border-white/15 bg-bay px-3 py-2 font-mono text-sm text-fluorescent placeholder:text-aluminum/40"
           />
         </label>
         <fieldset className="mt-4">
           <legend className="font-mono text-[11px] uppercase tracking-[0.2em] text-aluminum">Filter</legend>
           <div className="mt-2 flex flex-wrap gap-2">
             {FILTER_CHIPS.map((chip) => (
-              <label
+              <button
                 key={chip.id}
-                className={`cursor-pointer rounded-sm border px-3 py-1.5 font-mono text-xs uppercase tracking-wide ${
+                type="button"
+                aria-pressed={type === chip.id}
+                className={`min-h-11 rounded-sm border px-3 py-1.5 font-mono text-xs uppercase tracking-wide ${
                   type === chip.id ? "border-ticket bg-ticket text-ticket-ink" : "border-white/10 text-aluminum"
                 }`}
+                onClick={() => {
+                  setType(chip.id);
+                  router.replace(directorySearchHref(query.trim(), chip.id), { scroll: false });
+                }}
               >
-                <input
-                  type="radio"
-                  name="type"
-                  className="sr-only"
-                  checked={type === chip.id}
-                  onChange={() => {
-                    setType(chip.id);
-                    const next = new URLSearchParams({ q: query.trim(), type: chip.id });
-                    router.replace(`/directory?${next.toString()}`, { scroll: false });
-                  }}
-                />
                 {chip.label}
-              </label>
+              </button>
             ))}
           </div>
         </fieldset>
@@ -127,14 +177,28 @@ export function DirectoryDesk({
           <button
             type="submit"
             disabled={busy}
-            className="rounded-sm bg-ticket px-4 py-2 font-mono text-xs font-semibold uppercase tracking-[0.16em] text-ticket-ink disabled:opacity-60"
+            className="min-h-11 rounded-sm bg-ticket px-4 py-2 font-mono text-xs font-semibold uppercase tracking-[0.16em] text-ticket-ink disabled:opacity-60"
           >
             {busy ? "Sweeping the map…" : "Find rooftops"}
           </button>
+          <button
+            type="button"
+            disabled={locating || busy}
+            onClick={useMyLocation}
+            className="min-h-11 rounded-sm border border-white/15 px-4 py-2 font-mono text-xs uppercase tracking-[0.16em] text-fluorescent disabled:opacity-60"
+          >
+            {locating ? "Asking the phone…" : "Use my location"}
+          </button>
           <p className="text-sm text-aluminum">
-            Try <button type="button" className="text-ticket" onClick={() => setQuery("90210")}>90210</button>
-            {" or "}
-            <button type="button" className="text-ticket" onClick={() => setQuery("43215")}>43215</button>
+            Sample desks (only if you ask):{" "}
+            {DIRECTORY_EXAMPLES.map((example, index) => (
+              <span key={example.href}>
+                {index > 0 ? (index === DIRECTORY_EXAMPLES.length - 1 ? ", or " : ", ") : null}
+                <Link href={example.href} className="text-ticket hover:text-fluorescent">
+                  {example.label}
+                </Link>
+              </span>
+            ))}
           </p>
         </div>
       </form>
@@ -155,19 +219,27 @@ export function DirectoryDesk({
               <p className="font-mono text-[11px] uppercase tracking-[0.24em] text-aluminum">
                 {result.geocode?.label ?? query} · {visible.length} rooftops · {result.source}
                 {result.timedOut ? " · cached sample" : ""}
+                {result.updatedAt ? ` · Updated ${formatUpdated(result.updatedAt)}` : ""}
               </p>
               <p className="mt-1 max-w-3xl text-sm leading-6 text-aluminum">
-                {visible.length ? result.message : `Nothing in that filter for this radius. ${DISCLAIMER}`}
+                {visible.length
+                  ? result.message
+                  : result.places.length === 0
+                    ? result.message
+                    : `Nothing in that filter for this radius. ${DISCLAIMER}`}
               </p>
             </div>
             <p className="font-mono text-[10px] uppercase tracking-[0.16em] text-aluminum-dim">{result.attribution}</p>
           </div>
           {visible.length === 0 ? (
             <div className="rounded-sm border border-white/10 p-6">
-              <h3 className="font-display text-2xl uppercase text-fluorescent">No pins in this radius</h3>
+              <h3 className="font-display text-2xl uppercase text-fluorescent">
+                {result.places.length === 0 ? "No rooftops for that ask" : "No pins in this filter"}
+              </h3>
               <p className="mt-2 text-sm leading-6 text-aluminum">
-                OSM is volunteer-mapped. Widen the city name, switch the filter, or set{" "}
-                <span className="font-mono text-ticket">GOOGLE_PLACES_API_KEY</span> for a denser pull.
+                {result.places.length === 0
+                  ? result.message || EMPTY_LOCATION_HINT
+                  : "Switch the chip or try another ZIP. National counters stay on this ticket either way."}
               </p>
             </div>
           ) : (
@@ -192,7 +264,12 @@ export function DirectoryDesk({
           <ul className="mt-4 space-y-2 text-sm">
             {locators.retail.map((chain) => (
               <li key={chain.id}>
-                <a href={chain.href} rel="noreferrer" className="underline decoration-ticket-ink/30 underline-offset-2">
+                <a
+                  href={chain.href}
+                  target="_blank"
+                  rel={EXTERNAL_REL}
+                  className="underline decoration-ticket-ink/30 underline-offset-2"
+                >
                   {chain.name}
                 </a>
                 <span className="ml-2 font-mono text-[10px] uppercase tracking-wide">{chain.kind}</span>
@@ -206,7 +283,7 @@ export function DirectoryDesk({
           <ul className="mt-4 space-y-2 text-sm text-aluminum">
             {locators.dealerGroups.map((group) => (
               <li key={group.id}>
-                <a href={group.href} rel="noreferrer" className="text-fluorescent hover:text-ticket">
+                <a href={group.href} target="_blank" rel={EXTERNAL_REL} className="text-fluorescent hover:text-ticket">
                   {group.name}
                 </a>
               </li>
@@ -217,8 +294,8 @@ export function DirectoryDesk({
               Parts SKU search
             </Link>
             {" · "}
-            <Link href="/auctions" className="hover:text-ticket">
-              Auctions
+            <Link href="/auctions?year=2018&make=Honda&model=Civic" className="hover:text-ticket">
+              2018 Civic auctions
             </Link>
           </p>
         </article>

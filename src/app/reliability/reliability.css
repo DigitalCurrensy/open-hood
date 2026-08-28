@@ -1,0 +1,20 @@
+/* Reliability desk shares trust chip / ticket stamps via trust.css import in the desk.
+   Never draw Consumer Reports bubbles — no circles, no red/yellow/green rating dots. */
+
+.reliability-desk {
+  --cr-bubble: none;
+}
+
+.reliability-no-bubble,
+.reliability-desk .trust-chip {
+  border-radius: 2px;
+}
+
+.reliability-count {
+  font-variant-numeric: tabular-nums;
+}
+
+.reliability-component {
+  border-radius: 2px;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+}

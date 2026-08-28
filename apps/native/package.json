@@ -1,0 +1,26 @@
+{
+  "name": "open-hood-native",
+  "version": "0.1.0",
+  "private": true,
+  "main": "index.js",
+  "scripts": {
+    "start": "expo start --dev-client",
+    "ios": "expo run:ios",
+    "android": "expo run:android",
+    "prebuild": "expo prebuild",
+    "doctor": "expo-doctor"
+  },
+  "dependencies": {
+    "expo": "~54.0.0",
+    "expo-dev-client": "~6.0.12",
+    "expo-status-bar": "~3.0.8",
+    "react": "19.1.0",
+    "react-native": "0.81.4",
+    "react-native-ble-plx": "~3.5.1"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.26.0",
+    "@types/react": "~19.1.10",
+    "typescript": "~5.9.2"
+  }
+}

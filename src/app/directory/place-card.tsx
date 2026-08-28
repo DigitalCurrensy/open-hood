@@ -1,10 +1,13 @@
-import { mapsLink, osmLink, telHref, typeLabel } from "@/lib/directory/filters";
+import { appleMapsLink, mapsLink, osmLink, telHref, typeLabel, websiteHref } from "@/lib/directory/filters";
+import { EXTERNAL_REL } from "@/lib/directory/vehicle-links";
 import type { DirectoryPlace } from "@/lib/directory/types";
 
 export function PlaceCard({ place }: { place: DirectoryPlace }) {
   const tel = telHref(place.phone);
-  const map = mapsLink(place);
+  const google = mapsLink(place);
+  const apple = appleMapsLink(place);
   const osm = osmLink(place.lat, place.lon);
+  const website = websiteHref(place.website);
 
   return (
     <article className="flex flex-col rounded-sm border border-white/10 bg-bay-2/80 p-4">
@@ -29,23 +32,38 @@ export function PlaceCard({ place }: { place: DirectoryPlace }) {
         ) : (
           <span className="rounded-sm border border-white/10 px-2.5 py-1.5 text-aluminum-dim">No phone on OSM</span>
         )}
-        {place.website ? (
+        {website ? (
           <a
-            href={/^https?:\/\//i.test(place.website) ? place.website : `https://${place.website}`}
-            rel="noreferrer"
+            href={website}
+            target="_blank"
+            rel={EXTERNAL_REL}
             className="rounded-sm border border-white/15 px-2.5 py-1.5 text-fluorescent hover:border-ticket/50"
           >
             Website
           </a>
         ) : null}
         <a
-          href={map}
-          rel="noreferrer"
+          href={google}
+          target="_blank"
+          rel={EXTERNAL_REL}
           className="rounded-sm border border-white/15 px-2.5 py-1.5 text-fluorescent hover:border-ticket/50"
         >
-          Map
+          Google
         </a>
-        <a href={osm} rel="noreferrer" className="rounded-sm border border-white/15 px-2.5 py-1.5 text-aluminum hover:text-fluorescent">
+        <a
+          href={apple}
+          target="_blank"
+          rel={EXTERNAL_REL}
+          className="rounded-sm border border-white/15 px-2.5 py-1.5 text-fluorescent hover:border-ticket/50"
+        >
+          Apple
+        </a>
+        <a
+          href={osm}
+          target="_blank"
+          rel={EXTERNAL_REL}
+          className="rounded-sm border border-white/15 px-2.5 py-1.5 text-aluminum hover:text-fluorescent"
+        >
           OSM
         </a>
       </div>

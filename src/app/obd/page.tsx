@@ -1,19 +1,28 @@
 import type { Metadata } from "next";
+import { PageBrief } from "@/components/page-brief";
 import { PageHeader } from "@/components/page-header";
 import { ObdDesk } from "@/components/obd-desk";
 
 export const metadata: Metadata = {
   title: "OBD codes",
-  description: "Translate a P0xxx code from any $20 scanner — no dongle required.",
+  description:
+    "Chrome on Android can pair a BLE ELM327 and read stored codes. iOS Safari: no Web Bluetooth — type the code or use TestFlight native. Then take it to quote defense.",
 };
 
-export default function Page() {
+export default async function Page({
+  searchParams,
+}: {
+  searchParams: Promise<{ code?: string }>;
+}) {
+  const { code } = await searchParams;
   return (
     <div className="space-y-6">
+      <PageBrief href="/obd" />
       <PageHeader kicker="Scanner copy" title="OBD-II translator">
-        Type the code from any $20 scanner. We explain it like a person standing next to you — not a parts catalog.
+        Chrome on Android can pair a BLE ELM327. iOS Safari has no Web Bluetooth — type the code or use TestFlight
+        native. Same English either way. Not a parts catalog.
       </PageHeader>
-      <ObdDesk />
+      <ObdDesk initialCode={code ?? ""} />
     </div>
   );
 }

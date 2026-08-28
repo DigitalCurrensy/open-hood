@@ -1,17 +1,23 @@
+import { retailerSearchHrefs } from "@/lib/directory/sku-search";
 import type { IdentifiedVehicle, PartBuyRow } from "@/lib/types";
 
 export interface BuyLinks {
   rockauto: string;
   autozone: string;
+  oreilly: string;
+  napa: string;
   amazon: string;
 }
 
 export function buyLinks(query: string): BuyLinks {
-  const q = query.trim();
-  const encoded = encodeURIComponent(q);
+  const stamps = retailerSearchHrefs(query);
+  const byId = Object.fromEntries(stamps.map((row) => [row.id, row.href]));
+  const encoded = encodeURIComponent(query.trim());
   return {
-    rockauto: `https://www.rockauto.com/en/partsearch/?partnum=${encoded}`,
-    autozone: `https://www.autozone.com/searchresult?searchText=${encoded}`,
+    rockauto: byId.rockauto ?? `https://www.rockauto.com/en/partsearch/?partnum=${encoded}`,
+    autozone: byId.autozone ?? `https://www.autozone.com/searchresult?searchText=${encoded}`,
+    oreilly: byId.oreilly ?? `https://www.oreillyauto.com/search?q=${encoded}`,
+    napa: byId.napa ?? `https://www.napaonline.com/en/search?text=${encoded}`,
     amazon: `https://www.amazon.com/s?k=${encoded}`,
   };
 }
@@ -115,4 +121,4 @@ export function partsForVehicle(vehicle: IdentifiedVehicle): PartBuyRow[] {
 }
 
 export const PARTS_DISCLAIMER =
-  "These are search URLs, not live inventory or prices. We do not scrape RockAuto, AutoZone, or Amazon, and we do not earn a commission in this MVP.";
+  "These are search URLs, not live inventory or prices. RockAuto / AutoZone / O’Reilly / NAPA hrefs only. We do not earn a commission and we do not grow a cart.";

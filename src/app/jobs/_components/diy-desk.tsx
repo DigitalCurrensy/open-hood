@@ -49,7 +49,7 @@ export function DiyDesk() {
         </ul>
       </article>
       <CheckDesk
-        storageKey={`autoshield.jobs.diy.${card.id}`}
+        storageKey={`openhood.jobs.diy.${card.id}`}
         items={card.steps}
         readyLabel="Job card complete — still use the chart"
         blockedLabel="Tick the steps. Torque is not a vibe."

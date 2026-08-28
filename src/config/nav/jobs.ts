@@ -113,7 +113,7 @@ export const JOB_TOOLS: JobNavItem[] = [
     href: "/jobs/obd",
     stamp: "Codes",
     label: "OBD translator",
-    blurb: "Type a P/B/C/U code. Layperson English. Do not throw parts.",
+    blurb: "Android BLE ELM327 or type a P/B/C/U. iPhone types. Do not throw parts.",
     kind: "tool",
     pipeline: null,
   },

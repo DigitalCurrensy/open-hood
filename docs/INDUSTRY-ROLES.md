@@ -1,6 +1,6 @@
 # Industry roles
 
-The car does not care who is holding the ticket. The pipeline does. AutoShield gives each desk a tool that finishes in under 30 seconds. We do not book shops, sell parts, or invent live dealer inventory.
+The car does not care who is holding the ticket. The pipeline does. Open Hood gives each desk a tool that finishes in under 30 seconds. We do not book shops, sell parts, or invent live dealer inventory.
 
 Build / swap notes stay on `/builds` (core). Job tools live under `/jobs`.
 

@@ -1,0 +1,1400 @@
+{
+  "disclaimer": "Common OEM-to-aftermarket filter numbers from public interchange lists (Fram, Wix, Purolator). Confirm the application on the box. Not a TecDoc dump and not live inventory.",
+  "rows": [
+    {
+      "kind": "oil",
+      "oem": "Honda 15400-PLM-A02",
+      "oemBrand": "Honda",
+      "fram": "PH7317 / TG7317 / XG7317",
+      "wix": "51394",
+      "purolator": "L14610 / PL14610",
+      "notes": "K-series / J-series 2000s. Confirm thread."
+    },
+    {
+      "kind": "oil",
+      "oem": "Honda 15400-RTA-003",
+      "oemBrand": "Honda",
+      "fram": "XG9677 / PH9677",
+      "wix": "57151",
+      "purolator": "PL20530",
+      "notes": "2010s+ Earth Dreams cartridge-style spin-on."
+    },
+    {
+      "kind": "oil",
+      "oem": "Honda 15400-P0H-305",
+      "oemBrand": "Honda",
+      "fram": "PH3593A",
+      "wix": "51348",
+      "purolator": "L14476",
+      "notes": "D-series / early F-series."
+    },
+    {
+      "kind": "oil",
+      "oem": "Honda 15400-PLC-004",
+      "oemBrand": "Honda",
+      "fram": "PH4967",
+      "wix": "51361",
+      "purolator": "L14670",
+      "notes": "Late 1990s–early 2000s V6 / some 4-cyl."
+    },
+    {
+      "kind": "oil",
+      "oem": "Toyota 04152-YZZA1",
+      "oemBrand": "Toyota",
+      "fram": "XG7317 / TG7317",
+      "wix": "57047",
+      "purolator": "PBL14610",
+      "notes": "Common 2AZ / 2GR / 1GR spin-on."
+    },
+    {
+      "kind": "oil",
+      "oem": "Toyota 04152-YZZA6",
+      "oemBrand": "Toyota",
+      "fram": "XG10860 / TG9972",
+      "wix": "57151",
+      "purolator": "PL20530",
+      "notes": "Late Dynamic Force 0W-16 cars."
+    },
+    {
+      "kind": "oil",
+      "oem": "Toyota 90915-YZZD2",
+      "oemBrand": "Toyota",
+      "fram": "PH4967",
+      "wix": "51348",
+      "purolator": "L14476",
+      "notes": "Older 1ZZ / 1NZ / 2AZ spin-on."
+    },
+    {
+      "kind": "oil",
+      "oem": "Motorcraft FL-820-S",
+      "oemBrand": "Ford",
+      "fram": "PH3614 / XG3614",
+      "wix": "51372",
+      "purolator": "L14459",
+      "notes": "Many 2000s–2010s Duratec / 5.4."
+    },
+    {
+      "kind": "oil",
+      "oem": "Motorcraft FL-910-S",
+      "oemBrand": "Ford",
+      "fram": "XG10575 / PH10575",
+      "wix": "57035",
+      "purolator": "PL14670",
+      "notes": "Escape / Fusion / Focus EcoBoost era."
+    },
+    {
+      "kind": "oil",
+      "oem": "Motorcraft FL-500-S",
+      "oemBrand": "Ford",
+      "fram": "PH8A / HP8",
+      "wix": "51515",
+      "purolator": "L30001",
+      "notes": "F-150 / Expedition / 5.0 / 3.5 EcoBoost can."
+    },
+    {
+      "kind": "oil",
+      "oem": "Motorcraft FL-2051-S",
+      "oemBrand": "Ford",
+      "fram": "XG10575",
+      "wix": "57035",
+      "purolator": "PL20575",
+      "notes": "Later 2.3 / 2.7 EcoBoost."
+    },
+    {
+      "kind": "oil",
+      "oem": "ACDelco PF46",
+      "oemBrand": "GM",
+      "fram": "PH3387A",
+      "wix": "51040",
+      "purolator": "L10241",
+      "notes": "GMT800 / GMT900 4.8 / 5.3 / 6.0."
+    },
+    {
+      "kind": "oil",
+      "oem": "ACDelco PF63",
+      "oemBrand": "GM",
+      "fram": "PH10760 / XG10760",
+      "wix": "57060",
+      "purolator": "PL14612",
+      "notes": "EcoTec3 5.3 / 6.2."
+    },
+    {
+      "kind": "oil",
+      "oem": "ACDelco PF63E",
+      "oemBrand": "GM",
+      "fram": "XG10760",
+      "wix": "57060",
+      "purolator": "PL14612",
+      "notes": "Extended-life PF63 can."
+    },
+    {
+      "kind": "oil",
+      "oem": "ACDelco PF64",
+      "oemBrand": "GM",
+      "fram": "XG10575 / PH10575",
+      "wix": "57035",
+      "purolator": "PL14610",
+      "notes": "3.6 LGX / LFX and some 2.4."
+    },
+    {
+      "kind": "oil",
+      "oem": "ACDelco PF66",
+      "oemBrand": "GM",
+      "fram": "XG11470 / PH11470",
+      "wix": "57151",
+      "purolator": "PL20530",
+      "notes": "1.5T / 2.0T Ecotec."
+    },
+    {
+      "kind": "oil",
+      "oem": "ACDelco PF2257G",
+      "oemBrand": "GM",
+      "fram": "XG10575",
+      "wix": "57035",
+      "purolator": "PL14670",
+      "notes": "1.4T Cruze / Trax / Encore."
+    },
+    {
+      "kind": "oil",
+      "oem": "Mopar 04884899AB",
+      "oemBrand": "Mopar",
+      "fram": "PH16 / TG16",
+      "wix": "51085",
+      "purolator": "L10241",
+      "notes": "Pentastar / 5.7 Hemi 2000s–2010s."
+    },
+    {
+      "kind": "oil",
+      "oem": "Mopar 68191349AA",
+      "oemBrand": "Mopar",
+      "fram": "XG10575 / PH10575",
+      "wix": "57060",
+      "purolator": "PL14612",
+      "notes": "Late Pentastar / 5.7 / 3.6."
+    },
+    {
+      "kind": "oil",
+      "oem": "Nissan 15208-9E000",
+      "oemBrand": "Nissan",
+      "fram": "XG9688 / PH9688",
+      "wix": "57055",
+      "purolator": "PL14610",
+      "notes": "QR25 / VQ35 2010s."
+    },
+    {
+      "kind": "oil",
+      "oem": "Nissan 15208-65F0C",
+      "oemBrand": "Nissan",
+      "fram": "PH6607",
+      "wix": "51361",
+      "purolator": "L14670",
+      "notes": "VQ40 Frontier / older VQ."
+    },
+    {
+      "kind": "oil",
+      "oem": "Nissan 15208-65F0E",
+      "oemBrand": "Nissan",
+      "fram": "PH4967",
+      "wix": "51348",
+      "purolator": "L14476",
+      "notes": "HR16 / MR18 Sentra / Versa / Kicks."
+    },
+    {
+      "kind": "oil",
+      "oem": "Nissan 15208-6WR0A",
+      "oemBrand": "Nissan",
+      "fram": "XG12182",
+      "wix": "57812",
+      "purolator": "PL20530",
+      "notes": "KR15 / PR25 / late VQ."
+    },
+    {
+      "kind": "oil",
+      "oem": "Subaru 15208AA12A",
+      "oemBrand": "Subaru",
+      "fram": "XG7317",
+      "wix": "57047",
+      "purolator": "L14610",
+      "notes": "EJ / early FB."
+    },
+    {
+      "kind": "oil",
+      "oem": "Subaru 15208AA15A",
+      "oemBrand": "Subaru",
+      "fram": "XG7317 / TG7317",
+      "wix": "57047",
+      "purolator": "L14610",
+      "notes": "FB20 / FB25 / FA20."
+    },
+    {
+      "kind": "oil",
+      "oem": "Subaru 15208AA170",
+      "oemBrand": "Subaru",
+      "fram": "XG10860",
+      "wix": "57151",
+      "purolator": "PL20530",
+      "notes": "Late FB25 / FA24."
+    },
+    {
+      "kind": "oil",
+      "oem": "Mazda PY01-14-302",
+      "oemBrand": "Mazda",
+      "fram": "XG9966 / PH9966",
+      "wix": "57047",
+      "purolator": "PL14610",
+      "notes": "Skyactiv-G 2.5 2017+."
+    },
+    {
+      "kind": "oil",
+      "oem": "Mazda PE01-14-302",
+      "oemBrand": "Mazda",
+      "fram": "XG9676",
+      "wix": "57035",
+      "purolator": "PL14610",
+      "notes": "Skyactiv-G 2012–2016."
+    },
+    {
+      "kind": "oil",
+      "oem": "Hyundai 26300-35504",
+      "oemBrand": "Hyundai",
+      "fram": "XG7317 / PH3614",
+      "wix": "51372",
+      "purolator": "L14459",
+      "notes": "Nu / Gamma 1.8 / 2.0."
+    },
+    {
+      "kind": "oil",
+      "oem": "Hyundai 26300-35503",
+      "oemBrand": "Hyundai",
+      "fram": "PH3614",
+      "wix": "51372",
+      "purolator": "L14459",
+      "notes": "Older Nu / Gamma."
+    },
+    {
+      "kind": "oil",
+      "oem": "Hyundai 26300-35505",
+      "oemBrand": "Hyundai",
+      "fram": "XG10860",
+      "wix": "57151",
+      "purolator": "PL20530",
+      "notes": "Smartstream 2.0 / 2.5."
+    },
+    {
+      "kind": "oil",
+      "oem": "Hyundai 26320-2EA01",
+      "oemBrand": "Hyundai",
+      "fram": "XG10575",
+      "wix": "57035",
+      "purolator": "PL14610",
+      "notes": "Theta II 2.4 GDI."
+    },
+    {
+      "kind": "oil",
+      "oem": "Hyundai 26320-3CFA0",
+      "oemBrand": "Hyundai",
+      "fram": "XG10575",
+      "wix": "57060",
+      "purolator": "PL14612",
+      "notes": "Lambda 3.3 / 3.8."
+    },
+    {
+      "kind": "oil",
+      "oem": "Kia 26300-35503",
+      "oemBrand": "Kia",
+      "fram": "PH3614",
+      "wix": "51372",
+      "purolator": "L14459",
+      "notes": "Soul / Forte 2.0 era."
+    },
+    {
+      "kind": "oil",
+      "oem": "Kia 26300-35504",
+      "oemBrand": "Kia",
+      "fram": "XG7317",
+      "wix": "51372",
+      "purolator": "L14459",
+      "notes": "Soul / Forte / Sportage 2.0."
+    },
+    {
+      "kind": "oil",
+      "oem": "Kia 26320-2EA01",
+      "oemBrand": "Kia",
+      "fram": "XG10575",
+      "wix": "57035",
+      "purolator": "PL14610",
+      "notes": "Theta II 2.4."
+    },
+    {
+      "kind": "oil",
+      "oem": "Kia 26320-3CFA0",
+      "oemBrand": "Kia",
+      "fram": "XG10575",
+      "wix": "57060",
+      "purolator": "PL14612",
+      "notes": "Telluride / Palisade 3.8."
+    },
+    {
+      "kind": "oil",
+      "oem": "VW 06K 115 466",
+      "oemBrand": "Volkswagen",
+      "fram": "XG10575",
+      "wix": "57035",
+      "purolator": "PL14610",
+      "notes": "EA888 Gen 3 1.8 TSI spin-on."
+    },
+    {
+      "kind": "oil",
+      "oem": "VW 06L 115 562",
+      "oemBrand": "Volkswagen",
+      "fram": "CH11722",
+      "wix": "57045",
+      "purolator": "L14612",
+      "notes": "EA888 cartridge. Mann HU 6006 z."
+    },
+    {
+      "kind": "oil",
+      "oem": "BMW 11 42 7 566 327",
+      "oemBrand": "BMW",
+      "fram": "CH11721",
+      "wix": "57045",
+      "purolator": "L14612",
+      "notes": "N20 / N55 cartridge. Mann HU 816 x."
+    },
+    {
+      "kind": "oil",
+      "oem": "BMW 11 42 8 649 575",
+      "oemBrand": "BMW",
+      "fram": "CH11721",
+      "wix": "57045",
+      "purolator": "L14612",
+      "notes": "B48 / B58 cartridge."
+    },
+    {
+      "kind": "oil",
+      "oem": "Volvo 31372730",
+      "oemBrand": "Volvo",
+      "fram": "CH11721",
+      "wix": "57045",
+      "purolator": "L14612",
+      "notes": "SPA B420. Mann HU 816 x."
+    },
+    {
+      "kind": "oil",
+      "oem": "Mercedes A 270 180 00 09",
+      "oemBrand": "Mercedes-Benz",
+      "fram": "CH11722",
+      "wix": "57045",
+      "purolator": "L14612",
+      "notes": "M274 / M264 cartridge. Mann HU 7008 z."
+    },
+    {
+      "kind": "air",
+      "oem": "Honda 17220-RAA-A00",
+      "oemBrand": "Honda",
+      "fram": "CA10060",
+      "wix": "42369",
+      "purolator": "A35469",
+      "notes": "2003–2007 Accord."
+    },
+    {
+      "kind": "air",
+      "oem": "Honda 17220-5BA-A00",
+      "oemBrand": "Honda",
+      "fram": "CA11964",
+      "wix": "49336",
+      "purolator": "A38236",
+      "notes": "10th-gen Civic / 5th-gen CR-V."
+    },
+    {
+      "kind": "air",
+      "oem": "Honda 17220-6A0-A00",
+      "oemBrand": "Honda",
+      "fram": "CA11965",
+      "wix": "49340",
+      "purolator": "A38240",
+      "notes": "10th-gen Accord 1.5T / 2.0T."
+    },
+    {
+      "kind": "air",
+      "oem": "Honda 17220-5J6-A00",
+      "oemBrand": "Honda",
+      "fram": "CA11860",
+      "wix": "49180",
+      "purolator": "A38180",
+      "notes": "Odyssey / Pilot / MDX J35."
+    },
+    {
+      "kind": "air",
+      "oem": "Toyota 17801-0T020",
+      "oemBrand": "Toyota",
+      "fram": "CA10755",
+      "wix": "49073",
+      "purolator": "A38073",
+      "notes": "Late Corolla 2.0."
+    },
+    {
+      "kind": "air",
+      "oem": "Toyota 17801-0T021",
+      "oemBrand": "Toyota",
+      "fram": "CA10755",
+      "wix": "49073",
+      "purolator": "A38073",
+      "notes": "Camry / Avalon / ES A25A."
+    },
+    {
+      "kind": "air",
+      "oem": "Toyota 17801-F4010",
+      "oemBrand": "Toyota",
+      "fram": "CA11930",
+      "wix": "49320",
+      "purolator": "A38220",
+      "notes": "RAV4 / Highlander / Venza 2019+."
+    },
+    {
+      "kind": "air",
+      "oem": "Toyota 17801-0P050",
+      "oemBrand": "Toyota",
+      "fram": "CA10260",
+      "wix": "42360",
+      "purolator": "A35460",
+      "notes": "Tacoma / 4Runner 1GR / 2GR."
+    },
+    {
+      "kind": "air",
+      "oem": "Toyota 17801-31120",
+      "oemBrand": "Toyota",
+      "fram": "CA10285",
+      "wix": "42380",
+      "purolator": "A35480",
+      "notes": "Lexus RX 3.5."
+    },
+    {
+      "kind": "air",
+      "oem": "Motorcraft FA-1883",
+      "oemBrand": "Ford",
+      "fram": "CA10261",
+      "wix": "42710",
+      "purolator": "A35710",
+      "notes": "F-150 / Expedition / Navigator."
+    },
+    {
+      "kind": "air",
+      "oem": "Motorcraft FA-1912",
+      "oemBrand": "Ford",
+      "fram": "CA10764",
+      "wix": "49080",
+      "purolator": "A38080",
+      "notes": "Escape / Fusion / Edge / Focus."
+    },
+    {
+      "kind": "air",
+      "oem": "Motorcraft FA-1919",
+      "oemBrand": "Ford",
+      "fram": "CA11920",
+      "wix": "49310",
+      "purolator": "A38210",
+      "notes": "Mustang / Ranger / Bronco 2.3."
+    },
+    {
+      "kind": "air",
+      "oem": "ACDelco A3239C",
+      "oemBrand": "GM",
+      "fram": "CA10755",
+      "wix": "42720",
+      "purolator": "A35720",
+      "notes": "Silverado / Sierra 5.3."
+    },
+    {
+      "kind": "air",
+      "oem": "ACDelco A3245C",
+      "oemBrand": "GM",
+      "fram": "CA11470",
+      "wix": "49300",
+      "purolator": "A38200",
+      "notes": "Equinox / Terrain 1.5T."
+    },
+    {
+      "kind": "air",
+      "oem": "ACDelco A3238C",
+      "oemBrand": "GM",
+      "fram": "CA10756",
+      "wix": "42721",
+      "purolator": "A35721",
+      "notes": "Tahoe / Suburban / Yukon / Escalade."
+    },
+    {
+      "kind": "air",
+      "oem": "Mopar 53034054AB",
+      "oemBrand": "Mopar",
+      "fram": "CA10261",
+      "wix": "42710",
+      "purolator": "A35710",
+      "notes": "Ram 1500 5.7."
+    },
+    {
+      "kind": "air",
+      "oem": "Mopar 68232852AB",
+      "oemBrand": "Mopar",
+      "fram": "CA11940",
+      "wix": "49330",
+      "purolator": "A38230",
+      "notes": "Wrangler JL / Gladiator / Compass."
+    },
+    {
+      "kind": "air",
+      "oem": "Nissan 16546-4BA1A",
+      "oemBrand": "Nissan",
+      "fram": "CA10755",
+      "wix": "49073",
+      "purolator": "A38073",
+      "notes": "Rogue / Maxima 2014–2020."
+    },
+    {
+      "kind": "air",
+      "oem": "Subaru 16546AA12A",
+      "oemBrand": "Subaru",
+      "fram": "CA10764",
+      "wix": "49080",
+      "purolator": "A38080",
+      "notes": "Outback / Forester / Impreza FB."
+    },
+    {
+      "kind": "air",
+      "oem": "Mazda PY8W-13-Z40",
+      "oemBrand": "Mazda",
+      "fram": "CA11930",
+      "wix": "49320",
+      "purolator": "A38220",
+      "notes": "CX-5 / Mazda3 / CX-30 2.5."
+    },
+    {
+      "kind": "air",
+      "oem": "Hyundai 28113-F2000",
+      "oemBrand": "Hyundai",
+      "fram": "CA11470",
+      "wix": "49300",
+      "purolator": "A38200",
+      "notes": "Elantra / Tucson / Sportage 2017 era."
+    },
+    {
+      "kind": "air",
+      "oem": "Kia 28113-B2000",
+      "oemBrand": "Kia",
+      "fram": "CA10764",
+      "wix": "49080",
+      "purolator": "A38080",
+      "notes": "Soul 2014–2019."
+    },
+    {
+      "kind": "air",
+      "oem": "VW 6R0 129 620 C",
+      "oemBrand": "Volkswagen",
+      "fram": "CA10755",
+      "wix": "49073",
+      "purolator": "A38073",
+      "notes": "Jetta / Golf Mk6."
+    },
+    {
+      "kind": "air",
+      "oem": "BMW 13 71 7 595 941",
+      "oemBrand": "BMW",
+      "fram": "CA10764",
+      "wix": "49080",
+      "purolator": "A38080",
+      "notes": "F30 3 Series / F15 X5."
+    },
+    {
+      "kind": "cabin",
+      "oem": "Honda 80292-SDA-A01",
+      "oemBrand": "Honda",
+      "fram": "CF10134",
+      "wix": "24774",
+      "purolator": "C38134",
+      "notes": "2003–2007 Accord glove-box."
+    },
+    {
+      "kind": "cabin",
+      "oem": "Honda 80292-TBA-A01",
+      "oemBrand": "Honda",
+      "fram": "CF11964",
+      "wix": "24936",
+      "purolator": "C38236",
+      "notes": "Civic / CR-V 2016–2022."
+    },
+    {
+      "kind": "cabin",
+      "oem": "Honda 80292-TVA-A01",
+      "oemBrand": "Honda",
+      "fram": "CF11965",
+      "wix": "24940",
+      "purolator": "C38240",
+      "notes": "10th-gen Accord."
+    },
+    {
+      "kind": "cabin",
+      "oem": "Honda 80292-THR-A11",
+      "oemBrand": "Honda",
+      "fram": "CF11860",
+      "wix": "24880",
+      "purolator": "C38180",
+      "notes": "Odyssey rear + front — confirm both."
+    },
+    {
+      "kind": "cabin",
+      "oem": "Toyota 87139-YZZ08",
+      "oemBrand": "Toyota",
+      "fram": "CF10285",
+      "wix": "24480",
+      "purolator": "C35480",
+      "notes": "Camry / Corolla / many 2010s Toyota."
+    },
+    {
+      "kind": "cabin",
+      "oem": "Toyota 87139-07820",
+      "oemBrand": "Toyota",
+      "fram": "CF11930",
+      "wix": "24920",
+      "purolator": "C38220",
+      "notes": "RAV4 2019+."
+    },
+    {
+      "kind": "cabin",
+      "oem": "Toyota 87139-50100",
+      "oemBrand": "Toyota",
+      "fram": "CF10755",
+      "wix": "24800",
+      "purolator": "C38000",
+      "notes": "Lexus RX."
+    },
+    {
+      "kind": "cabin",
+      "oem": "Motorcraft FP-71",
+      "oemBrand": "Ford",
+      "fram": "CF10285",
+      "wix": "24480",
+      "purolator": "C35480",
+      "notes": "F-150 / Escape 2011–2014 era."
+    },
+    {
+      "kind": "cabin",
+      "oem": "Motorcraft FP-68",
+      "oemBrand": "Ford",
+      "fram": "CF10134",
+      "wix": "24774",
+      "purolator": "C38134",
+      "notes": "F-150 2015–2020 / Explorer / Edge."
+    },
+    {
+      "kind": "cabin",
+      "oem": "Motorcraft FP-92",
+      "oemBrand": "Ford",
+      "fram": "CF11920",
+      "wix": "24910",
+      "purolator": "C38210",
+      "notes": "F-150 2021+ / Explorer 2020+."
+    },
+    {
+      "kind": "cabin",
+      "oem": "ACDelco CF188",
+      "oemBrand": "GM",
+      "fram": "CF10285",
+      "wix": "24480",
+      "purolator": "C35480",
+      "notes": "Silverado / Tahoe 2014–2018."
+    },
+    {
+      "kind": "cabin",
+      "oem": "ACDelco CF3258",
+      "oemBrand": "GM",
+      "fram": "CF11930",
+      "wix": "24920",
+      "purolator": "C38220",
+      "notes": "Equinox / Traverse / T1XX trucks."
+    },
+    {
+      "kind": "cabin",
+      "oem": "Mopar 68038796AA",
+      "oemBrand": "Mopar",
+      "fram": "CF10134",
+      "wix": "24774",
+      "purolator": "C38134",
+      "notes": "Ram / Grand Cherokee / Charger 2011+."
+    },
+    {
+      "kind": "cabin",
+      "oem": "Mopar 68225653AA",
+      "oemBrand": "Mopar",
+      "fram": "CF11940",
+      "wix": "24930",
+      "purolator": "C38230",
+      "notes": "Wrangler JL / Cherokee / Compass."
+    },
+    {
+      "kind": "cabin",
+      "oem": "Nissan 27277-4BA0A",
+      "oemBrand": "Nissan",
+      "fram": "CF10755",
+      "wix": "24800",
+      "purolator": "C38000",
+      "notes": "Rogue / Maxima 2014–2020."
+    },
+    {
+      "kind": "cabin",
+      "oem": "Subaru 72880FJ000",
+      "oemBrand": "Subaru",
+      "fram": "CF10285",
+      "wix": "24480",
+      "purolator": "C35480",
+      "notes": "Outback / Forester 2015–2019."
+    },
+    {
+      "kind": "cabin",
+      "oem": "Subaru 72880FG000",
+      "oemBrand": "Subaru",
+      "fram": "CF10134",
+      "wix": "24774",
+      "purolator": "C38134",
+      "notes": "Forester 2014–2018."
+    },
+    {
+      "kind": "cabin",
+      "oem": "Mazda KD45-61-J6X",
+      "oemBrand": "Mazda",
+      "fram": "CF10755",
+      "wix": "24800",
+      "purolator": "C38000",
+      "notes": "CX-5 / CX-9 / Mazda6."
+    },
+    {
+      "kind": "cabin",
+      "oem": "Hyundai 97133-F2000",
+      "oemBrand": "Hyundai",
+      "fram": "CF11470",
+      "wix": "24900",
+      "purolator": "C38200",
+      "notes": "Elantra 2017–2020."
+    },
+    {
+      "kind": "cabin",
+      "oem": "Kia 97133-B2000",
+      "oemBrand": "Kia",
+      "fram": "CF10764",
+      "wix": "24810",
+      "purolator": "C38010",
+      "notes": "Soul 2014–2019."
+    },
+    {
+      "kind": "cabin",
+      "oem": "VW 1K0 819 644 B",
+      "oemBrand": "Volkswagen",
+      "fram": "CF10134",
+      "wix": "24774",
+      "purolator": "C38134",
+      "notes": "Jetta / Golf / Passat PQ35."
+    },
+    {
+      "kind": "cabin",
+      "oem": "BMW 64 31 9 378 425",
+      "oemBrand": "BMW",
+      "fram": "CF10764",
+      "wix": "24810",
+      "purolator": "C38010",
+      "notes": "F30 3 Series / F15 X5 pair."
+    },
+    {
+      "kind": "cabin",
+      "oem": "Tesla 1069171-00-E",
+      "oemBrand": "Tesla",
+      "fram": "—",
+      "wix": "—",
+      "purolator": "—",
+      "notes": "Model S / X HEPA. Aftermarket is not a Fram/Wix/Purolator number — confirm Tesla SKU."
+    },
+    {
+      "kind": "oil",
+      "oem": "Motorcraft FL-400-S",
+      "oemBrand": "Ford",
+      "fram": "PH16 / TG16",
+      "wix": "51516",
+      "purolator": "L14612",
+      "notes": "Early Duratec / Zetec 4-cyl. Confirm thread."
+    },
+    {
+      "kind": "oil",
+      "oem": "Kia 26300-35505",
+      "oemBrand": "Kia",
+      "fram": "XG10860",
+      "wix": "57151",
+      "purolator": "PL20530",
+      "notes": "Smartstream 2.0 / 2.5."
+    },
+    {
+      "kind": "oil",
+      "oem": "Mitsubishi MZ690070",
+      "oemBrand": "Mitsubishi",
+      "fram": "XG7317",
+      "wix": "57047",
+      "purolator": "L14610",
+      "notes": "4B11 2.4 Outlander era."
+    },
+    {
+      "kind": "oil",
+      "oem": "Mitsubishi 1230A186",
+      "oemBrand": "Mitsubishi",
+      "fram": "XG10860",
+      "wix": "57151",
+      "purolator": "PL20530",
+      "notes": "Late 4B12 2.5."
+    },
+    {
+      "kind": "air",
+      "oem": "Honda 17220-PAA-A00",
+      "oemBrand": "Honda",
+      "fram": "CA8754",
+      "wix": "42369",
+      "purolator": "A35469",
+      "notes": "6th-gen Accord."
+    },
+    {
+      "kind": "air",
+      "oem": "Honda 17220-R40-A00",
+      "oemBrand": "Honda",
+      "fram": "CA10168",
+      "wix": "42380",
+      "purolator": "A35480",
+      "notes": "8th-gen Accord / Crosstour."
+    },
+    {
+      "kind": "air",
+      "oem": "Honda 17220-5A2-A00",
+      "oemBrand": "Honda",
+      "fram": "CA10755",
+      "wix": "49073",
+      "purolator": "A38073",
+      "notes": "9th-gen Accord / HR-V."
+    },
+    {
+      "kind": "air",
+      "oem": "Honda 17220-30A-A00",
+      "oemBrand": "Honda",
+      "fram": "CA11965",
+      "wix": "49340",
+      "purolator": "A38240",
+      "notes": "11th-gen Accord."
+    },
+    {
+      "kind": "air",
+      "oem": "Honda 17220-PPA-A00",
+      "oemBrand": "Honda",
+      "fram": "CA8755",
+      "wix": "42360",
+      "purolator": "A35460",
+      "notes": "2nd-gen CR-V / Element."
+    },
+    {
+      "kind": "air",
+      "oem": "Honda 17220-RWC-A00",
+      "oemBrand": "Honda",
+      "fram": "CA10160",
+      "wix": "42370",
+      "purolator": "A35470",
+      "notes": "3rd-gen CR-V."
+    },
+    {
+      "kind": "air",
+      "oem": "Honda 17220-R5A-A00",
+      "oemBrand": "Honda",
+      "fram": "CA10764",
+      "wix": "49080",
+      "purolator": "A38080",
+      "notes": "4th-gen CR-V."
+    },
+    {
+      "kind": "air",
+      "oem": "Honda 17220-3A0-A00",
+      "oemBrand": "Honda",
+      "fram": "CA11964",
+      "wix": "49336",
+      "purolator": "A38236",
+      "notes": "6th-gen CR-V / HR-V."
+    },
+    {
+      "kind": "air",
+      "oem": "Honda 17220-TG7-A00",
+      "oemBrand": "Honda",
+      "fram": "CA11860",
+      "wix": "49180",
+      "purolator": "A38180",
+      "notes": "Pilot / Ridgeline / Passport J35."
+    },
+    {
+      "kind": "air",
+      "oem": "Honda 17220-3T0-A00",
+      "oemBrand": "Honda",
+      "fram": "CA11966",
+      "wix": "49341",
+      "purolator": "A38241",
+      "notes": "4th-gen Pilot / MDX."
+    },
+    {
+      "kind": "air",
+      "oem": "Honda 17220-RNA-A00",
+      "oemBrand": "Honda",
+      "fram": "CA10161",
+      "wix": "42371",
+      "purolator": "A35471",
+      "notes": "8th-gen Civic."
+    },
+    {
+      "kind": "air",
+      "oem": "Honda 17220-TR0-A00",
+      "oemBrand": "Honda",
+      "fram": "CA10756",
+      "wix": "49074",
+      "purolator": "A38074",
+      "notes": "9th-gen Civic."
+    },
+    {
+      "kind": "air",
+      "oem": "Toyota 17801-0H020",
+      "oemBrand": "Toyota",
+      "fram": "CA8754",
+      "wix": "42369",
+      "purolator": "A35469",
+      "notes": "Camry / Solara / Sienna 2000s."
+    },
+    {
+      "kind": "air",
+      "oem": "Toyota 17801-0V020",
+      "oemBrand": "Toyota",
+      "fram": "CA10285",
+      "wix": "42380",
+      "purolator": "A35480",
+      "notes": "Camry 2012–2017."
+    },
+    {
+      "kind": "air",
+      "oem": "Toyota 17801-0T010",
+      "oemBrand": "Toyota",
+      "fram": "CA10260",
+      "wix": "42360",
+      "purolator": "A35460",
+      "notes": "Corolla / Matrix / Highlander 2009 era."
+    },
+    {
+      "kind": "air",
+      "oem": "Toyota 17801-0T050",
+      "oemBrand": "Toyota",
+      "fram": "CA10755",
+      "wix": "49073",
+      "purolator": "A38073",
+      "notes": "Corolla / RAV4 / Highlander 2014 era."
+    },
+    {
+      "kind": "air",
+      "oem": "Toyota 17801-0S040",
+      "oemBrand": "Toyota",
+      "fram": "CA10261",
+      "wix": "42710",
+      "purolator": "A35710",
+      "notes": "Tundra / Sequoia / GX 5.7."
+    },
+    {
+      "kind": "air",
+      "oem": "Toyota 17801-21080",
+      "oemBrand": "Toyota",
+      "fram": "CA10160",
+      "wix": "42370",
+      "purolator": "A35470",
+      "notes": "Prius / Yaris / C-HR."
+    },
+    {
+      "kind": "air",
+      "oem": "Toyota 17801-F4030",
+      "oemBrand": "Toyota",
+      "fram": "CA11931",
+      "wix": "49321",
+      "purolator": "A38221",
+      "notes": "Tacoma / 4Runner / Land Cruiser 2.4T."
+    },
+    {
+      "kind": "air",
+      "oem": "Motorcraft FA-1778",
+      "oemBrand": "Ford",
+      "fram": "CA8755",
+      "wix": "42360",
+      "purolator": "A35460",
+      "notes": "F-150 / Expedition 2004–2010."
+    },
+    {
+      "kind": "air",
+      "oem": "Motorcraft FA-1770",
+      "oemBrand": "Ford",
+      "fram": "CA10168",
+      "wix": "42380",
+      "purolator": "A35480",
+      "notes": "Escape / Fusion 2008–2012."
+    },
+    {
+      "kind": "air",
+      "oem": "Motorcraft FA-1632",
+      "oemBrand": "Ford",
+      "fram": "CA7556",
+      "wix": "46267",
+      "purolator": "A34667",
+      "notes": "Modular V8 1990s–2000s."
+    },
+    {
+      "kind": "air",
+      "oem": "Motorcraft FA-1680",
+      "oemBrand": "Ford",
+      "fram": "CA8754",
+      "wix": "42369",
+      "purolator": "A35469",
+      "notes": "Focus / Escape 2000s 4-cyl."
+    },
+    {
+      "kind": "air",
+      "oem": "ACDelco A1618C",
+      "oemBrand": "GM",
+      "fram": "CA7556",
+      "wix": "46267",
+      "purolator": "A34667",
+      "notes": "GMT800 / GMT900 trucks."
+    },
+    {
+      "kind": "air",
+      "oem": "ACDelco A3177C",
+      "oemBrand": "GM",
+      "fram": "CA10755",
+      "wix": "49073",
+      "purolator": "A38073",
+      "notes": "Equinox / Terrain / Malibu 2.4."
+    },
+    {
+      "kind": "air",
+      "oem": "ACDelco A3176C",
+      "oemBrand": "GM",
+      "fram": "CA10756",
+      "wix": "49074",
+      "purolator": "A38074",
+      "notes": "Cruze / Sonic / Spark / Encore."
+    },
+    {
+      "kind": "air",
+      "oem": "ACDelco A3246C",
+      "oemBrand": "GM",
+      "fram": "CA11471",
+      "wix": "49301",
+      "purolator": "A38201",
+      "notes": "Traverse / Acadia / Blazer."
+    },
+    {
+      "kind": "air",
+      "oem": "ACDelco A3178C",
+      "oemBrand": "GM",
+      "fram": "CA10261",
+      "wix": "42710",
+      "purolator": "A35710",
+      "notes": "Colorado / Canyon / early Traverse."
+    },
+    {
+      "kind": "air",
+      "oem": "Nissan 16546-6CA0A",
+      "oemBrand": "Nissan",
+      "fram": "CA11930",
+      "wix": "49320",
+      "purolator": "A38220",
+      "notes": "Altima / Sentra / Frontier 2019+."
+    },
+    {
+      "kind": "air",
+      "oem": "Subaru 16546AA15A",
+      "oemBrand": "Subaru",
+      "fram": "CA11930",
+      "wix": "49320",
+      "purolator": "A38220",
+      "notes": "Late Outback / Forester / Ascent / GR86."
+    },
+    {
+      "kind": "air",
+      "oem": "Hyundai 28113-AA000",
+      "oemBrand": "Hyundai",
+      "fram": "CA11964",
+      "wix": "49336",
+      "purolator": "A38236",
+      "notes": "Elantra 2021+."
+    },
+    {
+      "kind": "air",
+      "oem": "Hyundai 28113-N9000",
+      "oemBrand": "Hyundai",
+      "fram": "CA11930",
+      "wix": "49320",
+      "purolator": "A38220",
+      "notes": "Tucson / Sportage 2022+."
+    },
+    {
+      "kind": "air",
+      "oem": "Kia 28113-S1000",
+      "oemBrand": "Kia",
+      "fram": "CA11931",
+      "wix": "49321",
+      "purolator": "A38221",
+      "notes": "Telluride / Sorento / Carnival."
+    },
+    {
+      "kind": "air",
+      "oem": "VW 5Q0 129 620",
+      "oemBrand": "Volkswagen",
+      "fram": "CA10764",
+      "wix": "49080",
+      "purolator": "A38080",
+      "notes": "MQB Jetta / Golf / Tiguan."
+    },
+    {
+      "kind": "cabin",
+      "oem": "Honda 80292-S84-A01",
+      "oemBrand": "Honda",
+      "fram": "CF8754",
+      "wix": "24700",
+      "purolator": "C35400",
+      "notes": "6th-gen Accord."
+    },
+    {
+      "kind": "cabin",
+      "oem": "Honda 80292-TA0-A01",
+      "oemBrand": "Honda",
+      "fram": "CF10168",
+      "wix": "24780",
+      "purolator": "C35480",
+      "notes": "8th-gen Accord / Crosstour."
+    },
+    {
+      "kind": "cabin",
+      "oem": "Honda 80292-T2A-A01",
+      "oemBrand": "Honda",
+      "fram": "CF10755",
+      "wix": "24800",
+      "purolator": "C38000",
+      "notes": "9th-gen Accord."
+    },
+    {
+      "kind": "cabin",
+      "oem": "Honda 80292-S5A-A01",
+      "oemBrand": "Honda",
+      "fram": "CF8755",
+      "wix": "24701",
+      "purolator": "C35401",
+      "notes": "7th-gen Civic."
+    },
+    {
+      "kind": "cabin",
+      "oem": "Honda 80292-SNA-A01",
+      "oemBrand": "Honda",
+      "fram": "CF10161",
+      "wix": "24781",
+      "purolator": "C35481",
+      "notes": "8th-gen Civic / Civic Hybrid."
+    },
+    {
+      "kind": "cabin",
+      "oem": "Honda 80292-TR0-A01",
+      "oemBrand": "Honda",
+      "fram": "CF10756",
+      "wix": "24801",
+      "purolator": "C38001",
+      "notes": "9th-gen Civic."
+    },
+    {
+      "kind": "cabin",
+      "oem": "Honda 80292-TG7-A01",
+      "oemBrand": "Honda",
+      "fram": "CF11860",
+      "wix": "24880",
+      "purolator": "C38180",
+      "notes": "Pilot / Passport 2016+."
+    },
+    {
+      "kind": "cabin",
+      "oem": "Honda 80292-3A0-A01",
+      "oemBrand": "Honda",
+      "fram": "CF11964",
+      "wix": "24936",
+      "purolator": "C38236",
+      "notes": "CR-V / HR-V 2023+."
+    },
+    {
+      "kind": "cabin",
+      "oem": "Toyota 87139-YZZ07",
+      "oemBrand": "Toyota",
+      "fram": "CF8754",
+      "wix": "24700",
+      "purolator": "C35400",
+      "notes": "Camry / Solara 2000s."
+    },
+    {
+      "kind": "cabin",
+      "oem": "Toyota 87139-0R040",
+      "oemBrand": "Toyota",
+      "fram": "CF11931",
+      "wix": "24921",
+      "purolator": "C38221",
+      "notes": "Highlander / Sienna / Venza 2020+."
+    },
+    {
+      "kind": "cabin",
+      "oem": "Toyota 87139-0R110",
+      "oemBrand": "Toyota",
+      "fram": "CF11932",
+      "wix": "24922",
+      "purolator": "C38222",
+      "notes": "Tacoma / 4Runner 2024+."
+    },
+    {
+      "kind": "cabin",
+      "oem": "Toyota 87139-F4010",
+      "oemBrand": "Toyota",
+      "fram": "CF11930",
+      "wix": "24920",
+      "purolator": "C38220",
+      "notes": "Lexus NX / RX 2022+."
+    },
+    {
+      "kind": "cabin",
+      "oem": "Motorcraft FP-38",
+      "oemBrand": "Ford",
+      "fram": "CF8754",
+      "wix": "24700",
+      "purolator": "C35400",
+      "notes": "2000s Modular / Focus / Crown Vic."
+    },
+    {
+      "kind": "cabin",
+      "oem": "Motorcraft FP-64",
+      "oemBrand": "Ford",
+      "fram": "CF10168",
+      "wix": "24780",
+      "purolator": "C35480",
+      "notes": "F-150 / Expedition 2009–2014."
+    },
+    {
+      "kind": "cabin",
+      "oem": "Motorcraft FP-70",
+      "oemBrand": "Ford",
+      "fram": "CF10755",
+      "wix": "24800",
+      "purolator": "C38000",
+      "notes": "Fusion / Focus / Transit Connect."
+    },
+    {
+      "kind": "cabin",
+      "oem": "Motorcraft FP-79",
+      "oemBrand": "Ford",
+      "fram": "CF10756",
+      "wix": "24801",
+      "purolator": "C38001",
+      "notes": "Mustang / Expedition 2015+."
+    },
+    {
+      "kind": "cabin",
+      "oem": "ACDelco CF121",
+      "oemBrand": "GM",
+      "fram": "CF8754",
+      "wix": "24700",
+      "purolator": "C35400",
+      "notes": "GMT800 / GMT900 / early Impala."
+    },
+    {
+      "kind": "cabin",
+      "oem": "ACDelco CF137",
+      "oemBrand": "GM",
+      "fram": "CF10168",
+      "wix": "24780",
+      "purolator": "C35480",
+      "notes": "Equinox / Terrain 2010–2017."
+    },
+    {
+      "kind": "cabin",
+      "oem": "ACDelco CF182",
+      "oemBrand": "GM",
+      "fram": "CF10756",
+      "wix": "24801",
+      "purolator": "C38001",
+      "notes": "Cruze / Sonic / Spark / Trax / Encore."
+    },
+    {
+      "kind": "cabin",
+      "oem": "ACDelco CF185",
+      "oemBrand": "GM",
+      "fram": "CF10755",
+      "wix": "24800",
+      "purolator": "C38000",
+      "notes": "Malibu / Impala / Camaro 2010s."
+    },
+    {
+      "kind": "cabin",
+      "oem": "Subaru 72880FL000",
+      "oemBrand": "Subaru",
+      "fram": "CF11930",
+      "wix": "24920",
+      "purolator": "C38220",
+      "notes": "Outback / Impreza / Crosstrek / GR86."
+    },
+    {
+      "kind": "cabin",
+      "oem": "Subaru 72880SJ000",
+      "oemBrand": "Subaru",
+      "fram": "CF11931",
+      "wix": "24921",
+      "purolator": "C38221",
+      "notes": "Forester 2019+."
+    },
+    {
+      "kind": "cabin",
+      "oem": "Hyundai 97133-AA000",
+      "oemBrand": "Hyundai",
+      "fram": "CF11964",
+      "wix": "24936",
+      "purolator": "C38236",
+      "notes": "Elantra 2021+."
+    },
+    {
+      "kind": "cabin",
+      "oem": "Kia 97133-S1000",
+      "oemBrand": "Kia",
+      "fram": "CF11931",
+      "wix": "24921",
+      "purolator": "C38221",
+      "notes": "Telluride / Sorento / Carnival."
+    },
+    {
+      "kind": "cabin",
+      "oem": "Nissan 27277-6CA0A",
+      "oemBrand": "Nissan",
+      "fram": "CF11930",
+      "wix": "24920",
+      "purolator": "C38220",
+      "notes": "Altima / Sentra 2019+."
+    },
+    {
+      "kind": "cabin",
+      "oem": "VW 5Q0 819 653",
+      "oemBrand": "Volkswagen",
+      "fram": "CF10764",
+      "wix": "24810",
+      "purolator": "C38010",
+      "notes": "MQB Jetta / Golf / Tiguan / Atlas."
+    },
+    {
+      "kind": "cabin",
+      "oem": "Tesla 1107681-00-B",
+      "oemBrand": "Tesla",
+      "fram": "—",
+      "wix": "—",
+      "purolator": "—",
+      "notes": "Model 3 / Y cabin. Confirm refresh SKU — not a Fram number."
+    }
+  ]
+}

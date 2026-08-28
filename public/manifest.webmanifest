@@ -1,0 +1,72 @@
+{
+  "id": "/",
+  "name": "Open Hood",
+  "short_name": "Open Hood",
+  "description": "Know the car. Then the window. VIN decode, quote markup, and a counter script. Pin this website — Share → Add to Home Screen. Not a shop. Not a meetup. Not on the App Store.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "display_override": ["standalone", "browser"],
+  "background_color": "#0c1210",
+  "theme_color": "#0c1210",
+  "lang": "en",
+  "dir": "ltr",
+  "prefer_related_applications": false,
+  "related_applications": [],
+  "categories": ["utilities"],
+  "icons": [
+    {
+      "src": "/icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/icons/icon-512-maskable.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+    {
+      "src": "/icons/apple-touch-icon.png",
+      "sizes": "180x180",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/icons/icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Identify",
+      "short_name": "Identify",
+      "description": "Decode a VIN or year / make / model.",
+      "url": "/",
+      "icons": [{ "src": "/icons/icon-192.png", "sizes": "192x192", "type": "image/png" }]
+    },
+    {
+      "name": "Quote defense",
+      "short_name": "Quote",
+      "description": "Mark up the repair order.",
+      "url": "/quote",
+      "icons": [{ "src": "/icons/icon-192.png", "sizes": "192x192", "type": "image/png" }]
+    },
+    {
+      "name": "OBD codes",
+      "short_name": "OBD",
+      "description": "Android Chrome BLE ELM327 or type the code. iOS Safari types — no Web Bluetooth. Not an App Store app.",
+      "url": "/obd",
+      "icons": [{ "src": "/icons/icon-192.png", "sizes": "192x192", "type": "image/png" }]
+    }
+  ]
+}

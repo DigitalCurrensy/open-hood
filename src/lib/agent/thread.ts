@@ -1,7 +1,7 @@
 import type { AgentImageKind, AgentReply, AgentRole } from "@/lib/agent/types";
 
-export const AGENT_THREAD_KEY = "autoshield.agent.thread";
-export const AGENT_MILEAGE_KEY = "autoshield.agent.mileage";
+export const AGENT_THREAD_KEY = "openhood.agent.thread";
+export const AGENT_MILEAGE_KEY = "openhood.agent.mileage";
 
 export interface AgentUiMessage {
   id: string;

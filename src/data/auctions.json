@@ -18,7 +18,7 @@
     "whoCanAccess": "Public search is open. Bidding typically needs a dealer license or an IAA public-buyer / broker path.",
     "publicData": "Lot photos, damage, odometer remarks, title group, and sale time. Live bid history stays on IAA.",
     "homeUrl": "https://www.iaai.com/",
-    "searchUrl": "https://www.iaai.com/Search?search={query}",
+    "searchUrl": "https://www.iaai.com/Search?Keyword={query}",
     "notes": "Sister salvage lane to Copart. Same rule: we link out, we do not harvest."
   },
   {
@@ -51,7 +51,7 @@
     "whoCanAccess": "Public registration. Surplus military and government equipment, including fleet vehicles.",
     "publicData": "Lot photos, location, inspection notes they publish, and current bid.",
     "homeUrl": "https://www.govplanet.com/",
-    "searchUrl": "https://www.govplanet.com/en/search?q={query}",
+    "searchUrl": "https://www.govplanet.com/jsp/s/search.ips?mode=1&keyword={query}",
     "notes": "IronPlanet / Ritchie Bros. government surplus. Inspect before you bid."
   },
   {
@@ -62,7 +62,7 @@
     "whoCanAccess": "U.S. public. Federal surplus vehicles and equipment.",
     "publicData": "Official lot descriptions, locations, and bid status on gsaauctions.gov.",
     "homeUrl": "https://gsaauctions.gov/gsaauctions/gsaauctions/",
-    "searchUrl": "https://gsaauctions.gov/gsaauctions/gsaauctions/",
+    "searchUrl": "https://gsaauctions.gov/auctions/search?searchText={query}",
     "notes": "Use their keyword search for year / make / model. No dealer license."
   },
   {
@@ -117,7 +117,7 @@
     "whoCanAccess": "Public docket. Bidding is a registered bidder, not a dealer plate.",
     "publicData": "Lot lists, photos, and hammer prices they post.",
     "homeUrl": "https://www.barrett-jackson.com/",
-    "searchUrl": "https://www.barrett-jackson.com/Events/All-Auctions?search={query}",
+    "searchUrl": "https://www.barrett-jackson.com/results",
     "notes": "No-reserve spectacle auctions. Fees are not a footnote."
   }
 ]

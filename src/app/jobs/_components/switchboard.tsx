@@ -1,10 +1,22 @@
 import Link from "next/link";
+import { TicketPath } from "@/app/_components/ticket-path";
 import { JOB_ROLES, JOB_TOOLS } from "@/config/nav/jobs";
 import { DTC_COUNT } from "@/lib/jobs/dtc-dictionary";
 
 export function Switchboard() {
   return (
     <div className="space-y-8">
+      <TicketPath current="script" />
+      <article className="ticket-paper rounded-sm p-5 text-ticket-ink">
+        <p className="font-mono text-[10px] uppercase tracking-[0.3em]">Pamphlet → operating system</p>
+        <h2 className="mt-1 font-display text-3xl uppercase leading-none">Scripts, not a cart</h2>
+        <p className="mt-3 max-w-3xl text-sm leading-6">
+          Role desks hang off station 04 — the counter script. Owner, writer, and shop print a sentence you say at
+          the window. Compare three pasted ROs before you authorize. RepairPal routes the job. YourMechanic sends a
+          person. AutoZone sells the SKU. We will not grow a marketplace to catch up.
+        </p>
+      </article>
+
       <section className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
         {JOB_ROLES.map((role) => (
           <Link
@@ -34,7 +46,8 @@ export function Switchboard() {
       </section>
 
       <p className="font-mono text-[11px] uppercase tracking-[0.16em] text-aluminum">
-        {DTC_COUNT} DTCs in the jobs book · no live dealer inventory · build log stays at /builds
+        {DTC_COUNT} DTCs in the jobs book · no live dealer inventory · no book-this-shop · build log stays at
+        /builds
       </p>
     </div>
   );
