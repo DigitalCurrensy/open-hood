@@ -1,4 +1,5 @@
 import type { Metadata, Viewport } from "next";
+import type { ReactNode } from "react";
 import { Barlow, Big_Shoulders_Stencil, IBM_Plex_Mono } from "next/font/google";
 import { AskDock } from "@/components/agent/ask-dock";
 import { Ga4 } from "@/components/ga4";
@@ -99,7 +100,7 @@ export const metadata: Metadata = {
   ...(googleVerify ? { verification: { google: googleVerify } } : {}),
 };
 
-export default function RootLayout({ children }: LayoutProps<"/">) {
+export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="en" className={`${display.variable} ${sans.variable} ${mono.variable} h-full antialiased`}>
       <head>
