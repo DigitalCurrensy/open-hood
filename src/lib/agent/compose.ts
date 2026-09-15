@@ -18,23 +18,18 @@ export function composeFromTools(input: {
 
   const scripts = collectScripts(input.results, car, expert);
   const lead = expert
-    ? `Facts first on ${car}. I ran ${ok.length || input.results.length} bay tool${ok.length === 1 ? "" : "s"} — I will not invent a torque spec or a factory hour on top of this.`
-    : `Here is what I can prove on ${car}, then what to say at the counter. I will not invent a number you cannot verify.`;
+    ? `Facts first on ${car}. I ran ${ok.length || input.results.length} tool${ok.length === 1 ? "" : "s"}. I will not invent a torque spec.`
+    : `On ${car}: what I can prove, then what to say. I will not invent a number you cannot verify.`;
 
-  const body = expert
-    ? facts.join("\n\n")
-    : facts.map(shortenFact).join("\n\n");
-
+  const body = expert ? facts.join("\n\n") : facts.map(shortenFact).join("\n\n");
   const closer = expert
-    ? "Authorize the failed test, the millimeter reading, or the open VIN campaign. Freeze-frame (RPM, load, STFT/LTFT, ECT) beats a parts list. OEM vs aftermarket is a written part number, not a logo."
-    : "Do not authorize from a menu. Ask for the test, then decide. Next desks are below.";
-
-  const text = [input.photoNote, lead, body, closer].filter(Boolean).join("\n\n");
+    ? "Authorize the failed test, the millimeter, or the open VIN campaign."
+    : "Do not authorize from a menu. Ask for the test, then decide.";
 
   return {
-    text,
-    scripts: scripts.slice(0, 4),
-    tools: pickTools(...desks, "/expert"),
+    text: [input.photoNote, lead, body, closer].filter(Boolean).join("\n\n"),
+    scripts: scripts.slice(0, 3),
+    tools: pickTools(...desks),
     facts: facts.slice(0, 8),
     invocations: input.results.map((row) => row.invocation),
     readingLevel: input.readingLevel,
@@ -57,18 +52,23 @@ function collectScripts(results: AgentToolResult[], car: string, expert: boolean
     const named = Array.isArray(data.scripts) ? data.scripts.map(String) : [];
     scripts.push(...named);
 
+    if (row.invocation.name === "analyze_quote_text" && /cabin/i.test(`${row.fact} ${named.join(" ")}`)) {
+      scripts.unshift("Show me the old cabin filter. I will R&R it in the lot if that box is $80+.");
+      scripts.unshift("Write the brand and the list price. A glove-box part is not a labor event.");
+    }
+
     if (row.invocation.name === "lookup_dtc" && typeof data.code === "string") {
       scripts.push(
         expert
-          ? `The scanner stored ${data.code} on ${car}. Print freeze-frame — RPM, load, STFT/LTFT, ECT — and pending vs confirmed before you quote a part.`
-          : `The scanner showed ${data.code} on ${car}. Please print the freeze-frame and tell me pending vs confirmed before you quote a part.`,
+          ? `The scanner stored ${data.code} on ${car}. Print freeze-frame before you quote a part.`
+          : `The scanner showed ${data.code} on ${car}. Print freeze-frame and pending vs confirmed before parts.`,
       );
-      scripts.push("I want the test that failed — a graph, a leak location, or a measurement — not the code turned into a parts list.");
+      scripts.push("I want the test that failed — a graph, a leak, or a measurement — not the code as a parts list.");
     }
 
     if (row.invocation.name === "analyze_quote_text") {
-      scripts.push("Show me the manufacturer page that requires this flush or service at this mileage.");
-      scripts.push("Measure rotors in millimeters next to the discard spec. I do not authorize from 'they're due.'");
+      scripts.push("Show me the page that requires this service at this mileage.");
+      scripts.push("Measure it. I do not authorize from 'they're due.'");
     }
 
     if (row.invocation.name === "diagnose_symptoms" && Array.isArray(data.findings)) {
@@ -80,33 +80,29 @@ function collectScripts(results: AgentToolResult[], car: string, expert: boolean
     }
 
     if (row.invocation.name === "decode_vin" && typeof data.vin === "string") {
-      scripts.push(`Please write VIN ${data.vin} on the RO and match it to the door sticker before you start.`);
+      scripts.push(`Write VIN ${data.vin} on the RO and match the door sticker before you start.`);
     }
 
     if (row.invocation.name === "get_recalls") {
-      scripts.push("Run this VIN for open campaigns. If a campaign is open, I want the remedy, not a related retail line.");
+      scripts.push("Run this VIN for open campaigns. If one is open, I want the remedy, not a retail add-on.");
     }
 
     if (row.invocation.name === "search_directory") {
-      scripts.push("Do you work on this make? What is the diagnostic fee in writing, and do you call before extras?");
-    }
-
-    if (row.invocation.name === "search_playbooks") {
-      scripts.push("I want the measurement first — millimeters, PSI, or freeze-frame — then we talk parts.");
+      scripts.push("Do you work on this make? Diagnostic fee in writing. Call before extras.");
     }
 
     if (row.invocation.name === "lookup_ro_term") {
-      scripts.push("What does that line mean in dollars on this RO? Shop supplies need a number.");
+      scripts.push("What does that line mean in dollars on this RO?");
     }
 
     if (row.invocation.name === "search_parts") {
-      scripts.push("VIN first. Write the brand and OEM vs aftermarket on the invoice line. I will not authorize 'equivalent' without a name.");
+      scripts.push("VIN first. Write brand and OEM vs aftermarket on the line.");
     }
   }
 
   if (!scripts.length) {
     scripts.push("I am not authorizing related repairs until you show the failed test and the number.");
-    scripts.push("Please write part names, OEM numbers, and labor hours on the RO before you start.");
+    scripts.push("Write part names, hours, and dollars on the RO before you start.");
   }
 
   return [...new Set(scripts.filter((line) => line.length > 12 && line.length < 280))];
