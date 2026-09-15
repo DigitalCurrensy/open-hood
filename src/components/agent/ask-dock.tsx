@@ -20,14 +20,14 @@ function newId() {
 export function AskDock() {
   const pathname = usePathname();
   const [vehicle] = useIdentifiedVehicle();
-  const [open, setOpen] = useState(false);
+  const [open, setOpen] = useState(true);
   const [draft, setDraft] = useState("");
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState("");
   const [messages, setMessages] = useState<DockMessage[]>([]);
   const scroller = useRef<HTMLDivElement>(null);
 
-  const hideOnAgentPage = pathname === "/agent" || pathname.startsWith("/agent/");
+  const hide = pathname === "/" || pathname === "/agent" || pathname.startsWith("/agent/");
 
   const chip = useMemo(() => {
     if (!vehicle) return "No car yet — identify first, or just ask.";
@@ -84,7 +84,7 @@ export function AskDock() {
     [busy, messages, vehicle],
   );
 
-  if (hideOnAgentPage) return null;
+  if (hide) return null;
 
   return (
     <div className="no-print pointer-events-none fixed inset-x-0 bottom-0 z-40 flex justify-end p-4 sm:p-6">
@@ -101,7 +101,7 @@ export function AskDock() {
           </header>
           <div ref={scroller} className="flex-1 space-y-3 overflow-y-auto px-4 py-3" aria-live="polite">
             {messages.length === 0 ? (
-              <p className="text-sm leading-6 text-aluminum">Ask about oil, a scanner code, or a line on the estimate. You get sentences for the counter — not a shop booking.</p>
+              <p className="text-sm leading-6 text-aluminum">Ask about oil, a scanner code, or a line on the estimate.</p>
             ) : null}
             {messages.map((row) => (
               <p key={row.id} className={`text-sm leading-6 ${row.role === "user" ? "text-ticket" : "text-fluorescent"}`}>
