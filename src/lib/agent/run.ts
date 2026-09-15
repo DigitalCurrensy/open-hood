@@ -3,6 +3,7 @@ import { runAdvocateRules } from "@/lib/agent/fallback";
 import { invokeToolPlan, type AgentToolResult } from "@/lib/agent/invoke";
 import { completeAdvocateOpenAI, hasOpenAI, streamAdvocateOpenAI } from "@/lib/agent/openai";
 import { routeToolCalls } from "@/lib/agent/router";
+import { classifySafety, safetyReply } from "@/lib/agent/safety";
 import type { AgentReadingLevel, AgentReply, AgentVehicleContext, AgentWireMessage } from "@/lib/agent/types";
 
 export interface AgentRunInput {
@@ -50,9 +51,15 @@ async function prepare(input: AgentRunInput): Promise<{
   toolResults: AgentToolResult[];
   vehicle?: AgentVehicleContext;
   last?: AgentWireMessage;
+  sealed: boolean;
 }> {
   const last = lastUser(input.messages);
   const text = last?.content ?? "";
+  const lane = classifySafety(text);
+  if (lane) {
+    return { briefing: safetyReply(lane), toolResults: [], vehicle: input.vehicle, last, sealed: true };
+  }
+
   const hasVision = hasOpenAI() && Boolean(last?.image);
   let vehicle = input.vehicle;
   const plan = routeToolCalls({ text, vehicle, imageKind: last?.image?.kind });
@@ -75,30 +82,30 @@ async function prepare(input: AgentRunInput): Promise<{
         readingLevel: input.readingLevel,
       });
 
-  return { briefing, toolResults, vehicle, last };
+  return { briefing, toolResults, vehicle, last, sealed: false };
 }
 
 export async function answerAgent(input: AgentRunInput): Promise<AgentReply> {
-  const { briefing, toolResults, vehicle } = await prepare(input);
-  if (!hasOpenAI()) return briefing;
+  const prepared = await prepare(input);
+  if (prepared.sealed || !hasOpenAI()) return prepared.briefing;
   try {
     return await completeAdvocateOpenAI({
       messages: input.messages,
-      vehicle,
-      briefing,
+      vehicle: prepared.vehicle,
+      briefing: prepared.briefing,
       readingLevel: input.readingLevel,
-      toolResults,
+      toolResults: prepared.toolResults,
       userText: lastUser(input.messages)?.content ?? "",
     });
   } catch (error) {
-    return withFallbackNote(briefing, error);
+    return withFallbackNote(prepared.briefing, error);
   }
 }
 
 export async function streamOrAnswerAgent(input: AgentRunInput): Promise<Response | AgentReply> {
   const prepared = await prepare(input);
-  if (!hasOpenAI() || input.wantJson) {
-    if (!hasOpenAI()) return prepared.briefing;
+  if (prepared.sealed || !hasOpenAI() || input.wantJson) {
+    if (prepared.sealed || !hasOpenAI()) return prepared.briefing;
     try {
       return await completeAdvocateOpenAI({
         messages: input.messages,
