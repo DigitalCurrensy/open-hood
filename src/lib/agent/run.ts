@@ -4,6 +4,7 @@ import { invokeToolPlan, type AgentToolResult } from "@/lib/agent/invoke";
 import { completeAdvocateOpenAI, hasOpenAI, streamAdvocateOpenAI } from "@/lib/agent/openai";
 import { routeToolCalls } from "@/lib/agent/router";
 import { classifySafety, safetyReply } from "@/lib/agent/safety";
+import { spokenQuoteLines } from "@/lib/agent/spoken-quote";
 import type { AgentReadingLevel, AgentReply, AgentVehicleContext, AgentWireMessage } from "@/lib/agent/types";
 
 export interface AgentRunInput {
@@ -54,8 +55,9 @@ async function prepare(input: AgentRunInput): Promise<{
   sealed: boolean;
 }> {
   const last = lastUser(input.messages);
-  const text = last?.content ?? "";
-  const lane = classifySafety(text);
+  const raw = last?.content ?? "";
+  const text = spokenQuoteLines(raw);
+  const lane = classifySafety(raw);
   if (lane) {
     return { briefing: safetyReply(lane), toolResults: [], vehicle: input.vehicle, last, sealed: true };
   }
@@ -67,6 +69,11 @@ async function prepare(input: AgentRunInput): Promise<{
   vehicle = mergeVehicle(vehicle, toolResults);
 
   const vision: AgentReply["vision"] = last?.image ? (hasVision ? "used" : "unavailable") : "none";
+  const routedMessages =
+    last && text !== raw
+      ? input.messages.map((row) => (row === last ? { ...row, content: text } : row))
+      : input.messages;
+
   const briefing = toolResults.length
     ? composeFromTools({
         results: toolResults,
@@ -76,7 +83,7 @@ async function prepare(input: AgentRunInput): Promise<{
         photoNote: photoNote(hasVision, last),
       })
     : runAdvocateRules({
-        messages: input.messages,
+        messages: routedMessages,
         vehicle,
         hasVision,
         readingLevel: input.readingLevel,
