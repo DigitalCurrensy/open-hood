@@ -6,6 +6,7 @@ import { hasOpenAI } from "@/lib/openai";
 import { NextResponse } from "next/server";
 
 export const dynamic = "force-dynamic";
+export const maxDuration = 60;
 
 const IMAGE_KINDS: AgentImageKind[] = ["quote", "leak", "light"];
 const MAX_IMAGE_CHARS = 1_200_000;
