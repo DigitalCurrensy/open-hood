@@ -1,6 +1,6 @@
 import assert from "node:assert/strict";
 import { test } from "node:test";
-import { classifySafety } from "./safety.ts";
+import { classifySafety } from "./safety-lanes.ts";
 
 test("medical swallow is sealed", () => {
   assert.equal(classifySafety("I swallowed coolant"), "medical");

@@ -11,10 +11,11 @@ const JOBS: Array<{ pattern: RegExp; line: string }> = [
 export function spokenQuoteLines(text: string): string {
   const raw = text.replace(/\s+/g, " ").trim();
   if (!raw) return raw;
-  if (/^[A-Za-z].{2,60}\s+\$?\d/.test(raw) && raw.length < 80) return raw;
   const money = raw.match(/\$\s*(\d+(?:\.\d{1,2})?)/);
   if (!money) return raw;
   const job = JOBS.find((row) => row.pattern.test(raw));
   if (!job) return raw;
+  const already = new RegExp(`^${job.line.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}\s+\\$`, "i");
+  if (already.test(raw) && raw.length < 80) return raw;
   return `${job.line} $${money[1]}`;
 }

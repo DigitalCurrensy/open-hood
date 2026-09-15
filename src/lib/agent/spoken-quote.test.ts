@@ -6,6 +6,10 @@ test("spoken cabin quote becomes a book line", () => {
   assert.equal(spokenQuoteLines("They quoted $89 for a cabin filter"), "Cabin air filter $89");
 });
 
-test("already-shaped lines stay intact", () => {
-  assert.equal(spokenQuoteLines("Cabin filter $89"), "Cabin filter $89");
+test("short cabin line normalizes to the book name", () => {
+  assert.equal(spokenQuoteLines("Cabin filter $89"), "Cabin air filter $89");
+});
+
+test("book-shaped cabin line stays intact", () => {
+  assert.equal(spokenQuoteLines("Cabin air filter $89"), "Cabin air filter $89");
 });
