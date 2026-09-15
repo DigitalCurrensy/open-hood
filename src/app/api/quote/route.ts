@@ -9,6 +9,7 @@ import {
   visionKeyOn,
   visionStamp,
 } from "@/lib/quote";
+import { rateLimit } from "@/lib/rate-limit";
 import type { VehicleSpecs } from "@/lib/types";
 
 export const dynamic = "force-dynamic";
@@ -51,6 +52,11 @@ export function GET() {
 }
 
 export async function POST(request: Request) {
+  const ip = request.headers.get("x-forwarded-for")?.split(",")[0]?.trim() || "anon";
+  if (!rateLimit(`quote:${ip}`, 30, 60_000)) {
+    return NextResponse.json({ error: "Too many quote checks from this network. Wait a minute." }, { status: 429 });
+  }
+
   const body = (await request.json()) as {
     imageBase64?: string;
     mimeType?: string;
