@@ -23,6 +23,23 @@ function visionStatus() {
   };
 }
 
+function specsFromBody(body: {
+  specs?: Partial<VehicleSpecs>;
+  vehicle?: { year?: string; make?: string; model?: string; vin?: string };
+}): VehicleSpecs | null {
+  const year = body.specs?.year || body.vehicle?.year;
+  const make = body.specs?.make || body.vehicle?.make;
+  const model = body.specs?.model || body.vehicle?.model;
+  if (!year || !make || !model) return null;
+  return {
+    ...(body.specs as VehicleSpecs),
+    year,
+    make,
+    model,
+    vin: body.specs?.vin || body.vehicle?.vin || "",
+  } as VehicleSpecs;
+}
+
 export function GET() {
   const hours = hoursStatus();
   return NextResponse.json({
@@ -38,12 +55,15 @@ export async function POST(request: Request) {
     imageBase64?: string;
     mimeType?: string;
     quoteText?: string;
+    text?: string;
     zip?: string;
     demo?: boolean;
     specs?: VehicleSpecs;
+    vehicle?: { year?: string; make?: string; model?: string; vin?: string };
   };
 
-  if (!body.specs?.year || !body.specs?.make || !body.specs?.model) {
+  const specs = specsFromBody(body);
+  if (!specs) {
     return NextResponse.json({ error: "Identify the vehicle first." }, { status: 400 });
   }
 
@@ -52,12 +72,12 @@ export async function POST(request: Request) {
 
   if (body.demo) {
     return NextResponse.json({
-      ...demoQuote(body.specs, zip),
+      ...demoQuote(specs, zip),
       vision: { ...visionStatus(), usedCloud: false },
     });
   }
 
-  const quoteText = body.quoteText?.trim() ?? "";
+  const quoteText = (body.quoteText ?? body.text)?.trim() ?? "";
   const hasImage = Boolean(body.imageBase64);
 
   if (!hasImage && !quoteText) {
@@ -66,7 +86,7 @@ export async function POST(request: Request) {
 
   try {
     if (quoteText) {
-      const defense = await analyzeQuote(quoteText, body.specs, zip);
+      const defense = await analyzeQuote(quoteText, specs, zip);
       return NextResponse.json({
         ...defense,
         vision: { on: visionOn, usedCloud: false, stamp: visionStamp(visionOn), engine: visionOn ? "vision" : "tesseract" },
@@ -78,13 +98,13 @@ export async function POST(request: Request) {
         imageBase64: body.imageBase64,
         mimeType: body.mimeType ?? "image/jpeg",
         quoteText,
-        specs: body.specs,
+        specs,
       });
       const hoursBook = await loadHoursBook({
         jobKeys: vision.flaggedItems.map((row) => row.item),
-        year: body.specs.year,
-        make: body.specs.make,
-        model: body.specs.model,
+        year: specs.year,
+        make: specs.make,
+        model: specs.model,
       });
       const defense = asQuoteDefense({
         ...vision,

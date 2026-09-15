@@ -3,6 +3,7 @@ import { streamOrAnswerAgent } from "@/lib/agent/run";
 import type { AgentImageKind, AgentRequestBody, AgentStatus, AgentWireMessage } from "@/lib/agent/types";
 import { normalizeReadingLevel } from "@/lib/agent/types";
 import { hasOpenAI } from "@/lib/openai";
+import { rateLimit } from "@/lib/rate-limit";
 import { NextResponse } from "next/server";
 
 export const dynamic = "force-dynamic";
@@ -12,17 +13,26 @@ const IMAGE_KINDS: AgentImageKind[] = ["quote", "leak", "light"];
 const MAX_IMAGE_CHARS = 1_200_000;
 
 export async function GET() {
-  const vision = hasOpenAI();
-  const status: AgentStatus = {
-    engine: vision ? "gpt-4o" : "rules",
-    vision,
+  const keyOn = hasOpenAI();
+  const status: AgentStatus & { keyOn: boolean; note: string } = {
+    engine: "rules",
+    vision: keyOn,
     tools: AGENT_FUNCTION_LIST,
     readingLevels: ["beginner", "expert"],
+    keyOn,
+    note: keyOn
+      ? "Key is on this deploy. Live answers stay typed tools until a model call returns 200. A 429 is quota, not a missing key."
+      : "No OPENAI_API_KEY on this deploy. Typed tools only.",
   };
   return NextResponse.json(status);
 }
 
 export async function POST(request: Request) {
+  const ip = request.headers.get("x-forwarded-for")?.split(",")[0]?.trim() || "anon";
+  if (!rateLimit(`agent:${ip}`, 30, 60_000)) {
+    return NextResponse.json({ error: "Too many Ask calls from this network. Wait a minute." }, { status: 429 });
+  }
+
   let body: AgentRequestBody;
   try {
     body = (await request.json()) as AgentRequestBody;

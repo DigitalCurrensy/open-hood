@@ -5,6 +5,8 @@ import { useEffect, useState } from "react";
 interface AgentStatus {
   engine?: string;
   vision?: boolean;
+  keyOn?: boolean;
+  note?: string;
 }
 
 export function EngineChip() {
@@ -14,19 +16,24 @@ export function EngineChip() {
     void fetch("/api/agent", { cache: "no-store" })
       .then((response) => response.json())
       .then((payload: AgentStatus) => setStatus(payload))
-      .catch(() => setStatus({ engine: "rules", vision: false }));
+      .catch(() => setStatus({ engine: "rules", vision: false, keyOn: false }));
   }, []);
 
   if (!status) {
     return <p className="font-mono text-[10px] uppercase tracking-[0.22em] text-aluminum">Checking Ask…</p>;
   }
 
-  const live = status.engine !== "rules";
+  if (status.keyOn) {
+    return (
+      <p className="font-mono text-[10px] uppercase tracking-[0.22em] text-ticket" title={status.note}>
+        Key on · typed tools until a model call returns 200
+      </p>
+    );
+  }
+
   return (
-    <p className={`font-mono text-[10px] uppercase tracking-[0.22em] ${live ? "text-ticket" : "text-cone"}`}>
-      {live
-        ? `Ask live · ${status.engine}${status.vision ? " · photos on" : ""}`
-        : "Ask is typed tools only — this deploy does not see OPENAI_API_KEY"}
+    <p className="font-mono text-[10px] uppercase tracking-[0.22em] text-cone">
+      Ask is typed tools only — this deploy does not see OPENAI_API_KEY
     </p>
   );
 }
