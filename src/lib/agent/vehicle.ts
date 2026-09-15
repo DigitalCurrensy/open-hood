@@ -1,3 +1,4 @@
+import { scrubConcern } from "@/lib/agent/safety";
 import type { AgentVehicleContext } from "@/lib/agent/types";
 import { emptyVehicleSpecs } from "@/lib/nhtsa";
 import type { VehicleSpecs } from "@/lib/types";
@@ -10,7 +11,7 @@ export function specsFromContext(vehicle?: AgentVehicleContext): VehicleSpecs {
     make: vehicle?.make?.trim() ?? "",
     model: vehicle?.model?.trim() ?? "",
     mileage: vehicle?.mileage?.trim() ?? "",
-    concern: vehicle?.concern?.trim() ?? "",
+    concern: scrubConcern(vehicle?.concern) ?? "",
     identifiedBy: vin ? "vin" : "ymm",
   });
 }
@@ -20,13 +21,11 @@ export function vehicleLabel(vehicle?: AgentVehicleContext): string {
   return named || "this vehicle";
 }
 
-/** "a 2018 Honda Accord" or "this vehicle" — safe after "on" / "for". */
 export function vehiclePhrase(vehicle?: AgentVehicleContext): string {
   const named = [vehicle?.year, vehicle?.make, vehicle?.model].filter(Boolean).join(" ");
   return named ? `a ${named}` : "this vehicle";
 }
 
-/** "this 2018 Honda Accord" or "this car". */
 export function thisVehicle(vehicle?: AgentVehicleContext): string {
   const named = [vehicle?.year, vehicle?.make, vehicle?.model].filter(Boolean).join(" ");
   return named ? `this ${named}` : "this car";
@@ -34,11 +33,12 @@ export function thisVehicle(vehicle?: AgentVehicleContext): string {
 
 export function formatVehicleBrief(vehicle?: AgentVehicleContext): string {
   if (!vehicle) return "No vehicle is on the hook. Speak in general terms and tell them to stamp a VIN on the bay.";
+  const concern = scrubConcern(vehicle.concern);
   const bits = [
     vehicleLabel(vehicle),
     vehicle.vin ? `VIN ${vehicle.vin}` : null,
     vehicle.mileage ? `${vehicle.mileage} miles` : null,
-    vehicle.concern ? `Owner concern: ${vehicle.concern}` : null,
+    concern ? `Owner concern: ${concern}` : null,
   ].filter(Boolean);
   return bits.join(" · ");
 }
