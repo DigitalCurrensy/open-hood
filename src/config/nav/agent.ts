@@ -1,11 +1,11 @@
 import type { NavItem } from "@/lib/nav";
 
-/** Stamp for the bay board. Integrator merges this into NAV_ITEMS. */
+/** Stamp for the waiting-room path and the More tools board. */
 export const AGENT_NAV_ITEM: NavItem = {
   href: "/agent",
-  stamp: "Talk",
-  label: "Advocate",
-  blurb: "A master mechanic in your corner. Ask before you authorize.",
+  stamp: "Ask",
+  label: "Ask",
+  blurb: "Ask about oil, a code, or a padded line. Not a shop booking bot.",
   needsVehicle: false,
 };
 
