@@ -33,14 +33,29 @@ export const CONSUMER_PATH: readonly ConsumerStamp[] = [
     blurb: "Three lines for the service writer.",
   },
   {
-    href: "/agent",
+    href: "/#ask",
     stamp: "Ask",
     label: "Ask",
     blurb: "Ask about oil, a code, or a padded line.",
   },
 ] as const;
 
-const PRIMARY_HREFS = new Set(CONSUMER_PATH.map((stamp) => stamp.href));
+export const OWNER_TOOLS: readonly NavItem[] = [
+  { href: "/garage", stamp: "Spec", label: "Oil and PSI", blurb: "Factory-typical fluids. Confirm the door jamb.", needsVehicle: true },
+  { href: "/obd", stamp: "Code", label: "Type the code", blurb: "Five characters from any scanner.", needsVehicle: false },
+  { href: "/symptoms", stamp: "Noise", label: "What is that noise", blurb: "Sound + moment → shop questions.", needsVehicle: false },
+  { href: "/parts", stamp: "Parts", label: "Search the part", blurb: "Catalog URLs. Not live stock.", needsVehicle: false },
+  { href: "/shops", stamp: "Maps", label: "Find a shop", blurb: "Maps plus questions. We do not book.", needsVehicle: false },
+  { href: "/recalls", stamp: "Recalls", label: "Recalls", blurb: "NHTSA year/make/model. Dealer closes VIN.", needsVehicle: true },
+  { href: "/how-it-works", stamp: "How", label: "How it works", blurb: "The waiting-room walk.", needsVehicle: false },
+  { href: "/contact", stamp: "Contact", label: "Contact", blurb: "Send the RO. We do not sell it.", needsVehicle: false },
+];
+
+const PRIMARY_HREFS = new Set([
+  ...CONSUMER_PATH.map((stamp) => stamp.href),
+  "/agent",
+  ...OWNER_TOOLS.map((item) => item.href),
+]);
 
 function withNavItem(items: readonly NavItem[], extra: NavItem): NavItem[] {
   return items.some((item) => item.href === extra.href) ? [...items] : [...items, extra];
@@ -76,7 +91,9 @@ export const BAY_NAV: NavItem[] = [
 );
 
 export const BOARD_NAV: NavItem[] = BAY_NAV.filter((item) => !PRIMARY_HREFS.has(item.href));
+export const LAB_NAV = BOARD_NAV;
 
 export function isCurrentHref(pathname: string, href: string): boolean {
+  if (href === "/#ask") return false;
   return href === "/" ? pathname === "/" : pathname === href || pathname.startsWith(`${href}/`);
 }

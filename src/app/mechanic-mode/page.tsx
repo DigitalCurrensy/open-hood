@@ -1,18 +1,21 @@
 import type { Metadata } from "next";
-import { PageBrief } from "@/components/page-brief";
+import { PageHeader } from "@/components/page-header";
 import { MechanicPage } from "@/components/pages/mechanic-page";
 import { IosHonesty } from "./ios-honesty";
+import { pageMeta } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: "Mechanic mode",
-  description:
-    "Printable counter script plus rotor millimeters. Android Chrome pairs a BLE ELM327. iOS Safari: no Web Bluetooth — type the code or use TestFlight native. Not on the App Store.",
-};
+export const metadata: Metadata = pageMeta({
+  title: "What to say",
+  description: "Three sentences for the service writer. Then decide. Not an App Store product.",
+  path: "/mechanic-mode",
+});
 
 export default function Page() {
   return (
     <div className="space-y-6">
-      <PageBrief href="/mechanic-mode" />
+      <PageHeader kicker="Three lines" title="What to say">
+        Write them on the RO or say them. iPhone Safari: type the scanner code. No App Store listing.
+      </PageHeader>
       <IosHonesty />
       <MechanicPage />
     </div>
