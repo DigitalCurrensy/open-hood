@@ -1,10 +1,9 @@
 import type { Metadata } from "next";
 import { BrandTicket } from "@/app/_components/brand-ticket";
 import { HomeCite } from "@/app/_components/home-cite";
-import { TicketPath } from "@/app/_components/ticket-path";
+import { AskStage } from "@/components/agent/ask-stage";
 import { GarageBay } from "@/components/garage-bay";
 import { JsonLd } from "@/components/json-ld";
-import { PageBrief } from "@/components/page-brief";
 import { BRAND } from "@/lib/brand";
 import { pageMeta, speakableWebPageJsonLd } from "@/lib/seo";
 
@@ -31,10 +30,9 @@ export default async function Home({
   const { vin } = await searchParams;
   return (
     <div className="space-y-6">
-      <JsonLd data={speakableWebPageJsonLd("/", ["[data-speakable]", "h1"])} />
-      <PageBrief href="/" />
+      <JsonLd data={speakableWebPageJsonLd("/", ["[data-speakable]", "h1", "#ask"])} />
       <BrandTicket />
-      <TicketPath showNextBay />
+      <AskStage />
       <GarageBay initialVin={vin ?? ""} />
       <HomeCite />
     </div>
