@@ -1,13 +1,11 @@
 "use client";
 
-import { useEffect, useState, useSyncExternalStore } from "react";
+import { useEffect, useState } from "react";
 import {
   applyUnlockIfRequested,
   canShareBay,
   escapeOfflineShellIfOnline,
   rescueFirstVisitToLiveBay,
-  isAndroidDevice,
-  isIosDevice,
   isStandaloneDisplay,
   PWA_INSTALL_DISMISS_KEY,
   registerPwa,
@@ -22,11 +20,6 @@ interface BeforeInstallPromptEvent extends Event {
   userChoice: Promise<{ outcome: "accepted" | "dismissed" }>;
 }
 
-function subscribeInstallDismiss(onStoreChange: () => void) {
-  window.addEventListener("storage", onStoreChange);
-  return () => window.removeEventListener("storage", onStoreChange);
-}
-
 function installHintBlocked(): boolean {
   if (isStandaloneDisplay()) return true;
   try {
@@ -35,14 +28,6 @@ function installHintBlocked(): boolean {
   } catch {
     /* private mode */
   }
-  return false;
-}
-
-function iosHintSnapshot(): boolean {
-  return false;
-}
-
-function androidManualSnapshot(): boolean {
   return false;
 }
 
@@ -57,10 +42,7 @@ function dismissInstallHint(): void {
 
 export function PwaBoot() {
   const [install, setInstall] = useState<BeforeInstallPromptEvent | null>(null);
-  const [androidHint, setAndroidHint] = useState(false);
   const [shareState, setShareState] = useState<"idle" | "copied">("idle");
-  useSyncExternalStore(subscribeInstallDismiss, iosHintSnapshot, () => false);
-  useSyncExternalStore(subscribeInstallDismiss, androidManualSnapshot, () => false);
   const [vehicle] = useIdentifiedVehicle();
   const [quote] = useLastQuote();
 
@@ -94,10 +76,6 @@ export function PwaBoot() {
     }
   }
 
-  if (!androidHint || !install || installHintBlocked()) {
-    if (!install || installHintBlocked()) return null;
-  }
-
   if (!install || installHintBlocked()) return null;
 
   return (
@@ -113,7 +91,6 @@ export function PwaBoot() {
             className="min-h-11 rounded-sm bg-ticket px-4 py-2 font-mono text-xs font-semibold uppercase tracking-[0.16em] text-ticket-ink"
             onClick={() => {
               void install.prompt();
-              setAndroidHint(false);
               setInstall(null);
             }}
           >
@@ -130,7 +107,6 @@ export function PwaBoot() {
             onClick={() => {
               dismissInstallHint();
               setInstall(null);
-              setAndroidHint(false);
             }}
           >
             Not now

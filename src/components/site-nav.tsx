@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { usePathname } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useSyncExternalStore } from "react";
 import { BayLink } from "@/components/bay-link";
 import { BayPath } from "@/components/bay-path";
 import { isCurrentHref, LAB_NAV, OWNER_TOOLS } from "@/config/nav/consumer";
@@ -17,17 +17,17 @@ function showUnlockControl(): boolean {
   return host === "localhost" || host === "127.0.0.1" || host === "[::1]";
 }
 
+function subscribeNoop() {
+  return () => undefined;
+}
+
 export function SiteNav() {
   const pathname = usePathname();
   const [vehicle] = useIdentifiedVehicle();
-  const [devHost, setDevHost] = useState(false);
+  const devHost = useSyncExternalStore(subscribeNoop, showUnlockControl, () => false);
   const chip = vehicle
     ? [vehicle.specs.year, vehicle.specs.make, vehicle.specs.model].filter(Boolean).join(" ")
     : null;
-
-  useEffect(() => {
-    setDevHost(showUnlockControl());
-  }, []);
 
   return (
     <header className="no-print border-b border-white/10">
