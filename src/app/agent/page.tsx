@@ -1,18 +1,21 @@
-import { AdvocateDesk } from "@/components/agent/advocate-desk";
+import { AskStage } from "@/components/agent/ask-stage";
+import { PageHeader } from "@/components/page-header";
 import type { Metadata } from "next";
 import { pageMeta } from "@/lib/seo";
 
 export const metadata: Metadata = pageMeta({
   title: "Ask",
-  description:
-    "Ask before you authorize. VIN, quote line, noise, or scanner code. Sentences for the counter — not a shop booking bot.",
+  description: "Ask before you authorize. Quote line, noise, or scanner code. Three sentences. No booking.",
   path: "/agent",
 });
 
 export default function Page() {
   return (
     <div className="space-y-6">
-      <AdvocateDesk />
+      <PageHeader kicker="Same box as home" title="Ask">
+        Quote line, noise, or code. Copy the three sentences. We do not book a shop.
+      </PageHeader>
+      <AskStage />
     </div>
   );
 }
