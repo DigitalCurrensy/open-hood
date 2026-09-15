@@ -20,7 +20,7 @@ function newId() {
 export function AskDock() {
   const pathname = usePathname();
   const [vehicle] = useIdentifiedVehicle();
-  const [open, setOpen] = useState(true);
+  const [open, setOpen] = useState(false);
   const [draft, setDraft] = useState("");
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState("");

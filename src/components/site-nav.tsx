@@ -5,7 +5,7 @@ import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { BayLink } from "@/components/bay-link";
 import { BayPath } from "@/components/bay-path";
-import { BOARD_NAV, isCurrentHref } from "@/config/nav/consumer";
+import { isCurrentHref, LAB_NAV, OWNER_TOOLS } from "@/config/nav/consumer";
 import { BRAND } from "@/lib/brand";
 import { PWA_UNLOCK_HREF } from "@/lib/pwa";
 import { DEMO_VIN, DEMO_VIN_LABEL } from "@/lib/seo";
@@ -46,7 +46,7 @@ export function SiteNav() {
               {chip ? chip : "No car yet"}
             </BayLink>
             {chip ? null : (
-              <BayLink href={`/?vin=${DEMO_VIN}`} title={DEMO_VIN} className="bay-stamp inline-flex min-h-11 items-center rounded-sm bg-ticket px-3 py-2 font-mono text-[11px] uppercase tracking-[0.16em] text-ticket-ink">
+              <BayLink href={`/?vin=${DEMO_VIN}#ask`} title={DEMO_VIN} className="bay-stamp inline-flex min-h-11 items-center rounded-sm bg-ticket px-3 py-2 font-mono text-[11px] uppercase tracking-[0.16em] text-ticket-ink">
                 Try the demo · {DEMO_VIN_LABEL}
               </BayLink>
             )}
@@ -60,13 +60,13 @@ export function SiteNav() {
         <nav aria-label="Main">
           <BayPath pathname={pathname} />
         </nav>
-        <details className="group rounded-sm border border-white/10 bg-bay-2/40">
-          <summary className="cursor-pointer list-none px-3 py-2 font-mono text-[11px] uppercase tracking-[0.18em] text-aluminum marker:content-none hover:text-fluorescent">
-            <span className="inline-flex min-h-11 items-center">More tools</span>
+        <details className="rounded-sm border border-white/10 bg-bay-2/40">
+          <summary className="cursor-pointer list-none px-3 py-2 font-mono text-[11px] uppercase tracking-[0.18em] text-aluminum hover:text-fluorescent">
+            <span className="inline-flex min-h-11 items-center">Owner tools</span>
           </summary>
-          <nav id="bay-board" aria-label="More tools" className="border-t border-white/10 px-3 py-3">
+          <nav aria-label="Owner tools" className="border-t border-white/10 px-3 py-3">
             <ul className="flex flex-wrap gap-1.5">
-              {BOARD_NAV.map((item) => {
+              {OWNER_TOOLS.map((item) => {
                 const current = isCurrentHref(pathname, item.href);
                 return (
                   <li key={item.href}>
@@ -79,6 +79,27 @@ export function SiteNav() {
             </ul>
           </nav>
         </details>
+        {LAB_NAV.length ? (
+          <details className="rounded-sm border border-white/10 bg-bay-2/20">
+            <summary className="cursor-pointer list-none px-3 py-2 font-mono text-[11px] uppercase tracking-[0.18em] text-aluminum/80 hover:text-fluorescent">
+              <span className="inline-flex min-h-11 items-center">Lab desks</span>
+            </summary>
+            <nav aria-label="Lab desks" className="border-t border-white/10 px-3 py-3">
+              <ul className="flex flex-wrap gap-1.5">
+                {LAB_NAV.map((item) => {
+                  const current = isCurrentHref(pathname, item.href);
+                  return (
+                    <li key={item.href}>
+                      <BayLink href={item.href} aria-current={current ? "page" : undefined} title={item.blurb} className={`bay-stamp inline-flex min-h-11 items-center rounded-sm px-2.5 py-1.5 font-mono text-[11px] uppercase tracking-[0.18em] ${current ? "bg-ticket text-ticket-ink" : "border border-white/10 text-aluminum hover:border-ticket/50 hover:text-fluorescent"}`}>
+                        {item.stamp}
+                      </BayLink>
+                    </li>
+                  );
+                })}
+              </ul>
+            </nav>
+          </details>
+        ) : null}
       </div>
     </header>
   );
