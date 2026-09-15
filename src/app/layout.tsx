@@ -108,8 +108,8 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       <body className="flex min-h-full flex-col">
         <JsonLd data={siteGraphJsonLd()} />
         <Ga4 />
-        <a href="#main" className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-50 focus:bg-ticket focus:px-3 focus:py-2 focus:text-ticket-ink">
-          Skip to tools
+        <a href="#ask" className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-50 focus:bg-ticket focus:px-3 focus:py-2 focus:text-ticket-ink">
+          Skip to Ask
         </a>
         <PwaBoot />
         <SiteNav />
