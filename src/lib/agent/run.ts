@@ -32,6 +32,19 @@ function photoNote(hasVision: boolean, last?: AgentWireMessage): string | undefi
     : `I cannot see that ${label} photo in this bay. Describe the colors, words, and numbers.`;
 }
 
+function redact(message: string): string {
+  return message.replace(/sk-[a-zA-Z0-9_-]+/g, "[key]").replace(/Bearer\s+\S+/gi, "Bearer [key]").slice(0, 180);
+}
+
+function withFallbackNote(briefing: AgentReply, error: unknown): AgentReply {
+  const reason = error instanceof Error ? redact(error.message) : "model call failed";
+  console.error("[open-hood.agent] openai fallback", reason);
+  return {
+    ...briefing,
+    verify: `${briefing.verify} Model fallback — typed tools answered. ${reason}`,
+  };
+}
+
 async function prepare(input: AgentRunInput): Promise<{
   briefing: AgentReply;
   toolResults: AgentToolResult[];
@@ -77,8 +90,8 @@ export async function answerAgent(input: AgentRunInput): Promise<AgentReply> {
       toolResults,
       userText: lastUser(input.messages)?.content ?? "",
     });
-  } catch {
-    return briefing;
+  } catch (error) {
+    return withFallbackNote(briefing, error);
   }
 }
 
@@ -95,8 +108,8 @@ export async function streamOrAnswerAgent(input: AgentRunInput): Promise<Respons
         toolResults: prepared.toolResults,
         userText: prepared.last?.content ?? "",
       });
-    } catch {
-      return prepared.briefing;
+    } catch (error) {
+      return withFallbackNote(prepared.briefing, error);
     }
   }
 
@@ -108,7 +121,7 @@ export async function streamOrAnswerAgent(input: AgentRunInput): Promise<Respons
       readingLevel: input.readingLevel,
       toolResults: prepared.toolResults,
     });
-  } catch {
-    return prepared.briefing;
+  } catch (error) {
+    return withFallbackNote(prepared.briefing, error);
   }
 }

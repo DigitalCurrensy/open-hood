@@ -6,10 +6,6 @@ import { MATRIX_NAV_ITEMS } from "@/config/nav/matrix";
 import { RELIABILITY_NAV_ITEM, TRUST_NAV_ITEM, VALUE_NAV_ITEM } from "@/config/nav/trust";
 import { NAV_ITEMS, type NavItem } from "@/lib/nav";
 
-/**
- * Phone path. Three moves, in order: the car, the ticket, the rooftop.
- * The rest of the board stays on disclosure so no route is deleted.
- */
 export interface ConsumerStamp {
   href: string;
   stamp: string;
@@ -21,20 +17,26 @@ export const CONSUMER_PATH: readonly ConsumerStamp[] = [
   {
     href: "/",
     stamp: "Car",
-    label: "Identify the car",
-    blurb: "VIN, or year / make / model.",
+    label: "Identify",
+    blurb: "Type the VIN, or year / make / model.",
   },
   {
     href: "/quote",
     stamp: "Ticket",
-    label: "Mark this RO",
-    blurb: "Paste the estimate. We mark the padded lines.",
+    label: "This estimate",
+    blurb: "Paste or photograph the repair order.",
   },
   {
-    href: "/directory",
-    stamp: "Shops",
-    label: "Find a rooftop",
-    blurb: "Shops near a ZIP. We do not book a bay.",
+    href: "/mechanic-mode",
+    stamp: "Script",
+    label: "What to say",
+    blurb: "Three lines for the service writer.",
+  },
+  {
+    href: "/agent",
+    stamp: "Ask",
+    label: "Ask",
+    blurb: "Ask about oil, a code, or a padded line.",
   },
 ] as const;
 
@@ -47,7 +49,7 @@ function withNavItem(items: readonly NavItem[], extra: NavItem): NavItem[] {
 const SCRIPT_NAV_ITEM: NavItem = {
   href: "/mechanic-mode",
   stamp: "Script",
-  label: "Counter script",
+  label: "What to say",
   blurb: "Three lines for the window. Then decide.",
   needsVehicle: false,
 };
@@ -56,11 +58,10 @@ const SHOPS_MAP_NAV_ITEM: NavItem = {
   href: "/shops",
   stamp: "Maps",
   label: "Find shops",
-  blurb: "A Maps search plus the questions to ask. We do not book a bay.",
+  blurb: "A Maps search plus the questions to ask. We do not book.",
   needsVehicle: false,
 };
 
-/** Every stamp Open Hood ships, deduped by href. */
 export const BAY_NAV: NavItem[] = [
   ...MATRIX_NAV_ITEMS,
   TRUST_NAV_ITEM,
@@ -74,7 +75,6 @@ export const BAY_NAV: NavItem[] = [
   withNavItem(withNavItem(withNavItem(NAV_ITEMS, INTEGRATIONS_NAV_ITEM), LOG_NAV_ITEM), CONTACT_NAV_ITEM),
 );
 
-/** The board behind "More bays" — the three primary moves already have stamps. */
 export const BOARD_NAV: NavItem[] = BAY_NAV.filter((item) => !PRIMARY_HREFS.has(item.href));
 
 export function isCurrentHref(pathname: string, href: string): boolean {
