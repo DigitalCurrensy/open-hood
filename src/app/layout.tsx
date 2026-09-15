@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { Barlow, Big_Shoulders_Stencil, IBM_Plex_Mono } from "next/font/google";
+import { AskDock } from "@/components/agent/ask-dock";
 import { Ga4 } from "@/components/ga4";
 import { JsonLd } from "@/components/json-ld";
 import { PwaBoot } from "@/components/pwa-boot";
@@ -100,28 +101,23 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
-    <html
-      lang="en"
-      className={`${display.variable} ${sans.variable} ${mono.variable} h-full antialiased`}
-    >
+    <html lang="en" className={`${display.variable} ${sans.variable} ${mono.variable} h-full antialiased`}>
       <head>
         <PwaUnlockScript />
       </head>
       <body className="flex min-h-full flex-col">
         <JsonLd data={siteGraphJsonLd()} />
         <Ga4 />
-        <a
-          href="#main"
-          className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-50 focus:bg-ticket focus:px-3 focus:py-2 focus:text-ticket-ink"
-        >
+        <a href="#main" className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-50 focus:bg-ticket focus:px-3 focus:py-2 focus:text-ticket-ink">
           Skip to tools
         </a>
         <PwaBoot />
         <SiteNav />
-        <main id="main" className="mx-auto flex w-full max-w-6xl flex-1 flex-col px-4 py-6 sm:px-8 sm:py-8">
+        <main id="main" className="mx-auto flex w-full max-w-6xl flex-1 flex-col px-4 py-6 pb-28 sm:px-8 sm:py-8 sm:pb-28">
           {children}
         </main>
         <SiteFooter />
+        <AskDock />
       </body>
     </html>
   );
