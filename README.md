@@ -4,6 +4,8 @@
 
 [Live demo](https://open-hood.vercel.app) · [CI](https://github.com/DigitalCurrensy/open-hood/actions) · Next.js 16 · TypeScript · Vercel · MIT
 
+![Open Hood](public/og.png)
+
 An owner’s advocate for the service counter — not a shop, not Carfax, not a booking cut.
 
 1. Identify the car (VIN or year / make / model).
