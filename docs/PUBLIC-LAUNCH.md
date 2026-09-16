@@ -1,62 +1,34 @@
-# Make Open Hood a public portfolio repo
+# Public portfolio — operator checklist
 
-This file is the operator checklist. Code cannot flip GitHub visibility or Vercel from here.
+As of **16 September 2026**. Code cannot flip GitHub visibility from here.
 
-## 1. Fix the About box (do this first)
+## Already done
 
-GitHub → **open-hood** → gear next to **About**
+- Live origin: **https://open-hood.vercel.app** (not the dead AutoShield host)
+- GitHub About website points at that origin
+- `main` only (merged wave branches deleted)
+- CI green: test + tsc + lint
+- Branch ruleset **Protect main**: no delete, no force-push, required check `check`; DigitalCurrensy may bypass
+- `OPENAI_API_KEY` **removed** from Vercel Production. Ask is typed tools. Confirm: `GET /api/agent` → `keyOn: false`
+- README walk + `docs/shots/` captures of the waiting-room pages
+- MIT, original repo (not a fork)
 
-| Field | Set this |
-| --- | --- |
-| Description | Owner's car book: VIN → spec card → marked-up repair order → three sentences at the window. Not a shop. Not Carfax. |
-| Website | `https://open-hood.vercel.app` |
-| Topics | `automotive` `nextjs` `typescript` `vercel` `nhtsa` `vin` `consumer-protection` `repair` `pwa` `openai` |
+## You still click
 
-Delete `autoshield-ai-psi.vercel.app`. That URL 404s.
+1. Phone incognito: demo Honda → Ask `$89 cabin filter` → copy lines.
+2. Settings → General → Danger Zone → **Change repository visibility → Public**.
+3. Open the repo logged out. Confirm README images and the live link.
 
-## 2. Green the live site
+There is no “public, no forks” on a user MIT repo. Forks get source, not Vercel env.
 
-GitHub sidebar currently shows **Preview** and **Production** red, and an old green “Production – open-hood” from weeks ago. Latest `main` is not what strangers hit until Vercel production is green on the newest commit.
+## Secrets
 
-1. Vercel → project **open-hood** → latest failed production → read the build log.
-2. Common cause: TypeScript / lint on a wave commit, or missing env on Production.
-3. Redeploy **Production** from `main` at `54f80a9` or newer (`portfolio-public`).
-4. Confirm https://open-hood.vercel.app shows **Owner tools** + **Lab desks**, not only **More tools**.
+- Do not commit `.env.local`.
+- Do not put `OPENAI_API_KEY` back on Production unless: separate OpenAI project, hard monthly cap ($5–$10), allow-list `gpt-4o` only, then redeploy.
+- Revoke any OpenAI key that ever sat in a screenshot.
 
-## 3. GitHub Actions
+## Optional after public
 
-This branch adds `.github/workflows/ci.yml` (`npm test`, `tsc`, `lint`). After merge, **Actions** must be enabled on the repo (Settings → Actions → Allow).
-
-The red **0/1** on `main` today is a Vercel GitHub Check, not Actions — there was no workflow file.
-
-## 4. Delete merged branches
-
-On Branches, delete:
-
-`demo-skin-ask` `harden-rt28` `plus10-council` `premium-desks` `dense-wave-2` `dense-wave-3` `portfolio-public` (after merge)
-
-Keep `main` only.
-
-## 5. Make it public (not a fork)
-
-This repo is already an original (`DigitalCurrensy/open-hood`), not a fork. Good.
-
-Settings → General → Danger Zone → **Change repository visibility** → Public.
-
-Public repos can be forked by anyone. GitHub does not offer “public, no forks” on a user repo. If you need no-forks, stay private and share a live demo + this README.
-
-## 6. Screenshots for the README
-
-After production is green and the install banner is gone:
-
-1. Hard-refresh `/` → dismiss any leftover banner once.
-2. Capture: Home+Ask, Honda loaded, `$89 cabin` answer, `/quote`, `/obd`, `/shops`.
-3. Drop PNGs in `docs/shots/` as `01-home.png` … and link them from README.
-
-Until those files exist, README uses `/og.png` and live URLs. Do not commit someone else's cars.
-
-## 7. Secrets that must stay out of git
-
-- `OPENAI_API_KEY` lives on Vercel only.
-- No `.env.local` in the tree.
-- If you public the repo, rotate any key that ever sat in a screenshot.
+- Record a 90-second vertical phone walk; paste the URL under the README walk.
+- Custom domain later. Not required for the portfolio piece.
+- Ten consented owners is GTM, not a git setting.
