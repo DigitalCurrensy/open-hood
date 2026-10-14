@@ -10,7 +10,7 @@
     "test": "node --experimental-strip-types --test src/lib/agent/spoken-quote.test.ts src/lib/agent/safety.test.ts"
   },
   "dependencies": {
-    "next": "16.3.3",
+    "next": "16.3.8",
     "react": "19.2.8",
     "react-dom": "19.2.8",
     "tesseract.js": "^7.0.0"
@@ -20,9 +20,13 @@
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
+    "braces": "file:third_party/braces-3.0.4.tgz",
     "eslint": "^9",
-    "eslint-config-next": "16.3.3",
+    "eslint-config-next": "16.3.8",
     "tailwindcss": "^4",
     "typescript": "^5"
+  },
+  "overrides": {
+    "braces": "$braces"
   }
 }
